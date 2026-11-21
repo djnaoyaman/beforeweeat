@@ -1,4 +1,4 @@
-name: Import selected editorial images
+name: Prepare cooking photography
 on:
   push:
     branches: [runway-asset-import]
@@ -6,43 +6,57 @@ on:
 permissions:
   contents: write
 jobs:
-  prepare:
+  photos:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - run: python -m pip install --quiet Pillow
-      - name: Prepare the selected Runway photos for the site
-        env:
-          PHOTO_URLS: ${{ secrets.BWE_RUNWAY_ASSETS }}
+      - name: Receive the selected photos for this edition
+        shell: bash
         run: |
-          python - <<'PY'
-          import io, json, os, urllib.request
-          from PIL import Image
-          urls = json.loads(os.environ["PHOTO_URLS"])
-          for name in ("rib", "beef", "chicken"):
-              try:
-                  with urllib.request.urlopen(urls[name], timeout=25) as response:
-                      image = Image.open(io.BytesIO(response.read())).convert("RGB")
-                  image.thumbnail((1080, 820))
-                  image.save("runway-" + name + ".webp", quality=88, method=6)
-                  print("Prepared", name, image.size)
-              except Exception:
-                  raise SystemExit("Download failed for " + name) from None
-          try:
-              req = urllib.request.Request("https://pub.mdpi-res.com/agriculture/agriculture-14-01091/article_deploy/html/images/agriculture-14-01091-g002.png", headers={"User-Agent":"Mozilla/5.0"})
-              with urllib.request.urlopen(req, timeout=25) as response:
-                  photo = Image.open(io.BytesIO(response.read())).convert("RGB")
-              photo.thumbnail((1280,1280))
-              photo.save("field-footpad.webp", quality=91, method=6)
-              print("Prepared licensed field photograph", photo.size)
-          except Exception:
-              print("Licensed source figure needs a second download route.")
-          PY
-      - name: Save assets to the preparation branch
-        run: |
+          set -euo pipefail
+          transfer=".photo-transfer/$GITHUB_RUN_ID"
+          mkdir -p "$transfer"
+          umask 077
+          openssl req -x509 -newkey rsa:3072 -nodes -days 1 -subj /CN=BeforeWeEat -keyout "$RUNNER_TEMP/receiver.key" -out "$transfer/receiver.pem" 2>/dev/null
+          trap 'rm -f "$RUNNER_TEMP/receiver.key" "$RUNNER_TEMP/inputs.json"' EXIT
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$transfer/receiver.pem"
+          git commit -qm 'Open one-time photo delivery'
+          git push -q
+          for i in $(seq 1 180); do
+            git pull -q --ff-only
+            test -f "$transfer/photos.cms" && break
+            sleep 10
+          done
+          test -f "$transfer/photos.cms"
+          openssl cms -decrypt -binary -inform PEM -in "$transfer/photos.cms" -recip "$transfer/receiver.pem" -inkey "$RUNNER_TEMP/receiver.key" -out "$RUNNER_TEMP/inputs.json"
+          python - <<'PY'
+          import concurrent.futures, io, json, os, re, urllib.request
+          from pathlib import Path
+          from urllib.parse import urlsplit
+          from PIL import Image, ImageOps
+          urls = json.loads((Path(os.environ['RUNNER_TEMP']) / 'inputs.json').read_text(encoding='utf-8-sig'))
+          def prepare(item):
+              filename, url = item
+              parsed = urlsplit(url)
+              if not re.fullmatch(r'[a-z][a-z0-9-]{1,70}\.webp', filename) or parsed.scheme != 'https' or parsed.hostname != 'dnznrvs05pmza.cloudfront.net':
+                  raise RuntimeError('Invalid image reference')
+              try:
+                  req = urllib.request.Request(url, headers={'User-Agent': 'BeforeWeEat/1.0'})
+                  with urllib.request.urlopen(req, timeout=50) as response:
+                      image = ImageOps.exif_transpose(Image.open(io.BytesIO(response.read()))).convert('RGB')
+                  image.thumbnail((1200, 1000))
+                  image.save(filename, quality=86, method=6)
+                  print('Prepared', filename, image.size)
+              except Exception:
+                  raise SystemExit('Could not prepare ' + filename) from None
+          with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+              list(pool.map(prepare, urls.items()))
+          PY
+          git rm -q -- "$transfer/photos.cms" "$transfer/receiver.pem"
           git add -- '*.webp'
-          git commit -m 'Prepare editorial photos for publication'
-          git push
+          git commit -qm 'Prepare dish-specific cooking photography'
+          git push -q
