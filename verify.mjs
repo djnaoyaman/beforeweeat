@@ -10,7 +10,7 @@ const folder=path.resolve('dist');
 const all=fs.readdirSync(folder);
 const base='https://djnaoyaman.github.io/beforeweeat/';
 const pages=all.filter(n=>n.endsWith('.html')&&n!=='404.html');
-assert.equal(pages.length,40);
+assert.equal(pages.length,55);
 const titles=new Set();
 const metaNames=['description','robots','author','og:title','og:description','og:url','og:image','twitter:card','twitter:title','twitter:image'];
 const siteMap=fs.readFileSync(path.join(folder,'sitemap.xml'),'utf8');
@@ -42,6 +42,10 @@ try{
  page.on('pageerror',err=>errors.push(err.message));
  const open=(name)=>page.goto(pathToFileURL(path.join(folder,name)).href);
  await open('index.html');
+ await page.getByRole('button',{name:'牛',exact:true}).click();
+ assert.equal(await page.locator('.hero-pig').getAttribute('src'),'cow-art.webp');
+ await page.getByRole('button',{name:'にわとり',exact:true}).click();
+ assert.equal(await page.locator('.hero-pig').getAttribute('src'),'hen-art.webp');
  await page.locator('#reveal').click();
  assert.equal(await page.locator('#reveal').getAttribute('aria-expanded'),'true');
  await page.keyboard.press('Escape');
@@ -58,14 +62,14 @@ try{
  await page.locator('[data-size]').click();assert.ok(await page.locator('html.large-text').count());
  await open('start.html');
  await page.locator('#find').fill('スペアリブ');
- assert.ok((await page.locator('[data-entry]:visible').count())<39);
+ assert.ok((await page.locator('[data-entry]:visible').count())<54);
  await page.locator('#find').fill('zzzzzzzz');
  assert.equal(await page.locator('[data-entry]:visible').count(),0);
  await page.locator('#find').clear();
- assert.equal(await page.locator('[data-entry]:visible').count(),39);
+ assert.equal(await page.locator('[data-entry]:visible').count(),54);
  for(const width of [390,320]){
   await page.setViewportSize({width,height:844});
-  for(const name of ['index.html','lesson-pork.html','hens.html','start.html']){
+  for(const name of ['index.html','lesson-pork.html','hens.html','start.html','beef-cuts.html','chicken-guide.html','case-footpad.html','nutrition.html','cooking.html']){
    await open(name);
    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
    assert.ok(overflow<=2,name+' '+width+' overflow '+overflow);
@@ -74,6 +78,15 @@ try{
  await open('hens.html');
  assert.equal(await page.locator('.survey i').count(),408);
  assert.equal(await page.locator('.survey .n1').count(),304);
+ await open('field-cases.html');
+ assert.equal(await page.locator('.case-list li').count(),8);
+ await open('case-footpad.html');
+ await page.locator('.evidence summary').click();
+ assert.ok(await page.locator('.evidence img').evaluate(async el=>{await el.decode();return el.naturalWidth>0;}));
+ for(const [name,total] of [['beef-cuts.html',12],['pig-cuts.html',8],['chicken-guide.html',10]]){
+  await open(name);
+  assert.equal(await page.locator('.cut-list dt').count(),total);
+ }
  assert.deepEqual(errors,[]);
 }finally{await browser.close();}
 const hash=(name)=>crypto.createHash('sha256').update(fs.readFileSync(path.join(folder,name))).digest('hex');

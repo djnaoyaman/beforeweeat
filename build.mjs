@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {species, caseLabels, additionalSources, editionMarkup} from './edition.mjs';
 const project = new URL('.', import.meta.url);
 const dist = new URL('dist/', project);
 fs.mkdirSync(dist,{recursive:true});
@@ -6,10 +7,16 @@ for (const name of ['reading.css','reading.js','front-links.css','pig.jpg','rib.
  const asset=new URL(name,project);
  if(fs.existsSync(asset))fs.copyFileSync(asset,new URL(name,dist));
 }
+for (const name of ['cow-art.webp','pig-art.webp','hen-art.webp','runway-rib.webp','runway-beef.webp','runway-chicken.webp','field-footpad.webp','animal-view.js']){
+ const asset=new URL(name,project);
+ if(fs.existsSync(asset))fs.copyFileSync(asset,new URL(name,dist));
+}
+const hasAsset = (name) => fs.existsSync(new URL(name,dist));
 const base = 'https://djnaoyaman.github.io/beforeweeat/';
 const portfolio = 'https://djnaoyaman.github.io/';
 const names = ['トップページ','このサイトと、書いている人','動物のくらしと畜産の現場','お肉の部位と栄養図鑑','ちゃんと「いただく」方法','買い物でわかること','現場を変える人たち','食卓で考える・やってみる','ことば・出典・訂正'];
 const sources = {
+...additionalSources,
 maff:['農林水産省　アニマルウェルフェアについて','https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html'],
 survey:['農林水産省　令和6年度調査の採卵鶏の結果（PDF）','https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/animal_welfare-116.pdf'],
 chick:['農林水産省　鶏をめぐる情勢の補足説明資料（PDF）','https://www.maff.go.jp/j/chikusan/sinko/lin/l_katiku/attach/pdf/r6_niwatori-15.pdf'],
@@ -24,7 +31,8 @@ teacher:['文部科学省　食に関する指導の手引','https://www.mext.go
 eggrules:['日本養鶏協会　鶏卵の表示に関する公正競争規約（PDF）','https://www.jpa.or.jp/keiran_root/pdf/rules202407_01.pdf'],
 caa:['消費者庁　家庭での食品ロス対策','https://www.no-foodloss.caa.go.jp/eating-home.html']
 };
-const rows = fs.readFileSync(new URL('articles.txt',project),'utf8').trim().split(/\r?\n/).map(line=>{
+const rows = ['articles.txt','articles-v2.txt']
+ .flatMap(file=>fs.readFileSync(new URL(file,project),'utf8').trim().split(/\r?\n/)).map(line=>{
  const [id,slug,title,lead,body,links='',refs=''] = line.split('|');
  return {group:Number(id[0]),slug,title,lead,body,links:links.split(',').filter(Boolean),refs:refs.split(',').filter(Boolean)};
 });
@@ -48,12 +56,10 @@ function meta(title,desc,path,image='og.jpg',article=false){
  const ld=article?{'@context':'https://schema.org','@type':'Article',headline:title,description:desc,url,image:imageUrl,inLanguage:'ja',author:{'@type':'Person',name:'MINA'}}:{'@context':'https://schema.org','@type':'WebSite',name:'Before We Eat',url,inLanguage:'ja'};
  return '<meta name="description" content="'+escape(desc)+'"><meta name="author" content="MINA"><meta name="robots" content="index,follow,max-image-preview:large"><meta name="theme-color" content="#f7f4e9"><link rel="canonical" href="'+url+'"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="manifest" href="site.webmanifest">'+Object.entries({'og:site_name':'Before We Eat','og:type':article?'article':'website','og:title':title,'og:description':desc,'og:url':url,'og:image':imageUrl,'og:image:alt':'Before We Eat の誌面イメージ','og:locale':'ja_JP','twitter:card':'summary_large_image','twitter:title':title,'twitter:description':desc,'twitter:image':imageUrl,'twitter:image:alt':'Before We Eat の誌面イメージ'}).map(([k,v])=>'<meta '+(k.startsWith('og:')?'property':'name')+'="'+k+'" content="'+escape(v)+'">').join('')+'<script type="application/ld+json">'+JSON.stringify(ld).replaceAll('<','\\u003c')+'</script>';
 }
-const menu = '<nav aria-label="サイト案内">'+pageLink('animals','動物のくらし')+pageLink('cuts')+pageLink('cooking')+pageLink('shopping')+pageLink('lessons','先生・保護者の方へ')+'</nav>';
-const img=(name,alt,caption)=>'<figure><img src="'+name+'.jpg" alt="'+alt+'" decoding="async"><figcaption>'+typeset(caption)+'</figcaption></figure>';
+const menu = '<nav aria-label="サイト案内">'+pageLink('animals','動物のくらし')+pageLink('cuts')+pageLink('cooking')+pageLink('field-cases','現場の事例')+pageLink('shopping')+pageLink('lessons','先生・保護者の方へ')+'</nav>';
 function feature(row){
  if(row.slug==='hens') return '<figure class="survey"><strong>408件の回答</strong><div aria-hidden="true">'+Array.from({length:408},(_,i)=>'<i class="n'+(i<304?1:i<363?2:3)+'"></i>').join('')+'</div><figcaption>ケージのみ304件 ／ 平飼いのみ59件 ／ 両方45件</figcaption></figure>';
- if(['loin','lesson-pork'].includes(row.slug)) return img('pig','横から見たぶたの全身','ぶたの背中を指してみよう。図は説明用のイメージです。');
- if(['bbq-ribs','ribs','cooking'].includes(row.slug)) return img('rib','焼き目とつやのある豚スペアリブ','仕上がりのイメージ。料理の写真は生成した参考図です。');
+ if(['loin','lesson-pork'].includes(row.slug)) return '<figure class="animal-plate"><img src="pig-art.webp" alt="横から見たぶたの全身"><figcaption>ぶたの背中を指してみよう。体の位置を見つけるための線画です。</figcaption></figure>';
  return '';
 }
 const groupLanding={2:'animals',3:'cuts',4:'cooking',5:'shopping',6:'people',7:'lessons',8:'sources'};
@@ -76,7 +82,7 @@ for(const r of rows){
  const refs=r.refs.map(key=>sources[key]);
  if(refs.some(ref=>!ref))throw Error('Missing source: '+r.slug);
  const refsHtml=refs.length?'<details class="references"><summary>ことばのもとになった資料を見る</summary><ul>'+refs.map(([label,url])=>'<li><a href="'+escape(url)+'">'+escape(label)+'</a></li>').join('')+'</ul></details>':'';
- write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,plain(r.lead),page,r.slug==='bbq-ribs'?'rib.jpg':'og.jpg',true)+'<link rel="stylesheet" href="reading.css"><script src="reading.js" defer></script></head><body><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="brand.svg" alt="">Before We Eat</a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(names[r.group])+'</div><h1>'+typeset(r.title)+'</h1><p class="lead">'+typeset(r.lead)+'</p>'+feature(r)+'<p>'+typeset(r.body)+'</p>'+extra(r)+directory(r)+refsHtml+'</article><aside aria-label="次に読む"><h2>次は、どれを読む？</h2><ul class="story-list">'+r.links.map(slug=>'<li>'+pageLink(slug)+'</li>').join('')+'</ul></aside></main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
+ write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,plain(r.lead),page,r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg',true)+'<link rel="stylesheet" href="reading.css"><script src="reading.js" defer></script></head><body><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1><p class="lead">'+typeset(r.lead)+'</p>'+feature(r)+'<p>'+typeset(r.body)+'</p>'+editionMarkup({r,typeset,pageLink,hasAsset})+extra(r)+directory(r)+refsHtml+'</article><aside aria-label="次に読む"><h2>次は、どれを読む？</h2><ul class="story-list">'+r.links.map(slug=>'<li>'+pageLink(slug)+'</li>').join('')+'</ul></aside></main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
 }
 let top=fs.readFileSync(new URL('top.html',project),'utf8').replace(/<meta name="description"[^>]*>/gi,'');
 top=top.replace('</head>',meta('Before We Eat｜ちゃんと「いただきます」。',description,'')+'<meta name="referrer" content="strict-origin-when-cross-origin"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="stylesheet" href="front-links.css"></head>')
@@ -84,11 +90,24 @@ top=top.replace('</head>',meta('Before We Eat｜ちゃんと「いただきま�
 .replace(/<span>X 000[^<]*<\/span>/,'$&')
 .replace('</header>','</header><div class="school-entry"><a href="lessons.html">先生・保護者の方へ</a><a href="start.html">すべての目次</a></div>')
 .replace('動きをひかえめにする</button></div></nav>','動きをひかえめにする</button><a href="lessons.html">先生・保護者の方へ</a><a href="start.html">すべての目次</a></div></nav>')
-.replace('</main>','<section class="edition-index" aria-labelledby="ed-index"><h2 id="ed-index">食卓から、知りたいことへ。</h2><div>'+['animals','cuts','cooking','shopping','people','lessons','mina','sources','start'].map(slug=>pageLink(slug)).join('')+'</div></section></main>')
+.replace('</main>','<section class="edition-index" aria-labelledby="ed-index"><h2 id="ed-index">食卓から、知りたいことへ。</h2><div>'+['animals','cuts','cooking','field-cases','shopping','people','lessons','mina','sources','start'].map(slug=>pageLink(slug)).join('')+'</div></section></main>')
 .replace('href="#about">このサイトについて','href="mina.html">このサイトについて')
 .replace('<button class="outline" data-info="cooking">MINAと、おいしさを探す<span>＋</span></button>','<a class="outline" href="cooking.html">MINAと、おいしさを探す<span>＋</span></a>')
 .replace('お肉の場所を見てみる<span>＋</span></button>','お肉の場所を見てみる<span>＋</span></button> <a href="loin.html">ロースを図鑑で読む</a>')
 .replace('href="#cook">料理へ進む','href="cooking.html">料理へ進む');
+const flagship = hasAsset('runway-rib.webp')?'runway-rib.webp':'rib.jpg';
+top=top
+ .replace(/<script>const localImages=\{[^\r\n]*?\};/,'<script>const localImages='+JSON.stringify({pig:'pig-art.webp',logo:'logo.webp',rib:flagship})+';')
+ .replace('<section class="hero" id="observe">','<section class="hero" id="observe"><div class="animal-switch" aria-label="動物を選ぶ">'+['pig','cow','hen'].map(key=>'<button type="button" data-animal="'+key+'" aria-pressed="'+(key==='pig')+'">'+species[key].name+'</button>').join('')+'</div>')
+ .replace('ぶたの<ruby>体<rt>からだ</rt></ruby>を<ruby>観察<rt>かんさつ</rt></ruby>する','<span id="animal-name">ぶた</span>の<ruby>体<rt>からだ</rt></ruby>を<ruby>観察<rt>かんさつ</rt></ruby>する')
+ .replace('href="loin.html">ロースを図鑑で読む','href="pig-cuts.html" id="animal-guide">ぶたの部位を見る')
+ .replace('</button> <a href="pig-cuts.html" id="animal-guide">ぶたの部位を見る</a>','</button> <a href="pig-cuts.html" id="animal-guide">ぶたの部位を見る</a><a href="pig.html" id="animal-life">ぶたのくらし</a>')
+ .replace('私は、お肉を食べます。<br>だからこそ、どうぶつが生きている間の<br><ruby>苦<rt>くる</rt></ruby>しみを、ひとつでも減らしたい。','私はヴィーガンではありません。お肉を食べます。だからこそ、どうぶつが生きている間に、なくせる<ruby>苦<rt>くる</rt></ruby>しみを一つでも減らしたい。')
+ .replace('そして、食卓に届いたお肉は、<br>その部位に合った、とびきりおいしい食べ方で。','せっかく<ruby>命<rt>いのち</rt></ruby>をいただくなら、食べられる分を買い、部位に合う調理で、最後のひと口まで感謝していただきたい。<a class="intro-essay" href="mina.html">MINAの手紙を読む</a>')
+ .replace('アニマルウェルフェアって？<span>＋</span></button>','アニマルウェルフェアって？<span>＋</span></button><a class="outline field-link" href="field-cases.html">畜産の現場で報告された事例</a>')
+ .replace('骨ぎわまでおいしく焼きあげたスペアリブ" loading="lazy"><span>おいしさを、最後のひと口まで。','骨ぎわまでおいしく焼きあげたスペアリブ" loading="lazy"><span>'+(flagship.startsWith('runway')?'Runwayで生成した仕上がりイメージ':'仕上がりのイメージ'))
+ .replace('<footer><a href="#top">Before We Eat</a>','<footer><a class="footer-brand" href="#top"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a>')
+ .replace('</body>','<script src="animal-view.js" defer></script></body>');
 write('index.html',top);
 const urls=['',...rows.map(r=>r.slug+'.html')];
 write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls.map(p=>'<url><loc>'+base+p+'</loc></url>').join('')+'</urlset>');

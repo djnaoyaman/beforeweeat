@@ -1,1 +1,14 @@
 .school-entry{position:sticky;top:0;z-index:8;display:flex;justify-content:center;gap:.65rem 1.6rem;flex-wrap:wrap;padding:.55rem 1rem;background:#f6f3e9;color:#1b3027;border-bottom:1px solid #a5a192;font-weight:600}.school-entry a,.edition-index a{color:inherit;text-decoration:underline;text-underline-offset:.25em}.school-entry:focus-within{z-index:35}.edition-index{padding:clamp(2rem,8vw,7rem) clamp(1.3rem,10vw,10rem);background:#f7f4e9;color:#1b3027}.edition-index h2{font-size:clamp(1.5rem,4vw,3.5rem);margin:0 0 1rem}.edition-index div{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));gap:0 1.4rem}.edition-index a{padding:1rem 0;border-bottom:1px solid #a5a192;font-size:1.1rem}.edition-index a:hover,.school-entry a:hover{color:#963f25}
+
+.animal-switch{display:flex;align-items:stretch;border-bottom:1px solid var(--line);background:var(--paper,#f7f4e9)}
+.animal-switch button{flex:1 1 0;min-width:0;border:0;border-right:1px solid var(--line);border-radius:0;background:transparent;color:inherit;padding:.67rem .3rem;font:inherit;font-weight:650;cursor:pointer}
+.animal-switch button:last-child{border-right:0}.animal-switch [aria-pressed=true]{background:#1b3027;color:#fff9ea}
+.hero .art{isolation:isolate;overflow:hidden}.hero .hero-pig{object-fit:contain;max-width:96%;transform:none}
+.hero .art[data-view="cow"] .back{left:64%;top:33%}.hero .art[data-view="cow"] .belly{left:70%;top:69%}
+.hero .art[data-view="hen"] .back{left:35%;top:42%}.hero .art[data-view="hen"] .belly{left:52%;top:65%}
+.hero .note{max-width:min(42%,17rem);white-space:normal}.hero .note strong{overflow-wrap:anywhere}
+.hero .hero-foot a,.intro-essay{font-weight:650;text-decoration:underline;text-underline-offset:.2em}.hero .hero-foot{flex-wrap:wrap;gap:.65rem}
+.intro-essay{display:table;margin-top:.8rem}.field-link{display:block;margin-top:.75rem}.intro-image,.story-art,.cook-image{min-width:0;overflow:hidden}.intro-image img{width:100%;max-width:100%;transform:none;object-fit:contain}
+.cook-image{background:#251b14;min-height:0}.cook-image img{display:block;width:100%;height:100%;max-width:100%;object-fit:cover}.footer-brand img{display:block;width:min(65vw,18rem);height:auto;max-width:100%}
+@media(max-width:620px){.hero .art{height:340px}.hero .note{left:auto;right:13px;font-size:14px;width:min(46%,11rem);max-width:none}.hero .note-back{top:7%}.hero .note-belly{top:56%}.hero .note strong{font-size:15px}.intro-image img{width:100%;transform:none}.story-art{inset:22% 0 33%}.cook-image{height:clamp(15rem,75vw,29rem)}.cook-image img{object-fit:cover}.hero .hero-foot a{font-size:14px}}
+
