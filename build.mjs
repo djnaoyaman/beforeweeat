@@ -37,13 +37,14 @@ const rows = ['articles.txt','articles-v2.txt']
  return {group:Number(id[0]),slug,title,lead,body,links:links.split(',').filter(Boolean),refs:refs.split(',').filter(Boolean)};
 });
 const bySlug = new Map(rows.map(row=>[row.slug,row]));
-const plain = (text) => text.replace(/<([^:]+):[^>]+>/g,'$1');
+const plain = (text) => text.replace(/<([^:]+):[^>]+>/g,'$1').replace(/\[\[([^\[\]]+)\]\]/g,'$1');
 const escape = (text) => text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-const readings = {動物:'どうぶつ',食卓:'しょくたく',畜産:'ちくさん',栄養:'えいよう',図鑑:'ずかん',部位:'ぶい',脂質:'ししつ',可食部:'かしょくぶ',加熱:'かねつ',出典:'しゅってん',調査:'ちょうさ',資料:'しりょう',飼養:'しよう',乳牛:'にゅうぎゅう',獣医師:'じゅういし',生産者:'せいさんしゃ',農場:'のうじょう',雄:'おす',雌雄:'しゆう',鶏:'にわとり',平飼い:'ひらがい',囲い:'かこい',授業:'じゅぎょう',給食:'きゅうしょく',観察:'かんさつ',食感:'しょっかん',断面:'だんめん',脂身:'あぶらみ',繊維:'せんい',中心温度:'ちゅうしんおんど',訂正:'ていせい',根拠:'こんきょ',自由研究:'じゆうけんきゅう',家庭:'かてい',保護者:'ほごしゃ',編者:'へんしゃ',手引:'てびき',食品:'しょくひん',生姜焼き:'しょうがやき'};
+const readings = {動物:'どうぶつ',食卓:'しょくたく',畜産:'ちくさん',栄養:'えいよう',図鑑:'ずかん',部位:'ぶい',脂質:'ししつ',可食部:'かしょくぶ',加熱:'かねつ',出典:'しゅってん',調査:'ちょうさ',資料:'しりょう',飼養:'しよう',乳牛:'にゅうぎゅう',獣医師:'じゅういし',生産者:'せいさんしゃ',農場:'のうじょう',雄:'おす',雌雄:'しゆう',鶏むね:'とりむね',鶏もも:'とりもも',鶏肉:'とりにく',鶏:'にわとり',平飼い:'ひらがい',囲い:'かこい',授業:'じゅぎょう',給食:'きゅうしょく',観察:'かんさつ',食感:'しょっかん',断面:'だんめん',脂身:'あぶらみ',繊維:'せんい',中心温度:'ちゅうしんおんど',訂正:'ていせい',根拠:'こんきょ',自由研究:'じゆうけんきゅう',家庭:'かてい',保護者:'ほごしゃ',編者:'へんしゃ',手引:'てびき',食品:'しょくひん',生姜焼き:'しょうがやき'};
 const known = new RegExp(Object.keys(readings).sort((a,b)=>b.length-a.length).join('|'),'g');
 const ruby = (base,rt) => '<ruby>'+escape(base)+'<rt>'+escape(rt)+'</rt></ruby>';
 function typeset(text){
- return text.split(/(<[^:]+:[^>]+>)/g).map(part=>{
+ return text.split(/(\[\[[^\[\]]+\]\]|<[^:]+:[^>]+>)/g).map(part=>{
+  if(part.startsWith('[[')) return '<span class="reading-phrase">'+typeset(part.slice(2,-2))+'</span>';
   const manual = part.match(/^<([^:]+):([^>]+)>$/);
   return manual ? ruby(manual[1],manual[2]) : escape(part).replace(known,word=>ruby(word,readings[word]));
  }).join('');
@@ -76,7 +77,17 @@ const groupLanding={2:'animals',3:'cuts',4:'cooking',5:'shopping',6:'people',7:'
 function directory(row){
  if(row.slug==='start')return '<section aria-labelledby="directory"><h2 id="directory">記事を探す</h2><label>ことばで探す <input id="find" type="search" placeholder="例　ぶた、給食、卵"></label><p id="count" role="status"></p><div id="catalog"><section><h3>トップページ</h3><p><a href="./">Before We Eat</a></p></section>'+names.slice(1).map((name,i)=>'<section class="chapter"><h3>'+typeset(name)+'</h3><ul>'+rows.filter(r=>r.group===i+1).map(r=>'<li data-entry data-key="'+escape(plain(r.title+' '+r.lead+' '+r.body))+'">'+pageLink(r.slug)+'</li>').join('')+'</ul></section>').join('')+'</div></section>';
  if(groupLanding[row.group]!==row.slug)return '';
- return '<section><h2>この章で読む</h2><ul class="story-list">'+rows.filter(r=>r.group===row.group&&r!==row).map(r=>'<li>'+pageLink(r.slug)+'</li>').join('')+'</ul></section>';
+ const list = (slugs) => '<ul class="story-list">'+slugs.map(slug=>'<li>'+pageLink(slug)+'</li>').join('')+'</ul>';
+ const chapters = [
+  ['牛',['beef-cuts','beef-shank','beef-round']],
+  ['ぶた',['pig-cuts','loin','pork-round','ribs']],
+  ['にわとり',['chicken-guide','chicken-cuts']],
+  ['栄養',['nutrition']]
+ ];
+ const content = row.slug==='cuts'
+  ? chapters.map(([label,slugs])=>'<section class="story-group"><h3>'+typeset(label)+'</h3>'+list(slugs)+'</section>').join('')
+  : list(rows.filter(r=>r.group===row.group&&r!==row).map(r=>r.slug));
+ return '<section><h2>この章で読む</h2>'+content+'</section>';
 }
 function extra(row){
  if(lessonAnimals[row.slug])return '<section class="worksheet"><h2>今日の観察シート</h2><p>名前 ____________________　　日付 __________</p><p>'+typeset(species[lessonAnimals[row.slug].key].name+'の体のどこだった？')+'</p><div class="write-line"></div><p>絵を見てわかったこと</p><div class="write-line"></div><p>農場の人に聞きたいこと</p><div class="write-line"></div><button type="button" data-print>観察シートを印刷</button></section>';
@@ -97,7 +108,7 @@ for(const r of rows){
  const refs=r.refs.map(key=>sources[key]);
  if(refs.some(ref=>!ref))throw Error('Missing source: '+r.slug);
  const refsHtml=refs.length?'<details class="references"><summary>ことばのもとになった資料を見る</summary><ul>'+refs.map(([label,url])=>'<li><a href="'+escape(url)+'">'+escape(label)+'</a></li>').join('')+'</ul></details>':'';
- write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,plain(r.lead),page,r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg',true)+'<link rel="stylesheet" href="reading.css"><script src="reading.js" defer></script></head><body><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1><p class="lead">'+typeset(r.lead)+'</p>'+feature(r)+'<p>'+typeset(r.body)+'</p>'+editionMarkup({r,typeset,pageLink,hasAsset})+extra(r)+directory(r)+refsHtml+'</article><aside aria-label="次に読む"><h2>次は、どれを読む？</h2><ul class="story-list">'+r.links.map(slug=>'<li>'+pageLink(slug)+'</li>').join('')+'</ul></aside></main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
+ write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,plain(r.lead),page,r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg',true)+'<link rel="stylesheet" href="reading.css?v=2"><script src="reading.js" defer></script></head><body><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1><p class="lead">'+typeset(r.lead)+'</p>'+feature(r)+'<p>'+typeset(r.body)+'</p>'+editionMarkup({r,typeset,pageLink,hasAsset})+extra(r)+directory(r)+refsHtml+'</article><aside aria-label="次に読む"><h2>次は、どれを読む？</h2><ul class="story-list">'+r.links.map(slug=>'<li>'+pageLink(slug)+'</li>').join('')+'</ul></aside></main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
 }
 let top=fs.readFileSync(new URL('top.html',project),'utf8').replace(/<meta name="description"[^>]*>/gi,'');
 top=top.replace('</head>',meta('Before We Eat｜ちゃんと「いただきます」。',description,'')+'<meta name="referrer" content="strict-origin-when-cross-origin"><link rel="stylesheet" href="front-links.css"></head>')
@@ -130,6 +141,6 @@ write('robots.txt','User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\n');
 write('llms.txt','# Before We Eat\n\n> 肉をおいしく食べることから、動物のくらしを考える食育サイト。\n\n'+['animals','cuts','cooking','shopping','lessons','sources'].map(slug=>'- ['+plain(bySlug.get(slug).title)+']('+base+slug+'.html)').join('\n')+'\n');
 write('llms-full.txt','# Before We Eat\n\n'+rows.map(r=>'## '+plain(r.title)+'\n'+base+r.slug+'.html\n\n'+plain(r.lead)+'\n'+plain(r.body)+'\n'+r.refs.map(k=>sources[k].join(' ')).join('\n')).join('\n\n'));
 write('site.webmanifest',JSON.stringify({name:'Before We Eat',short_name:'Before We Eat',description,lang:'ja',start_url:'./',scope:'./',display:'browser',background_color:'#f7f4e9',theme_color:'#1b3027',icons:[{src:'icon.svg?v=2',sizes:'any',type:'image/svg+xml'},{src:'icon-192.png?v=2',sizes:'192x192',type:'image/png'},{src:'icon-512.png?v=2',sizes:'512x512',type:'image/png'},{src:'icon-maskable.png?v=2',sizes:'512x512',type:'image/png',purpose:'maskable'}]}));
-write('404.html','<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>ページが見つかりません｜Before We Eat</title><link rel="stylesheet" href="'+base+'reading.css"><main><h1>ページが見つかりませんでした。</h1><p><a href="'+base+'start.html">すべての目次を開く</a></p></main></html>');
+write('404.html','<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>ページが見つかりません｜Before We Eat</title><link rel="stylesheet" href="'+base+'reading.css?v=2"><main><h1>ページが見つかりませんでした。</h1><p><a href="'+base+'start.html">すべての目次を開く</a></p></main></html>');
 console.log('Built '+urls.length+' editorial pages.');
 
