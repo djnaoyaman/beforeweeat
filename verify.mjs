@@ -1,0 +1,80 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { pathToFileURL } from 'node:url';
+import { createRequire } from 'node:module';
+const require=createRequire(import.meta.url);
+const {chromium}=require(process.env.BWE_PLAYWRIGHT || 'playwright');
+const folder=path.resolve('dist');
+const all=fs.readdirSync(folder);
+const base='https://djnaoyaman.github.io/beforeweeat/';
+const pages=all.filter(n=>n.endsWith('.html')&&n!=='404.html');
+assert.equal(pages.length,40);
+const titles=new Set();
+const metaNames=['description','robots','author','og:title','og:description','og:url','og:image','twitter:card','twitter:title','twitter:image'];
+const siteMap=fs.readFileSync(path.join(folder,'sitemap.xml'),'utf8');
+let checkedLinks=0;
+for(const name of pages){
+ const html=fs.readFileSync(path.join(folder,name),'utf8');
+ const url=base+(name==='index.html'?'':name);
+ assert.ok(siteMap.includes('<loc>'+url+'</loc>'),name);
+ assert.ok(html.includes('rel="canonical" href="'+url+'"'),name);
+ assert.equal((html.match(/<h1\b/g)||[]).length,1,name);
+ const title=html.match(/<title>(.+?)<\/title>/)?.[1];
+ assert.ok(title&&!titles.has(title),name);titles.add(title);
+ for(const k of metaNames)assert.ok(html.includes('"'+k+'"'),name+' '+k);
+ JSON.parse(html.match(/<script type="application\/ld\+json">(.+?)<\/script>/)[1]);
+ for(const m of html.matchAll(/(?:href|src)="([^"]+)"/g)){
+  const value=m[1];
+  if(value.startsWith('https:')||value.startsWith('data:'))continue;
+  assert.ok(!value.includes('javascript:'),name);
+  const [target,anchor]=value.split('#');
+  if(target)assert.ok(fs.existsSync(path.join(folder,target)),name+' '+target);
+  if(anchor&&!target)assert.ok(html.includes('id="'+anchor+'"'),name+' #'+anchor);
+  checkedLinks++;
+ }
+}
+const browser=await chromium.launch({executablePath:process.env.BWE_CHROME,headless:true,args:['--disable-background-networking','--no-first-run']});
+try{
+ const errors=[];
+ const page=await browser.newPage({viewport:{width:1365,height:900}});
+ page.on('pageerror',err=>errors.push(err.message));
+ const open=(name)=>page.goto(pathToFileURL(path.join(folder,name)).href);
+ await open('index.html');
+ await page.locator('#reveal').click();
+ assert.equal(await page.locator('#reveal').getAttribute('aria-expanded'),'true');
+ await page.keyboard.press('Escape');
+ await page.locator('#menu').click();assert.equal(await page.locator('#menu').getAttribute('aria-expanded'),'true');
+ await page.locator('#menu').click();
+ await page.locator('#next').click();
+ await page.locator('.school-entry a').first().click();
+ await page.waitForURL('**/lessons.html');
+ await page.getByRole('link',{name:'授業 じゅぎょう で使う'}).or(page.locator('.entries a').first()).first().click();
+ await page.waitForURL('**/lesson-pork.html');
+ assert.ok(await page.locator('.worksheet').isVisible());
+ assert.ok(await page.locator('figure img').evaluate(el=>el.complete&&el.naturalWidth>0));
+ await page.locator('[data-ruby]').click();assert.ok(await page.locator('html.no-ruby').count());
+ await page.locator('[data-size]').click();assert.ok(await page.locator('html.large-text').count());
+ await open('start.html');
+ await page.locator('#find').fill('スペアリブ');
+ assert.ok((await page.locator('[data-entry]:visible').count())<39);
+ await page.locator('#find').fill('zzzzzzzz');
+ assert.equal(await page.locator('[data-entry]:visible').count(),0);
+ await page.locator('#find').clear();
+ assert.equal(await page.locator('[data-entry]:visible').count(),39);
+ for(const width of [390,320]){
+  await page.setViewportSize({width,height:844});
+  for(const name of ['index.html','lesson-pork.html','hens.html','start.html']){
+   await open(name);
+   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
+   assert.ok(overflow<=2,name+' '+width+' overflow '+overflow);
+  }
+ }
+ await open('hens.html');
+ assert.equal(await page.locator('.survey i').count(),408);
+ assert.equal(await page.locator('.survey .n1').count(),304);
+ assert.deepEqual(errors,[]);
+}finally{await browser.close();}
+const hash=(name)=>crypto.createHash('sha256').update(fs.readFileSync(path.join(folder,name))).digest('hex');
+console.log(JSON.stringify({pages:pages.length,checkedLinks,viewportWidths:[1365,390,320],topSha256:hash('index.html'),sitemapSha256:hash('sitemap.xml')},null,2));

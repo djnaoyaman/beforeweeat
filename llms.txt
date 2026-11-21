@@ -1,0 +1,10 @@
+# Before We Eat
+
+> 肉をおいしく食べることから、動物のくらしを考える食育サイト。
+
+- [動物のくらしを、たどってみよう](https://djnaoyaman.github.io/beforeweeat/animals.html)
+- [お肉の部位と栄養図鑑](https://djnaoyaman.github.io/beforeweeat/cuts.html)
+- [ちゃんと「いただく」方法](https://djnaoyaman.github.io/beforeweeat/cooking.html)
+- [買い物でわかること](https://djnaoyaman.github.io/beforeweeat/shopping.html)
+- [食卓から、じぶんの問いを見つける](https://djnaoyaman.github.io/beforeweeat/lessons.html)
+- [ことばと元の資料を引く](https://djnaoyaman.github.io/beforeweeat/sources.html)

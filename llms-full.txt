@@ -1,0 +1,275 @@
+# Before We Eat
+
+## 私は、肉が好きです。
+https://djnaoyaman.github.io/beforeweeat/mina.html
+
+肉を食べる一人として、動物が生きている間の苦しみや、さけられる暴力を一つでも減らしたい。食卓に届いたお肉は、持ち味を生かして、最後のひと口までおいしくいただきたい。
+編者名はMINA。バーベキューインストラクターとして、肉を選ぶところから、火のあて方、切り分け、おいしく食べきるところまで伝えます。
+
+
+## どこから読もう？　みんなの目次
+https://djnaoyaman.github.io/beforeweeat/start.html
+
+一頭のどうぶつからでも、今日のおかずからでも始められます。
+下の目次から、知りたいことを選んでください。
+
+
+## 確かめてから書く。試してから伝える。
+https://djnaoyaman.github.io/beforeweeat/editorial.html
+
+いつ、どこで、何がわかったのかをたどれるようにします。
+調査の数字は対象と件数を添えます。料理で試作や撮影の記録がある場合は、調理の条件も記します。図解には、写真・説明図・生成したイメージの違いがわかる説明を入れます。
+
+
+## 動物のくらしを、たどってみよう
+https://djnaoyaman.github.io/beforeweeat/animals.html
+
+牛、ぶた、にわとり。食卓につながる動物のくらしは、育つ場所からたどれます。
+農場で育ち、運ばれ、食肉を扱う施設へ。卵を産むにわとりや乳を出す牛では、卵・牛乳が届く道もあります。動物が休む場所と、そこで人がする仕事を見てみよう。
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
+
+## アニマルウェルフェアって、どんなこと？
+https://djnaoyaman.github.io/beforeweeat/welfare.html
+
+動物の体と気持ちを、動物の側から考えることです。
+おなかがすいていないか。痛みはないか。体を動かしたり、ゆっくり休んだりできるか。動物のようすと、まわりの環境を一緒に見ます。
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
+
+## たまごをうむ にわとりの家
+https://djnaoyaman.github.io/beforeweeat/hens.html
+
+日本の調査で、この質問に答えた408件のうち304件が、ケージだけで飼うと答えました。
+丸一つを回答一件として、二つの回答の数を見比べます。これは農林水産省の令和6年度調査の設問回答です。日本のすべての農場や、にわとり一羽ずつの数を表すものではありません。
+農林水産省　令和6年度調査の採卵鶏の結果（PDF） https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/animal_welfare-116.pdf
+
+## たまごをうまない雄のひよこはどうなる？
+https://djnaoyaman.github.io/beforeweeat/chicks.html
+
+卵をとるためのにわとりでは、生まれた雄のひよこの命を早くに終わらせる例があります。
+農林水産省の資料では、卵の中にいる段階で雌雄を見分ける技術も取り上げています。「動物がどんな苦しみを経験するか」と「生産の都合で命を終えさせる判断をどう考えるか」を、順に話してみましょう。
+農林水産省　鶏をめぐる情勢の補足説明資料（PDF） https://www.maff.go.jp/j/chikusan/sinko/lin/l_katiku/attach/pdf/r6_niwatori-15.pdf
+
+## ぶたは、どんな場所で休む？
+https://djnaoyaman.github.io/beforeweeat/pig-rest.html
+
+ぶたが横になったとき、体を楽に伸ばせる場所か見てみよう。
+広さに加え、床がぬれていないか、すべらないか、ほかのぶたに押されず休めるかも手がかりです。農場の工夫は、ぶたが実際にどこでどう休んでいるかを見て考えます。
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
+
+## 母ぶたが入る二つのさく
+https://djnaoyaman.github.io/beforeweeat/sows.html
+
+おなかに子がいる時期のさくと、子を産むころのさくでは、使う時期や目的が違います。
+一頭ずつ管理するための囲いと、出産前後に母ぶたと子ぶたを管理する囲い。体の向きを変えられるか、子ぶたが安全に乳を飲める場所があるか、いつ出入りするかを調べよう。
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
+
+## 乳牛の親子は、どうすごす？
+https://djnaoyaman.github.io/beforeweeat/calves.html
+
+牛乳を届ける農場では、生まれた子牛に最初の乳を飲ませ、その後も育ち方を見守ります。
+親子が一緒にいる時間や、人が乳を飲ませる方法は農場で違います。牧場について調べるときは、何日一緒にいられるか、子牛の体調をどう見ているかを尋ねてみよう。
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
+
+## にわとりの足のうらから、何が見える？
+https://djnaoyaman.github.io/beforeweeat/feet.html
+
+足のうらを見ると、にわとりが歩く床について調べるきっかけになります。
+床に敷いたものがぬれている場合など、足の状態に関わる条件を調べます。傷を見つけたら、床の湿り方、鶏の数、給水器のまわりなども見ます。
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
+
+## お肉の部位と栄養図鑑
+https://djnaoyaman.github.io/beforeweeat/cuts.html
+
+お肉が動物の体のどこにあったか、何を含むか、その肉で何を作るとおいしいかを見ていきます。
+栄養は、同じ部位でも脂身や皮が付いているか、生か加熱後かで変わります。数字のとなりに書かれた条件も読んでみよう。
+文部科学省　食品成分データベース https://fooddb.mext.go.jp/
+
+## ぶたのロースは、どこ？
+https://djnaoyaman.github.io/beforeweeat/loin.html
+
+ロースはぶたの背中のほう。とんかつや厚切りのソテーなどに使います。
+脂がついている側と、赤身の部分を一切れの断面で見てみよう。売り場でも「ロース」と書かれた肉を探せます。
+日本食肉消費総合センター　ロース https://www.jmi.or.jp/info/word/ra/ra_053.html
+
+## ぶたのももは、どんな肉？
+https://djnaoyaman.github.io/beforeweeat/pork-round.html
+
+ぶたの後ろ脚のほうのお肉です。
+成分表の「大型種肉・もも・赤肉・生」では、食べられる部分100g当たり、たんぱく質22.1g、脂質3.6g、鉄0.9mg。薄切りを料理するときは、厚みも見てみよう。
+文部科学省　ぶた・もも・赤肉・生 https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11134_7
+
+## スペアリブは、どこの骨？
+https://djnaoyaman.github.io/beforeweeat/ribs.html
+
+胸のまわりを囲う、あばら骨についたお肉です。
+骨付き肉の買い物では、パックの重さに骨も含まれます。肉のつき方を見ながら、食べる人数に合わせて選びます。
+日本食肉消費総合センター　食肉の情報 https://www.jmi.or.jp/
+
+## 牛すねは、なぜ煮込みにする？
+https://djnaoyaman.github.io/beforeweeat/beef-shank.html
+
+牛の脚のすねにあたる部位。筋が多く、煮込み料理で持ち味が出ます。
+切った面から筋を探し、煮たあとの歯ざわりと比べてみよう。煮込みでは仕上げに串でかたさを確かめます。
+日本食肉消費総合センター　食肉の情報 https://www.jmi.or.jp/
+
+## 牛ももの赤身を見てみよう
+https://djnaoyaman.github.io/beforeweeat/beef-round.html
+
+牛のももは後ろ脚のほう。赤身の断面と成分表を見てみます。
+成分表の「輸入牛肉・もも・赤肉・生」では、食べられる部分100g当たり、たんぱく質21.2g、脂質4.3g、鉄2.6mgです。
+文部科学省　輸入牛肉・もも・赤肉・生 https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11077_7&MODE=0
+
+## 鶏むねと鶏もも、どこがちがう？
+https://djnaoyaman.github.io/beforeweeat/chicken-cuts.html
+
+むねは胸の部分。ももは脚のつけ根のほうです。
+成分表の「若どり・むね・皮なし・生」は、食べられる部分100g当たり、たんぱく質23.3g、脂質1.9g、鉄0.3mg。皮付きのものと比べたいときは、成分表で皮の有無を選びます。
+文部科学省　若どり・むね・皮なし・生 https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11220_7
+
+## ちゃんと「いただく」方法
+https://djnaoyaman.github.io/beforeweeat/cooking.html
+
+このお肉を、どう料理するといちばんおいしくいただけるか。肉の部位と、食べたい食感から探します。
+フライパンの香ばしい焼き目、炭で仕上げるたれ、すじまでほどける煮込み。各記事に、見てほしい工程と火が通ったか確かめる方法を置きます。
+
+
+## 牛すねを、スプーンでほどけるシチューに
+https://djnaoyaman.github.io/beforeweeat/stew.html
+
+牛すねの赤身は形を保ち、筋はとろりとする仕上がりを目指します。
+表面を焼いてから鍋に入れ、煮汁が静かに泡立つ火で煮ます。仕上げは串が無理なく通るかを見て、煮汁が足りなければ途中で足します。
+厚生労働省　家庭での食中毒予防 https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00008.html
+
+## スペアリブのたれは、ここで塗る
+https://djnaoyaman.github.io/beforeweeat/bbq-ribs.html
+
+骨まわりまで火を通して、たれは仕上げに薄く塗ります。
+ふた付きグリルの炭と肉を少し離して火を入れます。中心の加熱を温度計で確認したあと、表面を仕上げます。生肉に触れたたれやトングは食べる段階で使い回しません。炭火は屋外で。
+厚生労働省　家庭での食中毒予防 https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00008.html
+
+## 鶏ももの皮を、パリッと焼く
+https://djnaoyaman.github.io/beforeweeat/crispy-chicken.html
+
+皮を下にして広げ、余分な脂を拭き取って、皮の端まで焼き目をつけます。
+皮が縮んだり浮いたりする場所を見て、フライパンに触れるよう広げてみます。返したあとも加熱し、厚いところの中心温度を確かめます。
+厚生労働省　家庭での食中毒予防 https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00008.html
+
+## 豚こまを香ばしい生姜焼きに
+https://djnaoyaman.github.io/beforeweeat/ginger-pork.html
+
+肉を何回かに分けて広げると、焼き色がついた面を観察しやすくなります。
+先に一枚ずつ広げて焼き、全体に火を通してからしょうがのたれを合わせます。玉ねぎも焼くときは、先に火を通して取り出すと肉を広げる場所を作れます。
+厚生労働省　家庭での食中毒予防 https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00008.html
+
+## 豚ロースのとんかつを切ってみる
+https://djnaoyaman.github.io/beforeweeat/pork-cutlet.html
+
+衣が割れる音と、赤身と脂身の間の食感に注目してみよう。
+肉の厚みをそろえ、衣をつけて揚げます。中心まで安全に加熱できたかは温度計で確かめます。切る前に網などで油を切り、衣の裏に蒸気がこもりにくくします。
+厚生労働省　家庭での食中毒予防 https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00008.html
+
+## 包丁はどちらに入れる？
+https://djnaoyaman.github.io/beforeweeat/grain.html
+
+肉の細い線を見つけて、線を短く切る向きを探そう。
+加熱したかたまり肉を大人が切り、線にそった一枚と線をまたいだ一枚を同じ厚さで食べ比べます。かみ切りやすさと香りを、自分の言葉で書いてみよう。
+
+
+## 肉に火が通ったか確かめる
+https://djnaoyaman.github.io/beforeweeat/heat.html
+
+肉は、見た目に加えて、温度計で中心までの加熱を確かめます。
+厚生労働省が家庭向けに示す加熱の目安は、中心部75℃で1分間以上です。骨付き肉は温度計の先が骨に当たらないよう、厚い肉の中心をはかります。生肉と食べるものの道具は分けます。
+厚生労働省　家庭での食中毒予防 https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00008.html
+
+## 豚こまが少し残ったら、ふたり分の豚汁に
+https://djnaoyaman.github.io/beforeweeat/miso-soup.html
+
+少しのお肉でも、野菜にうまみをまとわせるおかずになります。
+冷蔵で適切に管理し、使用期限内の生肉を使います。小さく切った豚こまを根菜と合わせ、中心まで加熱。みそを入れる前に、だしに肉と野菜の香りが移ったか味を見ます。
+厚生労働省　家庭での食中毒予防 https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00008.html
+
+## 買い物でわかること
+https://djnaoyaman.github.io/beforeweeat/shopping.html
+
+品名、量、値段、保存のしかたを順に見て、何人でどんな料理にするか考えます。
+パックに書いてあることと、知りたいけれど書いていないことを一つずつ見つけます。産地や部位を入り口に、お店で聞いてみよう。
+
+
+## 平飼い卵のパックを読んでみる
+https://djnaoyaman.github.io/beforeweeat/eggs.html
+
+「平飼い」と書いてあったら、にわとりがどこでどう過ごすかを調べる手がかりになります。
+屋外にも出られるのか、止まり木はあるか、雄のひよこについてどんな方針か。知りたいことがパックに書いていなければ、販売者や生産者に尋ねてみよう。
+日本養鶏協会　鶏卵の表示に関する公正競争規約（PDF） https://www.jpa.or.jp/keiran_root/pdf/rules202407_01.pdf
+
+## 骨付き肉を何グラム買う？
+https://djnaoyaman.github.io/beforeweeat/buy-bone.html
+
+ラベルの重さは骨を含むことがあります。食べる人数と、肉のつき方を見て選びます。
+いつも食べるお皿の量を思い出し、骨付きの一本にどのくらい肉がついているか見ます。初めてなら少なめに盛り、家族でおかわりできるようにします。
+
+
+## 現場を変える人たち
+https://djnaoyaman.github.io/beforeweeat/people.html
+
+農場の人、獣医師、運ぶ人、肉をお店で扱う人。それぞれ違うところから動物の状態と食卓を支えます。
+取材では、変えた工夫、かかった手間、動物に起きた変化を聞きます。公開資料を使った記事から、聞きたいことを探せます。
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
+
+## 休みやすい場所をどうつくる？
+https://djnaoyaman.github.io/beforeweeat/rest-questions.html
+
+寝床を変えた人に聞いてみたいのは、動物は次の日からどんなふうに休んだか、ということです。
+公開されている飼養管理の指針から、取材で確かめたい点を三つ考えます。前と後でどこに寝るか。体に傷があるか。寝床の手入れにどのくらいかかるか。
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
+
+## 食卓から、じぶんの問いを見つける
+https://djnaoyaman.github.io/beforeweeat/lessons.html
+
+先生や保護者と一緒に、今日の一皿からどうぶつについて考えよう。
+授業で使うなら、ぶたの絵を使う給食5分版と授業45分版へ。親子で読むなら、夕飯で答えを出しきらなくても話せる短い問いから。
+文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
+
+## とんかつを食べた日、三つの発見
+https://djnaoyaman.github.io/beforeweeat/lesson-pork.html
+
+ぶたの体のどこを食べたかを見つけ、図を見てわかったことと、もっと知りたいことを書きます。
+給食5分版。ぶたの図で背中を指し、知りたいことを一つ出す。授業45分版。献立を思い出す5分、全身図を見る10分、寝床を考える15分、友だちと話す10分、農場に聞きたい質問を書く5分。画面の印刷ボタンで観察シートを配れます。
+文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
+
+## お肉屋さんに一つ聞けるなら？
+https://djnaoyaman.github.io/beforeweeat/ask-shop.html
+
+いつものパックを見て、一つだけ質問を考えよう。
+「このお肉は、体のどこですか？」「皮をパリッとさせるなら、どんな厚み？」。お店の人から聞けたことを、だれにいつ聞いたかと一緒にメモします。
+
+
+## いただきますを、だれに言う？
+https://djnaoyaman.github.io/beforeweeat/thanks.html
+
+夕ごはんの一皿を選んで、どの動物とどんな人が関わったかを家族で思い浮かべてみよう。
+家の人に「わからないことを一つ言ってみよう」と声をかけます。どう作ったか、どんな場所で育ったか、次の買い物で一緒に聞けることを決めます。
+
+
+## 一週間の食べきり観察
+https://djnaoyaman.github.io/beforeweeat/food-diary.html
+
+お皿に盛った量と、ちょうどよく食べられた量をメモします。
+食べきれそうな分から盛り、足りなければおかわり。余ったときはどんな理由か、次はどれくらい買うかを家族で相談します。
+消費者庁　家庭での食品ロス対策 https://www.no-foodloss.caa.go.jp/eating-home.html
+
+## ことばと元の資料を引く
+https://djnaoyaman.github.io/beforeweeat/sources.html
+
+部位は体のどの場所かを表す言葉。可食部は食べられる部分のこと。出典は、説明のもとにした資料です。
+資料を開いたら、書いた人、発表年、調べた範囲を順に見ます。子どもと読むときは、先にこのサイトの短い説明を読んでから、元の資料を一緒に見ても構いません。
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
+文部科学省　食品成分データベース https://fooddb.mext.go.jp/
+文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
+
+## 記事の更新・訂正をたどる
+https://djnaoyaman.github.io/beforeweeat/corrections.html
+
+記事に載せた数字や説明が変わったときは、元の資料と日付を確認します。
+2026年11月22日、初版を作成。記事ごとに根拠へのリンクを掲載しています。見つけた疑問は、記事名、該当箇所、参考資料とともにリポジトリのIssueへお寄せください。
