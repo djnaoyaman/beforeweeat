@@ -1,3 +1,5 @@
+import {fieldArchive, fieldArticlePhoto} from './field-archive.mjs';
+
 export const species = {
  cow:{name:'牛',reading:'うし',art:'cow-art.webp',guide:'beef-cuts',cuts:[['ネック','首','細かいすじが多い','煮込み・ひき肉'],['かた','肩から前脚にかけて','赤身が多く、部位内でかたさに差がある','煮込み・薄切り'],['かたロース','肩の背中側','赤身と脂の両方がある','すき焼き・焼き物'],['リブロース','背中の中央寄り','脂のうまみが出やすい','厚切りステーキ・ロースト'],['サーロイン','腰に近い背中','きめが細かく、脂の層がつくことがある','ステーキ'],['ヒレ','背骨の内側','やわらかい赤身','ステーキ・カツ'],['ばら','胸から腹','脂と赤身が重なる','焼肉・煮込み'],['もも','後ろ脚の内側など','赤身の味を楽しめる','薄切り・ロースト','beef-round'],['そともも','後ろ脚の外側','しっかりした肉質','薄切り・煮込み'],['らんぷ','腰からお尻','やわらかさと赤身の味がある','ステーキ・ロースト'],['すね','前脚・後ろ脚の下の方','すじが多く、煮込むとほどける','シチュー','beef-shank'],['タン','舌','先端と根元で食感が異なる','薄切り焼き・煮込み']]},
  pig:{name:'ぶた',reading:'ぶた',art:'pig-art.webp',guide:'pig-cuts',cuts:[['かた','肩・前脚の上','よく動く部分で、味がしっかりしている','煮込み・炒め物'],['かたロース','肩から背中へ続く部分','赤身の間に脂が入る','しょうが焼き・焼き豚'],['ロース','背中','きめが細かく、外側に脂身がつく','とんかつ・ソテー','loin'],['ヒレ','腰のあたりの内側','細長く、脂身が少ない','ヒレカツ'],['ばら','おなか側','脂と赤身が層になる','角煮・薄切りの炒め物'],['もも','後ろ脚の上','赤身が多い','薄切り・焼き物','pork-round'],['そともも','後ろ脚の外側','きめは粗めで、しっかりした食感','薄切り・煮込み'],['スペアリブ','あばら骨まわり','骨付きで、脂と肉を一緒に味わえる','炭火焼き・煮込み','ribs']]},
@@ -48,15 +50,12 @@ export function editionMarkup({r,typeset,pageLink,hasAsset}){
   const cards=Object.entries(species).map(([key,s])=>'<div><a href="'+(slug==='animals'?key:s.guide)+'.html"><img src="'+s.art+'" alt="" loading="lazy"><strong>'+typeset(s.name)+'</strong></a></div>').join('');
   return '<div class="species-gallery">'+cards+'</div>'+(slug==='animals'?links([['field-cases','現場で報告された事例'],['welfare','アニマルウェルフェアを知る']]):links([['nutrition','数字で比べる']]));
  }
- if(slug==='field-cases')return '<ul class="case-list">'+Object.entries(caseLabels).map(([id,label])=>'<li><p>'+typeset(label)+'</p>'+pageLink(id)+'</li>').join('')+'</ul>';
- if(slug==='case-footpad'){
-  const photo='field-footpad.webp';
-  const credit='<a href="https://doi.org/10.3390/agriculture14071091">Damaziak ほか（2024）図2</a>・<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>';
-  return '<details class="evidence"><summary>研究の記録写真を見る（足うらの傷が写っています）</summary>'+ (hasAsset(photo)?'<figure><img src="'+photo+'" loading="lazy" alt="肉用鶏の足うらの傷を4段階で示す研究写真と顕微鏡写真"><figcaption>'+credit+'。図全体を掲載。表示用に画像形式と解像度を変更。</figcaption></figure>':'<p>'+credit+'。原著の図2に、研究で撮影された写真があります。</p>')+'</details>';
- }
- if(slug==='case-shimane')return '<details class="evidence"><summary>当時の報道を読む（暴力の映像を含む場合があります）</summary><p><a href="https://newsdig.tbs.co.jp/articles/bss/737018">山陰放送の判決記事を開く</a></p></details>';
- if(slug==='case-keel')return '<p><a href="https://doi.org/10.1371/journal.pone.0256105.g001">研究の図1で、農場の鶏の群れごとの差を見る</a></p>';
- if(caseLabels[slug])return heading('この記録から考える')+paragraph('動物の体に起きたこと、その前から人に見えていたこと、同じことを防ぐために変えられること。この三つを、原資料から探してみよう。');
+ if(slug==='field-cases')return fieldArchive({caseLabels,typeset,pageLink});
+ const casePhoto=fieldArticlePhoto(slug,typeset);
+ if(slug==='case-footpad')return casePhoto;
+ if(slug==='case-shimane')return casePhoto+'<details class="evidence"><summary>当時の報道を読む（暴力の映像を含む場合があります）</summary><p><a href="https://newsdig.tbs.co.jp/articles/bss/737018">山陰放送の判決記事を開く</a></p></details>';
+ if(slug==='case-keel')return casePhoto+'<p><a href="https://doi.org/10.1371/journal.pone.0256105.g001">研究の図1で、農場の鶏の群れごとの差を見る</a></p>';
+ if(caseLabels[slug])return casePhoto+heading('この記録から考える')+paragraph('動物の体に起きたこと、その前から人に見えていたこと、同じことを防ぐために変えられること。この三つを、原資料から探してみよう。');
  if(slug==='mina')return heading('食べることと、どうぶつのくらし')+paragraph('私はヴィーガンではありません。お肉を食べます。せっかく命をいただくのなら、食べられる量を買い、その部位に合う方法でおいしく料理し、感謝していただきたいと思っています。')+paragraph('同じくらい大事なのが、アニマルウェルフェアです。食卓に届くまでの間、その動物は水を飲み、体を動かし、安心して休めたか。なくせる痛みや苦しみ、無用な暴力を一つでも減らしたい。食べる自分にも、考え、知り、選べることがあると思います。')+paragraph('「いただきます」のあとに残るのは、感謝と、次に何を知りたいかという問いです。')+'<p class="folio-sign">MINA</p>';
  if(slug==='nutrition')return '<table class="nutrition"><caption>生の可食部100gあたり</caption><thead><tr><th scope="col">肉の種類</th><th scope="col">たんぱく質</th><th scope="col">脂質</th><th scope="col">鉄</th></tr></thead><tbody><tr><th scope="row">輸入牛もも・赤肉</th><td>21.2g</td><td>4.3g</td><td>2.6mg</td></tr><tr><th scope="row">大型種豚もも・赤肉</th><td>22.1g</td><td>3.6g</td><td>0.9mg</td></tr><tr><th scope="row">若どりむね・皮なし</th><td>23.3g</td><td>1.9g</td><td>0.3mg</td></tr></tbody></table>';
  if(slug==='shopping')return heading('パックのここを見る')+'<ol><li>品名と部位。作りたい料理に合う厚みか、骨付きかを確認。</li><li>量と値段。骨付きは骨も含めた量。人数分の量を決める。</li><li>期限・保存方法・原産地。帰ったら表示に合わせて保管する。</li></ol>'+links([['storage','家での保存'],['heat','中心までの加熱']]);

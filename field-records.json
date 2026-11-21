@@ -1,0 +1,1236 @@
+[
+  {
+    "title": "日本で確認された事例と慣行",
+    "entries": [
+      {
+        "number": 1,
+        "title": "採卵鶏の雄ひなの殺処分",
+        "context": "日本・2022年国会等",
+        "kind": "生産上の選別",
+        "summary": "日本の国会答弁と農水省資料が、採卵用鶏のふ化後に雄ひなが選別・殺処分されてきたことを記す。方法別・施設別の国内実施割合はこの資料からは確定できない。",
+        "sources": [
+          [
+            "国会会議録・参議院農林水産委員会（2022年11月8日）",
+            "https://kokkai.ndl.go.jp/simple/dispPDF?minId=121015007X00320221108"
+          ],
+          [
+            "農水省・雄ひなの殺処分回避と卵内雌雄判別",
+            "https://www.maff.go.jp/j/chikusan/sinko/lin/l_katiku/attach/pdf/r6_niwatori-15.pdf"
+          ]
+        ],
+        "photo": "chicks"
+      },
+      {
+        "number": 2,
+        "title": "採卵鶏をケージで飼う",
+        "context": "日本・令和6年度調査",
+        "kind": "飼養",
+        "summary": "農水省調査で、この設問に回答した408件のうち304件がケージ飼養のみ。特に従来型の狭いケージでは、羽ばたき、砂浴び、巣での産卵が制限される。設問の「ケージ」には方式の違いがある。",
+        "sources": [
+          [
+            "農水省・令和6年度調査（採卵鶏）",
+            "https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/animal_welfare-116.pdf"
+          ],
+          [
+            "農研機構・鶏と豚の飼養管理手引き",
+            "https://www.naro.go.jp/project/results/5th_laboratory/nilgs/2024/24_002.html"
+          ]
+        ],
+        "photo": "layers"
+      },
+      {
+        "number": 3,
+        "title": "鶏の餌を断ち、換羽を促す",
+        "context": "日本・2025年10月調査",
+        "kind": "飼養",
+        "summary": "産卵をいったん休ませ、その後の産卵に備える方法の一つ。日本養鶏協会の2025年10月調査では、換羽に関する集計対象の鶏の33.2％が絶食方式だった。長引く空腹が問題になる。",
+        "sources": [
+          [
+            "日本養鶏協会・2025年10月調査（2026年3月公表）",
+            "https://jpa.or.jp/wp-content/uploads/2026/03/%E6%97%A5%E9%B6%8F%E5%8D%94%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9-2026%E5%B9%B43%E6%9C%88%E5%8F%B7.pdf"
+          ]
+        ],
+        "photo": "layers"
+      },
+      {
+        "number": 4,
+        "title": "ひなのくちばしの一部を取り除く",
+        "context": "日本・平成26年度調査",
+        "kind": "身体への処置",
+        "summary": "ほかの鶏をつついて傷つける被害を防ぐために行われる。国内調査で実施農場、処置済みのひなを受け入れる農場を確認。痛みと、飼育環境の改善による予防が論点。",
+        "sources": [
+          [
+            "畜産技術協会・採卵鶏の飼養実態調査",
+            "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_lay_h26.pdf"
+          ]
+        ],
+        "photo": "chicks"
+      },
+      {
+        "number": 5,
+        "title": "ブロイラーの足裏に炎症や潰瘍が生じる",
+        "context": "日本・2012年の研究ほか",
+        "kind": "健康被害",
+        "summary": "国内の複数の食鳥処理場・出荷農場を対象とした調査で、足裏の炎症や潰瘍を確認。発生程度には農場・鶏群による差があった。病変だけで故意や予防可能性を判断しない。",
+        "sources": [
+          [
+            "鹿児島大学・国内複数農場の調査",
+            "https://ir.kagoshima-u.ac.jp/record/4903/files/Diss_HASHIMOTO_Shinichiro_2012.pdf"
+          ]
+        ],
+        "photo": "broilers"
+      },
+      {
+        "number": 6,
+        "title": "繁殖母豚を一頭用の狭い枠で飼う",
+        "context": "日本・令和6年度調査",
+        "kind": "飼養",
+        "summary": "妊娠ストールでは母豚が自分で向きを変えにくい。令和6年度の豚の調査では飼養形態に回答した481件のうち、ストールのみが133件、群飼との併用が301件。拘束期間まではこの数字からはわからない。",
+        "sources": [
+          [
+            "農水省・令和6年度調査（豚）",
+            "https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/animal_welfare-115.pdf"
+          ],
+          [
+            "農研機構・鶏と豚の飼養管理手引き",
+            "https://www.naro.go.jp/project/results/5th_laboratory/nilgs/2024/24_002.html"
+          ]
+        ],
+        "photo": "sowstall"
+      },
+      {
+        "number": 7,
+        "title": "子豚の尾を切る",
+        "context": "日本・平成26年度調査",
+        "kind": "身体への処置",
+        "summary": "豚同士の尾かじりによるけがを防ぐ目的で行われる。処置の痛みと、密度・飼料や探索できる材料など、尾かじりの背景を改善する余地がある。",
+        "sources": [
+          [
+            "畜産技術協会・豚の飼養実態調査",
+            "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_pig_h26.pdf"
+          ],
+          [
+            "EFSA・豚の飼養に関する科学的評価",
+            "https://www.efsa.europa.eu/en/plain-language-summary/welfare-pigs-farm"
+          ]
+        ],
+        "photo": "piglets"
+      },
+      {
+        "number": 8,
+        "title": "子豚の歯の先を切る・削る",
+        "context": "日本・平成26年度調査",
+        "kind": "身体への処置",
+        "summary": "母豚の乳頭や同腹の子豚の顔に傷がつくのを防ぐための処置。国内では生後早期の実施が確認される。必要性の判断と、処置自体による痛みや歯の損傷が問題になる。",
+        "sources": [
+          [
+            "畜産技術協会・豚の飼養実態調査",
+            "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_pig_h26.pdf"
+          ]
+        ],
+        "photo": "piglets"
+      },
+      {
+        "number": 9,
+        "title": "雄の子豚を麻酔なしで外科的に去勢する",
+        "context": "日本・業界の過去の調査",
+        "kind": "身体への処置",
+        "summary": "肉に生じる特有のにおいなどを避ける目的で行う。養豚業界の調査には麻酔を使わない回答がある。調査年で扱いが異なるため、古い割合を現在の全農場に当てはめることはできない。",
+        "sources": [
+          [
+            "日本養豚協会・平成30年度実態調査",
+            "https://jppa.biz/zius/wp-content/uploads/2019/10/20190520.pdf"
+          ],
+          [
+            "アニマルライツセンター・日本養豚協会調査の時系列整理",
+            "https://www.hopeforanimals.org/pig/pigfarms-survey/"
+          ],
+          [
+            "日本養豚協会・過去の設問と回答",
+            "https://jppa.biz/zius/wp-content/uploads/2019/10/20170622_01.pdf"
+          ]
+        ],
+        "photo": "piglets"
+      },
+      {
+        "number": 10,
+        "title": "乳牛をつないで飼う",
+        "context": "日本・令和6年度調査",
+        "kind": "飼養",
+        "summary": "農水省調査で、飼養形態に回答した373件のうち124件が「繋ぎ飼いのみ」。移動や仲間との接触が制限される。つなぐ長さや運動の機会には農場差がある。",
+        "sources": [
+          [
+            "農水省・令和6年度調査（乳用牛）",
+            "https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/animal_welfare-113.pdf"
+          ]
+        ],
+        "photo": "dairy"
+      },
+      {
+        "number": 11,
+        "title": "黒毛和種の肥育牛で重いビタミンA欠乏が生じる",
+        "context": "日本・獣医学症例報告",
+        "kind": "健康被害",
+        "summary": "国内の肥育農家で浮腫などがみられ、報告された4頭のうち3頭が立てなくなった症例がある。欠乏が疑われた症例であり、報告から意図的に発症させたとは言えない。",
+        "sources": [
+          [
+            "獣医学会発表・国内の肉用牛の症例報告",
+            "https://www.jstage.jst.go.jp/article/jvma1951/46/8/46_8_653/_pdf/-char/ja"
+          ],
+          [
+            "日本獣医師会雑誌・1988年の症例報告",
+            "https://www.jstage.jst.go.jp/article/jvma1951/41/2/41_2_108/_article/-char/en"
+          ]
+        ],
+        "photo": "beef"
+      },
+      {
+        "number": 12,
+        "title": "乳牛を蹴るなどの暴行",
+        "context": "日本・島根県、2023年発生",
+        "kind": "個別の暴力事件",
+        "summary": "2023年、島根県大田市の農場で起きた事例。農場が従業員の行為を確認し、松江地裁が元従業員に罰金20万円の判決を言い渡した。判決の対象は行為者本人。",
+        "sources": [
+          [
+            "島根県・委員会資料",
+            "https://www.pref.shimane.lg.jp/industry/norin/info/shiryo_/nosuisyoko_r5.data/230629nourin_siryo.pdf"
+          ],
+          [
+            "山陰放送・松江地裁判決の報道",
+            "https://newsdig.tbs.co.jp/articles/bss/737018"
+          ]
+        ],
+        "photo": "dairyhandling"
+      }
+    ]
+  },
+  {
+    "title": "海外の選別・飼養・身体への処置",
+    "entries": [
+      {
+        "number": 13,
+        "title": "乳用牛の雄子牛を幼いうちに殺す",
+        "context": "英国・NZ等／NZは2020年調査",
+        "kind": "生産上の選別",
+        "summary": "乳を生産できず、肉用に育てる採算も取りにくい子牛が、ごく若いうちに殺される場合がある。肉用に育てる経路もあるため、国・品種・販路を明記したい。",
+        "sources": [
+          [
+            "英国獣医師会・生産の過程で生じる雄の扱い",
+            "https://www.bva.co.uk/take-action/our-policies/surplus-male-production-animals/"
+          ],
+          [
+            "ニュージーランド酪農家262戸の調査",
+            "https://www.nzsap.org/system/files/proceedings/fate-calves-born-new-zealand-dairy-farms-and-dairy-farmer-attitudes-towards-producing-dairy-beef.pdf"
+          ]
+        ],
+        "photo": "calves"
+      },
+      {
+        "number": 14,
+        "title": "乳用ヤギの雄の子を早期に殺す",
+        "context": "英国の農場訪問報告等",
+        "kind": "生産上の選別",
+        "summary": "乳用ヤギにも、雄の子の育成先が見つからず、農場での早期殺処分が問題になる例がある。卵の生産で生じる雄ひなと同じように、乳の生産でも雄の育成先が課題になる。",
+        "sources": [
+          [
+            "英国獣医師会・生産の過程で生じる雄の扱い",
+            "https://www.bva.co.uk/take-action/our-policies/surplus-male-production-animals/"
+          ],
+          [
+            "英国の農場訪問を含む調査報告",
+            "https://www.nuffieldscholar.org/sites/default/files/reports/2009_UK_Kate-Little_Meat-Goats-Sustainable-Livestock-Farming.pdf"
+          ]
+        ],
+        "photo": "goats"
+      },
+      {
+        "number": 15,
+        "title": "フォアグラ向けに雌のアヒルのひなを選別・殺処分する",
+        "context": "フランス・上院報告等",
+        "kind": "生産上の選別",
+        "summary": "フランス上院の報告は、フォアグラ向けに雄を用いる生産体系で、雌のひなの一部が性別判明後に殺されたと記す。食肉用の販路や、2024年時点の業界の対応は、あわせて下の資料から確認できる。",
+        "sources": [
+          [
+            "RSPCA Australia・採卵鶏とフォアグラ生産のひな",
+            "https://kb.rspca.org.au/categories/farmed-animals/poultry/layer-hens/what-happens-with-male-chicks-in-the-egg-industry"
+          ],
+          [
+            "フランス上院報告",
+            "https://www.senat.fr/rap/l20-581/l20-5811.pdf"
+          ],
+          [
+            "フランス家きん業界・2024年活動報告",
+            "https://www.aviculteurs-france.fr/sites/default/files/upload/documents/rapport-d-activite-2024_2.pdf"
+          ]
+        ],
+        "photo": "ducklings"
+      },
+      {
+        "number": 16,
+        "title": "フォアグラ生産のための強制給餌",
+        "context": "主に欧州／研究レビュー",
+        "kind": "給餌",
+        "summary": "アヒルの肝臓を肥大させる目的で行う。強制給餌、取り扱い、肥大に伴う身体への影響について研究レビューが報告している。",
+        "sources": [
+          [
+            "Rochlitz & Broom・フォアグラ生産の福祉評価",
+            "https://www.cambridge.org/core/journals/animal-welfare/article/abs/welfare-of-ducks-during-foie-gras-production/084F38628B497EAFD274B611BD1237D3"
+          ]
+        ],
+        "photo": "ducks"
+      },
+      {
+        "number": 17,
+        "title": "アヒルが頭を水に浸せない環境",
+        "context": "欧州等・2023年評価等",
+        "kind": "飼養",
+        "summary": "飲水だけを確保しても、水浴びや頭を洗う行動ができない飼養環境がある。羽や目・鼻を清潔に保つ行動が制限される。",
+        "sources": [
+          [
+            "Rochlitz & Broom・フォアグラ生産の福祉評価",
+            "https://www.cambridge.org/core/journals/animal-welfare/article/abs/welfare-of-ducks-during-foie-gras-production/084F38628B497EAFD274B611BD1237D3"
+          ],
+          [
+            "EFSA・アヒル、ガチョウ、ウズラの飼養調査・評価",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186070/"
+          ]
+        ],
+        "photo": "ducks"
+      },
+      {
+        "number": 18,
+        "title": "採卵用ウズラの集団ケージ飼養",
+        "context": "欧州・2023年評価",
+        "kind": "飼養",
+        "summary": "EFSAによると、欧州では食卵用ウズラを飼う農場の多くが集団ケージを使用。限られた空間では隠れる、砂浴びをするなどの行動が難しい。",
+        "sources": [
+          [
+            "EFSA・アヒル、ガチョウ、ウズラの飼養調査・評価",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186070/"
+          ]
+        ],
+        "photo": "quail"
+      },
+      {
+        "number": 19,
+        "title": "七面鳥の足指の先を処置する",
+        "context": "欧州・加盟国調査",
+        "kind": "身体への処置",
+        "summary": "群れの中での引っかき傷などを予防する目的。ひなに施す身体処置に伴う痛みが問題となる。 EFSAのネットワーク調査では、この処置の実施を2か国が報告。",
+        "sources": [
+          [
+            "EFSA・七面鳥の飼養に関する科学的評価",
+            "https://www.efsa.europa.eu/en/infographics/efsas-scientific-opinion-welfare-turkeys-farm"
+          ],
+          [
+            "EFSA加盟国ネットワークへの実施調査",
+            "https://doi.org/10.2903/sp.efsa.2024.EN-9138"
+          ]
+        ],
+        "photo": "turkeys"
+      },
+      {
+        "number": 20,
+        "title": "七面鳥のくちばしの上の肉垂を切除する",
+        "context": "欧州・加盟国調査",
+        "kind": "身体への処置",
+        "summary": "七面鳥特有の肉垂をひなの時期に除去する慣行がある。けがを予防するために別の組織を傷つける必要があるかが論点。 EFSAのネットワーク調査では、この処置の実施を2か国が報告。",
+        "sources": [
+          [
+            "EFSA・七面鳥の飼養に関する科学的評価",
+            "https://www.efsa.europa.eu/en/infographics/efsas-scientific-opinion-welfare-turkeys-farm"
+          ],
+          [
+            "EFSA加盟国ネットワークへの実施調査",
+            "https://doi.org/10.2903/sp.efsa.2024.EN-9138"
+          ]
+        ],
+        "photo": "turkeys"
+      },
+      {
+        "number": 21,
+        "title": "急速に体重が増える肉用鶏を育種する",
+        "context": "英国・2008年調査報告等",
+        "kind": "育種・健康被害",
+        "summary": "ブロイラーで体の成長に脚が追いつかず、歩行困難などが生じる問題が報告されている。品種、成長速度、飼育環境が関係する。",
+        "sources": [
+          [
+            "EFSA・ブロイラーと種鶏の飼養に関する科学的評価",
+            "https://www.efsa.europa.eu/en/plain-language-summary/welfare-broilers-farm"
+          ],
+          [
+            "英国の商業鶏群・51,000羽の歩行調査",
+            "https://pmc.ncbi.nlm.nih.gov/articles/2212134/"
+          ]
+        ],
+        "photo": "broilers"
+      },
+      {
+        "number": 22,
+        "title": "ブロイラーの親鶏に長期間の給餌制限を行う",
+        "context": "欧州・2023年評価",
+        "kind": "給餌",
+        "summary": "急成長する系統の親鶏では、過体重や繁殖上の問題を避けるため餌の量を制限する。その結果、親鶏が長く空腹を感じることが問題になる。",
+        "sources": [
+          [
+            "EFSA・ブロイラーと種鶏の飼養に関する科学的評価",
+            "https://www.efsa.europa.eu/en/plain-language-summary/welfare-broilers-farm"
+          ]
+        ],
+        "photo": "breeder"
+      },
+      {
+        "number": 23,
+        "title": "採卵鶏の胸の骨に骨折が多発する",
+        "context": "デンマーク・2021年報告",
+        "kind": "健康被害",
+        "summary": "デンマークの商業鶏群の調査で、産卵期間の終わりに多数の竜骨骨折が確認された。ケージ以外の方式でも発生し、骨折を一律に乱暴な扱いと結びつけることはできない。",
+        "sources": [
+          [
+            "Thøfnerほか・デンマークの採卵鶏40群の調査",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC8362975/"
+          ]
+        ],
+        "photo": "henhouse"
+      },
+      {
+        "number": 24,
+        "title": "分娩前後の母豚を細い枠に固定する",
+        "context": "欧州・2022年評価",
+        "kind": "飼養",
+        "summary": "子豚が母豚の体の下敷きになるのを防ぐための分娩柵。母豚が向きを変え、巣づくりをし、子豚に近づく行動が制限される。",
+        "sources": [
+          [
+            "EFSA・豚の飼養に関する科学的評価",
+            "https://www.efsa.europa.eu/en/plain-language-summary/welfare-pigs-farm"
+          ]
+        ],
+        "photo": "farrowing"
+      },
+      {
+        "number": 25,
+        "title": "乳牛と子牛を出産後まもなく引き離す",
+        "context": "欧州・2023年評価",
+        "kind": "母子の飼養",
+        "summary": "酪農の一部の飼養方式では、母子が一緒に過ごす時間がごく短い。母子の接触、哺乳、社会行動の機会が論点で、別れの反応は時期や方法でも変わる。",
+        "sources": [
+          [
+            "EFSA・子牛の飼養に関する科学的評価",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/"
+          ]
+        ],
+        "photo": "newborn"
+      },
+      {
+        "number": 26,
+        "title": "子牛を個別の囲いで育てる",
+        "context": "欧州・2023年評価",
+        "kind": "飼養",
+        "summary": "感染症対策や個体管理を目的に行われる。仲間への接触、遊びや社会行動が制限され、囲いの広さ、隣の牛との接触、期間が影響する。",
+        "sources": [
+          [
+            "EFSA・子牛の飼養に関する科学的評価",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/"
+          ]
+        ],
+        "photo": "calves"
+      },
+      {
+        "number": 27,
+        "title": "白い子牛肉を作るために鉄を制限する",
+        "context": "欧州・2023年評価",
+        "kind": "給餌",
+        "summary": "肉色を淡くする商品上の目的で、子牛の飼料中の鉄を低く抑える例がある。貧血リスクがあり、売れる肉色と動物の健康が直接ぶつかる事例。",
+        "sources": [
+          [
+            "EFSA・子牛の飼養に関する科学的評価",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/"
+          ]
+        ],
+        "photo": "calves"
+      },
+      {
+        "number": 28,
+        "title": "子牛肉生産で繊維質の餌を少なくする",
+        "context": "欧州・2023年評価",
+        "kind": "給餌",
+        "summary": "粗飼料の量や形状が足りないと、牛本来の反すうや採食行動が十分にできない。上の鉄制限と関連するが、こちらの焦点は消化・行動にある。",
+        "sources": [
+          [
+            "EFSA・子牛の飼養に関する科学的評価",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/"
+          ]
+        ],
+        "photo": "calves"
+      },
+      {
+        "number": 29,
+        "title": "食肉用ウサギを従来型の狭い金網ケージで飼う",
+        "context": "欧州・2020年評価",
+        "kind": "飼養",
+        "summary": "欧州の複数の生産体系を比較した評価では、この方式は動きの制限が大きい。跳ぶ、立ち上がる、体を伸ばすための空間が問われる。",
+        "sources": [
+          [
+            "EFSA・食肉用ウサギの飼養方式の比較",
+            "https://pubmed.ncbi.nlm.nih.gov/32626497/"
+          ]
+        ],
+        "photo": "rabbits"
+      },
+      {
+        "number": 30,
+        "title": "羊の尻周辺の皮膚を切除する",
+        "context": "豪州・2024年の業界資料",
+        "kind": "羊毛生産",
+        "summary": "豪州の一部の羊でハエの幼虫による被害を予防するために行われるミュールジング。体への処置の痛みと防虫の必要性を併せて考える。主に羊毛に関係する畜産の例。",
+        "sources": [
+          [
+            "豪州羊産業・生産者調査（2024年）",
+            "https://www.sheepsustainabilityframework.com.au/globalassets/sheep-sustainability/media/240731-ssf-2024-annual-report---web.pdf"
+          ]
+        ],
+        "photo": "sheep"
+      }
+    ]
+  },
+  {
+    "title": "輸送・処理・ケアをめぐる記録",
+    "entries": [
+      {
+        "number": 31,
+        "title": "暑い環境での生体輸送で羊が大量死する",
+        "context": "豪州発・2017年",
+        "kind": "輸送中の死亡",
+        "summary": "2017年、豪州を出たAwassi Express号の23日間の航海で、熱ストレスにより2,400頭を超える羊が死亡したと独立監察報告が記録。",
+        "sources": [
+          [
+            "豪州の生体輸出に関する独立監察報告",
+            "https://www.igawlae.gov.au/sites/default/files/2020-12/implementation-of-moss-review-recommendations.pdf"
+          ],
+          [
+            "豪州農業省・勧告への対応状況",
+            "https://www.agriculture.gov.au/agriculture-land/animal-welfare/livestock-exports/igawlae"
+          ]
+        ],
+        "photo": "livestockship"
+      },
+      {
+        "number": 32,
+        "title": "離乳前の子牛を長距離輸送する",
+        "context": "欧州・2022年評価",
+        "kind": "輸送",
+        "summary": "欧州では若い子牛を育成地へ国境を越えて運ぶ事例がある。哺乳が必要な時期の長い移動には空腹、疲労、異なる群れとの混合が関わる。",
+        "sources": [
+          [
+            "EFSA・牛の輸送に関する科学的評価",
+            "https://pubmed.ncbi.nlm.nih.gov/36092766/"
+          ]
+        ],
+        "photo": "cattletruck"
+      },
+      {
+        "number": 33,
+        "title": "英国の処理場で豚を高濃度二酸化炭素で気絶させる",
+        "context": "イングランド・ウェールズ、2024年調査週",
+        "kind": "と畜",
+        "summary": "2024年2月のイングランド・ウェールズの調査週で豚の90％に実施。意識を失う前の忌避反応と呼吸の苦しさが問題になる。",
+        "sources": [
+          [
+            "英国食品基準庁ほか・2024年の処理場調査",
+            "https://www.gov.uk/government/publications/farm-animals-slaughter-sector-survey-2024"
+          ],
+          [
+            "Humane Slaughter Association・食肉処理時の動物福祉",
+            "https://www.hsa.org.uk/faqs/slaughter"
+          ]
+        ],
+        "photo": "processing"
+      },
+      {
+        "number": 34,
+        "title": "家きんを逆さにつるしてから電気で気絶させる",
+        "context": "イングランド・ウェールズ、2024年調査週",
+        "kind": "食鳥処理",
+        "summary": "英国の処理場調査で電気水浴方式の使用を確認。意識を失う前につるす段階の痛み・恐怖が論点になる。すべての処理場がこの方式を使うわけではない。",
+        "sources": [
+          [
+            "英国食品基準庁ほか・2024年の処理場調査",
+            "https://www.gov.uk/government/publications/farm-animals-slaughter-sector-survey-2024"
+          ]
+        ],
+        "photo": "poultryplant"
+      },
+      {
+        "number": 35,
+        "title": "事前に気絶させずに羊などをと畜する",
+        "context": "イングランド・ウェールズ、2024年調査週",
+        "kind": "と畜",
+        "summary": "イングランド・ウェールズの調査で実施を確認。意識が失われるまでの痛みが論点。宗教的な食肉でも事前に気絶させる例があり、記事では実際の処理方法を明示する。",
+        "sources": [
+          [
+            "英国食品基準庁ほか・2024年の処理場調査",
+            "https://www.gov.uk/government/publications/farm-animals-slaughter-sector-survey-2024"
+          ]
+        ],
+        "photo": "processing"
+      },
+      {
+        "number": 36,
+        "title": "立てなくなった牛を処理場で不適切に扱う",
+        "context": "米国・2008年刑事報道、2013年民事和解",
+        "kind": "個別事件",
+        "summary": "カリフォルニア州の食肉処理場で歩けない牛を乱暴に扱った事件。2008年に従業員の一人への有罪の刑が報じられた。会社等を相手にした別の民事手続は2013年に和解している。",
+        "sources": [
+          [
+            "米司法省・Hallmark/Westland関連の民事和解",
+            "https://www.justice.gov/usao-cdca/pr/former-supplier-beef-national-school-lunch-program-settle-allegations-improper"
+          ],
+          [
+            "APによる従業員の刑事手続の報道",
+            "https://www.cbsnews.com/news/slaughterhouse-animal-abuser-gets-6-mos/"
+          ]
+        ],
+        "photo": "processing"
+      },
+      {
+        "number": 37,
+        "title": "ペットフード用処理施設で子牛を乱暴に扱う",
+        "context": "ニュージーランド・2015年発生",
+        "kind": "個別事件・ペットフード",
+        "summary": "ニュージーランドのTe Kauwhataで、酪農由来の子牛111頭の扱いをめぐり、作業者が10件の訴因を認めた。人向けの食肉処理場とは異なる流通先で起きた事案。",
+        "sources": [
+          [
+            "NZ第一次産業省・子牛への不適切な取り扱いに関する控訴審",
+            "https://www.mpi.govt.nz/news/media-releases/mpi-wins-appeal-over-bobby-calf-sentence-home-detention-replaced-with-imprisonment"
+          ]
+        ],
+        "photo": "cattletruck"
+      },
+      {
+        "number": 38,
+        "title": "極度に衰弱した子牛への必要な処置を怠る",
+        "context": "ニュージーランド・2020年の農場訪問",
+        "kind": "個別事件・ケアの不履行",
+        "summary": "ニュージーランドのカンタベリーで、体に傷があり著しく衰弱した子牛について、苦痛を終わらせる処置を取らなかった農場経営者に罰金。病気の存在と、そのまま苦痛を長引かせた行為を区別できる事例。",
+        "sources": [
+          [
+            "NZ第一次産業省・衰弱した子牛の放置",
+            "https://www.mpi.govt.nz/news/media-releases/canterbury-farmer-sentenced-for-reckless-ill-treatment-of-a-calf"
+          ]
+        ],
+        "photo": "calves"
+      }
+    ]
+  },
+  {
+    "title": "牛の処置・飼養と国内の現場記録",
+    "entries": [
+      {
+        "number": 39,
+        "title": "牛の除角の際に麻酔を使わない",
+        "context": "日本・平成26年度",
+        "kind": "業界調査",
+        "summary": "除角時に麻酔を使わないと回答した農場が、乳用牛で372件、肉用牛で358件あった。調査当時の回答で、現在の使用率は別途確認が必要。",
+        "sources": [
+          [
+            "畜産技術協会・乳用牛の飼養実態調査",
+            "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_cow_h26.pdf"
+          ],
+          [
+            "畜産技術協会・肉用牛の飼養実態調査",
+            "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_beef_h26.pdf"
+          ]
+        ],
+        "photo": "beef"
+      },
+      {
+        "number": 40,
+        "title": "乳牛の尾を切る",
+        "context": "日本・平成26年度",
+        "kind": "業界調査",
+        "summary": "酪農家への質問票で、農場内での断尾の実施を確認。尾を使ってハエを払う行動と処置の痛みが論点。",
+        "sources": [
+          [
+            "畜産技術協会・乳用牛の飼養実態調査",
+            "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_cow_h26.pdf"
+          ]
+        ],
+        "photo": "beef"
+      },
+      {
+        "number": 41,
+        "title": "肉用牛に鼻環を装着する",
+        "context": "日本・平成26年度",
+        "kind": "業界調査",
+        "summary": "回答農場のうち577件が、初めて鼻環を装着する処置を自場で行うと回答。装着時の痛みと、その後の誘導時の扱いを分けて評価する。",
+        "sources": [
+          [
+            "畜産技術協会・肉用牛の飼養実態調査",
+            "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_beef_h26.pdf"
+          ]
+        ],
+        "photo": "beef"
+      },
+      {
+        "number": 42,
+        "title": "雄の肉用牛の外科的去勢",
+        "context": "日本",
+        "kind": "業界調査・研究",
+        "summary": "国内の飼養調査と若齢去勢の研究に実施記録がある。月齢、鎮痛の方法、術後の経過で負担が変わる。",
+        "sources": [
+          [
+            "畜産技術協会・肉用牛の飼養実態調査",
+            "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_beef_h26.pdf"
+          ],
+          [
+            "畜産技術協会・肉用牛の去勢に関する調査報告",
+            "https://jlta.jp/test/wp-content/uploads/2025/04/R6_cattlecastration_AWreport_2025.04.09.pdf"
+          ]
+        ],
+        "photo": "beef"
+      },
+      {
+        "number": 43,
+        "title": "乳牛の脚の関節周囲に腫れや膿瘍",
+        "context": "日本・1990年報告",
+        "kind": "症例研究",
+        "summary": "酪農家8戸の発症牛116頭と食肉センターに搬入された27頭を観察。床材と病変の関係も調べた。症例数から国内の発症率は求められない。",
+        "sources": [
+          [
+            "日本獣医師会雑誌・乳牛の関節周囲の病変の調査",
+            "https://www.jstage.jst.go.jp/article/jvma1951/43/12/43_12_874/_pdf"
+          ]
+        ],
+        "photo": "dairyhandling"
+      },
+      {
+        "number": 44,
+        "title": "肉用鶏が処理場で長く待機する",
+        "context": "日本・2018年通知",
+        "kind": "行政調査",
+        "summary": "遠方からの集鳥や休日の人員確保の事情で、搬入後の滞留が長くなるとの回答を行政が公表。",
+        "sources": [
+          [
+            "農林水産省・食鳥処理場での滞留に関する資料",
+            "https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/animal_welfare-142.pdf"
+          ]
+        ],
+        "photo": "poultrytruck"
+      },
+      {
+        "number": 45,
+        "title": "食鳥処理場への輸送・待機中の死亡",
+        "context": "日本・茨城県、平成26年度資料",
+        "kind": "行政調査",
+        "summary": "食肉衛生検査所が処理前に死亡した鶏を調査し、集荷、輸送、処理場、天候を検討。処理場による暑熱対策の違いも報告した。",
+        "sources": [
+          [
+            "茨城県食肉衛生検査所・平成26年度事業概要",
+            "https://www.pref.ibaraki.jp/hokenfukushi/seiei/eisei/documents/h26jigyougaiyou_1.pdf"
+          ]
+        ],
+        "photo": "poultrytruck"
+      },
+      {
+        "number": 46,
+        "title": "牛などの暑熱による死亡・廃用",
+        "context": "日本",
+        "kind": "行政集計",
+        "summary": "農水省が夏の暑熱被害を年度・畜種別に集計している。死亡と廃用の区分、集計時点を確かめて読む。",
+        "sources": [
+          [
+            "農林水産省・家畜の暑熱被害の集計",
+            "https://www.maff.go.jp/j/chikusan/kikaku/lin/l_tiku_manage/attach/pdf/index-204.pdf"
+          ]
+        ],
+        "photo": "heat"
+      },
+      {
+        "number": 47,
+        "title": "水牛の子への初乳が遅れる",
+        "context": "インドの都市酪農場",
+        "kind": "農場調査",
+        "summary": "60戸を調べた研究が、生後早期の初乳給与や子牛の健康管理上の問題を記録。報告から個々の飼育者の動機は判断できない。",
+        "sources": [
+          [
+            "Indian Journal of Dairy Science・都市酪農場の水牛の調査",
+            "https://epubs.icar.org.in/index.php/IJDS/article/view/36036"
+          ]
+        ],
+        "photo": "buffalo"
+      },
+      {
+        "number": 48,
+        "title": "乳用牛の分娩時期をそろえるために出産を誘発する",
+        "context": "ニュージーランド・過去の慣行",
+        "kind": "調査報告",
+        "summary": "季節繁殖の酪農で行われた、治療目的以外の定例の分娩誘起を記録。ニュージーランドでは2015年に業界方針が変わった。",
+        "sources": [
+          [
+            "ニュージーランド第一次産業省・乳用牛の分娩誘起に関する報告",
+            "https://www.mpi.govt.nz/dmsdocument/30005/direct"
+          ]
+        ],
+        "photo": "newborn"
+      },
+      {
+        "number": 49,
+        "title": "ベルジアン・ブルー種における計画的な帝王切開",
+        "context": "ベルギーの診療記録",
+        "kind": "臨床研究",
+        "summary": "筋肉の発達を強く選抜した系統で帝王切開が常用され、術後の合併症を追跡した研究がある。繁殖方針と、個体に必要な治療を分けて扱う。",
+        "sources": [
+          [
+            "ゲント大学・ベルジアン・ブルーの診療研究",
+            "https://biblio.ugent.be/publication/01J57XJH7MXB5YYX28W7HJT6JZ"
+          ]
+        ],
+        "photo": "newborn"
+      },
+      {
+        "number": 50,
+        "title": "乳牛の跛行",
+        "context": "米国の酪農場191戸",
+        "kind": "農場調査",
+        "summary": "調査員が歩き方や脚の状態を観察し、跛行、床や飼養管理との関連を評価。治療までの時間や予防策を取材する出発点になる。",
+        "sources": [
+          [
+            "Journal of Dairy Science・米国酪農場の調査",
+            "https://pubmed.ncbi.nlm.nih.gov/28041728/"
+          ]
+        ],
+        "photo": "dairyhandling"
+      },
+      {
+        "number": 51,
+        "title": "多数の牛を泥の深い放牧地で飼養",
+        "context": "ニュージーランド・2025年公表",
+        "kind": "処分記録",
+        "summary": "サウスランドの事業者に48,750ニュージーランドドルの罰金。屋外でも、乾いて休める場所を実際に利用できるかが問題になった。",
+        "sources": [
+          [
+            "ニュージーランド第一次産業省・水浸しの放牧地をめぐる処分",
+            "https://www.mpi.govt.nz/news/media-releases/southland-livestock-grazing-company-fined-48750-over-hundreds-of-cattle-grazing-in-mud"
+          ]
+        ],
+        "photo": "cowbarn"
+      }
+    ]
+  },
+  {
+    "title": "母豚・子豚・出荷豚",
+    "entries": [
+      {
+        "number": 52,
+        "title": "妊娠中の母豚に少量の濃厚飼料を与え、空腹が長引く",
+        "context": "欧州・2022年評価",
+        "kind": "科学評価",
+        "summary": "繁殖雌豚の体の状態を管理する定量給餌について、飼料のかさや繊維が少ない条件で強い採食欲求が続くことをEFSAが報告。",
+        "sources": [
+          [
+            "EFSA・豚の飼養に関する科学的評価",
+            "https://pubmed.ncbi.nlm.nih.gov/36034323/"
+          ]
+        ],
+        "photo": "sowstall"
+      },
+      {
+        "number": 53,
+        "title": "生後まもない子豚の圧死・飢餓死",
+        "context": "商業養豚場2戸・2022年報告",
+        "kind": "剖検研究",
+        "summary": "生後7日以内の死亡子豚106頭を剖検。生きて生まれた子豚の死因には、飢餓と圧死がそれぞれ23％含まれた。調査対象は死亡個体。",
+        "sources": [
+          [
+            "死亡した子豚106頭の剖検研究（全文）",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC9658477/"
+          ]
+        ],
+        "photo": "farrowing"
+      },
+      {
+        "number": 54,
+        "title": "繁殖を終えた母豚の肩の褥瘡",
+        "context": "デンマーク・12農場",
+        "kind": "出荷前診察",
+        "summary": "出荷前の母豚522頭を診察し、11％に肩の褥瘡があった。休む場所の床、体の状態、ケアを検討する材料になる。",
+        "sources": [
+          [
+            "デンマークの母豚522頭の出荷前診察（論文抄録）",
+            "https://pubmed.ncbi.nlm.nih.gov/32704712/"
+          ]
+        ],
+        "photo": "farrowing"
+      },
+      {
+        "number": 55,
+        "title": "豚の尾かじりによる傷",
+        "context": "イタリア・オランダ・スペイン",
+        "kind": "処理場調査",
+        "summary": "3か国で計15,000頭の画像を調べ、実際に尾の傷を確認。尾を切る処置の実施と、動物同士による負傷は別の事象。",
+        "sources": [
+          [
+            "Romanoほか・3か国の豚の尾の画像調査",
+            "https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1751411/full"
+          ]
+        ],
+        "photo": "pigs"
+      },
+      {
+        "number": 56,
+        "title": "出荷輸送で死亡した豚・自力で歩けなくなった豚",
+        "context": "米国・2012～2015年",
+        "kind": "処理場調査",
+        "summary": "20施設の調査が、到着時の死亡と歩行不能を別々に記録。どの個体にも同じ原因があったとはいえない。",
+        "sources": [
+          [
+            "米国20施設の出荷輸送調査（論文抄録）",
+            "https://pubmed.ncbi.nlm.nih.gov/32705038/"
+          ]
+        ],
+        "photo": "pigtruck"
+      }
+    ]
+  },
+  {
+    "title": "家きん、ウサギ、ヤギ、羊",
+    "entries": [
+      {
+        "number": 57,
+        "title": "ふ化後、餌や水に初めて届くまでの遅れ",
+        "context": "欧州・2023年評価",
+        "kind": "科学評価",
+        "summary": "ふ化場から鶏舎までの工程によって初回の餌と水まで典型的に24～48時間を要する方式をEFSAが記述。早くふ化した個体ほど待ち時間が長くなりうる。",
+        "sources": [
+          [
+            "EFSA・ブロイラーの飼養に関する科学的評価",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC9941850/"
+          ]
+        ],
+        "photo": "chicks"
+      },
+      {
+        "number": 58,
+        "title": "採卵鶏の羽つつきによる羽毛や皮膚の損傷",
+        "context": "フランスの養鶏場",
+        "kind": "農場調査",
+        "summary": "放し飼いと設備を備えたケージの両方で調査。飼育方式の表示だけでは個々の群れの羽や皮膚の状態は読み取れない。",
+        "sources": [
+          [
+            "フランスの養鶏場における羽や皮膚の調査（論文抄録）",
+            "https://pubmed.ncbi.nlm.nih.gov/31267768/"
+          ]
+        ],
+        "photo": "henhouse"
+      },
+      {
+        "number": 59,
+        "title": "採卵鶏が一か所に密集し、圧迫・窒息して死亡",
+        "context": "商業採卵鶏群",
+        "kind": "調査研究",
+        "summary": "放し飼いの群れでも密集による死亡が記録されている。群れの動きや鶏舎の使われ方を含めて検討する。",
+        "sources": [
+          [
+            "Australian Eggs・採卵鶏の密集による死亡の研究報告",
+            "https://www.australianeggs.org.au/assets/research/documents/Final-Research-Report-for-Causes-of-smothering-in-free-range_Part-1-1HS901UM.pdf"
+          ]
+        ],
+        "photo": "henhouse"
+      },
+      {
+        "number": 60,
+        "title": "種鶏の交尾時に雌が負傷する",
+        "context": "肉用種鶏の繁殖農場",
+        "kind": "行動観察・病変調査",
+        "summary": "雄による攻撃的な交尾行動を観察し、死亡した雌15羽の外傷も記載した報告。単一農場の所見。",
+        "sources": [
+          [
+            "Scientific Works. Series C. Veterinary Medicine・繁殖農場の調査",
+            "https://veterinarymedicinejournal.usamv.ro/index.php/scientific-papers/past-issues?id=1768"
+          ]
+        ],
+        "photo": "breeder"
+      },
+      {
+        "number": 61,
+        "title": "産卵を終えた鶏の捕鳥・取り扱い時の骨折",
+        "context": "英国・1989年報告",
+        "kind": "工程別調査",
+        "summary": "鶏・と体3,115羽を複数の工程で調査し、ケージからの取り出しや処理ラインへの懸鳥に伴う骨折を確認。飼養中の竜骨骨折とは区別する。",
+        "sources": [
+          [
+            "British Poultry Science・出荷段階ごとの骨折の調査",
+            "https://pubmed.ncbi.nlm.nih.gov/2819499/"
+          ]
+        ],
+        "photo": "layers"
+      },
+      {
+        "number": 62,
+        "title": "繁殖用アヒルの単飼ケージ",
+        "context": "欧州・2023年評価",
+        "kind": "科学評価",
+        "summary": "一部の繁殖用アヒルについて、1羽用の金網床のケージを使用する飼養体系を記録。移動や他の鳥との接触への制約を扱う。",
+        "sources": [
+          [
+            "EFSA・アヒル、ガチョウ、ウズラの飼養に関する評価",
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186070/"
+          ]
+        ],
+        "photo": "duckenclosure"
+      },
+      {
+        "number": 63,
+        "title": "七面鳥の繁殖での反復的な保定",
+        "context": "欧州・2026年評価",
+        "kind": "科学評価",
+        "summary": "人工授精に伴う雌雄の取り扱いが実際に行われ、保定のストレスや軟部組織の負傷などが論点になるとEFSAが報告。",
+        "sources": [
+          [
+            "EFSA・七面鳥の飼養に関する科学的評価",
+            "https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2026.9851"
+          ],
+          [
+            "EFSA・飼養評価の図解",
+            "https://www.efsa.europa.eu/en/infographics/efsas-scientific-opinion-welfare-turkeys-farm"
+          ]
+        ],
+        "photo": "turkeys"
+      },
+      {
+        "number": 64,
+        "title": "繁殖用ウサギの足裏の潰瘍",
+        "context": "スペイン・ポルトガル、2001～2012年",
+        "kind": "農場調査",
+        "summary": "664農場を訪問した調査で足裏の潰瘍を確認。足を休める板の普及と、足裏の状態との関係も調べている。",
+        "sources": [
+          [
+            "Animals・ウサギの足裏の病変に関する農場調査",
+            "https://mdpi-res.com/d_attachment/animals/animals-03-00318/article_deploy/animals-03-00318.pdf"
+          ]
+        ],
+        "photo": "rabbits"
+      },
+      {
+        "number": 65,
+        "title": "肉用ウサギの離乳後の給餌制限",
+        "context": "フランスなど・2020年評価",
+        "kind": "科学評価",
+        "summary": "離乳後の消化器疾患に備えて一定期間、給与量を制限する生産体系を記載。健康管理の意図と空腹の負担をともに検討する。",
+        "sources": [
+          [
+            "EFSA・ウサギの飼養に関する科学的評価",
+            "https://pubmed.ncbi.nlm.nih.gov/32626497/"
+          ]
+        ],
+        "photo": "rabbits"
+      },
+      {
+        "number": 66,
+        "title": "子ヤギの除角芽処置",
+        "context": "米国中西部・酪農場30戸の調査",
+        "kind": "農場調査",
+        "summary": "幼齢時に角芽を処置する農場と痛み止めの使用状況を記録。術後の経過や処置者の訓練を含めて読む。",
+        "sources": [
+          [
+            "Animals・子ヤギの除角芽処置に関する農場調査",
+            "https://www.mdpi.com/2076-2615/11/7/2007"
+          ]
+        ],
+        "photo": "goats"
+      },
+      {
+        "number": 67,
+        "title": "子羊の断尾と去勢における痛みの管理",
+        "context": "オーストラリア",
+        "kind": "業界調査",
+        "summary": "羊産業の調査が処置時の鎮痛の実施状況を報告。尻の皮膚を切除するミュールジングとは別の処置である。",
+        "sources": [
+          [
+            "Australian Sheep Sustainability Framework・2024年指標報告",
+            "https://www.sheepsustainabilityframework.com.au/globalassets/sheep-sustainability/media/240731-ssf-2024-indicator-summary---web.pdf"
+          ]
+        ],
+        "photo": "sheep"
+      }
+    ]
+  },
+  {
+    "title": "輸送、と畜、畜産副産物",
+    "entries": [
+      {
+        "number": 68,
+        "title": "馬の生体航空輸送中の死亡・重傷",
+        "context": "カナダから日本への輸送",
+        "kind": "行政集計",
+        "summary": "カナダ食品検査庁が年度ごとに死亡・重傷を公表。集計対象は日本の空港で荷下ろしを終えるまでに報告された重大事故。",
+        "sources": [
+          [
+            "カナダ食品検査庁・馬の航空輸送の監督記録",
+            "https://inspection.canada.ca/en/animal-health/terrestrial-animals/humane-transport/horses/regulatory-oversight"
+          ]
+        ],
+        "photo": "horse"
+      },
+      {
+        "number": 69,
+        "title": "市場で脚を拘束されたラクダのけが",
+        "context": "カタール・2021年報告",
+        "kind": "市場調査",
+        "summary": "市場のヒトコブラクダについて、脚の拘束と負傷の関連を調査。観察された関連と個別の傷の原因を分けて読む。",
+        "sources": [
+          [
+            "Menchettiほか・カタールのラクダ市場調査",
+            "https://pubblicazioni.unicam.it/retrieve/177e16ce-1d3c-4343-bc98-47ee1b84986d/Menchetti2021_Article_NewAnimal-basedMeasuresToAsses.pdf"
+          ]
+        ],
+        "photo": "camel"
+      },
+      {
+        "number": 70,
+        "title": "家畜運搬船の転覆による羊の大量死",
+        "context": "ルーマニア・2019年",
+        "kind": "事故調査資料",
+        "summary": "Queen Hind号が出港時に転覆し、積まれていた羊の大半が死亡。欧州議会向けの調査が事故記録を検討した。",
+        "sources": [
+          [
+            "欧州議会・家畜輸送に関する調査報告",
+            "https://www.europarl.europa.eu/RegData/etudes/STUD/2021/690876/IPOL_STU%282021%29690876_EN.pdf"
+          ]
+        ],
+        "photo": "livestockship"
+      },
+      {
+        "number": 71,
+        "title": "牛のと畜で最初の気絶処置が不十分",
+        "context": "スウェーデン・商業処理場の研究",
+        "kind": "現場観察",
+        "summary": "調査した牛の12.5％で最初の処置による気絶が不十分と評価された。再確認と是正が働いたかを問う事例。",
+        "sources": [
+          [
+            "スウェーデン農業科学大学・牛の気絶処置の観察研究",
+            "https://research.slu.se/en/publications/assessment-of-stun-quality-at-commercial-slaughter-in-cattle-shot/"
+          ]
+        ],
+        "photo": "processing"
+      },
+      {
+        "number": 72,
+        "title": "生きた鶏が湯槽の工程に入った事案",
+        "context": "英国・2016年",
+        "kind": "裁判資料",
+        "summary": "異なる3日に発生した事実が最高裁資料に記載されている。最高裁の争点は法令の解釈で、個々の鶏の意識状態までを示す記録ではない。",
+        "sources": [
+          [
+            "英国最高裁判所・判決要旨",
+            "https://www.supremecourt.uk/cases/docs/uksc-2018-0231-press-summary.pdf"
+          ]
+        ],
+        "photo": "poultryplant"
+      },
+      {
+        "number": 73,
+        "title": "妊娠中の家畜がと畜される",
+        "context": "欧州の複数国・2017年評価",
+        "kind": "処理場調査の科学評価",
+        "summary": "処理場調査で妊娠牛・妊娠豚などの搬入を確認。妊娠時期や農場が事前に把握したかは個別に確かめる。欧州全域の実測率は不明。",
+        "sources": [
+          [
+            "EFSA・妊娠中の家畜のと畜に関する科学的評価",
+            "https://pubmed.ncbi.nlm.nih.gov/32625488/"
+          ]
+        ],
+        "photo": "processing"
+      },
+      {
+        "number": 74,
+        "title": "毛刈りの際に羊を殴るなどの暴力",
+        "context": "オーストラリア・2017年報道",
+        "kind": "法廷報道",
+        "summary": "ビクトリア州の毛刈り作業者が虐待の罪を認めた事案。取材した裁判報道に基づく。羊毛生産に関わる個別事件。",
+        "sources": [
+          [
+            "ABC News・毛刈り作業をめぐる法廷報道",
+            "https://www.abc.net.au/news/rural/2017-03-01/sheep-shearers-plead-guilty-animal-cruelty-western-victoria/8314678"
+          ]
+        ],
+        "photo": "shearing"
+      },
+      {
+        "number": 75,
+        "title": "生きたガチョウの羽毛採取で羽を引き抜く",
+        "context": "欧州・2010年評価",
+        "kind": "科学評価",
+        "summary": "自然に抜ける時期の羽を集める行為と、皮膚についた羽を抜き痛みを生じさせる行為を区別。EFSAは当時の商業条件で後者が生じると評価。",
+        "sources": [
+          [
+            "EFSA・ガチョウからの羽毛採取に関する評価",
+            "https://www.efsa.europa.eu/en/press/news/ahaw101125"
+          ]
+        ],
+        "photo": "geese"
+      }
+    ]
+  },
+  {
+    "title": "火災・自然災害・防疫・供給網の途絶",
+    "entries": [
+      {
+        "number": 76,
+        "title": "豚舎火災で豚が死亡",
+        "context": "日本・鳥取県、2025年11月",
+        "kind": "事故・自治体記録",
+        "summary": "南部町の養豚場火災と死亡豚の処理を県議会で報告。出火原因や責任の判断はこの項目の記載範囲外。",
+        "sources": [
+          [
+            "鳥取県議会・南部町の豚舎火災に関する記録",
+            "https://www.pref.tottori.lg.jp/item/1424444.htm"
+          ]
+        ],
+        "photo": "emptybarn"
+      },
+      {
+        "number": 77,
+        "title": "大雨による畜舎浸水・家きんの溺死",
+        "context": "日本・2010年等",
+        "kind": "災害・行政記録",
+        "summary": "農水省の災害記録に採卵鶏等の溺死がある。立地、避難や復旧を扱うための資料。",
+        "sources": [
+          [
+            "農林水産省・自然災害による畜産被害の資料",
+            "https://www.maff.go.jp/j/council/seisaku/kikaku/bukai/H27/pdf/150128_02_06.pdf"
+          ]
+        ],
+        "photo": "emptybarn"
+      },
+      {
+        "number": 78,
+        "title": "鳥インフルエンザ発生農場での防疫殺処分",
+        "context": "日本・2022～23年シーズン",
+        "kind": "防疫・行政集計",
+        "summary": "26道県84事例で約1,771万羽が殺処分の対象となったと農水省が公表。発生予防と防疫の判断を検討する。数値は対象羽数。",
+        "sources": [
+          [
+            "農林水産省・2022～23年シーズンの鳥インフルエンザ集計",
+            "https://www.maff.go.jp/j/council/seisaku/eisei/bukai_65/attach/pdf/bukai_65-20.pdf"
+          ]
+        ],
+        "photo": "emptybarn"
+      },
+      {
+        "number": 79,
+        "title": "処理場の休止と滞留による農場での殺処分",
+        "context": "米国ミネソタ州・2020年",
+        "kind": "供給網の途絶・行政資料",
+        "summary": "COVID-19流行時の処理場休止で出荷豚が滞留し、殺処分や死体処理への支援が必要になったと州が記録。",
+        "sources": [
+          [
+            "米国ミネソタ州議会・処理場休止に伴う対応資料",
+            "https://www.house.mn.gov/comm/docs/fDLjOyu0tU6uEi-GvEKiHA.pdf"
+          ]
+        ],
+        "photo": "pigs"
+      }
+    ]
+  }
+]

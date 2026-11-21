@@ -65,3 +65,75 @@ article p {
   margin: 0;
   color: #813a28;
 }
+
+.field-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 1rem;
+  list-style: none;
+  padding: 0;
+  font-size: .85em;
+}
+.field-group {
+  margin-block: 2rem;
+  scroll-margin-block-start: 1rem;
+}
+.case-records {
+  margin-block: 0;
+  padding: 0;
+  list-style: none;
+  border-block-start: 1px solid #a6a694;
+}
+.field-record {
+  border-block-end: 1px solid #a6a694;
+}
+.field-record > summary {
+  display: grid;
+  grid-template-columns: 2.3rem minmax(0, 1fr);
+  align-items: start;
+  gap: .35rem;
+  position: relative;
+  padding: .65rem 1.7rem .65rem 0;
+  cursor: pointer;
+  line-height: 1.6;
+}
+.field-record > summary::-webkit-details-marker { display: none; }
+.field-record > summary::after {
+  position: absolute;
+  inset-inline-end: .3rem;
+  inset-block-start: .7rem;
+  color: #813a28;
+  content: "+";
+}
+.field-record[open] > summary::after { content: "−"; }
+.field-record > summary:focus-visible { outline: 2px solid #963f25; }
+.field-record-number {
+  color: #813a28;
+  font-variant-numeric: tabular-nums;
+  font-size: .8em;
+  padding-block-start: .16em;
+}
+.field-record small {
+  display: block;
+  margin-block-start: .15em;
+  color: #514f43;
+}
+.field-record-body {
+  padding-block-end: 1rem;
+}
+.field-record-body h4 {
+  margin-block: .6rem .2rem;
+}
+.field-record-body ul {
+  margin-block: .2rem .7rem;
+  padding-inline-start: 1.2rem;
+}
+.field-photo img {
+  width: 100%;
+  max-height: 30rem;
+  object-fit: contain;
+}
+.field-photo figcaption {
+  color: #514f43;
+  line-height: 1.65;
+}
