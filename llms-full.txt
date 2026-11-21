@@ -228,7 +228,7 @@ https://djnaoyaman.github.io/beforeweeat/rest-questions.html
 https://djnaoyaman.github.io/beforeweeat/lessons.html
 
 先生や保護者と一緒に、今日の一皿からどうぶつについて考えよう。
-授業で使うなら、ぶたの絵を使う給食5分版と授業45分版へ。親子で読むなら、夕飯で答えを出しきらなくても話せる短い問いから。
+献立に合わせて、牛・ぶた・にわとりの教材を選べます。それぞれ給食5分版と授業45分版、印刷できる観察シートを用意しました。
 文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
 
 ## とんかつを食べた日、三つの発見
@@ -389,3 +389,17 @@ https://djnaoyaman.github.io/beforeweeat/storage.html
 生肉の汁がほかの食品につかないように包み、表示にしたがって冷蔵・冷凍します。あとで使う分は一食ずつ分け、日付と部位を書いておくと料理を決めやすくなります。冷凍した肉は冷蔵庫などで解凍し、室温に長く置かないようにします。
 厚生労働省　家庭での食中毒予防 https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00008.html
 消費者庁　家庭での食品ロス対策 https://www.no-foodloss.caa.go.jp/eating-home.html
+
+## 牛すねのシチューから、牛を見てみよう
+https://djnaoyaman.github.io/beforeweeat/lesson-beef.html
+
+シチューに入っていたすね肉は、牛の体のどこにあるかな。
+給食5分版。牛の図で脚の下のほうを指し、すね肉の名前と場所を確かめる。授業45分版。献立を思い出す5分、全身図で脚を探す10分、牛が立つ・歩く・休む場面を考える15分、友だちと話す10分、農場に聞きたいことを書く5分。
+文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
+
+## 鶏ももの料理から、にわとりを見てみよう
+https://djnaoyaman.github.io/beforeweeat/lesson-chicken.html
+
+から揚げや焼き物に使うもも肉は、にわとりの体のどこにあるかな。
+給食5分版。にわとりの図で脚のつけ根を探してみる。授業45分版。献立を思い出す5分、全身図で胸と脚を見比べる10分、にわとりが歩く・羽を広げる場面を考える15分、友だちと話す10分、農場に聞きたいことを書く5分。
+文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm

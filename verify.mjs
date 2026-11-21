@@ -10,7 +10,7 @@ const folder=path.resolve('dist');
 const all=fs.readdirSync(folder);
 const base='https://djnaoyaman.github.io/beforeweeat/';
 const pages=all.filter(n=>n.endsWith('.html')&&n!=='404.html');
-assert.equal(pages.length,55);
+assert.equal(pages.length,57);
 const titles=new Set();
 const metaNames=['description','robots','author','og:title','og:description','og:url','og:image','twitter:card','twitter:title','twitter:image'];
 const siteMap=fs.readFileSync(path.join(folder,'sitemap.xml'),'utf8');
@@ -42,6 +42,12 @@ try{
  page.on('pageerror',err=>errors.push(err.message));
  const open=(name)=>page.goto(pathToFileURL(path.join(folder,name)).href);
  await open('index.html');
+ for(const [selector,asset] of [['.hero-pig','pig-art.webp'],['.intro-image img','cow-art.webp'],['.story-animal','hen-art.webp']]){
+  const image=page.locator(selector);
+  await image.scrollIntoViewIfNeeded();
+  assert.equal(await image.getAttribute('src'),asset);
+  assert.ok(await image.evaluate(async node=>{await node.decode();return node.naturalWidth>0;}));
+ }
  await page.getByRole('button',{name:'牛',exact:true}).click();
  assert.equal(await page.locator('.hero-pig').getAttribute('src'),'cow-art.webp');
  await page.getByRole('button',{name:'にわとり',exact:true}).click();
@@ -54,22 +60,31 @@ try{
  await page.locator('#next').click();
  await page.locator('.school-entry a').first().click();
  await page.waitForURL('**/lessons.html');
- await page.getByRole('link',{name:'授業 じゅぎょう で使う'}).or(page.locator('.entries a').first()).first().click();
- await page.waitForURL('**/lesson-pork.html');
- assert.ok(await page.locator('.worksheet').isVisible());
- assert.ok(await page.locator('figure img').evaluate(el=>el.complete&&el.naturalWidth>0));
+ for(const [file,label,asset] of [
+  ['lesson-beef.html','牛の教材','cow-art.webp'],
+  ['lesson-chicken.html','にわとりの教材','hen-art.webp'],
+  ['lesson-pork.html','ぶたの教材','pig-art.webp']
+ ]){
+  await open('lessons.html');
+  await page.getByRole('link',{name:label,exact:true}).click();
+  await page.waitForURL('**/'+file);
+  assert.ok(await page.locator('.worksheet').isVisible());
+  const figure=page.locator('figure img');
+  assert.equal(await figure.getAttribute('src'),asset);
+  assert.ok(await figure.evaluate(async node=>{await node.decode();return node.naturalWidth>0;}));
+ }
  await page.locator('[data-ruby]').click();assert.ok(await page.locator('html.no-ruby').count());
  await page.locator('[data-size]').click();assert.ok(await page.locator('html.large-text').count());
  await open('start.html');
  await page.locator('#find').fill('スペアリブ');
- assert.ok((await page.locator('[data-entry]:visible').count())<54);
+ assert.ok((await page.locator('[data-entry]:visible').count())<56);
  await page.locator('#find').fill('zzzzzzzz');
  assert.equal(await page.locator('[data-entry]:visible').count(),0);
  await page.locator('#find').clear();
- assert.equal(await page.locator('[data-entry]:visible').count(),54);
+ assert.equal(await page.locator('[data-entry]:visible').count(),56);
  for(const width of [390,320]){
   await page.setViewportSize({width,height:844});
-  for(const name of ['index.html','lesson-pork.html','hens.html','start.html','beef-cuts.html','chicken-guide.html','case-footpad.html','nutrition.html','cooking.html']){
+  for(const name of ['index.html','lessons.html','lesson-beef.html','lesson-pork.html','lesson-chicken.html','hens.html','start.html','beef-cuts.html','chicken-guide.html','case-footpad.html','nutrition.html','cooking.html']){
    await open(name);
    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
    assert.ok(overflow<=2,name+' '+width+' overflow '+overflow);

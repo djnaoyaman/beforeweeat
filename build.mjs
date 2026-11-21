@@ -57,9 +57,19 @@ function meta(title,desc,path,image='og.jpg',article=false){
  return '<meta name="description" content="'+escape(desc)+'"><meta name="author" content="MINA"><meta name="robots" content="index,follow,max-image-preview:large"><meta name="theme-color" content="#f7f4e9"><link rel="canonical" href="'+url+'"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="manifest" href="site.webmanifest">'+Object.entries({'og:site_name':'Before We Eat','og:type':article?'article':'website','og:title':title,'og:description':desc,'og:url':url,'og:image':imageUrl,'og:image:alt':'Before We Eat の誌面イメージ','og:locale':'ja_JP','twitter:card':'summary_large_image','twitter:title':title,'twitter:description':desc,'twitter:image':imageUrl,'twitter:image:alt':'Before We Eat の誌面イメージ'}).map(([k,v])=>'<meta '+(k.startsWith('og:')?'property':'name')+'="'+k+'" content="'+escape(v)+'">').join('')+'<script type="application/ld+json">'+JSON.stringify(ld).replaceAll('<','\\u003c')+'</script>';
 }
 const menu = '<nav aria-label="サイト案内">'+pageLink('animals','動物のくらし')+pageLink('cuts')+pageLink('cooking')+pageLink('field-cases','現場の事例')+pageLink('shopping')+pageLink('lessons','先生・保護者の方へ')+'</nav>';
+const lessonAnimals = {
+ 'lesson-beef': {key:'cow', label:'牛の教材', prompt:'牛の脚の下のほうを指してみよう。'},
+ 'lesson-pork': {key:'pig', label:'ぶたの教材', prompt:'ぶたの背中を指してみよう。'},
+ 'lesson-chicken': {key:'hen', label:'にわとりの教材', prompt:'にわとりの脚が体につながるところを探してみよう。'}
+};
 function feature(row){
  if(row.slug==='hens') return '<figure class="survey"><strong>408件の回答</strong><div aria-hidden="true">'+Array.from({length:408},(_,i)=>'<i class="n'+(i<304?1:i<363?2:3)+'"></i>').join('')+'</div><figcaption>ケージのみ304件 ／ 平飼いのみ59件 ／ 両方45件</figcaption></figure>';
- if(['loin','lesson-pork'].includes(row.slug)) return '<figure class="animal-plate"><img src="pig-art.webp" alt="横から見たぶたの全身"><figcaption>ぶたの背中を指してみよう。体の位置を見つけるための線画です。</figcaption></figure>';
+ if(row.slug==='loin') return '<figure class="animal-plate"><img src="pig-art.webp" alt="横から見たぶたの全身"><figcaption>ぶたの背中を指してみよう。体の位置を見つけるための線画です。</figcaption></figure>';
+ const animal = lessonAnimals[row.slug];
+ if(animal){
+  const {name,art} = species[animal.key];
+  return '<figure class="animal-plate"><img src="'+art+'" alt="横から見た'+name+'の全身の線画"><figcaption>'+typeset(animal.prompt)+'</figcaption></figure>';
+ }
  return '';
 }
 const groupLanding={2:'animals',3:'cuts',4:'cooking',5:'shopping',6:'people',7:'lessons',8:'sources'};
@@ -69,8 +79,13 @@ function directory(row){
  return '<section><h2>この章で読む</h2><ul class="story-list">'+rows.filter(r=>r.group===row.group&&r!==row).map(r=>'<li>'+pageLink(r.slug)+'</li>').join('')+'</ul></section>';
 }
 function extra(row){
- if(row.slug==='lesson-pork')return '<section class="worksheet"><h2>今日の観察シート</h2><p>名前 ____________________　　日付 __________</p><p>ぶたの体のどこだった？</p><div class="write-line"></div><p>絵を見てわかったこと</p><div class="write-line"></div><p>農場の人に聞きたいこと</p><div class="write-line"></div><button type="button" data-print>観察シートを印刷</button></section>';
- if(row.slug==='lessons')return '<div class="entries">'+pageLink('lesson-pork','授業で使う')+pageLink('thanks','親子で読む')+'</div>';
+ if(lessonAnimals[row.slug])return '<section class="worksheet"><h2>今日の観察シート</h2><p>名前 ____________________　　日付 __________</p><p>'+typeset(species[lessonAnimals[row.slug].key].name+'の体のどこだった？')+'</p><div class="write-line"></div><p>絵を見てわかったこと</p><div class="write-line"></div><p>農場の人に聞きたいこと</p><div class="write-line"></div><button type="button" data-print>観察シートを印刷</button></section>';
+ if(row.slug==='lessons'){
+  const cards = Object.entries(lessonAnimals).map(([slug,{key,label}]) =>
+   '<div><a href="'+slug+'.html"><img src="'+species[key].art+'" alt=""><strong>'+typeset(label)+'</strong></a></div>'
+  ).join('');
+  return '<div class="species-gallery">'+cards+'</div><div class="entries">'+pageLink('thanks','親子で読む')+'</div>';
+ }
  if(row.slug==='animals')return '<div class="entries">'+pageLink('welfare','はじめての動物福祉')+pageLink('hens','現場の記録を読む')+'</div>';
  if(row.slug==='mina')return '<p><a href="'+portfolio+'">MINAのサイトへ</a></p>';
  if(row.slug==='corrections')return '<p><a href="https://github.com/djnaoyaman/beforeweeat/issues/new">記事について知らせる</a></p>';
