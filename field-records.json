@@ -64,7 +64,7 @@
             "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_lay_h26.pdf"
           ]
         ],
-        "photo": "chicks"
+        "photo": "beak"
       },
       {
         "number": 5,
@@ -128,7 +128,7 @@
             "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_pig_h26.pdf"
           ]
         ],
-        "photo": "piglets"
+        "photo": "dental"
       },
       {
         "number": 9,
@@ -150,7 +150,7 @@
             "https://jppa.biz/zius/wp-content/uploads/2019/10/20170622_01.pdf"
           ]
         ],
-        "photo": "piglets"
+        "photo": "castration"
       },
       {
         "number": 10,
@@ -241,7 +241,7 @@
             "https://www.nuffieldscholar.org/sites/default/files/reports/2009_UK_Kate-Little_Meat-Goats-Sustainable-Livestock-Farming.pdf"
           ]
         ],
-        "photo": "goats"
+        "photo": "malekids"
       },
       {
         "number": 15,
@@ -295,7 +295,7 @@
             "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186070/"
           ]
         ],
-        "photo": "ducks"
+        "photo": "record17"
       },
       {
         "number": 18,
@@ -345,7 +345,7 @@
             "https://doi.org/10.2903/sp.efsa.2024.EN-9138"
           ]
         ],
-        "photo": "turkeys"
+        "photo": "record20"
       },
       {
         "number": 21,
@@ -433,7 +433,7 @@
             "https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/"
           ]
         ],
-        "photo": "calves"
+        "photo": "record26"
       },
       {
         "number": 27,
@@ -447,7 +447,7 @@
             "https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/"
           ]
         ],
-        "photo": "calves"
+        "photo": "record27"
       },
       {
         "number": 28,
@@ -461,7 +461,7 @@
             "https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/"
           ]
         ],
-        "photo": "calves"
+        "photo": "record28"
       },
       {
         "number": 29,
@@ -489,7 +489,7 @@
             "https://www.sheepsustainabilityframework.com.au/globalassets/sheep-sustainability/media/240731-ssf-2024-annual-report---web.pdf"
           ]
         ],
-        "photo": "sheep"
+        "photo": "mulesing"
       }
     ]
   },
@@ -544,7 +544,7 @@
             "https://www.hsa.org.uk/faqs/slaughter"
           ]
         ],
-        "photo": "processing"
+        "photo": "gas"
       },
       {
         "number": 34,
@@ -572,7 +572,7 @@
             "https://www.gov.uk/government/publications/farm-animals-slaughter-sector-survey-2024"
           ]
         ],
-        "photo": "processing"
+        "photo": "sheepkill"
       },
       {
         "number": 36,
@@ -604,7 +604,7 @@
             "https://www.mpi.govt.nz/news/media-releases/mpi-wins-appeal-over-bobby-calf-sentence-home-detention-replaced-with-imprisonment"
           ]
         ],
-        "photo": "cattletruck"
+        "photo": "record37"
       },
       {
         "number": 38,
@@ -618,7 +618,7 @@
             "https://www.mpi.govt.nz/news/media-releases/canterbury-farmer-sentenced-for-reckless-ill-treatment-of-a-calf"
           ]
         ],
-        "photo": "calves"
+        "photo": "record38"
       }
     ]
   },
@@ -641,7 +641,7 @@
             "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_beef_h26.pdf"
           ]
         ],
-        "photo": "beef"
+        "photo": "horn"
       },
       {
         "number": 40,
@@ -655,7 +655,7 @@
             "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_cow_h26.pdf"
           ]
         ],
-        "photo": "beef"
+        "photo": "cowtail"
       },
       {
         "number": 41,
@@ -669,7 +669,7 @@
             "https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_beef_h26.pdf"
           ]
         ],
-        "photo": "beef"
+        "photo": "nose"
       },
       {
         "number": 42,
@@ -687,7 +687,7 @@
             "https://jlta.jp/test/wp-content/uploads/2025/04/R6_cattlecastration_AWreport_2025.04.09.pdf"
           ]
         ],
-        "photo": "beef"
+        "photo": "cattlesurgery"
       },
       {
         "number": 43,
@@ -701,7 +701,7 @@
             "https://www.jstage.jst.go.jp/article/jvma1951/43/12/43_12_874/_pdf"
           ]
         ],
-        "photo": "dairyhandling"
+        "photo": "record43"
       },
       {
         "number": 44,
@@ -729,7 +729,7 @@
             "https://www.pref.ibaraki.jp/hokenfukushi/seiei/eisei/documents/h26jigyougaiyou_1.pdf"
           ]
         ],
-        "photo": "poultrytruck"
+        "photo": "record45"
       },
       {
         "number": 46,
@@ -771,7 +771,7 @@
             "https://www.mpi.govt.nz/dmsdocument/30005/direct"
           ]
         ],
-        "photo": "newborn"
+        "photo": "record48"
       },
       {
         "number": 49,
@@ -785,7 +785,7 @@
             "https://biblio.ugent.be/publication/01J57XJH7MXB5YYX28W7HJT6JZ"
           ]
         ],
-        "photo": "newborn"
+        "photo": "birth"
       },
       {
         "number": 50,
@@ -799,7 +799,7 @@
             "https://pubmed.ncbi.nlm.nih.gov/28041728/"
           ]
         ],
-        "photo": "dairyhandling"
+        "photo": "record50"
       },
       {
         "number": 51,
@@ -832,7 +832,7 @@
             "https://pubmed.ncbi.nlm.nih.gov/36034323/"
           ]
         ],
-        "photo": "sowstall"
+        "photo": "record52"
       },
       {
         "number": 53,
@@ -846,7 +846,7 @@
             "https://pmc.ncbi.nlm.nih.gov/articles/PMC9658477/"
           ]
         ],
-        "photo": "farrowing"
+        "photo": "record53"
       },
       {
         "number": 54,
@@ -860,7 +860,7 @@
             "https://pubmed.ncbi.nlm.nih.gov/32704712/"
           ]
         ],
-        "photo": "farrowing"
+        "photo": "record54"
       },
       {
         "number": 55,
@@ -907,7 +907,7 @@
             "https://pmc.ncbi.nlm.nih.gov/articles/PMC9941850/"
           ]
         ],
-        "photo": "chicks"
+        "photo": "record57"
       },
       {
         "number": 58,
@@ -921,7 +921,7 @@
             "https://pubmed.ncbi.nlm.nih.gov/31267768/"
           ]
         ],
-        "photo": "henhouse"
+        "photo": "record58"
       },
       {
         "number": 59,
@@ -935,7 +935,7 @@
             "https://www.australianeggs.org.au/assets/research/documents/Final-Research-Report-for-Causes-of-smothering-in-free-range_Part-1-1HS901UM.pdf"
           ]
         ],
-        "photo": "henhouse"
+        "photo": "record59"
       },
       {
         "number": 60,
@@ -949,7 +949,7 @@
             "https://veterinarymedicinejournal.usamv.ro/index.php/scientific-papers/past-issues?id=1768"
           ]
         ],
-        "photo": "breeder"
+        "photo": "record60"
       },
       {
         "number": 61,
@@ -963,7 +963,7 @@
             "https://pubmed.ncbi.nlm.nih.gov/2819499/"
           ]
         ],
-        "photo": "layers"
+        "photo": "record61"
       },
       {
         "number": 62,
@@ -995,7 +995,7 @@
             "https://www.efsa.europa.eu/en/infographics/efsas-scientific-opinion-welfare-turkeys-farm"
           ]
         ],
-        "photo": "turkeys"
+        "photo": "record63"
       },
       {
         "number": 64,
@@ -1009,7 +1009,7 @@
             "https://mdpi-res.com/d_attachment/animals/animals-03-00318/article_deploy/animals-03-00318.pdf"
           ]
         ],
-        "photo": "rabbits"
+        "photo": "foot"
       },
       {
         "number": 65,
@@ -1023,7 +1023,7 @@
             "https://pubmed.ncbi.nlm.nih.gov/32626497/"
           ]
         ],
-        "photo": "rabbits"
+        "photo": "record65"
       },
       {
         "number": 66,
@@ -1098,7 +1098,7 @@
             "https://www.europarl.europa.eu/RegData/etudes/STUD/2021/690876/IPOL_STU%282021%29690876_EN.pdf"
           ]
         ],
-        "photo": "livestockship"
+        "photo": "ship"
       },
       {
         "number": 71,
@@ -1112,7 +1112,7 @@
             "https://research.slu.se/en/publications/assessment-of-stun-quality-at-commercial-slaughter-in-cattle-shot/"
           ]
         ],
-        "photo": "processing"
+        "photo": "record71"
       },
       {
         "number": 72,
@@ -1126,7 +1126,7 @@
             "https://www.supremecourt.uk/cases/docs/uksc-2018-0231-press-summary.pdf"
           ]
         ],
-        "photo": "poultryplant"
+        "photo": "record72"
       },
       {
         "number": 73,
@@ -1140,7 +1140,7 @@
             "https://pubmed.ncbi.nlm.nih.gov/32625488/"
           ]
         ],
-        "photo": "processing"
+        "photo": "record73"
       },
       {
         "number": 74,
@@ -1187,7 +1187,7 @@
             "https://www.pref.tottori.lg.jp/item/1424444.htm"
           ]
         ],
-        "photo": "emptybarn"
+        "photo": "fire"
       },
       {
         "number": 77,
@@ -1215,7 +1215,7 @@
             "https://www.maff.go.jp/j/council/seisaku/eisei/bukai_65/attach/pdf/bukai_65-20.pdf"
           ]
         ],
-        "photo": "emptybarn"
+        "photo": "disease"
       },
       {
         "number": 79,
