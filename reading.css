@@ -8,3 +8,11 @@
 @media(max-width:560px){.meal-gallery,.cut-list{grid-template-columns:1fr}.species-gallery{gap:.28rem}.species-gallery img{height:4.3rem}.species-gallery strong{font-size:.75rem}}
 @media print{.species-gallery img,.animal-plate img{background:transparent}}
 
+@media screen and (max-width: 35em) {
+  :root:not(.large-text) :is(article, aside) { font-size: .9rem; }
+  :root:not(.large-text) article h1 { font-size: 1.45rem; }
+  :root:not(.large-text) :is(article, aside) h2 { font-size: 1.15rem; }
+  :root:not(.large-text) article .lead { font-size: 1.1em; }
+  :root:not(.large-text) :is(article, aside) rt { font-size: .56em; }
+  article h1, article .lead { text-wrap: balance; }
+}
