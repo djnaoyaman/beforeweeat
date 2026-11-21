@@ -30,7 +30,7 @@ for(const name of pages){
   if(value.startsWith('https:')||value.startsWith('data:'))continue;
   assert.ok(!value.includes('javascript:'),name);
   const [target,anchor]=value.split('#');
-  if(target)assert.ok(fs.existsSync(path.join(folder,target)),name+' '+target);
+  if(target)assert.ok(fs.existsSync(path.join(folder,target.split('?')[0])),name+' '+target);
   if(anchor&&!target)assert.ok(html.includes('id="'+anchor+'"'),name+' #'+anchor);
   checkedLinks++;
  }
