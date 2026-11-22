@@ -78,7 +78,14 @@ function checkLocalReference(from, value) {
   check(target.startsWith(folder + path.sep), from + ': reference escapes output directory');
   check(fs.existsSync(target), from + ': missing reference ' + value);
   if (url.hash && docs.has(relative)) {
-    check(docs.get(relative).ids.has(decodeURIComponent(url.hash.slice(1))), from + ': missing anchor ' + value);
+    const doc = docs.get(relative);
+    const fragment = decodeURIComponent(url.hash.slice(1));
+    const [animal, cut] = fragment.replace(/^plate-/, '').split('/');
+    const atlasRoute = relative === 'cuts.html' && /^(?:plate-)?(?:cow|pig|hen)(?:\/[a-z-]+)?$/.test(fragment) &&
+      doc.tags.some(tag => tag.attrs['data-animal'] === animal) &&
+      (!cut || doc.tags.some(tag => tag.attrs['data-cut'] === cut &&
+        tag.ancestors.some(parent => parent.attrs['data-animal'] === animal)));
+    check(doc.ids.has(fragment) || atlasRoute, from + ': missing anchor or cut selection ' + value);
   }
   checkedLinks++;
 }

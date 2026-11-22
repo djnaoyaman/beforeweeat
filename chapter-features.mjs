@@ -1,5 +1,6 @@
 import { plateRecipes } from './plate-recipes.mjs';
 import { recipes, species } from './edition.mjs';
+import { atlasForAnimal, cutUrl, cutReadings, cutLabel } from './cut-atlas.mjs';
 
 const cookingMethods = {
   'bbq-ribs': '炭火で焼く',
@@ -34,8 +35,6 @@ function additionalDishes(typeset) {
       }).join('') + '</div>').join('') + '</section>';
 }
 
-const firstCut = { cow: 'すね', pig: 'ロース', hen: 'もも' };
-
 function articleList(title, slugs, { pageLink, typeset }) {
   const links = slugs.map(slug => '<li>' + pageLink(slug) + '</li>').join('');
   return '<section class="subindex"><h2>' + typeset(title) + '</h2><ul>' + links + '</ul></section>';
@@ -63,19 +62,55 @@ export function cookingContents(context) {
 }
 
 function specimen(key, animal, { typeset, pageLink }) {
+  const atlas = atlasForAnimal(key, animal);
+  const selectedIndex = atlas.parts.findIndex(part => part.id === atlas.first);
+  const initial = atlas.parts[selectedIndex];
   const options = animal.cuts.map(([name], i) => {
-    const selected = name === firstCut[key] ? ' selected' : '';
-    return '<option value="' + i + '"' + selected + '>' + name + '</option>';
+    const selected = i === selectedIndex ? ' selected' : '';
+    return '<option value="' + atlas.parts[i].id + '"' + selected + '>' + name + (cutReadings[name] ? '（' + cutReadings[name] + '）' : '') + '</option>';
   });
-  const parts = animal.cuts.map(([name, position, texture, meal]) =>
-    '<div class="cutcopy"><h2>' + typeset(name) + '</h2><p>' + typeset(position) + '</p><p>' +
-      typeset(texture) + '</p><p>' + typeset(meal) + '</p></div>'
-  );
+  const parts = animal.cuts.map(([name, position, texture, meal, article], i) => {
+    const point = atlas.parts[i];
+    const dishes = point.recipes || [];
+    return '<div class="cutcopy" data-cut="' + point.id + '"><h2>' + typeset(cutLabel(name)) + '</h2>' +
+      '<dl class="cut-facts"><div><dt>どこ？</dt><dd>' + typeset(position) + '</dd></div>' +
+      '<div><dt>どんな肉？</dt><dd>' + typeset(texture) + '</dd></div>' +
+      '<div><dt>どんな料理に？</dt><dd>' + typeset(meal) + '</dd></div></dl>' +
+      (dishes.length ? '<p><strong>' + (point.recipeNote ? '作り方の参考' : 'この部位のレシピ') + '</strong>' +
+        (point.recipeNote ? '<br>' + typeset(point.recipeNote) : '') + '</p><ul class="cut-dishes">' +
+        dishes.map(slug => '<li>' + pageLink(slug) + '</li>').join('') + '</ul>' :
+        '<p>' + pageLink('cooking', '料理の一覧を見る') + '</p>') +
+      (article ? '<p class="cut-further">' + pageLink(article, 'この部位をもっと知る') + '</p>' : '') + '</div>';
+  });
+  const markers = atlas.parts.map(part => {
+    const hidden = part.id === atlas.first ? '' : ' hidden';
+    const radius = atlas.width * .025;
+    return '<g data-cut-marker="' + part.id + '" class="cut-marker' + (part.inner ? ' is-inner' : '') + '"' + hidden + '>' +
+      part.points.map(([x, y]) => {
+        const cx = atlas.width * x / 100, cy = atlas.height * y / 100;
+        const core = radius * .32;
+        return '<circle class="cut-marker-halo" cx="' + cx + '" cy="' + cy + '" r="' + radius + '"/>' +
+          (part.inner ? '<path class="cut-marker-core" d="M' + cx + ' ' + (cy - core * 1.5) + ' l' + core * 1.5 + ' ' + core * 1.5 +
+            ' l-' + core * 1.5 + ' ' + core * 1.5 + ' l-' + core * 1.5 + ' -' + core * 1.5 + 'Z"/>' :
+            '<circle class="cut-marker-core" cx="' + cx + '" cy="' + cy + '" r="' + core + '"/>');
+      }).join('') + '</g>';
+  }).join('');
+  const name = animal.cuts[selectedIndex][0];
+  const mapDescription = animal.name + 'の' + name + '。' + initial.note;
   return '<section class="specimen" id="plate-' + key + '" data-animal="' + key +
-    '" aria-label="' + animal.name + 'の部位"><div class="spec-art"><img src="' + animal.art +
-    '" alt="横から見た' + animal.name + 'の全身図"></div><div class="spec-info">' +
-    '<label data-cut-picker hidden>部位を選ぶ　<select aria-label="' + animal.name + 'の部位を選ぶ">' +
-    options.join('') + '</select></label>' + parts.join('') + '<p>' +
+    '" data-animal-name="' + animal.name + '" data-first-cut="' + atlas.first + '" aria-label="' + animal.name + 'の部位">' +
+    '<figure class="spec-art"><div class="cut-map-heading"><strong data-map-name>' + typeset(animal.name + 'の' + cutLabel(name)) +
+    '</strong><span data-map-depth>' + (initial.inner ? '体の奥・内側の目安' : '場所の目安') + '</span></div>' +
+    '<svg class="cut-map" viewBox="0 0 ' + atlas.width + ' ' + atlas.height + '" role="img" aria-labelledby="map-title-' + key +
+    '"><title id="map-title-' + key + '">' + mapDescription + '</title><image href="' + animal.art + '" width="' + atlas.width +
+    '" height="' + atlas.height + '"/>' + markers + '</svg><figcaption><span data-map-note>' + typeset(initial.note) +
+    '</span><small>目印は、おおよその場所です。肉を切り分ける線ではありません。点線の目印は、体の奥や内側を表します。</small></figcaption>' +
+    '</figure><div class="spec-info"><label data-cut-picker hidden for="cut-select-' + key + '">' + typeset('部位を選ぶ') + '</label>' +
+    '<select id="cut-select-' + key + '" data-cut-select hidden aria-label="' + animal.name + 'の部位を選ぶ" aria-controls="cut-copy-' + key + '">' +
+    options.join('') + '</select><div id="cut-copy-' + key + '">' + parts.join('') + '</div>' +
+    '<div class="cut-share" hidden><a data-cut-permalink href="' + cutUrl(key, atlas.first) + '">この部位のリンク</a>' +
+    '<button type="button" data-copy-cut>リンクをコピー</button><input data-cut-share-url hidden readonly aria-label="この部位のURL">' +
+    '<p data-cut-share-status role="status"></p></div><p>' +
     pageLink(animal.guide, animal.name + 'の全' + animal.cuts.length + '部位を見る') + '</p></div></section>';
 }
 
@@ -88,9 +123,15 @@ export function cutsContents(context) {
   const guides = new Set(animals.map(([, animal]) => animal.guide));
   const articles = rows.filter(row => row.group === 3 && row.slug !== 'cuts' && !guides.has(row.slug));
   const fallback = animals.map(([, animal]) => pageLink(animal.guide, animal.name + 'の部位')).join('　');
-  return '<div class="species" role="group" aria-label="図鑑で見る動物を選ぶ" hidden>' + buttons.join('') +
+  return '<p class="atlas-intro">動物と部位を選ぶと、絵の目印が変わります。いつも食べるお肉は、どこにあるでしょう。</p>' +
+    '<div class="species" role="group" aria-label="図鑑で見る動物を選ぶ" hidden>' + buttons.join('') +
     '</div><noscript><p>' + fallback + '</p></noscript>' +
     animals.map(([key, animal]) => specimen(key, animal, context)).join('') +
+    '<script id="cut-atlas-data" type="application/json">' + JSON.stringify(Object.fromEntries(animals.map(([key, animal]) => {
+      const atlas = atlasForAnimal(key, animal);
+      return [key, atlas.parts.map((part, index) => ({ id: part.id, name: animal.cuts[index][0], reading: cutReadings[animal.cuts[index][0]] || '', note: part.note, inner: Boolean(part.inner) }))];
+    }))).replaceAll('<', '\\u003c') + '</script><p id="atlas-status" class="atlas-status" role="status"></p>' +
+    '<p class="atlas-question">場所がちがうと、動き方もちがう。肉のかたさや、おいしい食べ方には、どんなつながりがあるでしょう。</p>' +
     articleList('部位を詳しく読む・栄養を比べる', articles.map(row => row.slug), context) +
     articleList('部位に合う料理', ['stew', 'crispy-chicken'], context);
 }

@@ -1,4 +1,8 @@
 import {editionMarkup, recipes, species} from './edition.mjs';
+import {learningSearchText} from './learning.mjs';
+import {cutAtlas} from './cut-atlas.mjs';
+import {editorialContextSearchText} from './editorial-context.mjs';
+import {articleChecks} from './field-archive.mjs';
 
 function textFromMarkup(markup) {
   return markup.replace(/<rt\b[^>]*>[\s\S]*?<\/rt>/gi, ' ')
@@ -11,8 +15,11 @@ function textFromMarkup(markup) {
 
 export function articleSearchText(row, {plain, titles}) {
   const recipe = recipes[row.slug];
+  const check = articleChecks[row.slug];
   const animals = Object.values(species).filter(animal => row.slug === 'cuts' || row.slug === animal.guide);
   const cuts = animals.flatMap(animal => [animal.name, animal.reading, ...animal.cuts.flatMap(cut => cut.slice(0, 4))]);
+  const mapNotes = Object.entries(species).filter(([, animal]) => row.slug === 'cuts' || row.slug === animal.guide)
+    .flatMap(([key]) => cutAtlas[key].parts.map(part => part.note));
 
   // Supplemental text is visible article text, including tables and checklists.
   // Field records have their own results, so do not duplicate the whole archive.
@@ -23,7 +30,8 @@ export function articleSearchText(row, {plain, titles}) {
   return plain([
     row.lead, row.body, row.ingredients, row.method, row.time, row.tools, row.observe, ...(row.steps || []),
     recipe?.items, recipe?.time, recipe?.tools, recipe?.observe, ...(recipe?.steps || []),
-    ...cuts, textFromMarkup(supplement)
+    ...cuts, ...mapNotes, textFromMarkup(supplement), learningSearchText(row.slug, species), editorialContextSearchText(row),
+    check?.strongest, check?.locator, check?.notes
   ].filter(Boolean).join(' '));
 }
 
@@ -37,7 +45,7 @@ export function createSearchCatalog({rows, names, groups, plain}) {
     ...groups.flatMap(group => group.entries.map(entry => ({
       title: entry.title, label: '第' + entry.number + '項　' + entry.context,
       url: 'field-cases.html#record-' + entry.number,
-      text: [entry.kind, group.title, entry.summary].join(' ')
+      text: [entry.kind, group.title, entry.summary, entry.check?.strongest, entry.check?.locator, entry.check?.notes].filter(Boolean).join(' ')
     })))
   ];
 }

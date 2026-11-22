@@ -1,4 +1,5 @@
 import {fieldArchive, fieldArticlePhoto} from './field-archive.mjs';
+import {atlasForAnimal, cutUrl, cutLabel} from './cut-atlas.mjs';
 
 export const species = {
  cow:{name:'牛',reading:'うし',art:'cow-art.webp',guide:'beef-cuts',cuts:[['ネック','首','細かいすじが多い','煮込み・ひき肉'],['かた','肩から前脚にかけて','赤身が多く、部位内でかたさに差がある','煮込み・薄切り'],['かたロース','肩の背中側','赤身と脂の両方がある','すき焼き・焼き物'],['リブロース','背中の中央寄り','脂のうまみが出やすい','厚切りステーキ・ロースト'],['サーロイン','腰に近い背中','きめが細かく、脂の層がつくことがある','ステーキ'],['ヒレ','背骨の内側','やわらかい赤身','ステーキ・カツ'],['ばら','胸から腹','脂と赤身が重なる','焼肉・煮込み'],['もも','後ろ脚の内側など','赤身の味を楽しめる','薄切り・ロースト','beef-round'],['そともも','後ろ脚の外側','しっかりした肉質','薄切り・煮込み'],['らんぷ','腰からお尻','やわらかさと赤身の味がある','ステーキ・ロースト'],['すね','前脚・後ろ脚の下の方','すじが多く、煮込むとほどける','シチュー','beef-shank'],['タン','舌','先端と根元で食感が異なる','薄切り焼き・煮込み']]},
@@ -61,6 +62,8 @@ export const recipes={
 };
 export const additionalSources={
  cutsmaff:['農林水産省　牛、豚、鶏のお肉丸わかり図鑑','https://www.maff.go.jp/j/pr/aff/2009/spe1_02.html'],
+ chickenparts:['農林水産省　鶏の部位図鑑（日本食肉消費総合センター監修）','https://www.maff.go.jp/j/pr/aff/2009/pdf/aff2009_02_poster06.pdf'],
+ chickenthigh:['文部科学省　若どり・もも・皮なし・生','https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11224_7&MODE=0'],
  woah:['WOAH　アニマルウェルフェア','https://www.woah.org/en/what-we-do/animal-health-and-welfare/animal-welfare/'],
  shimane:['島根県　農林水産委員会資料（PDF）','https://www.pref.shimane.lg.jp/industry/norin/info/shiryo_/nosuisyoko_r5.data/230629nourin_siryo.pdf'],
  bss:['山陰放送　大田市の乳牛への暴力事案の判決報道','https://newsdig.tbs.co.jp/articles/bss/737018?display=1'],
@@ -85,8 +88,31 @@ export function editionMarkup({r,typeset,pageLink,hasAsset}){
   const [key,s]=group;
   const img=figure(s.art,s.name+'の体を横から描いた線画','横から見た'+s.name+'。体の位置を見つけるための線画です。');
   if(slug===key)return img+links([[s.guide,'主要部位を見る'],['field-cases','現場の記録を読む']]);
-  const cards=s.cuts.map(([name,place,body,meal,article])=>'<div class="cut-item"><dt>'+typeset(name)+'</dt><dd>'+paragraph(place)+paragraph(body)+'<p class="cut-meal">'+typeset(meal)+'</p>'+(article?pageLink(article,'詳しく読む'):'')+'</dd></div>').join('');
+  const atlas=atlasForAnimal(key,s);
+  const cards=s.cuts.map(([name,place,body,meal,article],index)=>'<div class="cut-item"><dt>'+typeset(cutLabel(name))+'</dt><dd>'+paragraph(place)+paragraph(body)+'<p class="cut-meal">'+typeset(meal)+'</p><p><a href="'+cutUrl(key,atlas.parts[index].id)+'">図で場所を見る</a></p>'+(article?pageLink(article,'詳しく読む'):'')+'</dd></div>').join('');
   return img+heading('主な部位と向く料理')+'<dl class="cut-list">'+cards+'</dl>'+links([[key,'動物のくらしを知る'],['nutrition','栄養を比べる']]);
+ }
+ if(slug==='chicken-cuts'){
+  const cell=(text)=>'<td>'+typeset(text)+'</td>';
+  const compareRows=[
+   ['体のどこ？','胸の部分。','脚のつけ根から上のほう。'],
+   ['食感と味','脂が少なめで、さっぱりした味。','肉に厚みがあり、うまみを感じやすい。'],
+   ['向く料理','酒蒸し、蒸し鶏の和え物。','皮を焼く料理、から揚げ、煮物。']
+  ];
+  // Both rows use MEXT 2023 supplement: broiler, skinless, raw, edible 100 g.
+  // Food IDs 11220 and 11224; verified from the linked database on 2026-11-23.
+  return heading('同じ見方で、二つを比べる')+
+   '<table class="nutrition"><caption>場所・食感・料理で比べる</caption><thead><tr><th scope="col">比べること</th><th scope="col">むね</th><th scope="col">もも</th></tr></thead><tbody>'+
+   compareRows.map(([label,breast,thigh])=>'<tr><th scope="row">'+typeset(label)+'</th>'+cell(breast)+cell(thigh)+'</tr>').join('')+'</tbody></table>'+
+   '<div class="entries"><a href="'+cutUrl('hen','breast')+'">むねの場所を図で見る</a><a href="'+cutUrl('hen','thigh')+'">ももの場所を図で見る</a></div>'+
+   heading('栄養は、条件をそろえて比べる')+
+   paragraph('どちらも「若どり・皮なし・生」の、食べられる部分100gの値です。皮付きや、焼いた後の値とは分けて見ます。')+
+   '<table class="nutrition"><caption>'+typeset('日本食品標準成分表（八訂）増補2023年。可食部100gあたり。')+'</caption><thead><tr><th scope="col">'+typeset('栄養の種類')+'</th><th scope="col">むね</th><th scope="col">もも</th></tr></thead><tbody>'+
+   '<tr><th scope="row">たんぱく質</th><td>23.3g</td><td>19.0g</td></tr><tr><th scope="row">'+typeset('脂質')+'</th><td>1.9g</td><td>5.0g</td></tr><tr><th scope="row">鉄</th><td>0.3mg</td><td>0.6mg</td></tr></tbody></table>'+
+   paragraph('一つの数字で、どちらがよいかは決まりません。作りたい料理や、ほかのおかずと合わせて選べます。')+
+   heading('食べる前に、一つ考えてみよう')+
+   paragraph('同じにわとりの体なのに、肉の味や食感がちがうのはなぜでしょう。体の場所や、動き方を手がかりに、自分の考えを話してみよう。')+
+   links([['plate-08','むねで作る酒蒸し'],['crispy-chicken','ももの皮をパリッと焼く']]);
  }
  if(['animals','cuts'].includes(slug)){
   const cards=Object.entries(species).map(([key,s])=>'<div><a href="'+(slug==='animals'?key:s.guide)+'.html"><img src="'+s.art+'" alt="" loading="lazy"><strong>'+typeset(s.name)+'</strong></a></div>').join('');

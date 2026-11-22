@@ -24,6 +24,9 @@ node verify.mjs
 - `plate-recipes.mjs` は追加30皿です。`plate-01` から `plate-30` のURLを並び順で変えません。
 - `field-records.json` は79件の現場記録です。`record-1` から `record-79` のアンカーを維持します。
 - `search-catalog.mjs` は本文、材料、手順、道具、観察の問い、部位説明などを検索へ反映します。目次は85ページと79記録を検索できます。
+- `learning.mjs` は5分・45分の教材、児童用シート、7日記録、買い物の計算例です。
+- `cut-atlas.mjs` は30部位の目印と、共有URLに使う固定IDです。精密な解剖図や切り分け線ではありません。
+- `editorial-context.mjs` は食卓までの道、公開研究の紹介、説明と資料の対応、更新履歴です。
 - `top.template` はトップを生成するための原稿です。`top.html` は既存URLからトップへの転送ページです。配信するトップは `dist/index.html` です。
 
 ## 公開時の確認
@@ -34,3 +37,9 @@ node verify.mjs
 
 公開URLは https://djnaoyaman.github.io/beforeweeat/ です。検査範囲と過去の公開記録は `LAUNCH.md` を参照してください。
 
+
+## 印刷用PDFの更新
+
+教材3種と7日記録の固定PDFを同梱しています。通常の `node build.mjs` は検証済みPDFをコピーするだけなので、Pythonは不要です。
+
+教材シートの本文を変えたときは、Noto CJKフォントを用意し、`python -m pip install -r worksheet-requirements.txt`、`python generate-worksheets.py`、`node build.mjs` の順で再生成します。各PDFは1ページのA4であることを生成スクリプトが検査します。公開前に4枚を描画し、文字・図・書き込み欄を目視確認してください。PDFでは難しい語をかなに置き換え、ウェブではふりがなを表示します。

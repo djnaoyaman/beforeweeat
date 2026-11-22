@@ -25,7 +25,7 @@ https://djnaoyaman.github.io/beforeweeat/editorial.html
 https://djnaoyaman.github.io/beforeweeat/animals.html
 
 牛、ぶた、にわとり。どこで育ち、どうやって食卓に届く？
-農場で育ち、運ばれ、食肉を扱う施設へ。卵を産むにわとりや乳を出す牛では、卵・牛乳が届く道もあります。動物が休む場所と、そこで人がする仕事を見てみよう。
+お肉は、生きていた動物の体の一部です。動物が農場で育ち、運ばれ、お肉になって食卓に届くまでには、いろいろな人の仕事があります。その道を、五つの場面でたどります。
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 
 ## アニマルウェルフェアって、どんなこと？
@@ -126,9 +126,11 @@ https://djnaoyaman.github.io/beforeweeat/beef-round.html
 ## 鶏むねと鶏もも、どこがちがう？
 https://djnaoyaman.github.io/beforeweeat/chicken-cuts.html
 
-むねは胸の部分。ももは脚のつけ根のほうです。
-成分表の「若どり・むね・皮なし・生」は、食べられる部分100g当たり、たんぱく質23.3g、脂質1.9g、鉄0.3mg。皮付きのものと比べたいときは、成分表で皮の有無を選びます。
+むねは胸の部分。ももは脚のつけ根のほうです。体の場所、食感、料理、栄養を同じ条件で比べてみよう。
+パックのお肉を見ただけでは、体のどこにあったかはわかりにくいものです。まずは図で場所を確かめてから、二つのちがいを探します。
+農林水産省　鶏の部位図鑑（日本食肉消費総合センター監修） https://www.maff.go.jp/j/pr/aff/2009/pdf/aff2009_02_poster06.pdf
 文部科学省　若どり・むね・皮なし・生 https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11220_7
+文部科学省　若どり・もも・皮なし・生 https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11224_7&MODE=0
 
 ## ちゃんと「いただく」方法
 https://djnaoyaman.github.io/beforeweeat/cooking.html
@@ -196,8 +198,8 @@ https://djnaoyaman.github.io/beforeweeat/miso-soup.html
 ## 買い物でわかること
 https://djnaoyaman.github.io/beforeweeat/shopping.html
 
-品名、量、値段、保存のしかたを順に見て、何人でどんな料理にするか考えます。
-パックに書いてあることと、知りたいけれど書いていないことを一つずつ見つけます。産地や部位を入り口に、お店で聞いてみよう。
+品名、量、値段、保存のしかたを見て、作る料理と買う量を決めよう。
+2人分のレシピを3人分・4人分にする計算例で、買う量を考えます。家に使える材料があれば、その分を引きます。パックに書いてあることと、もっと知りたいことを一つずつ見つけよう。
 
 
 ## 平飼い卵のパックを読んでみる
@@ -210,37 +212,41 @@ https://djnaoyaman.github.io/beforeweeat/eggs.html
 ## 骨付き肉を何グラム買う？
 https://djnaoyaman.github.io/beforeweeat/buy-bone.html
 
-ラベルの重さは骨を含むことがあります。食べる人数と、肉のつき方を見て選びます。
-いつも食べるお皿の量を思い出し、骨付きの一本にどのくらい肉がついているか見ます。初めてなら少なめに盛り、家族でおかわりできるようにします。
+骨付き肉は、レシピの本数や重さから買う量を考えます。
+手羽先や手羽元を人数に合わせる表と、スペアリブ500gから考える例を用意しました。骨も含む重さと、食べられる肉の重さを分けて考えよう。
 
 
 ## 現場を変える人たち
 https://djnaoyaman.github.io/beforeweeat/people.html
 
-農場の人、獣医師、運ぶ人、肉をお店で扱う人。それぞれ違うところから動物の状態と食卓を支えます。
-取材では、変えた工夫、かかった手間、動物に起きた変化を聞きます。公開資料を使った記事から、聞きたいことを探せます。
+動物の行動を調べながら、住まいを改良する人たちがいます。神奈川県の公開資料から、その工夫をたどります。
+鶏が休める場所を、どう増やすか。神奈川県で実際に行われた研究を読んでみよう。設備を作る人と、動物の行動を調べる人の工夫を、公開資料から紹介します。
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
+神奈川県畜産技術センター　巣箱・止まり木・砂浴び場で観察した鶏の行動 https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html
 
 ## 休みやすい場所をどうつくる？
 https://djnaoyaman.github.io/beforeweeat/rest-questions.html
 
-寝床を変えた人に聞いてみたいのは、動物は次の日からどんなふうに休んだか、ということです。
-公開されている飼養管理の指針から、取材で確かめたい点を三つ考えます。前と後でどこに寝るか。体に傷があるか。寝床の手入れにどのくらいかかるか。
+止まり木で休む鶏を観察した研究から、道具を置いたあとの確かめ方を考えます。
+置いた道具を、動物は使っているでしょうか。神奈川県の研究では、材料を変えながら鶏の行動を調べています。わかったことと、これから確かめることを分けて読んでみよう。
+神奈川県畜産技術センター　巣箱・止まり木・砂浴び場で観察した鶏の行動 https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 
 ## 食卓から、じぶんの問いを見つける
 https://djnaoyaman.github.io/beforeweeat/lessons.html
 
 先生や保護者と一緒に、今日の一皿からどうぶつについて考えよう。
-献立に合わせて、牛・ぶた・にわとりの教材を選べます。それぞれ給食5分版と授業45分版、印刷できる観察シートを用意しました。
+牛・ぶた・にわとりの教材から選べます。5分の会話、45分の授業、児童用A4シートで、観察したことと考えたことを分け、次の問いを見つけます。
 文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 
 ## とんかつを食べた日、三つの発見
 https://djnaoyaman.github.io/beforeweeat/lesson-pork.html
 
-ぶたの体のどこを食べたかを見つけ、図を見てわかったことと、もっと知りたいことを書きます。
-給食5分版。ぶたの図で背中を指し、知りたいことを一つ出す。授業45分版。献立を思い出す5分、全身図を見る10分、寝床を考える15分、友だちと話す10分、農場に聞きたい質問を書く5分。画面の印刷ボタンで観察シートを配れます。
+ぶたの体のどこを食べたかを見つけ、資料を手がかりに、くらしを考えよう。
+5分版と45分版の進め方、三つの資料カード、先生用メモ、印刷用の児童シートがあります。見えたこと、考えたこと、次に聞きたいことを分けて書きます。
 文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 
 ## お肉屋さんに一つ聞けるなら？
 https://djnaoyaman.github.io/beforeweeat/ask-shop.html
@@ -259,15 +265,15 @@ https://djnaoyaman.github.io/beforeweeat/thanks.html
 ## 一週間の食べきり観察
 https://djnaoyaman.github.io/beforeweeat/food-diary.html
 
-お皿に盛った量と、ちょうどよく食べられた量をメモします。
-食べきれそうな分から盛り、足りなければおかわり。余ったときはどんな理由か、次はどれくらい買うかを家族で相談します。
+一日一皿。盛った量と食べた量を、7日間メモしよう。
+記入例を見て、印刷できる7日シートかノートに書きます。食べきることを点数にせず、ちょうどよい盛り方と、次に買う量を家族で見つけます。
 消費者庁　家庭での食品ロス対策 https://www.no-foodloss.caa.go.jp/eating-home.html
 
 ## ことばと元の資料を引く
 https://djnaoyaman.github.io/beforeweeat/sources.html
 
 部位は体のどの場所かを表す言葉。可食部は食べられる部分のこと。出典は、説明のもとにした資料です。
-資料を開いたら、書いた人、発表年、調べた範囲を順に見ます。子どもと読むときは、先にこのサイトの短い説明を読んでから、元の資料を一緒に見ても構いません。
+このサイトの説明と、元の資料を一組でたどれます。資料を開いたら、書いた人、発表した時期、調べた範囲を見てみよう。観察してわかったことと、ここから考える問いは分けて書いています。
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 文部科学省　食品成分データベース https://fooddb.mext.go.jp/
 文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
@@ -276,7 +282,7 @@ https://djnaoyaman.github.io/beforeweeat/sources.html
 https://djnaoyaman.github.io/beforeweeat/corrections.html
 
 記事に載せた数字や説明が変わったときは、元の資料と日付を確認します。
-2026年11月22日、初版を作成。記事ごとに根拠へのリンクを掲載しています。見つけた疑問は、記事名、該当箇所、参考資料とともにリポジトリのIssueへお寄せください。
+内容を更新した日と、変わった点を記録します。気になる説明があれば、記事名、気になった文、確かめられる資料を添えて知らせてください。
 
 
 ## 牛のくらしを知る
@@ -284,6 +290,7 @@ https://djnaoyaman.github.io/beforeweeat/cow.html
 
 牛が快適に過ごせるかは、立つ、歩く、横になる、反すうする様子から考えられます。
 肉用牛と乳用牛では、人が牛を飼う目的や飼い方が違います。どちらの牛でも、水が飲めるか、床がすべりにくいか、横になれる場所があるかを確認します。長い時間口を動かしているときは、食べた草などを口に戻してかみ直す反すうをしていることがあります。
+牛肉になる道と、牛乳が届く道を、この下で別々に見てみよう。
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 WOAH　アニマルウェルフェア https://www.woah.org/en/what-we-do/animal-health-and-welfare/animal-welfare/
 
@@ -292,6 +299,7 @@ https://djnaoyaman.github.io/beforeweeat/pig.html
 
 ぶたは鼻でまわりを探ったり、体を伸ばして横になったりします。
 床と寝床の状態、飲み水、ほかのぶたと距離をとれる場所、鼻を使って探れるものなどが手がかりです。母ぶたについては、出産前後に使う囲いと、おなかに子がいるときに使う囲いの両方を見てみよう。
+農場を出てから食卓に届くまでも、ぶたを思いやる工夫を考えてみよう。
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 WOAH　アニマルウェルフェア https://www.woah.org/en/what-we-do/animal-health-and-welfare/animal-welfare/
 
@@ -300,6 +308,7 @@ https://djnaoyaman.github.io/beforeweeat/hen.html
 
 食べる卵を産む鶏と、お肉になる鶏。見ているのはどちらの鶏でしょう。
 採卵鶏と肉用鶏では、育てる目的や見るべきことが違います。産卵する場所、止まり木、砂浴び、足うらや歩き方。飼い方と動物のようすを一組で考えます。
+お肉と卵が食卓に届く道を、分けて見てみよう。
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 WOAH　アニマルウェルフェア https://www.woah.org/en/what-we-do/animal-health-and-welfare/animal-welfare/
 
@@ -404,15 +413,17 @@ https://djnaoyaman.github.io/beforeweeat/storage.html
 https://djnaoyaman.github.io/beforeweeat/lesson-beef.html
 
 シチューに入っていたすね肉は、牛の体のどこにあるかな。
-給食5分版。牛の図で脚の下のほうを指し、すね肉の名前と場所を確かめる。授業45分版。献立を思い出す5分、全身図で脚を探す10分、牛が立つ・歩く・休む場面を考える15分、友だちと話す10分、農場に聞きたいことを書く5分。
+5分版と45分版で体の場所を探し、立つ・歩く・休むための場所を考えます。資料カードを手がかりに、観察したことと考えたことを分け、次の問いをつくります。
 文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 
 ## 鶏ももの料理から、にわとりを見てみよう
 https://djnaoyaman.github.io/beforeweeat/lesson-chicken.html
 
 から揚げや焼き物に使うもも肉は、にわとりの体のどこにあるかな。
-給食5分版。にわとりの図で脚のつけ根を探してみる。授業45分版。献立を思い出す5分、全身図で胸と脚を見比べる10分、にわとりが歩く・羽を広げる場面を考える15分、友だちと話す10分、農場に聞きたいことを書く5分。
+5分版と45分版で体の場所を探し、歩く・羽を広げる・水を飲むための場所を考えます。資料カードを手がかりに、観察したことと考えたことを分け、次の問いをつくります。
 文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
+農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 
 ## 砂肝のにんにく焼き
 https://djnaoyaman.github.io/beforeweeat/plate-01.html

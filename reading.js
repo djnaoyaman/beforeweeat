@@ -26,7 +26,7 @@ if(find){
   document.querySelector('#count').textContent=query?count+'件の記事':'';
  });
 }
-document.querySelector('[data-print]')?.addEventListener('click',()=>print());
+document.querySelectorAll('[data-print]').forEach(button=>button.addEventListener('click',()=>window.print()));
 
 function openLinkedFieldRecord(){
  const target=window.location.hash;

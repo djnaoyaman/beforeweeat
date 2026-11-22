@@ -390,3 +390,49 @@
 
 .field-warning { padding: .45rem; border: 1px solid var(--line); font-size: .8rem; line-height: 1.5; }
 .field-warning small { display: block; }
+
+/* One reference point connects each cut's name, place and cooking choices. */
+.contents .atlas-intro { margin-top: .8rem; max-width: 42rem; }
+.specimen { align-items: stretch; }
+.specimen .spec-art { padding: 1rem; min-width: 0; }
+.cut-map-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .7rem; }
+.cut-map-heading strong { font: 600 1.15rem/1.5 var(--serif); }
+.cut-map-heading > span { color: var(--secondary); font-size: .8rem; }
+.spec-art .cut-map { display: block; width: 100%; height: auto; max-height: 26rem; overflow: visible; }
+.cut-map image { opacity: .9; }
+.cut-marker-halo { fill: #f4f2e9c9; stroke: var(--accent); stroke-width: 3; vector-effect: non-scaling-stroke; }
+.cut-marker-core { fill: var(--accent); stroke: var(--paper); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.cut-marker.is-inner .cut-marker-halo { stroke-dasharray: 4 3; }
+.spec-art figcaption { margin: .6rem 0 0; font-size: .94rem; line-height: 1.75; }
+.spec-art figcaption > span { display: block; }
+.spec-art figcaption small { display: block; margin-top: .45rem; color: var(--secondary); font-size: .8rem; line-height: 1.65; }
+.spec-info > [data-cut-picker] { display: block; font-weight: 600; }
+.spec-info > [data-cut-select] { display: block; width: 100%; margin-top: .4rem; }
+.contents .cutcopy { margin-top: 1rem; }
+.contents .cutcopy h2 { font-size: 1.6rem; }
+.cut-facts { margin: .8rem 0; }
+.cut-facts > div { padding: .65rem 0; border-block-start: 1px solid var(--line); }
+.cut-facts dt { color: var(--secondary); font-size: .85rem; }
+.cut-facts dd { margin: .15rem 0 0; }
+.cut-dishes { margin: .7rem 0; padding: 0; list-style: none; }
+.cut-dishes li + li { border-block-start: 1px solid var(--line); }
+.cut-dishes a { text-decoration-thickness: 1px; text-underline-offset: .23em; }
+.cut-further { font-size: .9rem; }
+.cut-share { margin: 1rem 0 .6rem; padding-top: .6rem; border-block-start: 1px solid var(--line); display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .8rem; }
+.cut-share :is(a, button) { min-height: 44px; font-size: .875rem; }
+.cut-share button { border: 1px solid var(--line); border-radius: 0; padding: .4rem .75rem; }
+.cut-share input { width: 100%; min-width: 0; font-size: 1rem; }
+.contents .cut-share [role="status"] { flex-basis: 100%; font-size: .875rem; }
+.contents .atlas-status { position: absolute; width: 1px; height: 1px; margin: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.contents .atlas-question { margin-top: 1rem; padding: 1rem; border-inline-start: 3px solid var(--accent); max-width: 48rem; }
+@media (max-width: 620px) {
+  .specimen .spec-art, .specimen .spec-info { padding: .9rem 0; }
+  .spec-art .cut-map { max-height: 23rem; }
+  .cut-map-heading strong { font-size: 1.05rem; }
+  .spec-art figcaption { font-size: .9rem; }
+  .spec-info { border-inline-start: 0; }
+}
+@media print {
+  .cut-share, .atlas-status { display: none !important; }
+  .spec-art .cut-map { max-height: 15rem; }
+}

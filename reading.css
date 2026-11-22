@@ -137,3 +137,109 @@ article p {
   color: #514f43;
   line-height: 1.65;
 }
+
+/* Lessons and family activities share the editorial page, with a paper-only sheet. */
+.learning-jumps{display:flex;flex-wrap:wrap;gap:.5em 1em;margin:1rem 0;padding:.75rem 0;border-block:1px solid #9a9c8d;font-size:.85em}
+.learning-jumps a{display:inline-flex;align-items:center;min-height:44px}
+.lesson-section{margin-block:2rem;scroll-margin-top:1rem}
+.lesson-section li{margin-block:.6em}
+.lesson-timeline{list-style:none;padding:0;border-top:1px solid #9a9c8d}
+.lesson-timeline li{padding:.8rem 0;border-bottom:1px solid #9a9c8d}
+.lesson-timeline p{margin:.35em 0}
+.pupil-action{font-size:.88em;color:#514f43}
+.learning-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin:1rem 0}
+.learning-cards>div{padding:.7rem;border:1px solid #9a9c8d;background:#efebdf}
+.learning-cards h3{font-size:1em;margin:0 0 .4em}
+.learning-cards p{font-size:.9em;margin:0}
+.learning-source,.sheet-small{font-size:.8em}
+.learning-source a{overflow-wrap:anywhere}
+.learning-examples{border-inline-start:3px solid #9a9c8d;padding-inline-start:1rem}
+.learning-examples dt{font-weight:700;margin-block-start:.7em}
+.learning-examples dd{margin:.25em 0 .75em}
+.lesson-card-food{display:block;font-size:.75em;margin-top:.4em}
+.print-help{border-top:1px solid #9a9c8d;padding-top:.5rem;margin-top:2rem}
+.print-help button{min-height:44px;margin:.25rem 0 .8rem}
+.worksheet{border:1px solid #9a9c8d;padding:1rem;margin:1rem 0 2rem;background:#fffdf7;scroll-margin-top:1rem}
+.worksheet h2{margin:0 0 .6em;font-size:1.35em}
+.sheet-name{font-size:.85em;margin:.5em 0}
+.sheet-observe{display:grid;grid-template-columns:42% minmax(0,1fr);gap:1rem;align-items:center}
+.sheet-observe figure{margin:.4rem 0}
+.sheet-observe img{background:transparent;height:9rem;object-fit:contain}
+.sheet-observe figcaption{font-size:.7em}
+.sheet-observe p{margin:.4em 0;font-size:.85em}
+.compact-cards{font-size:.85em;gap:.5rem}
+.compact-cards>div{padding:.5rem}
+.sheet-answer{margin:.8rem 0}
+.sheet-answer h3{font-size:1em;margin:.3em 0}
+.sheet-answer p{font-size:.75em;margin:.25em 0}
+.answer-space{min-height:4.5rem;border:1px solid #b6b8aa;background:repeating-linear-gradient(to bottom,transparent 0,transparent calc(1.5rem - 1px),#e2e2d8 calc(1.5rem - 1px),#e2e2d8 1.5rem)}
+.sheet-credit{font-size:.6em;line-height:1.5;margin:.8rem 0 0}
+.learning-table-wrap{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;margin:1rem 0}
+.learning-table-wrap:focus-visible{outline:3px solid #963f25;outline-offset:3px}
+.learning-table{width:100%;border-collapse:collapse;text-align:left;line-height:1.6;font-size:.85em}
+.learning-table caption{text-align:left;margin-bottom:.4em}
+.learning-table th,.learning-table td{padding:.5em;border:1px solid #9a9c8d;vertical-align:top}
+.learning-table thead th{background:#e8e9df}
+.purchase-table{min-width:27rem}
+.purchase-table th:first-child{width:52%}
+.purchase-table small{display:block;font-weight:400;margin-top:.3em}
+.quantity-formula{padding:.7em;background:#e8e9df;font-weight:700}
+.diary-table{min-width:33rem;table-layout:fixed}
+.diary-table th:nth-child(1){width:13%}
+.diary-table th:nth-child(2){width:19%}
+.diary-table th:nth-child(6){width:23%}
+.diary-table tbody tr{height:4rem}
+.diary-table tbody th{font-weight:400;white-space:nowrap}
+.diary-example{font-size:.7em;line-height:1.7}
+.diary-reflection p{font-size:.8em;margin:.45em 0 .25em}
+.diary-reflection .answer-space{min-height:2.5rem}
+@media screen and (max-width:35em){
+ .learning-cards{grid-template-columns:1fr}
+ .worksheet{padding:.75rem}
+ .sheet-observe{grid-template-columns:1fr;gap:.35rem}
+ .sheet-observe img{height:10rem}
+ .sheet-answer h3{font-size:1em!important}
+ .lesson-card-food{font-size:.7em;line-height:1.5}
+}
+@media print{
+ @page{size:A4 portrait;margin:12mm}
+ :root{background:#fff}
+ .worksheet-page{font-size:11pt!important;line-height:1.45;background:#fff;color:#000}
+ .worksheet-page main{width:100%;max-width:none;margin:0;padding:0}
+ .worksheet-page article{margin:0;padding:0;font-size:11pt!important}
+ .worksheet-page article>:not(.worksheet){display:none!important}
+ .worksheet-page .worksheet{display:block;border:0;padding:0;margin:0;background:#fff;break-inside:avoid;box-shadow:none}
+ .worksheet-page .worksheet h2{font-size:15pt!important;line-height:1.4;margin:0 0 2mm}
+ .worksheet-page .worksheet h3{font-size:10.5pt!important;line-height:1.45;margin:0 0 1mm}
+ .worksheet-page .worksheet p{margin:1mm 0;line-height:1.5}
+ .worksheet-page .sheet-name{font-size:10pt}
+ .worksheet-page .sheet-small{font-size:9pt}
+ .worksheet-page .sheet-observe{grid-template-columns:40% minmax(0,1fr);gap:5mm;margin:2mm 0}
+ .worksheet-page .sheet-observe figure{margin:0}
+ .worksheet-page .sheet-observe img{height:38mm;max-height:38mm;background:transparent}
+ .worksheet-page .sheet-observe figcaption{font-size:7.5pt;line-height:1.4;margin:1mm 0}
+ .worksheet-page .sheet-observe p{font-size:10.5pt}
+ .worksheet-page .learning-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:2mm;margin:3mm 0}
+ .worksheet-page .learning-cards>div{padding:2mm;background:#fff;border-color:#888}
+ .worksheet-page .learning-cards h3{font-size:10.5pt!important}
+ .worksheet-page .learning-cards p{font-size:10pt}
+ .worksheet-page .sheet-answer{margin:3mm 0}
+ .worksheet-page .sheet-answer p{font-size:9pt}
+ .worksheet-page .answer-space{min-height:20mm;border-color:#888;background:none}
+ .worksheet-page .pupil-sheet .answer-space{min-height:27mm}
+ .worksheet-page .sheet-credit{font-size:7pt;line-height:1.4;margin-top:2mm}
+ .worksheet-page .learning-table-wrap{overflow:visible;margin:2mm 0}
+ .worksheet-page .learning-table{min-width:0;width:100%;font-size:9pt;line-height:1.35}
+ .worksheet-page .learning-table th,.worksheet-page .learning-table td{padding:1.3mm;border-color:#777}
+ .worksheet-page .learning-table thead th{background:#fff}
+ .worksheet-page .diary-table tbody tr{height:16mm}
+ .worksheet-page .diary-example{font-size:8.5pt}
+ .worksheet-page .diary-sheet>h3{margin-top:3mm}
+ .worksheet-page .diary-reflection p{font-size:9.5pt;margin:2mm 0 1mm}
+ .worksheet-page .diary-reflection .answer-space{min-height:10mm}
+ .worksheet-page rt{font-size:.53em}
+}
+
+.worksheet-download{display:inline-flex;align-items:center;min-height:44px;margin:.25rem 0 .8rem .5rem;padding:.2em .6em;border:1px solid #1b3027;text-decoration:none}
+.worksheet-download:hover,.worksheet-download:focus-visible{text-decoration:underline}
+@media screen and (max-width:35em){.worksheet-download{margin-inline-start:0}}
