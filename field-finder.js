@@ -68,3 +68,25 @@
  filter();
  showLinkedRecord();
 })();
+
+(() => {
+ const control = document.getElementById('show-field-photos');
+ if (!control) return;
+ let visible = false;
+ function update() {
+  for (const slot of document.querySelectorAll('[data-field-media]')) {
+   if (visible && !slot.firstElementChild) {
+    slot.append(slot.nextElementSibling.content.cloneNode(true));
+   } else if (!visible) {
+    slot.replaceChildren();
+   }
+  }
+  control.setAttribute('aria-pressed', String(visible));
+  control.textContent = visible ? '写真を隠す' : '内容を理解して写真を表示する';
+ }
+ 
+ document.querySelector('.field-cover a').addEventListener('click', () => {visible = false; update();});
+ control.hidden = false;
+ control.addEventListener('click', () => {visible = !visible; update();});
+ update();
+})();

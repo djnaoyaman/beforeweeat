@@ -151,23 +151,37 @@ function photo(key,typeset){
  const figure = '<figure class="field-photo"><img src="'+localName(key)+'" alt="'+escape(alt)+'" loading="lazy" decoding="async"><figcaption>'+caption+'</figcaption></figure>';
  return item?.warning?'<details class="evidence"><summary>'+typeset(item.warning)+'</summary>'+figure+'</details>':figure;
 }
+function protectedMedia(markup, tag = 'div') {
+ return '<'+tag+' data-field-media></'+tag+'><template>'+markup+'</template>';
+}
+function thumbnail(key) {
+ const item = originals[key];
+ const label = item?.label ?? 'イメージ写真';
+ return protectedMedia('<span class="field-thumbnail"><img loading="lazy" decoding="async" src="'+localName(key)+'" alt=""><small>'+label+'</small></span>', 'span');
+}
 export function fieldArticlePhoto(slug,typeset){
- return articles[slug]?photo(articles[slug],typeset):'';
+ if (!articles[slug]) return '';
+ return '<details class="evidence"><summary>写真を見る（動物の傷や飼育環境を扱います）</summary>'+photo(articles[slug],typeset)+'</details>';
 }
 
 export function fieldArchive({caseLabels,typeset,pageLink}){
- const links = Object.entries(caseLabels).map(([id,label])=>'<li><p>'+typeset(label)+'</p>'+pageLink(id)+'</li>').join('');
+ const links = Object.entries(caseLabels).map(([id,label])=>'<li>'+thumbnail(articles[id])+'<p>'+typeset(label)+'</p>'+pageLink(id)+'</li>').join('');
  const total = fieldGroups.reduce((count, group) => count + group.entries.length, 0);
- const featured = '<div class="fieldjump"><a href="#field-archive">全'+total+'件を探す</a>'
+ const cover = '<section class="field-cover" aria-labelledby="field-cover-title"><h2 id="field-cover-title">写真を見る前に</h2>'
+  +'<p>'+typeset('けがをした動物や死んだ動物、処理施設の様子を写した写真と、記録をもとにしたイメージ写真があります。')+'</p>'
+  +'<p>写真を表示しなくても、すべての本文と出典を読めます。</p>'
+  +'<button hidden type="button" id="show-field-photos" aria-pressed="false">内容を理解して写真を表示する</button> <a href="#field-archive">本文だけ読む</a></section>';
+ const featured = cover+'<div class="fieldjump"><a href="#field-archive">全'+total+'件を探す</a>'
   +'<a href="#field-related">掘り下げ記事 '+Object.keys(caseLabels).length+'本</a></div>'
   +'<section class="docket"><p class="dateline">'+typeset('英国・デヴォン　／　2024年3月の立ち入り調査')+'</p>'
   +'<h2>'+pageLink('case-devon')+'</h2><p>'+pageLink('case-devon','調査の経過を読む')+'</p>'
-  +fieldArticlePhoto('case-devon',typeset)+'</section>';
+  +protectedMedia(photo(articles['case-devon'],typeset))+'</section>';
  const entries = fieldGroups.map(group=>{
   const rows = group.entries.map(({number,title,context,kind,summary,sources,check,photo:scene})=>{
    const related = articlesByNumber[number];
-   const media = photo(originalByNumber[number]??scene,typeset);
-   return '<li id="record-'+number+'"><details class="field-record"><summary><span class="field-record-number">'+String(number).padStart(2,'0')+'</span><span><strong>'+typeset(title)+'</strong><small>'+typeset(context+' ／ '+kind)+'</small></span></summary>'
+   const key = originalByNumber[number]??scene;
+   const media = protectedMedia(photo(key,typeset));
+   return '<li id="record-'+number+'"><details class="field-record"><summary><span class="field-record-number">'+String(number).padStart(2,'0')+'</span><span><strong>'+typeset(title)+'</strong><small>'+typeset(context+' ／ '+kind)+'</small></span>'+thumbnail(key)+'</summary>'
     +'<div class="field-record-body"><div class="field-account">'+summary.split(/\n+/).map(p=>'<p>'+typeset(p)+'</p>').join('')+'</div>'+media
     +(related?'<p>'+pageLink(related,number===5?'ポーランドの研究記事を読む':'掘り下げ記事を読む')+'</p>':'')
     +'<h4>出典</h4><ul>'+sources.map(source=>'<li>'+link(source)+'</li>').join('')+'</ul>'+factCheck(check,typeset)+'</div></details></li>';
