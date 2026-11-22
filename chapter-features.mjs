@@ -6,6 +6,16 @@ const cookingMethods = {
   'crispy-chicken': 'フライパンで焼く'
 };
 
+const kitchenPhotos = {
+  'ginger-pork': ['フライパンで炒める', 'しょうがだれをからめた豚こま肉'],
+  'pork-cutlet': ['衣をつけて揚げる', '切り分けた豚ロースのとんかつ'],
+  'miso-soup': ['鍋で煮る', '豚肉と根菜の入った豚汁'],
+  grain: ['切り方', '包丁と薄切りにした肉の断面'],
+  heat: ['火の通り', '肉の中心に温度計を差し込んだところ'],
+  storage: ['保存', '袋と容器に入れて冷蔵した肉']
+};
+export const kitchenAssets = Object.keys(kitchenPhotos).map(slug => 'kitchen-' + slug + '.webp');
+
 const firstCut = { cow: 'すね', pig: 'ロース', hen: 'もも' };
 
 function articleList(title, slugs, { pageLink, typeset }) {
@@ -17,16 +27,20 @@ export function cookingContents(context) {
   const { rows, typeset, hasAsset } = context;
   const articles = rows.filter(row => row.group === 4 && row.slug !== 'cooking');
   const titles = new Map(articles.map(row => [row.slug, row.title]));
-  const dishes = Object.entries(cookingMethods).map(([slug, method]) => {
-    const { art, alt } = recipes[slug];
-    const image = hasAsset(art) ? '<img src="' + art + '" alt="' + alt + '" width="1080" height="810">' : '';
-    return '<a class="dish" href="' + slug + '.html">' + image +
-      '<span class="dishtext"><small>' + typeset(method) + '</small><strong>' +
-      typeset(titles.get(slug)) + '</strong></span></a>';
-  });
-  const otherArticles = articles.map(row => row.slug).filter(slug => !Object.hasOwn(cookingMethods, slug));
-  return '<div class="dish-grid">' + dishes.join('') + '</div>' +
-    articleList('ほかの料理と台所の基本', otherArticles, context) +
+  function thumbnail(slug) {
+    const recipe = recipes[slug];
+    const method = cookingMethods[slug] || kitchenPhotos[slug][0];
+    const art = recipe?.art || 'kitchen-' + slug + '.webp';
+    const alt = recipe?.alt || kitchenPhotos[slug][1];
+    if (!hasAsset(art)) throw new Error('Missing cooking thumbnail: ' + art);
+    return '<a class="dish" href="' + slug + '.html"><img src="' + art + '" alt="' + alt + '"' +
+      (slug === 'bbq-ribs' ? '' : ' loading="lazy"') + '><span class="dishtext"><small>' +
+      typeset(method) + '</small><strong>' + typeset(titles.get(slug)) + '</strong></span></a>';
+  }
+  const basics = ['grain', 'heat', 'storage'];
+  const dishes = [...Object.keys(cookingMethods), 'ginger-pork', 'pork-cutlet', 'miso-soup'];
+  return '<div class="dish-grid">' + dishes.map(thumbnail).join('') + '</div>' +
+    '<section class="subindex"><h2>台所の基本</h2><div class="dish-grid">' + basics.map(thumbnail).join('') + '</div></section>' +
     articleList('このお肉は、どこの部位？', ['beef-shank', 'ribs'], context);
 }
 

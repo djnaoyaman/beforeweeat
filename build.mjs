@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import {chapterHeader, contentsPage} from './featured-directory.mjs';
-import {cookingContents, cutsContents} from './chapter-features.mjs';
+import {cookingContents, cutsContents, kitchenAssets} from './chapter-features.mjs';
 import {fieldAssets, fieldGroups, articleChecks, factCheck} from './field-archive.mjs';
 import {species, caseLabels, additionalSources, editionMarkup} from './edition.mjs';
 const project = new URL('.', import.meta.url);
@@ -10,7 +10,7 @@ for (const name of ['reading.css','reading.js','featured-chapters.css','chapter-
  const asset=new URL(name,project);
  if(fs.existsSync(asset))fs.copyFileSync(asset,new URL(name,dist));
 }
-for (const name of ['cow-art.webp','pig-art.webp','hen-art.webp','runway-rib.webp','runway-beef.webp','runway-chicken.webp','animal-view.js']){
+for (const name of [...kitchenAssets,'cow-art.webp','pig-art.webp','hen-art.webp','runway-rib.webp','runway-beef.webp','runway-chicken.webp','animal-view.js']){
  const asset=new URL(name,project);
  if(fs.existsSync(asset))fs.copyFileSync(asset,new URL(name,dist));
 }
