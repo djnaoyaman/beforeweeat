@@ -362,3 +362,12 @@
   .featured-chapter .fieldjump, .featured-chapter .field-search, .featured-chapter .trionav { display: none; }
   .spread, .dish, .docket, .specimen { break-inside: avoid; }
 }
+
+.plate-gallery { margin-block: 2.4rem; }
+.plate-gallery h3 { margin: 1.4rem 0 .7rem; border-bottom: 1px solid var(--line); padding-bottom: .45rem; }
+.plate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); gap: 1rem; }
+.plate-grid figure { margin: 0; min-width: 0; }
+.plate-grid a { display: block; }
+.plate-grid img { width: 100%; height: auto; background: transparent; }
+.plate-grid figcaption { margin-block: .3rem; line-height: 1.55; }
+@media (max-width: 620px) { .plate-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: .75rem; } }
