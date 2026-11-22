@@ -1,3 +1,4 @@
+import {plateRecipes} from './plate-recipes.mjs';
 import fs from 'node:fs';
 import {chapterHeader, contentsPage} from './featured-directory.mjs';
 import {cookingContents, cutsContents, kitchenAssets} from './chapter-features.mjs';
@@ -25,6 +26,7 @@ const portfolio = 'https://djnaoyaman.github.io/';
 const names = ['トップページ','このサイトと、書いている人','動物のくらしと畜産の現場','お肉の部位と栄養図鑑','ちゃんと「いただく」方法','買い物でわかること','現場を変える人たち','食卓で考える・やってみる','ことば・出典・訂正'];
 const sources = {
 ...additionalSources,
+meatheat:['厚生労働省　食肉の加熱条件に関するQ＆A','https://www.mhlw.go.jp/content/11130500/000496685.pdf'],
 maff:['農林水産省　アニマルウェルフェアについて','https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html'],
 survey:['農林水産省　令和6年度調査の採卵鶏の結果（PDF）','https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/animal_welfare-116.pdf'],
 chick:['農林水産省　鶏をめぐる情勢の補足説明資料（PDF）','https://www.maff.go.jp/j/chikusan/sinko/lin/l_katiku/attach/pdf/r6_niwatori-15.pdf'],
@@ -115,14 +117,17 @@ function featuredBody(row) {
   :editionMarkup({r:row,typeset,pageLink,hasAsset});
  return breadcrumb+'<h1>'+typeset(chapterTitle)+'</h1>'+content;
 }
-for(const r of rows){
+const publicationRows = [...rows, ...plateRecipes];
+for(const r of publicationRows){
  const title=(r.slug==='start'?'すべての目次':plain(r.title))+'｜Before We Eat';
  const page=r.slug+'.html';
  const refs=(r.slug==="cuts" ? [...r.refs,"cutsmaff"] : r.refs).map(key=>sources[key]);
  if(refs.some(ref=>!ref))throw Error('Missing source: '+r.slug);
  const check=articleChecks[r.slug];
  const sourceLabel=check?'出典':'ことばのもとになった資料を見る';
- const bodyHtml=r.body.split('\n').map(section=>'<p>'+typeset(section)+'</p>').join('');
+ const bodyHtml=r.ingredients
+  ? '<figure class="food-plate"><img src="'+r.art+'" alt="'+escape(r.title)+'"></figure><h2>材料（2人分）</h2><ul>'+r.ingredients.split('、').map(item=>'<li>'+typeset(item)+'</li>').join('')+'</ul><h2>作り方</h2><ol>'+r.steps.map(step=>'<li>'+typeset(step)+'</li>').join('')+'</ol><p>'+typeset('肉の火の通りは中心温度計で確かめます。最も厚いところの中心が75℃に達してから、1分以上加熱してください。')+'</p>'
+  : r.body.split('\n').map(section=>'<p>'+typeset(section)+'</p>').join('');
  const refsHtml=refs.length?'<details class="references"><summary>'+sourceLabel+'</summary><ul>'+refs.map(([label,url])=>'<li><a href="'+escape(url)+'">'+escape(label)+'</a></li>').join('')+'</ul></details>':'';
  if(Object.hasOwn(featuredLabels,r.slug)){
   const scripts={start:['chapter-search.js'], 'field-cases':['chapter-search.js','field-finder.js'], cuts:['chapter-cuts.js'], cooking:[]};
@@ -133,7 +138,7 @@ for(const r of rows){
    +chapterHeader(pageLink)+'<main id="main" class="contents"><article class="chapter-page">'+featuredBody(r)+refsHtml+'</article>'+readerOptions+'</main>'+footer+'</body></html>');
   continue;
  }
- write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,plain(r.lead),page,r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg',true)+'<link rel="stylesheet" href="reading.css?v=4"><script src="reading.js'+(r.slug==='field-cases'?'?v=2':'')+'" defer></script></head><body><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1><p class="lead">'+typeset(r.lead)+'</p>'+feature(r)+bodyHtml+editionMarkup({r,typeset,pageLink,hasAsset})+extra(r)+directory(r)+refsHtml+(check?factCheck(check,typeset):'')+'</article><aside aria-label="次に読む"><h2>次は、どれを読む？</h2><ul class="story-list">'+r.links.map(slug=>'<li>'+pageLink(slug)+'</li>').join('')+'</ul></aside></main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
+ write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,r.ingredients ? r.title+'の材料と作り方。2人分。' : plain(r.lead),page,r.art || (r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg'),true)+'<link rel="stylesheet" href="reading.css?v=4"><script src="reading.js'+(r.slug==='field-cases'?'?v=2':'')+'" defer></script></head><body><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1>'+(r.lead?'<p class="lead">'+typeset(r.lead)+'</p>':'')+feature(r)+bodyHtml+editionMarkup({r,typeset,pageLink,hasAsset})+extra(r)+directory(r)+refsHtml+(check?factCheck(check,typeset):'')+'</article><aside aria-label="次に読む"><h2>次は、どれを読む？</h2><ul class="story-list">'+r.links.map(slug=>'<li>'+pageLink(slug)+'</li>').join('')+'</ul></aside></main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
 }
 let top=fs.readFileSync(new URL('top.html',project),'utf8').replace(/<meta name="description"[^>]*>/gi,'');
 top=top.replace('</head>',meta('Before We Eat｜ちゃんと「いただきます」。',description,'')+'<meta name="referrer" content="strict-origin-when-cross-origin"><link rel="stylesheet" href="front-links.css"></head>')
@@ -159,7 +164,7 @@ top=top
  .replace('<footer><a href="#top">Before We Eat</a>','<footer><a class="footer-brand" href="#top"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a>')
  .replace('</body>','<script src="animal-view.js" defer></script></body>');
 write('index.html',top);
-const urls=['',...rows.map(r=>r.slug+'.html')];
+const urls=['',...publicationRows.map(r=>r.slug+'.html')];
 write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls.map(p=>'<url><loc>'+base+p+'</loc></url>').join('')+'</urlset>');
 write('robots.txt','User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\n');
 write('llms.txt','# Before We Eat\n\n> 肉をおいしく食べることから、動物のくらしを考える食育サイト。\n\n'+['animals','cuts','cooking','shopping','lessons','sources'].map(slug=>'- ['+plain(bySlug.get(slug).title)+']('+base+slug+'.html)').join('\n')+'\n');

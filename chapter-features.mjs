@@ -1,3 +1,4 @@
+import { plateRecipes } from './plate-recipes.mjs';
 import { recipes, species } from './edition.mjs';
 
 const cookingMethods = {
@@ -15,21 +16,22 @@ const kitchenPhotos = {
   storage: ['保存', '袋と容器に入れて冷蔵した肉']
 };
 const photoGroups = [
-  ['焼く・串に刺す', [[1,'にんにくを添えたひと口焼き'],[2,'こんがり焼いた手羽先'],[3,'焼き目のついた串焼き'],[5,'小ぶりの肉の串焼き'],[7,'手羽のこんがり焼き'],[13,'厚切り肉のバター添え'],[15,'焼き肉の薄切り'],[16,'青い皿のたれ焼き'],[17,'薄切り肉と千切りキャベツ'],[19,'厚切り肉のからし添え'],[26,'焼き目をつけた厚切り肉'],[28,'ステーキのにんにく添え']]],
-  ['煮る・汁にする', [[4,'しょうがを添えた煮物'],[6,'手羽のスープ'],[11,'肉と大根の煮物'],[12,'角煮のからし添え'],[21,'細切りしょうがと肉の煮物'],[27,'肉と焼き豆腐の鍋'],[29,'薄切り肉の肉じゃが'],[30,'角切り肉と根菜の煮込み']]],
-  ['揚げる・炒める', [[10,'から揚げのレモン添え'],[14,'厚切りのカツ'],[22,'ねぎをのせた肉炒め'],[23,'肉とキャベツの炒めもの'],[25,'丸いひと口カツ']]],
-  ['切り分ける・和える', [[8,'薄く切り分けた蒸し鶏'],[9,'ほぐし肉ときゅうりの和えもの'],[18,'薄切りのローストビーフ'],[20,'薄切り肉のレモン添え'],[24,'厚く切り分けた肉のソース添え']]]
+  ['焼く・串に刺す', [1,2,3,5,7,13,15,16,17,19,26,28]],
+  ['煮る・汁にする', [4,6,11,12,21,27,29,30]],
+  ['揚げる・炒める', [10,14,22,23,25]],
+  ['切り分ける・和える', [8,9,18,20,24]]
 ];
-const plateFile = number => 'plate-' + String(number).padStart(2, '0') + '.webp';
 export const kitchenAssets = [...Object.keys(kitchenPhotos).map(slug => 'kitchen-' + slug + '.webp'),
-  ...photoGroups.flatMap(([, photos]) => photos.map(([number]) => plateFile(number)))];
+  ...plateRecipes.map(recipe => recipe.art)];
 
 function additionalDishes(typeset) {
-  return '<section class="plate-gallery" id="food-photos"><h2>写真で見る、もう30皿</h2>' +
-    photoGroups.map(([group, photos]) => '<h3>' + group + '</h3><div class="plate-grid">' +
-      photos.map(([number, title]) => '<figure><a href="' + plateFile(number) + '"><img loading="lazy" width="640" height="360" src="' +
-        plateFile(number) + '" alt="' + title + 'を大きく見る"></a><figcaption>' + typeset(title) + '</figcaption></figure>').join('') +
-      '</div>').join('') + '</section>';
+  return '<section class="plate-gallery" id="food-photos"><h2>写真から選ぶ、30皿のレシピ</h2>' +
+    photoGroups.map(([group, numbers]) => '<h3>' + group + '</h3><div class="plate-grid">' +
+      numbers.map(number => {
+        const {slug, art, title} = plateRecipes[number - 1];
+        return '<figure><a href="' + slug + '.html"><img loading="lazy" width="640" height="360" src="' +
+          art + '" alt=""><span>' + typeset(title) + '</span></a></figure>';
+      }).join('') + '</div>').join('') + '</section>';
 }
 
 const firstCut = { cow: 'すね', pig: 'ロース', hen: 'もも' };
@@ -55,7 +57,7 @@ export function cookingContents(context) {
   }
   const basics = ['grain', 'heat', 'storage'];
   const dishes = [...Object.keys(cookingMethods), 'ginger-pork', 'pork-cutlet', 'miso-soup'];
-  return '<p><a href="#food-photos">写真で見る、もう30皿へ</a></p><div class="dish-grid">' + dishes.map(thumbnail).join('') + '</div>' +
+  return '<p><a href="#food-photos">写真から選ぶ、30皿のレシピへ</a></p><div class="dish-grid">' + dishes.map(thumbnail).join('') + '</div>' +
     '<section class="subindex"><h2>台所の基本</h2><div class="dish-grid">' + basics.map(thumbnail).join('') + '</div></section>' +
     additionalDishes(typeset) + articleList('このお肉は、どこの部位？', ['beef-shank', 'ribs'], context);
 }
