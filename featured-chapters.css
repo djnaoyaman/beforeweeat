@@ -436,3 +436,83 @@
   .cut-share, .atlas-status { display: none !important; }
   .spec-art .cut-map { max-height: 15rem; }
 }
+
+/* Start only: an editorial grid, not a collection of button-shaped links. */
+.directory-journal { --journal-soft: #e9ebdd; --journal-rule: #7f8c78; }
+.directory-journal .journal-deck { margin: .55rem 0 1.35rem; max-width: 48ch; }
+.journal-spread { display: grid; grid-template-columns: 1.36fr 1fr; gap: clamp(1rem, 4vw, 3.5rem); border-block: 1px solid var(--journal-rule); padding: 1rem 0; }
+.journal-spread a, .journal-entries a { min-width: 0; text-decoration: none; }
+.journal-spread a :is(strong), .journal-entries a strong { text-decoration-line: underline; text-decoration-color: var(--journal-rule); text-decoration-thickness: 1px; text-underline-offset: .17em; }
+.journal-spread a:is(:hover,:focus-visible) strong, .journal-entries a:is(:hover,:focus-visible) strong { text-decoration-thickness: 2px; text-decoration-color: currentColor; }
+.journal-hero { display: block; }
+.journal-hero > img { inline-size: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.journal-hero-copy { background: var(--journal-soft); padding: clamp(.8rem, 2vw, 1.6rem); }
+.journal-hero-copy > strong { display: block; font: 550 clamp(1.5rem, 3.1vw, 2.35rem)/1.45 var(--serif); text-wrap: balance; }
+.journal-hero-copy > p { margin-block: .45rem; }
+.journal-art-credit, .journal-hero small, .journal-kicker { color: var(--accent); font-weight: 600; font-size: .82rem; }
+.journal-animals { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .5rem; list-style: none; padding: 0; margin: .4rem 0; }
+.journal-animals li { min-width: 0; }
+.journal-animals a { display: grid; grid-template-rows: auto auto 1fr; gap: .18rem; min-height: 44px; }
+.journal-animals img { width: 100%; height: clamp(3.1rem, 7.8vw, 6.3rem); object-fit: contain; mix-blend-mode: multiply; justify-self: center; }
+.journal-animals strong { font: 600 1rem/1.65 var(--serif); }
+.journal-animals span, .journal-hero-topics span { font-size: .88rem; line-height: 1.7; }
+.journal-hero-topics { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem 1rem; margin-top: 1.15rem; }
+.journal-hero-topics a { display: grid; align-content: start; min-height: 44px; gap: .25rem; padding-top: .45rem; border-block-start: 1px solid var(--line); }
+.directory-journal .journal-chapter > summary { display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: baseline; gap: .65rem; list-style: none; padding-block: .9rem; }
+.directory-journal .journal-chapter > summary::-webkit-details-marker { display: none; }
+.journal-section-no { color: var(--accent); font: .85rem/1.4 var(--mono); }
+.journal-chapter-note { display: block; font-size: .88rem; font-weight: 400; }
+.journal-chapter-count { white-space: nowrap; }
+.journal-chapter-count::after { content: '＋'; margin-inline-start: .35em; }
+.journal-chapter[open] .journal-chapter-count::after { content: '−'; }
+.directory-journal .journal-entries { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .9rem 1.3rem; padding: 0; margin: .5rem 0 1.3rem; list-style: none; }
+.journal-item { min-width: 0; border-block-start: 1px solid var(--line); border-block-end: 0; }
+.journal-item > a { display: grid; align-content: start; gap: .5rem; padding: .65rem .1rem; min-height: 44px; }
+.journal-entries[data-kind="recipes"] .journal-item[data-layout="meal"] > a { grid-template-rows: auto 1fr; }
+.journal-item img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+.journal-item[data-layout="figure"] img { object-fit: contain; mix-blend-mode: multiply; aspect-ratio: 2.4; }
+.journal-item[data-layout="record"] { border-block-start: 2px solid var(--journal-rule); }
+.journal-item[data-layout="record"] small { font-feature-settings: "tnum"; }
+.journal-item strong { display: block; font: 550 1.07rem/1.6 var(--serif); }
+.journal-item small { display: block; color: var(--accent); font-size: .78rem; }
+.journal-item p, .journal-search-deck { font-size: .94rem; line-height: 1.72; }
+.directory-journal .search-results a { display: flex; align-items: start; gap: 1rem; }
+.directory-journal .search-results img { width: min(28%, 9rem); aspect-ratio: 16 / 10; object-fit: cover; }
+.journal-search-copy > * { display: block; }
+.journal-search-copy strong { text-decoration: underline; text-underline-offset: .18em; }
+@media (max-width: 900px) {
+  .journal-spread { grid-template-columns: 1.25fr 1fr; gap: 1rem; }
+  .directory-journal .journal-entries { grid-template-columns: repeat(2,minmax(0,1fr)); gap: .7rem .85rem; }
+}
+@media (max-width: 650px) {
+  .journal-spread { grid-template-columns: minmax(0,1fr); }
+  .journal-animals a { grid-template-rows: 4.2rem auto 1fr; }
+  .journal-animals img { height: 4rem; }
+  .journal-animals span { font-size: .82rem; }
+  .directory-journal .journal-entries { grid-template-columns: minmax(0,1fr); gap: .35rem; }
+  .journal-entries[data-kind="recipes"] .journal-item[data-layout="meal"] > a { grid-template: auto / minmax(0, .83fr) minmax(0, 1fr); }
+  .journal-item[data-layout="figure"] > a { grid-template-columns: minmax(0,.62fr) minmax(0,1fr); }
+}
+@media (max-width: 410px) {
+  .journal-chapter-count { font-size: .75rem; }
+  .directory-journal .journal-chapter > summary { gap: .37rem; }
+  .journal-hero-topics { grid-template-columns: minmax(0,1fr); }
+  .journal-entries[data-kind="recipes"] .journal-item[data-layout="meal"] > a { grid-template: auto / minmax(0, .68fr) minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  :root.large-text .journal-animals { grid-template-columns: minmax(0,1fr); }
+  :root.large-text .journal-animals a { grid-template: auto auto / 4rem minmax(0,1fr); }
+  :root.large-text .journal-animals img { grid-row: span 2; }
+  :root.large-text .journal-item:is([data-layout="meal"],[data-layout="figure"]) > a { grid-template: auto / minmax(0,1fr); }
+}
+
+/* Recipe chapter: ordinary reading links and room for a dish's useful detail. */
+.kitchen-intro { max-inline-size: 36em; }
+.dishtext .dish-preview { display: block; margin-block-start: .35em; line-height: 1.65; }
+.kitchen-next li + li { margin-block-start: .7rem; }
+.kitchen-next li p { margin-block: .25em 0; }
+
+.plate-grid .dish-preview { display: block; margin-block-start: .3rem; line-height: 1.6; text-decoration: none; }
+.plate-grid a:not(:hover) { text-decoration: none; }
+.plate-grid a strong { text-decoration: underline; text-underline-offset: .18em; }
+.plate-grid a:focus-visible strong,.plate-grid a:hover strong { text-decoration-thickness: 2px; }

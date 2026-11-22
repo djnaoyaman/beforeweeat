@@ -11,7 +11,7 @@ if (catalogQuery) {
   const list = results.querySelector('ul');
   const count = document.getElementById('count');
   const items = JSON.parse(document.getElementById('catalog-data').textContent).map(item => ({
-    ...item, key: normalizeChapterSearch([item.title, item.label, item.text].join(' '))
+    ...item, key: normalizeChapterSearch([item.title, item.label, item.teaser, item.text].join(' '))
   }));
 
   function updateCatalog() {
@@ -29,10 +29,28 @@ if (catalogQuery) {
     for (const item of found) {
       const link = document.createElement('a');
       link.href = item.url;
-      link.textContent = item.title;
+      if (item.art) {
+        const image = document.createElement('img');
+        image.src = item.art;
+        image.alt = '';
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        link.append(image);
+      }
+      const copy = document.createElement('span');
+      copy.className = 'journal-search-copy';
+      const title = document.createElement('strong');
+      title.textContent = item.title;
       const label = document.createElement('small');
       label.textContent = item.label;
-      link.append(label);
+      copy.append(label, title);
+      if (item.teaser) {
+        const teaser = document.createElement('span');
+        teaser.className = 'journal-search-deck';
+        teaser.textContent = item.teaser;
+        copy.append(teaser);
+      }
+      link.append(copy);
       const row = document.createElement('li');
       row.append(link);
       list.append(row);
