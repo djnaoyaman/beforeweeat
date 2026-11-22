@@ -168,17 +168,25 @@ export function fieldArticlePhoto(slug,typeset){
  return '<details class="evidence"><summary>写真を見る（動物の傷や飼育環境を扱います）</summary>'+photo(articles[slug],typeset)+'</details>';
 }
 
-export function fieldArchive({caseLabels,typeset,pageLink}){
+export function fieldArchive({caseLabels,typeset,pageLink,lead,body}){
  const links = Object.entries(caseLabels).map(([id,label])=>'<li>'+thumbnail(articles[id], typeset)+'<p>'+typeset(label)+'</p>'+pageLink(id)+'</li>').join('');
- const total = fieldGroups.reduce((count, group) => count + group.entries.length, 0);
+ const records=fieldGroups.flatMap(group=>group.entries);
+ const total = records.length;
+ const selected = records.find(record=>record.number===2);
+ if (!selected || !selected.sources[0]) throw new Error('Missing first reading example: field record 2');
  const cover = '<section class="field-cover" aria-labelledby="field-cover-title"><h2 id="field-cover-title">写真を見る前に</h2>'
   +'<p>'+typeset('けがをした動物や死んだ動物、処理施設の様子を写した写真と、記録をもとにしたイメージ写真があります。')+'</p>'
   +'<p>写真を表示しなくても、すべての本文と出典を読めます。</p>'
   +'<button hidden type="button" id="show-field-photos" aria-pressed="false">内容を理解して写真を表示する</button> <a href="#field-archive">本文だけ読む</a></section>';
- const featured = cover+'<div class="fieldjump"><a href="#field-archive">全'+total+'件を探す</a>'
-  +'<a href="#field-related">掘り下げ記事 '+Object.keys(caseLabels).length+'本</a></div>'
-  +'<section class="docket"><p class="dateline">'+typeset('英国・デヴォン　／　2024年3月の立ち入り調査')+'</p>'
-  +'<h2>'+pageLink('case-devon')+'</h2><p>'+pageLink('case-devon','調査の経過を読む')+'</p>'
+ const featured = '<p class="lead">'+typeset(lead)+'</p><p>'+typeset(body)+'</p>'+cover
+  +'<div class="fieldjump"><a href="#field-archive">'+typeset('全'+total+'件を探す')+'</a>'
+  +'<a href="#field-related">'+typeset('<掘:ほ>り下げ記事 '+Object.keys(caseLabels).length+'本')+'</a></div>'
+  +'<section class="field-read-guide" aria-labelledby="field-read-guide-title"><h2 id="field-read-guide-title">'+typeset('資料のちがいから、読む記録を選ぶ')+'</h2>'
+  +'<p>'+typeset('何がわかるかは、資料によってちがいます。国や時期に加え、どんな方法で確かめたかを見てから読めます。')+'</p>'
+  +'<p class="dateline">'+typeset(selected.context+' ／ '+selected.sources[0][0])+'</p><p><a href="#record-'+selected.number+'">'+typeset(selected.title)+'</a><br>'
+  +typeset('国の調査で、答えた農場の飼い方を読みたいときに。回答からは、それぞれのケージの設備まではわかりません。')+'</p>'
+  +'<p class="dateline">'+typeset(caseLabels['case-devon'])+'</p><p>'+pageLink('case-devon','デヴォンの一つの農場で、調査から裁判まで')+'<br>'
+  +typeset('英国の行政が、何を見つけ、その後どう対応したかを読みたいときに。この一つの農場の記録です。')+'</p>'
   +protectedMedia(photo(articles['case-devon'],typeset))+'</section>';
  const entries = fieldGroups.map(group=>{
   const rows = group.entries.map(({number,title,context,kind,summary,sources,check,photo:scene})=>{
@@ -193,9 +201,12 @@ export function fieldArchive({caseLabels,typeset,pageLink}){
   return '<details class="field-group" id="record-group-'+group.entries[0].number+'"><summary><h3>'+typeset(group.title)+'</h3></summary><ol class="case-records" start="'+group.entries[0].number+'">'+rows+'</ol></details>';
  }).join('');
  const search = '<div class="field-search" hidden><label for="field-query">記録を探す</label>'
-  +'<input type="search" id="field-query" placeholder="地名・動物・出来事"><p id="field-count" role="status"></p></div>';
+  +'<input type="search" id="field-query" placeholder="国・年・動物・資料名"><p id="field-count" role="status"></p></div>';
  return featured+'<section class="subindex field-index" aria-labelledby="field-archive"><h2 id="field-archive">現場の記録　全'+total+'項目</h2>'
   +search+entries+'</section>'
   +'<section class="subindex field-featured" id="field-related"><h2>記録を掘り下げて読む</h2><ul class="case-list">'+links+'</ul></section>'
-  +'<p><a href="field-cases-manuscript.md" download>全記事と事実確認メモをダウンロード（Markdown）</a></p>';
+  +'<p><a href="field-cases-manuscript.md" download>全記事と事実確認メモをダウンロード（Markdown）</a></p>'
+  +'<section class="field-next" aria-labelledby="field-next-title"><h2 id="field-next-title">'+typeset('この続きが気になったら')+'</h2>'
+  +'<p>'+pageLink('animals','牛・ぶた・にわとりのくらしへ')+'<br>'+typeset('ここで読んだ記録だけではわからない、育つ場所から食卓までの道のりをたどれます。')+'</p>'
+  +'<p>'+pageLink('people','動物が休める場所をつくる工夫へ')+'<br>'+typeset('神奈川県の鶏の研究から、設備を変えて行動を確かめる手順が読めます。')+'</p></section>';
 }

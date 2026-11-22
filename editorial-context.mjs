@@ -58,11 +58,10 @@ export function editorialContextMarkup({r, typeset, pageLink}) {
     content = '<section id="meat-route">' + heading('お肉が届く、五つの場面')
       + '<ol class="delivery-path">' + meatJourney.map((step, index) => '<li><span class="path-number" aria-hidden="true">' + (index + 1)
         + '</span><div><h3>' + typeset(step.name) + '</h3>' + paragraph(step.body)
-        + '<p class="path-question"><strong>考えてみよう</strong>' + typeset(step.question) + '</p></div></li>').join('') + '</ol>'
+        + '</div></li>').join('') + '</ol>'
       + sourceNote(['journey', 'meat', 'chicken'], '道のりを知るための図です。農場やお肉の種類によって、順番の間に入る仕事は変わります。') + '</section>'
       + '<section>' + heading('牛乳と卵には、別の道がある')
-      + paragraph('牛乳は牛からしぼった乳、卵はにわとりが産んだものです。動物の体がお肉になる道と分けて見てみよう。')
-      + '<div class="context-links">' + pageLink('cow', '牛乳が届く道') + pageLink('hen', '卵が届く道') + '</div></section>';
+      + paragraph('牛乳は牛からしぼった乳で、卵はにわとりが産んだものです。お肉が届くまでと、牛乳や卵が届くまででは、働く人や仕事が少しずつちがいます。') + '</section>';
   }
 
   if (r.slug === 'cow') {

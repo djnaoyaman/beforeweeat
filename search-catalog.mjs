@@ -1,3 +1,7 @@
+import {welfareGuideSearchText} from './welfare-guides.mjs';
+import {priorityFoodMarkup} from './priority-food.mjs';
+import {priorityEditorialSearchText} from './priority-editorial-pages.mjs';
+import {cookingSafetySearchText} from './cooking-safety.mjs';
 import {editionMarkup, recipes, species} from './edition.mjs';
 import {learningSearchText} from './learning.mjs';
 import {cutAtlas} from './cut-atlas.mjs';
@@ -14,6 +18,10 @@ function textFromMarkup(markup) {
 }
 
 export function articleSearchText(row, {plain, titles}) {
+  const editorial=priorityEditorialSearchText(row,plain);
+  if(editorial)return editorial;
+  const welfare=welfareGuideSearchText(row.slug,{plain});
+  if(welfare)return welfare;
   const recipe = recipes[row.slug];
   const check = articleChecks[row.slug];
   const animals = Object.values(species).filter(animal => row.slug === 'cuts' || row.slug === animal.guide);
@@ -30,7 +38,7 @@ export function articleSearchText(row, {plain, titles}) {
   return plain([
     row.lead, row.body, row.ingredients, row.method, row.time, row.tools, row.observe, ...(row.steps || []),
     recipe?.items, recipe?.time, recipe?.tools, recipe?.observe, ...(recipe?.steps || []),
-    ...cuts, ...mapNotes, textFromMarkup(supplement), learningSearchText(row.slug, species), editorialContextSearchText(row),
+    ...cuts, ...mapNotes, textFromMarkup(supplement), textFromMarkup(priorityFoodMarkup({r:row,typeset:plain})), learningSearchText(row.slug, species), editorialContextSearchText(row), cookingSafetySearchText(row.slug,{plain}),
     check?.strongest, check?.locator, check?.notes
   ].filter(Boolean).join(' '));
 }

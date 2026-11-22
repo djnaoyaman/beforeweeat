@@ -1,5 +1,6 @@
 import {fieldArchive, fieldArticlePhoto} from './field-archive.mjs';
 import {atlasForAnimal, cutUrl, cutLabel} from './cut-atlas.mjs';
+import {representativeGinger} from './representative-content.mjs';
 
 export const species = {
  cow:{name:'牛',reading:'うし',art:'cow-art.webp',guide:'beef-cuts',cuts:[['ネック','首','細かいすじが多い','煮込み・ひき肉'],['かた','肩から前脚にかけて','赤身が多く、部位内でかたさに差がある','煮込み・薄切り'],['かたロース','肩の背中側','赤身と脂の両方がある','すき焼き・焼き物'],['リブロース','背中の中央寄り','脂のうまみが出やすい','厚切りステーキ・ロースト'],['サーロイン','腰に近い背中','きめが細かく、脂の層がつくことがある','ステーキ'],['ヒレ','背骨の内側','やわらかい赤身','ステーキ・カツ'],['ばら','胸から腹','脂と赤身が重なる','焼肉・煮込み'],['もも','後ろ脚の内側など','赤身の味を楽しめる','薄切り・ロースト','beef-round'],['そともも','後ろ脚の外側','しっかりした肉質','薄切り・煮込み'],['らんぷ','腰からお尻','やわらかさと赤身の味がある','ステーキ・ロースト'],['すね','前脚・後ろ脚の下の方','すじが多く、煮込むとほどける','シチュー','beef-shank'],['タン','舌','先端と根元で食感が異なる','薄切り焼き・煮込み']]},
@@ -30,8 +31,7 @@ export const recipes={
    'フライパンに油小さじ1を入れて中火にし、玉ねぎを2〜3分ほど炒める。ふちが透けてきたら、清潔な皿に取り出す。',
    '残りの油を入れ、豚肉を2回に分けて焼く。一度に入れるのは、重ねずに広げられる量。中火で片面に焼き色をつけ、返して厚いところまで火を通す。1回分は約3〜4分から様子を見る。',
    '肉と玉ねぎをフライパンに戻し、たれを加える。中火で1〜2分ほど混ぜ、全体にたれをからめる。肉の加熱を温度計で確かめ、清潔な箸で盛りつける。'
-  ],
-  observe:'食べる前に、焼き色のついた面を一つ探そう。豚こまの形や厚みが違うと、焼き目はどこについたかな。'
+  ]
  },
  'pork-cutlet':{
   art:'kitchen-pork-cutlet.webp',alt:'切り分けた豚ロースのとんかつ',servings:2,
@@ -118,7 +118,7 @@ export function editionMarkup({r,typeset,pageLink,hasAsset}){
   const cards=Object.entries(species).map(([key,s])=>'<div><a href="'+(slug==='animals'?key:s.guide)+'.html"><img src="'+s.art+'" alt="" loading="lazy"><strong>'+typeset(s.name)+'</strong></a></div>').join('');
   return '<div class="species-gallery">'+cards+'</div>'+(slug==='animals'?links([['field-cases','現場で報告された事例'],['welfare','アニマルウェルフェアを知る']]):links([['nutrition','数字で比べる']]));
  }
- if(slug==='field-cases')return fieldArchive({caseLabels,typeset,pageLink});
+ if(slug==='field-cases')return fieldArchive({caseLabels,typeset,pageLink,lead:r.lead,body:r.body});
  const casePhoto=fieldArticlePhoto(slug,typeset);
  if(slug==='case-footpad')return casePhoto;
  if(slug==='case-shimane')return casePhoto+'<details class="evidence"><summary>当時の報道を読む（暴力の映像を含む場合があります）</summary><p><a href="https://newsdig.tbs.co.jp/articles/bss/737018">山陰放送の判決記事を開く</a></p></details>';
@@ -132,7 +132,7 @@ export function editionMarkup({r,typeset,pageLink,hasAsset}){
   return '<div class="meal-gallery">'+Object.entries(recipes).map(([id,recipe])=>'<div>'+(hasAsset(recipe.art)?'<img src="'+recipe.art+'" alt="'+recipe.alt+'" loading="lazy">':'')+pageLink(id)+'</div>').join('')+'</div>'+links([['storage','肉の保存を知る'],['heat','安全に火を通す']]);
  }
  if(recipes[slug]){
-  const r=recipes[slug];return (hasAsset(r.art)?'<figure class="food-plate"><img src="'+r.art+'" alt="'+r.alt+'" loading="lazy"></figure>':'')+heading('材料'+(r.servings?'（'+r.servings+'人分）':''))+paragraph(r.items)+(r.time?heading('調理の準備')+paragraph('時間の目安　'+r.time)+paragraph('用意する道具　'+r.tools)+paragraph('包丁や火、熱い油を使うところは、大人と一緒に進めてください。'):'')+heading('作り方')+'<ol>'+r.steps.map(s=>'<li>'+typeset(s)+'</li>').join('')+'</ol>'+paragraph('時間は目安です。火の通りは温度計で確かめ、肉の厚みや火力に合わせて調節します。中心部が75℃に達してから1分間以上加熱します。')+(r.observe?heading('一皿から、見つけてみよう')+paragraph(r.observe):'')+links([['heat','肉の加熱を確かめる']]);
+  const r=recipes[slug];return (hasAsset(r.art)?'<figure class="food-plate"><img src="'+r.art+'" alt="'+r.alt+'" loading="lazy"></figure>':'')+heading('材料'+(r.servings?'（'+r.servings+'人分）':''))+paragraph(r.items)+(r.time?heading('調理の準備')+paragraph('時間の目安　'+r.time)+paragraph('用意する道具　'+r.tools)+paragraph('包丁や火、熱い油を使うところは、大人と一緒に進めてください。'):'')+heading('作り方')+'<ol>'+r.steps.map(s=>'<li>'+typeset(s)+'</li>').join('')+'</ol>'+paragraph('時間は目安です。火の通りは温度計で確かめ、肉の厚みや火力に合わせて調節します。中心部が75℃に達してから1分間以上加熱します。')+(r.observe?heading('一皿から、見つけてみよう')+paragraph(r.observe):'')+(slug==='ginger-pork'?representativeGinger({typeset}):'<p>'+pageLink('heat','温度計で肉の加熱を確かめる')+'</p>');
  }
  if(slug==='start')return links([['cow','牛から読む'],['pig','ぶたから読む'],['hen','にわとりから読む'],['field-cases','現場事例'],['lessons','先生・保護者の方へ']]);
  return '';

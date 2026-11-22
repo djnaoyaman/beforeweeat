@@ -1,0 +1,16 @@
+/* Before We Eat's first reading templates. Regular links are not controls. */
+.representative-figure{margin:1.2em 0 1.6em;max-inline-size:100%}
+.representative-figure figcaption{color:#43574b;padding:.45em 0 .15em}
+.representative-figure svg{display:block;inline-size:100%;block-size:auto}
+.representative-next,.field-next{margin-block:2.7em 1.1em;padding-block:1.05em 0;border-block-start:1px solid #adb6a7}
+.representative-next ul,.field-next ul,.field-read-guide ul{list-style:none;margin:0;padding:0}
+.representative-next li,.field-next li{margin:.25em 0 .75em}
+.representative-next a,.field-next a{display:inline-flex;align-items:center;min-block-size:44px;max-inline-size:100%;padding-block:.15em;text-decoration:underline;text-underline-offset:.25em;overflow-wrap:anywhere}
+.representative-next a:focus-visible,.field-next a:focus-visible,.field-read-guide a:focus-visible{outline:2px solid #914128;outline-offset:3px}
+.representative-next p,.field-next p{margin:.05em 0 .65em}
+.field-read-guide{margin-block:1.45em 2em;max-inline-size:72ch}
+.field-read-guide li{margin:.65em 0}
+.field-read-guide a{text-decoration:underline;text-underline-offset:.25em}
+@media(min-width:44rem){
+ .representative-next ul,.field-next ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:1.55em}
+}

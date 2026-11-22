@@ -1,0 +1,19 @@
+.priority-editorial section { margin-block: 1.6rem; }
+.priority-editorial-terms { margin-block: .75rem 1rem; }
+.priority-editorial-terms > div { display:grid; grid-template-columns:minmax(0,.58fr) minmax(0,1fr); gap:.38rem 1rem; border-block-start:1px solid #9a9c8d; padding:.55rem 0; }
+.priority-editorial-terms dt { font-weight:700; }
+.priority-editorial-terms dd { margin:0; overflow-wrap:anywhere; }
+.priority-egg-example { background:#eeeadd; padding:clamp(.7rem,3vw,1.35rem); margin-inline:0; }
+.priority-egg-example figcaption { margin-top:0; margin-bottom:.8rem; }
+.priority-egg-labels { display:grid; grid-template-columns:minmax(0,.7fr) minmax(0,1fr); gap:1rem; align-items:start; }
+.priority-egg-labels > div { min-width:0; padding-block-start:.15rem; border-block-start:2px solid #697865; }
+.priority-egg-labels h3 { margin-block:.45rem; }
+.priority-egg-front { font-family:"Yu Mincho","Hiragino Mincho ProN",serif; font-size:1.3em; font-weight:700; }
+.priority-editorial-note { display:block; margin-block:.6rem .3rem; }
+.priority-editorial textarea { width:100%; min-height:4.5rem; resize:vertical; font:inherit; color:inherit; background:#fcfaf2; padding:.45rem; border:1px solid #697865; }
+.priority-editorial textarea:focus-visible { outline:3px solid #963f25; outline-offset:3px; }
+.priority-editorial-related p > span { display:block; }
+.priority-editorial-related a { display:inline-flex; align-items:center; min-height:44px; }
+@media(max-width:580px) {
+  .priority-egg-labels,.priority-editorial-terms > div { grid-template-columns:minmax(0,1fr); }
+}

@@ -1,0 +1,15 @@
+/* Animals opener only; the drawings are illustrations, not case photographs. */
+.animal-journal section { margin-block: 1.7rem; }
+.animal-journal-spread { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .8rem; border-block-start: 1px solid #9a9c8d; padding-block: .75rem; }
+.animal-journal-spread > a { display: grid; gap: .4rem; min-width: 0; min-height: 44px; text-decoration: none; align-content: start; }
+.animal-journal-spread img { display: block; inline-size: 100%; block-size: clamp(4rem,12vw,7rem); object-fit: contain; mix-blend-mode: multiply; }
+.animal-journal-spread strong { font-family: "Yu Mincho","Hiragino Mincho ProN",serif; text-decoration: underline; text-underline-offset: .18em; }
+.animal-journal-spread p { font-size: .88rem; line-height: 1.7; margin: .24rem 0; }
+.animal-journal-related { border-block-start: 1px solid #9a9c8d; }
+.animal-journal-related p { margin-block: .45rem .75rem; }
+.animal-journal-related p > span { display: block; }
+.animal-journal-related a { display: inline-flex; align-items: center; min-height: 44px; }
+@media (max-width: 599px) {
+  .animal-journal-spread { grid-template-columns: minmax(0,1fr); gap: .65rem; }
+  .animal-journal-spread > a { grid-template-columns: minmax(0,.55fr) minmax(0,1fr); align-items: center; }
+}

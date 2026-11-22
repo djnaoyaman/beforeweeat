@@ -1,3 +1,5 @@
+import {plateOpenings} from './plate-openings.mjs';
+
 // Each entry pairs the original photograph with a two-serving home recipe.
 const dishes = [
  ['plate-01','焼く・串に刺す','砂肝のにんにく焼き','砂肝200g、にんにく2片、油小さじ2、塩小さじ1/4','砂肝は左右に切り分け、厚いところに切り込みを入れる。','薄切りのにんにくを油と弱火にかけ、薄いきつね色で取り出す。','同じ油で砂肝を中火で焼く。中まで火を通して塩を振り、にんにくを散らす。'],
@@ -34,5 +36,9 @@ const dishes = [
 
 export const plateRecipes = dishes.map(([slug, method, title, ingredients, ...steps]) => ({
  slug, method, title, ingredients, steps, art: slug + '.webp', group: 4,
- body: '', lead: '', links: ['cooking', 'heat'], refs: ['meatheat']
+ body: '', lead: plateOpenings[slug], links: ['cooking', 'heat'], refs: ['meatheat']
 }));
+
+if (Object.keys(plateOpenings).length !== dishes.length || plateRecipes.some(recipe => !recipe.lead)) {
+  throw new Error('Every photographed plate needs its own introduction');
+}

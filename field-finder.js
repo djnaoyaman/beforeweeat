@@ -15,8 +15,9 @@
   const records = Array.from(element.querySelectorAll('.case-records > li'), row => {
    const heading = textWithoutRuby(row.querySelector('.field-record > summary'));
    const account = textWithoutRuby(row.querySelector('.field-account'));
+   const sources = Array.from(row.querySelectorAll('.field-record-body > ul > li > a'), textWithoutRuby).join(' ');
    const number = row.id.slice('record-'.length);
-   return { row, key: normalizeChapterSearch([title, '第'+number+'項', heading, account].join(' ')) };
+   return { row, key: normalizeChapterSearch([title, '第'+number+'項', heading, account, sources].join(' ')) };
   });
   return { element, records };
  });
