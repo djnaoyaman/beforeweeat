@@ -41,12 +41,14 @@ teacher:['文部科学省　食に関する指導の手引','https://www.mext.go
 eggrules:['日本養鶏協会　鶏卵の表示に関する公正競争規約（PDF）','https://www.jpa.or.jp/keiran_root/pdf/rules202407_01.pdf'],
 caa:['消費者庁　家庭での食品ロス対策','https://www.no-foodloss.caa.go.jp/eating-home.html']
 };
-const rows = ['articles.txt','articles-v2.txt']
+const editorialRows = ['articles.txt','articles-v2.txt']
  .flatMap(file=>fs.readFileSync(new URL(file,project),'utf8').trim().split(/\r?\n/)).map(line=>{
  const [id,slug,title,lead,body,links='',refs=''] = line.split('|');
  return {group:Number(id[0]),slug,title,lead,body:body.replaceAll('\\n','\n'),links:links.split(',').filter(Boolean),refs:refs.split(',').filter(Boolean)};
 });
+const rows = [...editorialRows, ...plateRecipes];
 const bySlug = new Map(rows.map(row=>[row.slug,row]));
+if (bySlug.size !== rows.length) throw new Error('Duplicate article slug');
 const plain = (text) => text.replace(/<([^:]+):[^>]+>/g,'$1').replace(/\[\[([^\[\]]+)\]\]/g,'$1');
 const escape = (text) => text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const readings = {採卵鶏:'さいらんけい',肉用鶏:'にくようけい',親鶏:'おやどり',成鶏:'せいけい',鶏舎:'けいしゃ',鶏群:'けいぐん',鶏卵:'けいらん',雌鶏:'めんどり',雄鶏:'おんどり',養鶏:'ようけい',種鶏:'しゅけい',糞尿:'ふんにょう',烏骨鶏:'うこっけい',赤鶏:'あかどり',動物:'どうぶつ',食卓:'しょくたく',畜産:'ちくさん',栄養:'えいよう',図鑑:'ずかん',部位:'ぶい',脂質:'ししつ',可食部:'かしょくぶ',加熱:'かねつ',出典:'しゅってん',調査:'ちょうさ',資料:'しりょう',飼養:'しよう',乳牛:'にゅうぎゅう',獣医師:'じゅういし',生産者:'せいさんしゃ',農場:'のうじょう',雄:'おす',雌雄:'しゆう',鶏むね:'とりむね',鶏もも:'とりもも',鶏肉:'とりにく',鶏:'にわとり',平飼い:'ひらがい',囲い:'かこい',授業:'じゅぎょう',給食:'きゅうしょく',観察:'かんさつ',食感:'しょっかん',断面:'だんめん',脂身:'あぶらみ',繊維:'せんい',中心温度:'ちゅうしんおんど',訂正:'ていせい',根拠:'こんきょ',自由研究:'じゆうけんきゅう',家庭:'かてい',保護者:'ほごしゃ',編者:'へんしゃ',手引:'てびき',食品:'しょくひん',生姜焼き:'しょうがやき'};
@@ -117,8 +119,7 @@ function featuredBody(row) {
   :editionMarkup({r:row,typeset,pageLink,hasAsset});
  return breadcrumb+'<h1>'+typeset(chapterTitle)+'</h1>'+content;
 }
-const publicationRows = [...rows, ...plateRecipes];
-for(const r of publicationRows){
+for(const r of rows){
  const title=(r.slug==='start'?'すべての目次':plain(r.title))+'｜Before We Eat';
  const page=r.slug+'.html';
  const refs=(r.slug==="cuts" ? [...r.refs,"cutsmaff"] : r.refs).map(key=>sources[key]);
@@ -164,11 +165,21 @@ top=top
  .replace('<footer><a href="#top">Before We Eat</a>','<footer><a class="footer-brand" href="#top"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a>')
  .replace('</body>','<script src="animal-view.js" defer></script></body>');
 write('index.html',top);
-const urls=['',...publicationRows.map(r=>r.slug+'.html')];
+// Every published article except the catalog itself must have a directory link and search entry.
+const catalog = fs.readFileSync(new URL('start.html', dist), 'utf8');
+const catalogLinks = new Set([...catalog.matchAll(/href="([^"]+)"/g)].map(match => match[1]));
+const catalogData = catalog.match(/<script id="catalog-data" type="application\/json">([^<]*)<\/script>/);
+const searchableUrls = new Set(JSON.parse(catalogData[1]).map(item => item.url));
+for (const {slug} of rows) {
+ if (slug === 'start') continue;
+ const url = slug + '.html';
+ if (!catalogLinks.has(url) || !searchableUrls.has(url)) throw new Error('Article missing from catalog: ' + url);
+}
+const urls=['',...rows.map(r=>r.slug+'.html')];
 write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls.map(p=>'<url><loc>'+base+p+'</loc></url>').join('')+'</urlset>');
 write('robots.txt','User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\n');
 write('llms.txt','# Before We Eat\n\n> 肉をおいしく食べることから、動物のくらしを考える食育サイト。\n\n'+['animals','cuts','cooking','shopping','lessons','sources'].map(slug=>'- ['+plain(bySlug.get(slug).title)+']('+base+slug+'.html)').join('\n')+'\n');
-write('llms-full.txt','# Before We Eat\n\n'+rows.map(r=>'## '+plain(r.title)+'\n'+base+r.slug+'.html\n\n'+plain(r.lead)+'\n'+plain(r.body)+'\n'+r.refs.map(k=>sources[k].join(' ')).join('\n')).join('\n\n'));
+write('llms-full.txt','# Before We Eat\n\n'+rows.map(r=>'## '+plain(r.title)+'\n'+base+r.slug+'.html\n\n'+plain(r.lead)+'\n'+(r.ingredients ? [r.ingredients,...r.steps].join('\n') : plain(r.body))+'\n'+r.refs.map(k=>sources[k].join(' ')).join('\n')).join('\n\n'));
 const caseManuscript = [];
 function addCase(heading,body,refs,check){
  const citations=refs.map(([label,url])=>'- ['+label+']('+url+')').join('\n');

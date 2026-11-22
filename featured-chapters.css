@@ -387,3 +387,6 @@
 
 .field-featured .field-thumbnail { float: right; width: 6rem; margin-inline-start: .75rem; }
 .field-featured li { display: flow-root; }
+
+.field-warning { padding: .45rem; border: 1px solid var(--line); font-size: .8rem; line-height: 1.5; }
+.field-warning small { display: block; }

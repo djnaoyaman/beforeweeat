@@ -154,8 +154,12 @@ function photo(key,typeset){
 function protectedMedia(markup, tag = 'div') {
  return '<'+tag+' data-field-media></'+tag+'><template>'+markup+'</template>';
 }
-function thumbnail(key) {
+function thumbnail(key, typeset) {
  const item = originals[key];
+ if (item?.warning) {
+  const warning = item.warning.replace(/^.*?（(.*)）$/, '$1');
+  return protectedMedia('<span class="field-thumbnail field-warning"><small>写真は記事内で選べます</small>'+typeset(warning)+'</span>', 'span');
+ }
  const label = item?.label ?? 'イメージ写真';
  return protectedMedia('<span class="field-thumbnail"><img loading="lazy" decoding="async" src="'+localName(key)+'" alt=""><small>'+label+'</small></span>', 'span');
 }
@@ -165,7 +169,7 @@ export function fieldArticlePhoto(slug,typeset){
 }
 
 export function fieldArchive({caseLabels,typeset,pageLink}){
- const links = Object.entries(caseLabels).map(([id,label])=>'<li>'+thumbnail(articles[id])+'<p>'+typeset(label)+'</p>'+pageLink(id)+'</li>').join('');
+ const links = Object.entries(caseLabels).map(([id,label])=>'<li>'+thumbnail(articles[id], typeset)+'<p>'+typeset(label)+'</p>'+pageLink(id)+'</li>').join('');
  const total = fieldGroups.reduce((count, group) => count + group.entries.length, 0);
  const cover = '<section class="field-cover" aria-labelledby="field-cover-title"><h2 id="field-cover-title">写真を見る前に</h2>'
   +'<p>'+typeset('けがをした動物や死んだ動物、処理施設の様子を写した写真と、記録をもとにしたイメージ写真があります。')+'</p>'
@@ -181,7 +185,7 @@ export function fieldArchive({caseLabels,typeset,pageLink}){
    const related = articlesByNumber[number];
    const key = originalByNumber[number]??scene;
    const media = protectedMedia(photo(key,typeset));
-   return '<li id="record-'+number+'"><details class="field-record"><summary><span class="field-record-number">'+String(number).padStart(2,'0')+'</span><span><strong>'+typeset(title)+'</strong><small>'+typeset(context+' ／ '+kind)+'</small></span>'+thumbnail(key)+'</summary>'
+   return '<li id="record-'+number+'"><details class="field-record"><summary><span class="field-record-number">'+String(number).padStart(2,'0')+'</span><span><strong>'+typeset(title)+'</strong><small>'+typeset(context+' ／ '+kind)+'</small></span>'+thumbnail(key, typeset)+'</summary>'
     +'<div class="field-record-body"><div class="field-account">'+summary.split(/\n+/).map(p=>'<p>'+typeset(p)+'</p>').join('')+'</div>'+media
     +(related?'<p>'+pageLink(related,number===5?'ポーランドの研究記事を読む':'掘り下げ記事を読む')+'</p>':'')
     +'<h4>出典</h4><ul>'+sources.map(source=>'<li>'+link(source)+'</li>').join('')+'</ul>'+factCheck(check,typeset)+'</div></details></li>';

@@ -15,20 +15,20 @@ const kitchenPhotos = {
   heat: ['火の通り', '肉の中心に温度計を差し込んだところ'],
   storage: ['保存', '袋と容器に入れて冷蔵した肉']
 };
-const photoGroups = [
-  ['焼く・串に刺す', [1,2,3,5,7,13,15,16,17,19,26,28]],
-  ['煮る・汁にする', [4,6,11,12,21,27,29,30]],
-  ['揚げる・炒める', [10,14,22,23,25]],
-  ['切り分ける・和える', [8,9,18,20,24]]
-];
+const photoGroups = new Map();
+for (const recipe of plateRecipes) {
+  if (!photoGroups.has(recipe.method)) photoGroups.set(recipe.method, []);
+  photoGroups.get(recipe.method).push(recipe);
+}
 export const kitchenAssets = [...Object.keys(kitchenPhotos).map(slug => 'kitchen-' + slug + '.webp'),
   ...plateRecipes.map(recipe => recipe.art)];
 
+const galleryHeading = '写真から選ぶ、' + plateRecipes.length + '皿のレシピ';
+
 function additionalDishes(typeset) {
-  return '<section class="plate-gallery" id="food-photos"><h2>写真から選ぶ、30皿のレシピ</h2>' +
-    photoGroups.map(([group, numbers]) => '<h3>' + group + '</h3><div class="plate-grid">' +
-      numbers.map(number => {
-        const {slug, art, title} = plateRecipes[number - 1];
+  return '<section class="plate-gallery" id="food-photos"><h2>' + galleryHeading + '</h2>' +
+    Array.from(photoGroups, ([group, recipes]) => '<h3>' + group + '</h3><div class="plate-grid">' +
+      recipes.map(({slug, art, title}) => {
         return '<figure><a href="' + slug + '.html"><img loading="lazy" width="640" height="360" src="' +
           art + '" alt=""><span>' + typeset(title) + '</span></a></figure>';
       }).join('') + '</div>').join('') + '</section>';
@@ -57,7 +57,7 @@ export function cookingContents(context) {
   }
   const basics = ['grain', 'heat', 'storage'];
   const dishes = [...Object.keys(cookingMethods), 'ginger-pork', 'pork-cutlet', 'miso-soup'];
-  return '<p><a href="#food-photos">写真から選ぶ、30皿のレシピへ</a></p><div class="dish-grid">' + dishes.map(thumbnail).join('') + '</div>' +
+  return '<p><a href="#food-photos">' + galleryHeading + 'へ</a></p><div class="dish-grid">' + dishes.map(thumbnail).join('') + '</div>' +
     '<section class="subindex"><h2>台所の基本</h2><div class="dish-grid">' + basics.map(thumbnail).join('') + '</div></section>' +
     additionalDishes(typeset) + articleList('このお肉は、どこの部位？', ['beef-shank', 'ribs'], context);
 }

@@ -16,7 +16,7 @@ export function contentsPage({rows, names, groups, typeset, plain, pageLink}) {
   const searchItems = [
     ...articles.map(row => ({
       title: plain(row.title), label: names[row.group], url: row.slug + '.html',
-      text: plain(row.lead + ' ' + row.body)
+      text: plain([row.lead, row.body, row.ingredients].filter(Boolean).join(' '))
     })),
     ...groups.flatMap(group => group.entries.map(entry => ({
       title: entry.title, label: '第' + entry.number + '項　' + entry.context,
