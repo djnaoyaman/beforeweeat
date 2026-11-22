@@ -140,7 +140,6 @@ top=top
  .replace('私は、お肉を食べます。<br>だからこそ、どうぶつが生きている間の<br><ruby>苦<rt>くる</rt></ruby>しみを、ひとつでも減らしたい。','私はヴィーガンではありません。お肉を食べます。だからこそ、どうぶつが生きている間に、なくせる<ruby>苦<rt>くる</rt></ruby>しみを一つでも減らしたい。')
  .replace('そして、食卓に届いたお肉は、<br>その部位に合った、とびきりおいしい食べ方で。','せっかく<ruby>命<rt>いのち</rt></ruby>をいただくなら、食べられる分を買い、部位に合う調理で、最後のひと口まで感謝していただきたい。<a class="intro-essay" href="mina.html">MINAの手紙を読む</a>')
  .replace('アニマルウェルフェアって？<span>＋</span></button>','アニマルウェルフェアって？<span>＋</span></button><a class="outline field-link" href="field-cases.html">畜産の現場で報告された事例</a>')
- .replace('骨ぎわまでおいしく焼きあげたスペアリブ" loading="lazy"><span>おいしさを、最後のひと口まで。','骨ぎわまでおいしく焼きあげたスペアリブ" loading="lazy"><span>'+(flagship.startsWith('runway')?'Runwayで生成した仕上がりイメージ':'仕上がりのイメージ'))
  .replace('<footer><a href="#top">Before We Eat</a>','<footer><a class="footer-brand" href="#top"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a>')
  .replace('</body>','<script src="animal-view.js" defer></script></body>');
 write('index.html',top);

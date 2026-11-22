@@ -67,7 +67,7 @@ export function editionMarkup({r,typeset,pageLink,hasAsset}){
   return '<div class="meal-gallery">'+Object.entries(recipes).map(([id,recipe])=>'<div>'+(hasAsset(recipe.art)?'<img src="'+recipe.art+'" alt="'+recipe.alt+'" loading="lazy">':'')+pageLink(id)+'</div>').join('')+'</div>'+links([['storage','肉の保存を知る'],['heat','安全に火を通す']]);
  }
  if(recipes[slug]){
-  const r=recipes[slug];return (hasAsset(r.art)?'<figure class="food-plate"><img src="'+r.art+'" alt="'+r.alt+'" loading="lazy"><figcaption>Runwayで生成した仕上がりイメージ</figcaption></figure>':'')+heading('材料')+paragraph(r.items)+heading('作り方')+'<ol>'+r.steps.map(s=>'<li>'+typeset(s)+'</li>').join('')+'</ol>'+paragraph('肉の厚みや火力に合わせて調節します。中心部75℃で1分間以上を目安に、温度計で確かめます。')+links([['heat','肉の加熱を確かめる']]);
+  const r=recipes[slug];return (hasAsset(r.art)?'<figure class="food-plate"><img src="'+r.art+'" alt="'+r.alt+'" loading="lazy"></figure>':'')+heading('材料')+paragraph(r.items)+heading('作り方')+'<ol>'+r.steps.map(s=>'<li>'+typeset(s)+'</li>').join('')+'</ol>'+paragraph('肉の厚みや火力に合わせて調節します。中心部75℃で1分間以上を目安に、温度計で確かめます。')+links([['heat','肉の加熱を確かめる']]);
  }
  if(slug==='start')return links([['cow','牛から読む'],['pig','ぶたから読む'],['hen','にわとりから読む'],['field-cases','現場事例'],['lessons','先生・保護者の方へ']]);
  return '';
