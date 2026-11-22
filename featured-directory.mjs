@@ -1,3 +1,5 @@
+import {createSearchCatalog} from './search-catalog.mjs';
+
 const headerLinks = [
   ['start', 'すべての目次'], ['cooking', '料理'], ['field-cases', '現場の事例'],
   ['cuts', '部位図鑑'], ['animals', '動物のくらし'], ['lessons', '先生・保護者の方へ']
@@ -13,17 +15,7 @@ export function chapterHeader(pageLink) {
 export function contentsPage({rows, names, groups, typeset, plain, pageLink}) {
   const records = groups.flatMap(group => group.entries);
   const articles = rows.filter(row => row.slug !== 'start');
-  const searchItems = [
-    ...articles.map(row => ({
-      title: plain(row.title), label: names[row.group], url: row.slug + '.html',
-      text: plain([row.lead, row.body, row.ingredients].filter(Boolean).join(' '))
-    })),
-    ...groups.flatMap(group => group.entries.map(entry => ({
-      title: entry.title, label: '第' + entry.number + '項　' + entry.context,
-      url: 'field-cases.html#record-' + entry.number,
-      text: [entry.kind, group.title, entry.summary].join(' ')
-    })))
-  ];
+  const searchItems = createSearchCatalog({rows, names, groups, plain});
   const spread = [
     ['cookrow', 'cooking', '料理', 'ちゃんと「いただく」方法', 'たれを塗るのは、いつ？', '<img src="runway-rib.webp" alt="">'],
     ['fieldrow', 'field-cases', '畜産の現場', '現場で報告された事例', '記録を読み、出典をたどる。', '<span class="num">' + records.length + '<span>件の記録</span></span>'],
