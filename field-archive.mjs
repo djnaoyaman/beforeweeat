@@ -157,21 +157,27 @@ export function fieldArticlePhoto(slug,typeset){
 
 export function fieldArchive({caseLabels,typeset,pageLink}){
  const links = Object.entries(caseLabels).map(([id,label])=>'<li><p>'+typeset(label)+'</p>'+pageLink(id)+'</li>').join('');
- const sectionId = group => 'record-group-'+group.entries[0].number;
- const groupLinks = fieldGroups.map(group=>'<li><a href="#'+sectionId(group)+'">'+typeset(group.title)+'</a></li>').join('');
+ const total = fieldGroups.reduce((count, group) => count + group.entries.length, 0);
+ const featured = '<div class="fieldjump"><a href="#field-archive">全'+total+'件を探す</a>'
+  +'<a href="#field-related">掘り下げ記事 '+Object.keys(caseLabels).length+'本</a></div>'
+  +'<section class="docket"><p class="dateline">'+typeset('英国・デヴォン　／　2024年3月の立ち入り調査')+'</p>'
+  +'<h2>'+pageLink('case-devon')+'</h2><p>'+pageLink('case-devon','調査の経過を読む')+'</p>'
+  +fieldArticlePhoto('case-devon',typeset)+'</section>';
  const entries = fieldGroups.map(group=>{
   const rows = group.entries.map(({number,title,context,kind,summary,sources,check,photo:scene})=>{
    const related = articlesByNumber[number];
    const media = photo(originalByNumber[number]??scene,typeset);
    return '<li id="record-'+number+'"><details class="field-record"><summary><span class="field-record-number">'+String(number).padStart(2,'0')+'</span><span><strong>'+typeset(title)+'</strong><small>'+typeset(context+' ／ '+kind)+'</small></span></summary>'
-    +'<div class="field-record-body">'+summary.split(/\n+/).map(p=>'<p>'+typeset(p)+'</p>').join('')+media
+    +'<div class="field-record-body"><div class="field-account">'+summary.split(/\n+/).map(p=>'<p>'+typeset(p)+'</p>').join('')+'</div>'+media
     +(related?'<p>'+pageLink(related,number===5?'ポーランドの研究記事を読む':'掘り下げ記事を読む')+'</p>':'')
     +'<h4>出典</h4><ul>'+sources.map(source=>'<li>'+link(source)+'</li>').join('')+'</ul>'+factCheck(check,typeset)+'</div></details></li>';
   }).join('');
-  return '<section class="field-group" id="'+sectionId(group)+'"><h3>'+typeset(group.title)+'</h3><ol class="case-records" start="'+group.entries[0].number+'">'+rows+'</ol></section>';
+  return '<details class="field-group" id="record-group-'+group.entries[0].number+'"><summary><h3>'+typeset(group.title)+'</h3></summary><ol class="case-records" start="'+group.entries[0].number+'">'+rows+'</ol></details>';
  }).join('');
- return '<section aria-labelledby="field-archive"><h2 id="field-archive">現場の記録　全79項目</h2>'
-  +'<ul class="field-jumps">'+groupLinks+'<li><a href="#field-related">現場の記録をさらに読む</a></li></ul>'+entries+'</section>'
-  +'<section class="field-featured" id="field-related"><h2>現場の記録をさらに読む</h2><ul class="case-list">'+links+'</ul></section>'
+ const search = '<div class="field-search" hidden><label for="field-query">記録を探す</label>'
+  +'<input type="search" id="field-query" placeholder="地名・動物・出来事"><p id="field-count" role="status"></p></div>';
+ return featured+'<section class="subindex field-index" aria-labelledby="field-archive"><h2 id="field-archive">現場の記録　全'+total+'項目</h2>'
+  +search+entries+'</section>'
+  +'<section class="subindex field-featured" id="field-related"><h2>記録を掘り下げて読む</h2><ul class="case-list">'+links+'</ul></section>'
   +'<p><a href="field-cases-manuscript.md" download>全記事と事実確認メモをダウンロード（Markdown）</a></p>';
 }

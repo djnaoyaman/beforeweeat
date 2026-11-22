@@ -1,10 +1,12 @@
 import fs from 'node:fs';
+import {chapterHeader, contentsPage} from './featured-directory.mjs';
+import {cookingContents, cutsContents} from './chapter-features.mjs';
 import {fieldAssets, fieldGroups, articleChecks, factCheck} from './field-archive.mjs';
 import {species, caseLabels, additionalSources, editionMarkup} from './edition.mjs';
 const project = new URL('.', import.meta.url);
 const dist = new URL('dist/', project);
 fs.mkdirSync(dist,{recursive:true});
-for (const name of ['reading.css','reading.js','front-links.css','pig.jpg','rib.jpg','og.jpg','icon.svg','brand.svg','logo.webp','favicon.png','apple-touch-icon.png','icon-192.png','icon-512.png','icon-maskable.png','.nojekyll']){
+for (const name of ['reading.css','reading.js','featured-chapters.css','chapter-search.js','field-finder.js','chapter-cuts.js','front-links.css','pig.jpg','rib.jpg','og.jpg','icon.svg','brand.svg','logo.webp','favicon.png','apple-touch-icon.png','icon-192.png','icon-512.png','icon-maskable.png','.nojekyll']){
  const asset=new URL(name,project);
  if(fs.existsSync(asset))fs.copyFileSync(asset,new URL(name,dist));
 }
@@ -81,19 +83,9 @@ function feature(row){
 }
 const groupLanding={2:'animals',3:'cuts',4:'cooking',5:'shopping',6:'people',7:'lessons',8:'sources'};
 function directory(row){
- if(row.slug==='start')return '<section aria-labelledby="directory"><h2 id="directory">記事を探す</h2><label>ことばで探す <input id="find" type="search" placeholder="例　ぶた、給食、卵"></label><p id="count" role="status"></p><div id="catalog"><section><h3>トップページ</h3><p><a href="./">Before We Eat</a></p></section>'+names.slice(1).map((name,i)=>'<section class="chapter"><h3>'+typeset(name)+'</h3><ul>'+rows.filter(r=>r.group===i+1).map(r=>'<li data-entry data-key="'+escape(plain(r.title+' '+r.lead+' '+r.body))+'">'+pageLink(r.slug)+'</li>').join('')+'</ul></section>').join('')+'</div></section>';
  if(groupLanding[row.group]!==row.slug)return '';
- const list = (slugs) => '<ul class="story-list">'+slugs.map(slug=>'<li>'+pageLink(slug)+'</li>').join('')+'</ul>';
- const chapters = [
-  ['牛',['beef-cuts','beef-shank','beef-round']],
-  ['ぶた',['pig-cuts','loin','pork-round','ribs']],
-  ['にわとり',['chicken-guide','chicken-cuts']],
-  ['栄養',['nutrition']]
- ];
- const content = row.slug==='cuts'
-  ? chapters.map(([label,slugs])=>'<section class="story-group"><h3>'+typeset(label)+'</h3>'+list(slugs)+'</section>').join('')
-  : list(rows.filter(r=>r.group===row.group&&r!==row).map(r=>r.slug));
- return '<section><h2>この章で読む</h2>'+content+'</section>';
+ const links=rows.filter(r=>r.group===row.group&&r!==row).map(r=>'<li>'+pageLink(r.slug)+'</li>').join('');
+ return '<section><h2>この章で読む</h2><ul class="story-list">'+links+'</ul></section>';
 }
 function extra(row){
  if(lessonAnimals[row.slug])return '<section class="worksheet"><h2>今日の観察シート</h2><p>名前 ____________________　　日付 __________</p><p>'+typeset(species[lessonAnimals[row.slug].key].name+'の体のどこだった？')+'</p><div class="write-line"></div><p>絵を見てわかったこと</p><div class="write-line"></div><p>農場の人に聞きたいこと</p><div class="write-line"></div><button type="button" data-print>観察シートを印刷</button></section>';
@@ -108,15 +100,39 @@ function extra(row){
  if(row.slug==='corrections')return '<p><a href="https://github.com/djnaoyaman/beforeweeat/issues/new">記事について知らせる</a></p>';
  return '';
 }
+const featuredLabels = {start:'すべての目次', cooking:'料理', 'field-cases':'現場の事例', cuts:'部位図鑑'};
+const chapterFonts = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&amp;family=Noto+Sans+JP:wght@400;500;600&amp;family=Noto+Serif+JP:wght@400;500;600&amp;display=swap">';
+const readerOptions = '<div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div>';
+const footer = '<footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer>';
+
+function featuredBody(row) {
+ const helpers = {rows, typeset, pageLink, hasAsset};
+ if(row.slug==='start')return contentsPage({...helpers, names, groups:fieldGroups, plain});
+ const breadcrumb = '<div class="trionav">'+pageLink('start','すべての目次')+'<span aria-hidden="true">／</span>'+typeset(featuredLabels[row.slug])+'</div>';
+ const chapterTitle = row.slug==='field-cases'?'[[畜産の現場で]][[報告された事例]]':row.title;
+ const content = row.slug==='cooking'?cookingContents(helpers)
+  :row.slug==='cuts'?cutsContents(helpers)
+  :editionMarkup({r:row,typeset,pageLink,hasAsset});
+ return breadcrumb+'<h1>'+typeset(chapterTitle)+'</h1>'+content;
+}
 for(const r of rows){
- const title=plain(r.title)+'｜Before We Eat';
+ const title=(r.slug==='start'?'すべての目次':plain(r.title))+'｜Before We Eat';
  const page=r.slug+'.html';
- const refs=r.refs.map(key=>sources[key]);
+ const refs=(r.slug==="cuts" ? [...r.refs,"cutsmaff"] : r.refs).map(key=>sources[key]);
  if(refs.some(ref=>!ref))throw Error('Missing source: '+r.slug);
  const check=articleChecks[r.slug];
  const sourceLabel=check?'出典':'ことばのもとになった資料を見る';
  const bodyHtml=r.body.split('\n').map(section=>'<p>'+typeset(section)+'</p>').join('');
  const refsHtml=refs.length?'<details class="references"><summary>'+sourceLabel+'</summary><ul>'+refs.map(([label,url])=>'<li><a href="'+escape(url)+'">'+escape(label)+'</a></li>').join('')+'</ul></details>':'';
+ if(Object.hasOwn(featuredLabels,r.slug)){
+  const scripts={start:['chapter-search.js'], 'field-cases':['chapter-search.js','field-finder.js'], cuts:['chapter-cuts.js'], cooking:[]};
+  const headAssets=chapterFonts+'<link rel="stylesheet" href="reading.css?v=4"><link rel="stylesheet" href="featured-chapters.css"><script src="reading.js?v=2" defer></script>'
+   +scripts[r.slug].map(src=>'<script src="'+src+'" defer></script>').join('');
+  write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'
+   +meta(title,plain(r.lead),page,'og.jpg',true)+headAssets+'</head><body class="featured-chapter"><a class="skip" href="#main">本文へ</a>'
+   +chapterHeader(pageLink)+'<main id="main" class="contents"><article class="chapter-page">'+featuredBody(r)+refsHtml+'</article>'+readerOptions+'</main>'+footer+'</body></html>');
+  continue;
+ }
  write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,plain(r.lead),page,r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg',true)+'<link rel="stylesheet" href="reading.css?v=4"><script src="reading.js'+(r.slug==='field-cases'?'?v=2':'')+'" defer></script></head><body><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1><p class="lead">'+typeset(r.lead)+'</p>'+feature(r)+bodyHtml+editionMarkup({r,typeset,pageLink,hasAsset})+extra(r)+directory(r)+refsHtml+(check?factCheck(check,typeset):'')+'</article><aside aria-label="次に読む"><h2>次は、どれを読む？</h2><ul class="story-list">'+r.links.map(slug=>'<li>'+pageLink(slug)+'</li>').join('')+'</ul></aside></main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
 }
 let top=fs.readFileSync(new URL('top.html',project),'utf8').replace(/<meta name="description"[^>]*>/gi,'');
