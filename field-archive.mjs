@@ -1,8 +1,32 @@
 import fs from 'node:fs';
 
 export const fieldGroups = JSON.parse(fs.readFileSync(new URL('field-records.json', import.meta.url), 'utf8'));
+export const articleChecks = JSON.parse(fs.readFileSync(new URL('field-article-checks.json', import.meta.url), 'utf8'));
 const captions = {
-"record17":"アヒルが頭を水に浸せない環境を考えるための構成場面","record20":"七面鳥のくちばしの上の肉垂を切除するを考えるための構成場面","record26":"子牛を個別の囲いで育てるを考えるための構成場面","record27":"白い子牛肉を作るために鉄を制限するを考えるための構成場面","record28":"子牛肉生産で繊維質の餌を少なくするを考えるための構成場面","record37":"ペットフード用処理施設で子牛を乱暴に扱うを考えるための構成場面","record38":"極度に衰弱した子牛への必要な処置を怠るを考えるための構成場面","record43":"乳牛の脚の関節周囲に腫れや膿瘍を考えるための構成場面","record45":"食鳥処理場への輸送・待機中の死亡を考えるための構成場面","record48":"乳用牛の分娩時期をそろえるために出産を誘発するを考えるための構成場面","record50":"乳牛の跛行を考えるための構成場面","record52":"妊娠中の母豚に少量の濃厚飼料を与え、空腹が長引くを考えるための構成場面","record53":"生後まもない子豚の圧死・飢餓死を考えるための構成場面","record54":"繁殖を終えた母豚の肩の褥瘡を考えるための構成場面","record57":"ふ化後、餌や水に初めて届くまでの遅れを考えるための構成場面","record58":"採卵鶏の羽つつきによる羽毛や皮膚の損傷を考えるための構成場面","record59":"採卵鶏が一か所に密集し、圧迫・窒息して死亡を考えるための構成場面","record60":"種鶏の交尾時に雌が負傷するを考えるための構成場面","record61":"産卵を終えた鶏の捕鳥・取り扱い時の骨折を考えるための構成場面","record63":"七面鳥の繁殖での反復的な保定を考えるための構成場面","record65":"肉用ウサギの離乳後の給餌制限を考えるための構成場面","record71":"牛のと畜で最初の気絶処置が不十分を考えるための構成場面","record72":"生きた鶏が湯槽の工程に入った事案を考えるための構成場面","record73":"妊娠中の家畜がと畜されるを考えるための構成場面",
+  record17:'給水器の前に立つアヒル。頭を浸せる水場がない',
+  record20:'くちばしの付け根を横から見た七面鳥',
+  record26:'一頭ずつ仕切られた囲いにいる子牛',
+  record27:'乳を飲んで育つ子牛',
+  record28:'干し草の見当たらない囲いの子牛',
+  record37:'処理施設で人に扱われる子牛',
+  record38:'地面に横たわる、やせた子牛',
+  record43:'乳牛の脚の関節周辺の腫れ',
+  record45:'輸送用のかごの中で動かずに横たわる鶏',
+  record48:'出産前後の乳牛と子牛',
+  record50:'脚をかばう姿勢の乳牛',
+  record52:'給餌の場所にいる母豚',
+  record53:'出産後の母豚と足元の子豚',
+  record54:'母豚の肩にできた床ずれ',
+  record57:'輸送用の箱の中に身を寄せるひな',
+  record58:'羽毛が抜けた採卵鶏',
+  record59:'一か所に集まり、体の重なった鶏',
+  record60:'背の羽毛が抜け、皮膚が露出した雌鶏',
+  record61:'鶏の体を支え、骨や関節を調べる場面',
+  record63:'繁殖のために人に体を支えられた七面鳥',
+  record65:'空の餌入れのそばに集まるウサギ',
+  record71:'処理場で気絶処置を受ける牛',
+  record72:'処理ラインで脚をつられ、湯槽の手前にいる鶏',
+  record73:'処理場に運ばれる家畜',
   cattlesurgery:'身体への処置に備えて保定された雄の子牛',
   gas:'高濃度二酸化炭素の設備内で口を開けるぶた',
   sheepkill:'と畜に向けて頭と身体を保定された羊',
@@ -43,7 +67,7 @@ const captions = {
   "emptybarn": "浸水した豚舎で逃げ場が限られたぶた",
   "mixed": "餌や寝床の管理が行き届かず、やせた牛とぶた",
   "duckenclosure": "翼を広げられず、水浴びもできない単飼のアヒル",
-  "dairyhandling": "人の足元で横たわる牛と、乱暴な取り扱いを考える場面",
+  "dairyhandling": "人の足元で横たわる牛",
   "fire": "煙が広がる豚舎で柵に閉じ込められたぶた",
   "disease": "防疫が問題となる鶏舎で、動かず横たわる鶏",
   "dental": "口を保定された子ぶたと、短く処置された歯",
@@ -112,12 +136,18 @@ function escape(value){
 function link([label,url]){
  return '<a href="'+escape(url)+'">'+escape(label)+'</a>';
 }
+export function factCheck(check,typeset){
+ const quote = '<p>「'+typeset(check.strongest)+'」</p>';
+ const locator = '<p>'+escape(check.locator)+'　'+link(['原資料を開く',check.sourceUrl])+'</p>';
+ const notes = check.notes ? '<p>'+typeset(check.notes)+'</p>' : '';
+ return '<details class="references field-check"><summary>編集者向けの事実確認メモ</summary>'+quote+locator+notes+'</details>';
+}
 function photo(key,typeset){
  const item = originals[key];
  const alt = item?.alt??captions[key];
  if(!alt)throw new Error('Missing field image description: '+key);
  const caption = '<strong>'+(item?.label??'イメージ写真')+'</strong>　'+typeset(alt)
-  +(item?'。出典 '+link(item.source)+' ／ '+link(item.license)+(key==='footpad'?'。表示用に形式・解像度を変更。':'。表示用に縮小・形式変換。'):'。飼育・取り扱い上の問題を説明するために構成した場面。制作 Before We Eat。');
+  +(item?'。出典 '+link(item.source)+' ／ '+link(item.license)+(key==='footpad'?'。表示用に形式・解像度を変更。':'。表示用に縮小・形式変換。'):'。制作 Before We Eat。');
  const figure = '<figure class="field-photo"><img src="'+localName(key)+'" alt="'+escape(alt)+'" loading="lazy" decoding="async"><figcaption>'+caption+'</figcaption></figure>';
  return item?.warning?'<details class="evidence"><summary>'+typeset(item.warning)+'</summary>'+figure+'</details>':figure;
 }
@@ -130,18 +160,18 @@ export function fieldArchive({caseLabels,typeset,pageLink}){
  const sectionId = group => 'record-group-'+group.entries[0].number;
  const groupLinks = fieldGroups.map(group=>'<li><a href="#'+sectionId(group)+'">'+typeset(group.title)+'</a></li>').join('');
  const entries = fieldGroups.map(group=>{
-  const rows = group.entries.map(({number,title,context,kind,summary,sources,photo:scene})=>{
+  const rows = group.entries.map(({number,title,context,kind,summary,sources,check,photo:scene})=>{
    const related = articlesByNumber[number];
    const media = photo(originalByNumber[number]??scene,typeset);
    return '<li id="record-'+number+'"><details class="field-record"><summary><span class="field-record-number">'+String(number).padStart(2,'0')+'</span><span><strong>'+typeset(title)+'</strong><small>'+typeset(context+' ／ '+kind)+'</small></span></summary>'
-    +'<div class="field-record-body"><p>'+typeset(summary)+'</p>'+media
+    +'<div class="field-record-body">'+summary.split(/\n+/).map(p=>'<p>'+typeset(p)+'</p>').join('')+media
     +(related?'<p>'+pageLink(related,number===5?'ポーランドの研究記事を読む':'掘り下げ記事を読む')+'</p>':'')
-    +'<h4>原資料</h4><ul>'+sources.map(source=>'<li>'+link(source)+'</li>').join('')+'</ul></div></details></li>';
+    +'<h4>出典</h4><ul>'+sources.map(source=>'<li>'+link(source)+'</li>').join('')+'</ul>'+factCheck(check,typeset)+'</div></details></li>';
   }).join('');
   return '<section class="field-group" id="'+sectionId(group)+'"><h3>'+typeset(group.title)+'</h3><ol class="case-records" start="'+group.entries[0].number+'">'+rows+'</ol></section>';
  }).join('');
- return '<section class="field-featured"><h2>8本の掘り下げ記事</h2><ul class="case-list">'+links+'</ul></section>'
-  +'<section aria-labelledby="field-archive"><h2 id="field-archive">畜産の現場で記録された79項目</h2>'
-  +'<p>'+typeset('番号は調査台帳に対応します。個別事件、調査で確認された慣行、健康被害、事故、防疫の記録を収録しています。写真には、現場写真・研究写真・関連写真・イメージ写真のいずれかを記しました。')+'</p>'
-  +'<ul class="field-jumps">'+groupLinks+'</ul>'+entries+'</section>';
+ return '<section aria-labelledby="field-archive"><h2 id="field-archive">現場の記録　全79項目</h2>'
+  +'<ul class="field-jumps">'+groupLinks+'<li><a href="#field-related">現場の記録をさらに読む</a></li></ul>'+entries+'</section>'
+  +'<section class="field-featured" id="field-related"><h2>現場の記録をさらに読む</h2><ul class="case-list">'+links+'</ul></section>'
+  +'<p><a href="field-cases-manuscript.md" download>全記事と事実確認メモをダウンロード（Markdown）</a></p>';
 }

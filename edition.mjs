@@ -7,12 +7,12 @@ export const species = {
 };
 export const caseLabels={
  'case-shimane':'日本・島根県／2023年／行政資料・判決報道',
- 'case-devon':'英国・デヴォン／2024年に現場調査／自治体の発表',
+ 'case-devon':'英国・デヴォン／2024年の現場調査／英国政府・州の発表',
  'case-cambridge':'英国・ケンブリッジシャー／2024年／自治体の発表',
- 'case-ibaraki':'日本・茨城県／平成26年度／行政調査',
+ 'case-ibaraki':'日本・茨城県／2005〜2014年度／食肉衛生検査所の調査',
  'case-footpad':'ポーランド／2024年発表／飼育研究・記録写真',
  'case-keel':'デンマーク／2021年発表／商業鶏群の研究',
- hens:'日本／令和6年度／農林水産省の実態調査',
+ hens:'日本／神奈川県の飼育試験・農林水産省の令和6年度調査',
  chicks:'日本／2022年ほか／国会会議録・農林水産省資料'
 };
 export const recipes={
@@ -24,7 +24,10 @@ export const additionalSources={
  cutsmaff:['農林水産省　牛、豚、鶏のお肉丸わかり図鑑','https://www.maff.go.jp/j/pr/aff/2009/spe1_02.html'],
  woah:['WOAH　アニマルウェルフェア','https://www.woah.org/en/what-we-do/animal-health-and-welfare/animal-welfare/'],
  shimane:['島根県　農林水産委員会資料（PDF）','https://www.pref.shimane.lg.jp/industry/norin/info/shiryo_/nosuisyoko_r5.data/230629nourin_siryo.pdf'],
- bss:['山陰放送　大田市の乳牛への暴力事案の判決報道','https://newsdig.tbs.co.jp/articles/bss/737018'],
+ bss:['山陰放送　大田市の乳牛への暴力事案の判決報道','https://newsdig.tbs.co.jp/articles/bss/737018?display=1'],
+ govdevon:['英国環境庁・動植物衛生庁　デヴォンの調査と判決','https://www.gov.uk/government/news/devon-farmer-jointly-prosecuted-over-horror-movie-conditions'],
+ kanagawa:['神奈川県畜産技術センター　巣箱・止まり木・砂浴び場で観察した鶏の行動','https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html'],
+ kokkai:['参議院農林水産委員会（2022年11月8日）発言134・136・138','https://kokkai.ndl.go.jp/simple/detail?minId=121015007X00320221108&spkNum=134'],
  devon:['Devon County Council　現場調査と裁判の発表','https://www.devon.gov.uk/news/honiton-farmer-prosecuted-for-pollution-and-animal-welfare-offences/'],
  cambridge:['Cambridgeshire County Council　牛・豚の飼養をめぐる判決','https://www.cambridgeshire.gov.uk/news/farmer-sentenced-following-animal-welfare-offences'],
  ibaraki:['茨城県　食肉衛生検査所事業概要（平成26年度）','https://www.pref.ibaraki.jp/hokenfukushi/seiei/eisei/documents/h26jigyougaiyou_1.pdf'],
@@ -55,7 +58,7 @@ export function editionMarkup({r,typeset,pageLink,hasAsset}){
  if(slug==='case-footpad')return casePhoto;
  if(slug==='case-shimane')return casePhoto+'<details class="evidence"><summary>当時の報道を読む（暴力の映像を含む場合があります）</summary><p><a href="https://newsdig.tbs.co.jp/articles/bss/737018">山陰放送の判決記事を開く</a></p></details>';
  if(slug==='case-keel')return casePhoto+'<p><a href="https://doi.org/10.1371/journal.pone.0256105.g001">研究の図1で、農場の鶏の群れごとの差を見る</a></p>';
- if(caseLabels[slug])return casePhoto+heading('この記録から考える')+paragraph('動物の体に起きたこと、その前から人に見えていたこと、同じことを防ぐために変えられること。この三つを、原資料から探してみよう。');
+ if(caseLabels[slug])return casePhoto;
  if(slug==='mina')return heading('食べることと、どうぶつのくらし')+paragraph('私はヴィーガンではありません。お肉を食べます。せっかく命をいただくのなら、食べられる量を買い、その部位に合う方法でおいしく料理し、感謝していただきたいと思っています。')+paragraph('同じくらい大事なのが、アニマルウェルフェアです。食卓に届くまでの間、その動物は水を飲み、体を動かし、安心して休めたか。なくせる痛みや苦しみ、無用な暴力を一つでも減らしたい。食べる自分にも、考え、知り、選べることがあると思います。')+paragraph('「いただきます」のあとに残るのは、感謝と、次に何を知りたいかという問いです。')+'<p class="folio-sign">MINA</p>';
  if(slug==='nutrition')return '<table class="nutrition"><caption>生の可食部100gあたり</caption><thead><tr><th scope="col">肉の種類</th><th scope="col">たんぱく質</th><th scope="col">脂質</th><th scope="col">鉄</th></tr></thead><tbody><tr><th scope="row">輸入牛もも・赤肉</th><td>21.2g</td><td>4.3g</td><td>2.6mg</td></tr><tr><th scope="row">大型種豚もも・赤肉</th><td>22.1g</td><td>3.6g</td><td>0.9mg</td></tr><tr><th scope="row">若どりむね・皮なし</th><td>23.3g</td><td>1.9g</td><td>0.3mg</td></tr></tbody></table>';
  if(slug==='shopping')return heading('パックのここを見る')+'<ol><li>品名と部位。作りたい料理に合う厚みか、骨付きかを確認。</li><li>量と値段。骨付きは骨も含めた量。人数分の量を決める。</li><li>期限・保存方法・原産地。帰ったら表示に合わせて保管する。</li></ol>'+links([['storage','家での保存'],['heat','中心までの加熱']]);

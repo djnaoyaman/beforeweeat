@@ -27,3 +27,15 @@ if(find){
  });
 }
 document.querySelector('[data-print]')?.addEventListener('click',()=>print());
+
+function openLinkedFieldRecord(){
+ const target=window.location.hash;
+ if(!/^#record-[0-9]+$/.test(target))return;
+ const entry=document.getElementById(target.slice(1));
+ const record=entry?.querySelector('details.field-record');
+ if(record)record.open=true;
+}
+if(document.getElementById('field-archive')){
+ openLinkedFieldRecord();
+ window.addEventListener('hashchange',openLinkedFieldRecord);
+}

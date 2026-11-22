@@ -1,0 +1,50 @@
+{
+  "case-devon": {
+    "strongest": "母牛を亡くした子牛が、糞尿と生活ごみの中に横たわっていた。",
+    "locator": "英国環境庁・動植物衛生庁（2025年10月30日）。「Joint visits uncover catalogue of concerns」中、病気や飢えで死んだ動物に続いて子牛が登場する段落。前後の段落に寝床・給餌・再訪の記録。",
+    "sourceUrl": "https://www.gov.uk/government/news/devon-farmer-jointly-prosecuted-over-horror-movie-conditions",
+    "notes": "再訪時の記述は農場の病畜全体について。子牛がその後どうなったかは発表に記載がない。"
+  },
+  "case-cambridge": {
+    "strongest": "病気やけがをした家畜に、横になって休むための敷き材が十分に用意されていなかった。",
+    "locator": "ケンブリッジシャー州議会の発表（2024年4月16日）。本文第3段落が繰り返しの訪問と助言、第4段落が敷き材と獣医師への相談の遅れ。",
+    "sourceUrl": "https://www.cambridgeshire.gov.uk/news/farmer-sentenced-following-animal-welfare-offences",
+    "notes": "当局は病気やけがをした動物の種類・頭数を個別に示していない。"
+  },
+  "case-shimane": {
+    "strongest": "島根県大田市の農場で、従業員が2頭の牛の鼻や首のあたりを足で蹴った。",
+    "locator": "山陰放送（2023年9月22日）、起訴状に基づき6月3日の行為を記した段落。県の農林水産委員会資料（6月29日）冊子20頁「1 端緒」「2 県の対応状況」は発覚後の確認と指導。",
+    "sourceUrl": "https://newsdig.tbs.co.jp/articles/bss/737018?display=1",
+    "notes": "2頭と蹴られた部位は起訴状に基づく法廷報道。外傷については立ち入り時の所見であり、痛みの有無を表すものではない。"
+  },
+  "case-ibaraki": {
+    "strongest": "茨城県内のある処理場では、翌日に処理する鶏を荷受け台に置いたまま、一晩待たせることが多かった。",
+    "locator": "茨城県・平成26年度食肉衛生検査所事業概要、山川ほか「管内大規模食鳥処理場における高死亡率を呈した事例（過去10年間）の分析」冊子95〜97頁。96頁「4 考察及びまとめ」のA処理場、95頁「2 方法」「3 結果」。",
+    "sourceUrl": "https://www.pref.ibaraki.jp/hokenfukushi/seiei/eisei/documents/h26jigyougaiyou_1.pdf",
+    "notes": "57と31は報告件数。集荷、輸送、待機のどの段階で個々の鶏が死んだかは確定していない。"
+  },
+  "case-footpad": {
+    "strongest": "最も傷の深い鶏では、床に触れる指の腹にも小さな傷があった。",
+    "locator": "Damaziakほか（2024）方法2.3節と図2のS3。方法2.2節に各回の開始羽数、結果3.2節・表6に42日齢の敷き材別評価。",
+    "sourceUrl": "https://www.mdpi.com/2077-0472/14/7/1091",
+    "notes": "図2の各列は傷の程度が異なる例。同じ足を日ごとに撮影した連続写真ではない。"
+  },
+  "case-keel": {
+    "strongest": "卵を産む期間の終わりに雌鶏4,756羽を解剖すると、4,098羽で胸の骨が折れていた。",
+    "locator": "Thøfnerほか（2021）方法「Study population」、結果「Production system」の表7（雌のみ）。骨折の数は表8、位置は表9。触診で見つかりにくい骨折は結果の表5と考察。",
+    "sourceUrl": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0256105",
+    "notes": "研究対象の総数4,794羽には雄38羽を含む。本文の骨折割合の分母は雌だけ。個々の骨折がいつ、何によって起きたかは特定できない。"
+  },
+  "hens": {
+    "strongest": "4週間のうちにふんが積もると、鶏はそこで砂浴びのような動きをしなくなった。",
+    "locator": "神奈川県畜産技術センター「研究内容の紹介」採卵鶏の「研究の内容」第1段落後半。農林水産省「令和6年度調査（採卵鶏）」1頁・設問3が飼い方の内訳。",
+    "sourceUrl": "https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html",
+    "notes": "人工芝の結果は県の試験で観察されたもの。国の調査に答えた農場の砂浴び場を観察した結果ではない。"
+  },
+  "chicks": {
+    "strongest": "卵をとるために育てる鶏では、同じように卵からかえっても、雄のひなは生まれてすぐに殺される。",
+    "locator": "第210回国会参議院農林水産委員会（2022年11月8日）発言134、渡邉洋一政府参考人の答弁。卵の中で判別する方法は同発言138と農林水産省資料7の冊子3頁。",
+    "sourceUrl": "https://kokkai.ndl.go.jp/simple/detail?minId=121015007X00320221108&spkNum=134",
+    "notes": "約1億1千万羽は雌ひなの出荷数の推計。雄の殺処分数としては扱わない。"
+  }
+}

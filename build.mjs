@@ -1,5 +1,5 @@
 import fs from 'node:fs';
-import {fieldAssets} from './field-archive.mjs';
+import {fieldAssets, fieldGroups, articleChecks, factCheck} from './field-archive.mjs';
 import {species, caseLabels, additionalSources, editionMarkup} from './edition.mjs';
 const project = new URL('.', import.meta.url);
 const dist = new URL('dist/', project);
@@ -40,12 +40,12 @@ caa:['消費者庁　家庭での食品ロス対策','https://www.no-foodloss.ca
 const rows = ['articles.txt','articles-v2.txt']
  .flatMap(file=>fs.readFileSync(new URL(file,project),'utf8').trim().split(/\r?\n/)).map(line=>{
  const [id,slug,title,lead,body,links='',refs=''] = line.split('|');
- return {group:Number(id[0]),slug,title,lead,body,links:links.split(',').filter(Boolean),refs:refs.split(',').filter(Boolean)};
+ return {group:Number(id[0]),slug,title,lead,body:body.replaceAll('\\n','\n'),links:links.split(',').filter(Boolean),refs:refs.split(',').filter(Boolean)};
 });
 const bySlug = new Map(rows.map(row=>[row.slug,row]));
 const plain = (text) => text.replace(/<([^:]+):[^>]+>/g,'$1').replace(/\[\[([^\[\]]+)\]\]/g,'$1');
 const escape = (text) => text.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
-const readings = {動物:'どうぶつ',食卓:'しょくたく',畜産:'ちくさん',栄養:'えいよう',図鑑:'ずかん',部位:'ぶい',脂質:'ししつ',可食部:'かしょくぶ',加熱:'かねつ',出典:'しゅってん',調査:'ちょうさ',資料:'しりょう',飼養:'しよう',乳牛:'にゅうぎゅう',獣医師:'じゅういし',生産者:'せいさんしゃ',農場:'のうじょう',雄:'おす',雌雄:'しゆう',鶏むね:'とりむね',鶏もも:'とりもも',鶏肉:'とりにく',鶏:'にわとり',平飼い:'ひらがい',囲い:'かこい',授業:'じゅぎょう',給食:'きゅうしょく',観察:'かんさつ',食感:'しょっかん',断面:'だんめん',脂身:'あぶらみ',繊維:'せんい',中心温度:'ちゅうしんおんど',訂正:'ていせい',根拠:'こんきょ',自由研究:'じゆうけんきゅう',家庭:'かてい',保護者:'ほごしゃ',編者:'へんしゃ',手引:'てびき',食品:'しょくひん',生姜焼き:'しょうがやき'};
+const readings = {採卵鶏:'さいらんけい',肉用鶏:'にくようけい',親鶏:'おやどり',成鶏:'せいけい',鶏舎:'けいしゃ',鶏群:'けいぐん',鶏卵:'けいらん',雌鶏:'めんどり',雄鶏:'おんどり',養鶏:'ようけい',種鶏:'しゅけい',糞尿:'ふんにょう',烏骨鶏:'うこっけい',赤鶏:'あかどり',動物:'どうぶつ',食卓:'しょくたく',畜産:'ちくさん',栄養:'えいよう',図鑑:'ずかん',部位:'ぶい',脂質:'ししつ',可食部:'かしょくぶ',加熱:'かねつ',出典:'しゅってん',調査:'ちょうさ',資料:'しりょう',飼養:'しよう',乳牛:'にゅうぎゅう',獣医師:'じゅういし',生産者:'せいさんしゃ',農場:'のうじょう',雄:'おす',雌雄:'しゆう',鶏むね:'とりむね',鶏もも:'とりもも',鶏肉:'とりにく',鶏:'にわとり',平飼い:'ひらがい',囲い:'かこい',授業:'じゅぎょう',給食:'きゅうしょく',観察:'かんさつ',食感:'しょっかん',断面:'だんめん',脂身:'あぶらみ',繊維:'せんい',中心温度:'ちゅうしんおんど',訂正:'ていせい',根拠:'こんきょ',自由研究:'じゆうけんきゅう',家庭:'かてい',保護者:'ほごしゃ',編者:'へんしゃ',手引:'てびき',食品:'しょくひん',生姜焼き:'しょうがやき'};
 const known = new RegExp(Object.keys(readings).sort((a,b)=>b.length-a.length).join('|'),'g');
 const ruby = (base,rt) => '<ruby>'+escape(base)+'<rt>'+escape(rt)+'</rt></ruby>';
 function typeset(text){
@@ -113,8 +113,11 @@ for(const r of rows){
  const page=r.slug+'.html';
  const refs=r.refs.map(key=>sources[key]);
  if(refs.some(ref=>!ref))throw Error('Missing source: '+r.slug);
- const refsHtml=refs.length?'<details class="references"><summary>ことばのもとになった資料を見る</summary><ul>'+refs.map(([label,url])=>'<li><a href="'+escape(url)+'">'+escape(label)+'</a></li>').join('')+'</ul></details>':'';
- write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,plain(r.lead),page,r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg',true)+'<link rel="stylesheet" href="reading.css?v=4"><script src="reading.js" defer></script></head><body><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1><p class="lead">'+typeset(r.lead)+'</p>'+feature(r)+'<p>'+typeset(r.body)+'</p>'+editionMarkup({r,typeset,pageLink,hasAsset})+extra(r)+directory(r)+refsHtml+'</article><aside aria-label="次に読む"><h2>次は、どれを読む？</h2><ul class="story-list">'+r.links.map(slug=>'<li>'+pageLink(slug)+'</li>').join('')+'</ul></aside></main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
+ const check=articleChecks[r.slug];
+ const sourceLabel=check?'出典':'ことばのもとになった資料を見る';
+ const bodyHtml=r.body.split('\n').map(section=>'<p>'+typeset(section)+'</p>').join('');
+ const refsHtml=refs.length?'<details class="references"><summary>'+sourceLabel+'</summary><ul>'+refs.map(([label,url])=>'<li><a href="'+escape(url)+'">'+escape(label)+'</a></li>').join('')+'</ul></details>':'';
+ write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,plain(r.lead),page,r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg',true)+'<link rel="stylesheet" href="reading.css?v=4"><script src="reading.js'+(r.slug==='field-cases'?'?v=2':'')+'" defer></script></head><body><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1><p class="lead">'+typeset(r.lead)+'</p>'+feature(r)+bodyHtml+editionMarkup({r,typeset,pageLink,hasAsset})+extra(r)+directory(r)+refsHtml+(check?factCheck(check,typeset):'')+'</article><aside aria-label="次に読む"><h2>次は、どれを読む？</h2><ul class="story-list">'+r.links.map(slug=>'<li>'+pageLink(slug)+'</li>').join('')+'</ul></aside></main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
 }
 let top=fs.readFileSync(new URL('top.html',project),'utf8').replace(/<meta name="description"[^>]*>/gi,'');
 top=top.replace('</head>',meta('Before We Eat｜ちゃんと「いただきます」。',description,'')+'<meta name="referrer" content="strict-origin-when-cross-origin"><link rel="stylesheet" href="front-links.css"></head>')
@@ -146,6 +149,23 @@ write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http:/
 write('robots.txt','User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\n');
 write('llms.txt','# Before We Eat\n\n> 肉をおいしく食べることから、動物のくらしを考える食育サイト。\n\n'+['animals','cuts','cooking','shopping','lessons','sources'].map(slug=>'- ['+plain(bySlug.get(slug).title)+']('+base+slug+'.html)').join('\n')+'\n');
 write('llms-full.txt','# Before We Eat\n\n'+rows.map(r=>'## '+plain(r.title)+'\n'+base+r.slug+'.html\n\n'+plain(r.lead)+'\n'+plain(r.body)+'\n'+r.refs.map(k=>sources[k].join(' ')).join('\n')).join('\n\n'));
+const caseManuscript = [];
+function addCase(heading,body,refs,check){
+ const citations=refs.map(([label,url])=>'- ['+label+']('+url+')').join('\n');
+ caseManuscript.push('## '+heading+'\n\n### 掲載本文\n\n'+body.trim().replace(/\n+/g,'\n\n')+'\n\n### 出典\n\n'+citations
+  +'\n\n### 編集者向けの事実確認メモ\n\n「'+check.strongest+'」\n\n'+check.locator+' [原資料を開く]('+check.sourceUrl+')'
+  +(check.notes?'\n\n'+check.notes:''));
+}
+for(const group of fieldGroups){
+ for(const entry of group.entries){
+  addCase(String(entry.number).padStart(2,'0')+'　'+entry.title,entry.summary,entry.sources,entry.check);
+ }
+}
+caseManuscript.push('# 関連する個別記事');
+for(const r of rows.filter(r=>articleChecks[r.slug])){
+ addCase(plain(r.title),plain(r.lead)+'\n'+plain(r.body),r.refs.map(key=>sources[key]),articleChecks[r.slug]);
+}
+write('field-cases-manuscript.md','# Before We Eat　畜産の現場で報告された事例\n\n元の番号順に79項目、続いて関連する個別記事8本を収録。\n\n'+caseManuscript.join('\n\n')+'\n');
 write('site.webmanifest',JSON.stringify({name:'Before We Eat',short_name:'Before We Eat',description,lang:'ja',start_url:'./',scope:'./',display:'browser',background_color:'#f7f4e9',theme_color:'#1b3027',icons:[{src:'icon.svg?v=3',sizes:'any',type:'image/svg+xml'},{src:'icon-192.png?v=3',sizes:'192x192',type:'image/png'},{src:'icon-512.png?v=3',sizes:'512x512',type:'image/png'},{src:'icon-maskable.png?v=3',sizes:'512x512',type:'image/png',purpose:'maskable'}]}));
 write('404.html','<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>ページが見つかりません｜Before We Eat</title><link rel="stylesheet" href="'+base+'reading.css?v=4"><main><h1>ページが見つかりませんでした。</h1><p><a href="'+base+'start.html">すべての目次を開く</a></p></main></html>');
 console.log('Built '+urls.length+' editorial pages.');
