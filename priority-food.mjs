@@ -38,6 +38,12 @@ function roundDrawing(slug,t) {
  '<text x="74" y="126" text-anchor="middle" fill="#173b2c" font-family="sans-serif" font-size="15">'+(i===0?'脂身つき':'赤身だけ')+'</text></g>').join('');
  return sectionDrawing(slug+'-section',t,'外側の脂身が付いた切り口と、外側の脂身を除いた赤身の切り口。','白っぽい外側の脂身が付いたものと、外側の脂身を取りのぞいたもの。'+(slug==='beef-round'?' 細い線は肉の<繊維:せんい>の向きの目安です。':'')+' 脂のつき方は一切れずつちがいます。',panels);
 }
+function porkRoundPhoto(t) {
+ return '<figure class="representative-figure" id="pork-round-photo"><img src="pork-round-cross-section.jpg" alt="骨つきのぶたのももを輪切りにした写真。外側に脂身と皮があり、表面には調味料が付いています。" width="1536" height="875" loading="lazy" style="height:auto;max-height:none">'
+  + '<figcaption><p>'+t('骨つきのももを輪切りにした、スウェーデンの切り方の例です。写真は<調味料:ちょうみりょう>をつけた生のお肉で、見える色の一部は調味料の色です。骨を取りのぞいて売られるもも肉とは、切り方がちがいます。')+'</p>'
+  + '<p>'+t('写真')+' <a href="https://commons.wikimedia.org/wiki/File:Flintastek,_r%C3%A5.jpg">Bengt Bäverman「Flintastek, rå」</a>（2012年8月3日） / <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>。'+t('元の写真をそのまま掲載しています。')+'</p></figcaption></figure>'
+  + '<p>'+t('写真の切り方が後ろあしのももにあたることは、スウェーデンの食肉業界団体')+' Svenskt Kött '+t('の')+'<a href="https://svensktkott.se/om-kott/styckdetaljer/gris/flintastek/">'+t('部位の説明（スウェーデン語）')+'</a>'+t('で確かめられます。下の図では、外側の脂身を残した場合と取りのぞいた場合を見くらべます。')+'</p>';
+}
 function rawNut(slug,t) {
  const d=source[slug];
  return '<table class="nutrition"><caption>'+t('料理ではなく、'+d.label+'（食品番号 '+d.id+'）の食べられる部分100 gあたり')+'</caption><thead><tr><th scope="col">'+t('成分')+'</th><th scope="col">'+t('量')+'</th></tr></thead><tbody>'+
@@ -74,7 +80,7 @@ export function priorityFoodMarkup({r,typeset:t}) {
  if(!descriptor[slug])return '';
  const start=bodyAtlas(slug,t);
  if(slug==='pork-round'||slug==='beef-round') {
-  return start+h('赤身と、外側の白い部分を見る')+roundDrawing(slug,t)+h('うす切りとかたまり、どちらにする？')+
+  return start+h('赤身と、外側の白い部分を見る')+(slug==='pork-round'?porkRoundPhoto(t):'')+roundDrawing(slug,t)+h('うす切りとかたまり、どちらにする？')+
   list(slug==='pork-round'?[
    'うす切り：炒めものや、さっと火を通す料理に。広げやすい厚さのものをえらびます。',
    'かたまり：焼き豚などに。形と厚みがそろったものをえらび、厚いところの中心で加熱を確かめます。',

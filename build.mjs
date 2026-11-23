@@ -20,7 +20,7 @@ import {learningMarkup, hasLearningSheet} from './learning.mjs';
 const project = new URL('.', import.meta.url);
 const dist = new URL('dist/', project);
 fs.mkdirSync(dist,{recursive:true});
-for (const name of ['mina-logo.svg','learning.css','reading-routes.css','chapter-directories.css','recipe-finder.css','recipe-finder.js','meat-iron.css','meat-iron-data.json','reading.css','editorial-context.css','directory-animals.css','representative-content.css','priority-editorial.css','reading.js','featured-chapters.css','chapter-search.js','field-finder.js','chapter-cuts.js','front-links.css','pig.jpg','rib.jpg','og.jpg','icon.svg','brand.svg','logo.webp','favicon.png','apple-touch-icon.png','icon-192.png','icon-512.png','icon-maskable.png','.nojekyll']){
+for (const name of ['mina-logo.svg','pork-round-cross-section.jpg','learning.css','reading-routes.css','chapter-directories.css','recipe-finder.css','recipe-finder.js','meat-iron.css','meat-iron-data.json','reading.css','editorial-context.css','directory-animals.css','representative-content.css','priority-editorial.css','reading.js','featured-chapters.css','chapter-search.js','field-finder.js','chapter-cuts.js','front-links.css','pig.jpg','rib.jpg','og.jpg','icon.svg','brand.svg','logo.webp','favicon.png','apple-touch-icon.png','icon-192.png','icon-512.png','icon-maskable.png','.nojekyll']){
  const asset=new URL(name,project);
  if(fs.existsSync(asset))fs.copyFileSync(asset,new URL(name,dist));
 }
