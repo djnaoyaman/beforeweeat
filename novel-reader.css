@@ -180,3 +180,7 @@
 .n-book-intro{break-after:page}
 .n-preface{max-width:none}
 }
+
+/* Keep the novelist and site editor credits, followed by the site notice. */
+.n-site-footer{flex-wrap:wrap;row-gap:.5rem}
+.n-site-footer .site-copyright{flex-basis:100%;margin:0;font-size:.875rem;line-height:1.8}

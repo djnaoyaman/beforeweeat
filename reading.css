@@ -243,3 +243,6 @@ article p {
 .worksheet-download{display:inline-flex;align-items:center;min-height:44px;margin:.25rem 0 .8rem .5rem;padding:.2em .6em;border:1px solid #1b3027;text-decoration:none}
 .worksheet-download:hover,.worksheet-download:focus-visible{text-decoration:underline}
 @media screen and (max-width:35em){.worksheet-download{margin-inline-start:0}}
+
+/* Shared site copyright notice. */
+footer .site-copyright{flex-basis:100%;margin:.6rem 0 0;font-size:.875rem;line-height:1.8}
