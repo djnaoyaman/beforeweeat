@@ -79,9 +79,9 @@
       return match ? '一二三四五六七八'.indexOf(match[1]) + 1 : 0;
     }
     if (document.body.classList.contains('n-landing')) {
-      send('bwe_novel_page_open', { bwe_work_id: 'ninzuubun', bwe_novel_page: 'cover' });
+      // bwe_novel_view is derived from the matching page_view in GA4.
     } else {
-      send('bwe_novel_page_open', { bwe_work_id: 'ninzuubun', bwe_novel_page: 'scene', bwe_scene_id: sceneId, bwe_chapter: chapter });
+      // bwe_novel_view is derived from the matching page_view in GA4.
       observeOnce(document.getElementById('prose'), 10, () => send('bwe_novel_read', {
         bwe_work_id: 'ninzuubun', bwe_scene_id: sceneId, bwe_chapter: chapter
       }), 0.1);
