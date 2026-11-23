@@ -1,0 +1,1602 @@
+{
+  "schemaVersion": 1,
+  "dataset": {
+    "title": "日本食品標準成分表（八訂）増補2023年",
+    "publisher": "文部科学省",
+    "checkedDate": "2026-11-23",
+    "tableUpdatedDate": "2026-03-27",
+    "errataDate": "2026-03-27",
+    "fooddbUpdatedDate": "2026-06-09",
+    "publicationUrl": "https://www.mext.go.jp/a_menu/syokuhinseibun/mext_00001.html",
+    "historyUrl": "https://www.mext.go.jp/a_menu/syokuhinseibun/mext_02092.html",
+    "dataUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+    "errataUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_16.xlsx",
+    "dataSha256": "0d5a77077dd6cd91cbc2e6e317b8b218a38728c409eed452f1c10635a0d3099c",
+    "errataSha256": "fb61037c7f66af0db1fb0729977913a629bc17097bc3ff7bf75217f9110acabb",
+    "ironColumn": "AC",
+    "ironComponentId": "FE",
+    "ironUnit": "mg",
+    "refuseColumn": "E",
+    "refuseComponentId": "REFUSE",
+    "refuseUnit": "%",
+    "basis": "生の可食部100g",
+    "meatRowCount": 317,
+    "errataCheck": "選択した食品番号の訂正項目を全正誤表で確認。該当は11140（豚ヒレ）と11219（鶏むね皮つき）のナイアシン当量で、今回使用する鉄・廃棄率の訂正なし。最新版Excelの値を使用し、23食品の鉄・廃棄率を現行食品DBと一致確認。",
+    "scope": "肉由来の鉄のみ。料理全体・加熱後の実測値・吸収量ではない。"
+  },
+  "calculation": {
+    "scope": "raw-meat-only",
+    "decimalPlaces": 1,
+    "rounding": "half-up"
+  },
+  "foods": {
+    "11060": {
+      "foodCode": "11060",
+      "name": "＜畜肉類＞　うし　［輸入牛肉］　かた　脂身つき　生",
+      "fooddbFullName": "肉類/＜畜肉類＞/うし/［輸入牛肉］/かた/脂身つき/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 1.1,
+      "ironSourceText": "1.1",
+      "refusePercent": 0,
+      "notes": "皮下脂肪： 5.3 %、筋間脂肪： 5.4 %",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11060_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1747",
+        "name": "D1747",
+        "refuse": "E1747",
+        "iron": "AC1747",
+        "notes": "BJ1747"
+      },
+      "excelStoredIronText": "1.1000000000000001",
+      "fooddbHtmlSha256": "541fe716845ae8325f7888dded9cbe1cf2c261e57a06e6ddf7912a0a8edc3ebc",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11062": {
+      "foodCode": "11062",
+      "name": "＜畜肉類＞　うし　［輸入牛肉］　かた　赤肉　生",
+      "fooddbFullName": "肉類/＜畜肉類＞/うし/［輸入牛肉］/かた/赤肉/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 2.4,
+      "ironSourceText": "2.4",
+      "refusePercent": 0,
+      "notes": "皮下脂肪及び筋間脂肪を除いたもの",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11062_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1749",
+        "name": "D1749",
+        "refuse": "E1749",
+        "iron": "AC1749",
+        "notes": "BJ1749"
+      },
+      "excelStoredIronText": "2.4",
+      "fooddbHtmlSha256": "2b97dce5a7559ddf3e784c7bfdc67109a5f4810106a6668d3e959ec5b920e16e",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11071": {
+      "foodCode": "11071",
+      "name": "＜畜肉類＞　うし　［輸入牛肉］　サーロイン　脂身つき　生",
+      "fooddbFullName": "肉類/＜畜肉類＞/うし/［輸入牛肉］/サーロイン/脂身つき/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 1.4,
+      "ironSourceText": "1.4",
+      "refusePercent": 0,
+      "notes": "皮下脂肪： 12.8 %、筋間脂肪： 15.5 %",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11071_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1760",
+        "name": "D1760",
+        "refuse": "E1760",
+        "iron": "AC1760",
+        "notes": "BJ1760"
+      },
+      "excelStoredIronText": "1.4",
+      "fooddbHtmlSha256": "5b2582ed54f2c3ee55c1dd4e24e69fecc58744f6c454185b70df796c23935d24",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11075": {
+      "foodCode": "11075",
+      "name": "＜畜肉類＞　うし　［輸入牛肉］　もも　脂身つき　生",
+      "fooddbFullName": "肉類/＜畜肉類＞/うし/［輸入牛肉］/もも/脂身つき/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 2.4,
+      "ironSourceText": "2.4",
+      "refusePercent": 0,
+      "notes": "皮下脂肪： 3.4 %、筋間脂肪： 4.0 %",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11075_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1764",
+        "name": "D1764",
+        "refuse": "E1764",
+        "iron": "AC1764",
+        "notes": "BJ1764"
+      },
+      "excelStoredIronText": "2.4",
+      "fooddbHtmlSha256": "d123540f05a62833785eb6d2381c1e205f5372f638b1883cf1210236e1d8f151",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11115": {
+      "foodCode": "11115",
+      "name": "＜畜肉類＞　ぶた　［大型種肉］　かた　脂身つき　生",
+      "fooddbFullName": "肉類/＜畜肉類＞/ぶた/［大型種肉］/かた/脂身つき/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 0.5,
+      "ironSourceText": "0.5",
+      "refusePercent": 0,
+      "notes": "皮下脂肪： 8.2 %、筋間脂肪： 7.5 %",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11115_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1815",
+        "name": "D1815",
+        "refuse": "E1815",
+        "iron": "AC1815",
+        "notes": "BJ1815"
+      },
+      "excelStoredIronText": "0.5",
+      "fooddbHtmlSha256": "513ab7e52f580a8e0547e57c04b6983f2dd801945c4b4c74e7f49fc55c45349c",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11119": {
+      "foodCode": "11119",
+      "name": "＜畜肉類＞　ぶた　［大型種肉］　かたロース　脂身つき　生",
+      "fooddbFullName": "肉類/＜畜肉類＞/ぶた/［大型種肉］/かたロース/脂身つき/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 0.6,
+      "ironSourceText": "0.6",
+      "refusePercent": 0,
+      "notes": "皮下脂肪： 5.7 %、筋間脂肪： 12.4 %",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11119_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1819",
+        "name": "D1819",
+        "refuse": "E1819",
+        "iron": "AC1819",
+        "notes": "BJ1819"
+      },
+      "excelStoredIronText": "0.6",
+      "fooddbHtmlSha256": "bb4edbb16af93abf66065bb5b599e768bf021ac8aff9335c53ecd3f384e116d5",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11123": {
+      "foodCode": "11123",
+      "name": "＜畜肉類＞　ぶた　［大型種肉］　ロース　脂身つき　生",
+      "fooddbFullName": "肉類/＜畜肉類＞/ぶた/［大型種肉］/ロース/脂身つき/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 0.3,
+      "ironSourceText": "0.3",
+      "refusePercent": 0,
+      "notes": "皮下脂肪： 11.4 %、筋間脂肪： 7.9 %",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11123_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1823",
+        "name": "D1823",
+        "refuse": "E1823",
+        "iron": "AC1823",
+        "notes": "BJ1823"
+      },
+      "excelStoredIronText": "0.3",
+      "fooddbHtmlSha256": "aaa0f939af4143f3cf8670fe2c03c8c1163147f256b55e4218f0b1bd7ba0b90a",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11129": {
+      "foodCode": "11129",
+      "name": "＜畜肉類＞　ぶた　［大型種肉］　ばら　脂身つき　生",
+      "fooddbFullName": "肉類/＜畜肉類＞/ぶた/［大型種肉］/ばら/脂身つき/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 0.6,
+      "ironSourceText": "0.6",
+      "refusePercent": 0,
+      "notes": "",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11129_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1830",
+        "name": "D1830",
+        "refuse": "E1830",
+        "iron": "AC1830",
+        "notes": "BJ1830"
+      },
+      "excelStoredIronText": "0.6",
+      "fooddbHtmlSha256": "74b35d1a477f20f3082c1d50643f1c102883971cfb235307c22f7bc13d63a145",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11140": {
+      "foodCode": "11140",
+      "name": "＜畜肉類＞　ぶた　［大型種肉］　ヒレ　赤肉　生",
+      "fooddbFullName": "肉類/＜畜肉類＞/ぶた/［大型種肉］/ヒレ/赤肉/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 0.9,
+      "ironSourceText": "0.9",
+      "refusePercent": 0,
+      "notes": "",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11140_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1842",
+        "name": "D1842",
+        "refuse": "E1842",
+        "iron": "AC1842",
+        "notes": "BJ1842"
+      },
+      "excelStoredIronText": "0.9",
+      "fooddbHtmlSha256": "dafd05bf73e575e3b7f31ec5d2b45db4058b71d36b63091a1cbb2e9593970e86",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11219": {
+      "foodCode": "11219",
+      "name": "＜鳥肉類＞　にわとり　［若どり・主品目］　むね　皮つき　生",
+      "fooddbFullName": "肉類/＜鳥肉類＞/にわとり/［若どり・主品目］/むね/皮つき/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 0.3,
+      "ironSourceText": "0.3",
+      "refusePercent": 0,
+      "notes": "別名：ブロイラー\n皮及び皮下脂肪： 9.0 %",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11219_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1946",
+        "name": "D1946",
+        "refuse": "E1946",
+        "iron": "AC1946",
+        "notes": "BJ1946"
+      },
+      "excelStoredIronText": "0.3",
+      "fooddbHtmlSha256": "24a44769f8f146901e3343c54752c87e8e1bbff3efe1f076426c69ac5e8bce15",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11221": {
+      "foodCode": "11221",
+      "name": "＜鳥肉類＞　にわとり　［若どり・主品目］　もも　皮つき　生",
+      "fooddbFullName": "肉類/＜鳥肉類＞/にわとり/［若どり・主品目］/もも/皮つき/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 0.6,
+      "ironSourceText": "0.6",
+      "refusePercent": 0,
+      "notes": "別名：ブロイラー\n皮及び皮下脂肪： 21.2 %",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11221_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1950",
+        "name": "D1950",
+        "refuse": "E1950",
+        "iron": "AC1950",
+        "notes": "BJ1950"
+      },
+      "excelStoredIronText": "0.6",
+      "fooddbHtmlSha256": "8755ad871af68e686db13933f05f5a58b8b9b2310e0bd6f9d9b5908ff1c9ab52",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11227": {
+      "foodCode": "11227",
+      "name": "＜鳥肉類＞　にわとり　［若どり・副品目］　ささみ　生",
+      "fooddbFullName": "肉類/＜鳥肉類＞/にわとり/［若どり・副品目］/ささみ/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 0.3,
+      "ironSourceText": "0.3",
+      "refusePercent": 5,
+      "notes": "別名：ブロイラー\n廃棄部位： すじ",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11227_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1958",
+        "name": "D1958",
+        "refuse": "E1958",
+        "iron": "AC1958",
+        "notes": "BJ1958"
+      },
+      "excelStoredIronText": "0.3",
+      "fooddbHtmlSha256": "2dbeae397a83a2f5d48b224383aa32f73d36943a14214777808b27042661ed9d",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11232": {
+      "foodCode": "11232",
+      "name": "＜鳥肉類＞　にわとり　［副品目］　肝臓　生",
+      "fooddbFullName": "肉類/＜鳥肉類＞/にわとり/［副品目］/肝臓/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 9.0,
+      "ironSourceText": "9.0",
+      "refusePercent": 0,
+      "notes": "別名： レバー",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11232_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1967",
+        "name": "D1967",
+        "refuse": "E1967",
+        "iron": "AC1967",
+        "notes": "BJ1967"
+      },
+      "excelStoredIronText": "9.0",
+      "fooddbHtmlSha256": "de06fa12d3051331e2d2539656a97cee511b6fb67f04441e265853d4d9486f7a",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11233": {
+      "foodCode": "11233",
+      "name": "＜鳥肉類＞　にわとり　［副品目］　すなぎも　生",
+      "fooddbFullName": "肉類/＜鳥肉類＞/にわとり/［副品目］/すなぎも/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 2.5,
+      "ironSourceText": "2.5",
+      "refusePercent": 0,
+      "notes": "別名： 砂ぎも",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11233_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1968",
+        "name": "D1968",
+        "refuse": "E1968",
+        "iron": "AC1968",
+        "notes": "BJ1968"
+      },
+      "excelStoredIronText": "2.5",
+      "fooddbHtmlSha256": "eb3e7b0c7638f2cf02b1625dc6e93401b07c76b2be020eeeba5a1b1f2cbf3734",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11285": {
+      "foodCode": "11285",
+      "name": "＜鳥肉類＞　にわとり　［若どり・主品目］　手羽さき　皮つき　生",
+      "fooddbFullName": "肉類/＜鳥肉類＞/にわとり/［若どり・主品目］/手羽さき/皮つき/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 0.6,
+      "ironSourceText": "0.6",
+      "refusePercent": 40,
+      "notes": "別名：ブロイラー\n廃棄部位： 骨",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11285_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1944",
+        "name": "D1944",
+        "refuse": "E1944",
+        "iron": "AC1944",
+        "notes": "BJ1944"
+      },
+      "excelStoredIronText": "0.6",
+      "fooddbHtmlSha256": "081c828638edc0a652fe34a92450cd777dccb43bafeb4a0477d01f233ab57d53",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    },
+    "11286": {
+      "foodCode": "11286",
+      "name": "＜鳥肉類＞　にわとり　［若どり・主品目］　手羽もと　皮つき　生",
+      "fooddbFullName": "肉類/＜鳥肉類＞/にわとり/［若どり・主品目］/手羽もと/皮つき/生",
+      "state": "raw",
+      "basisGrams": 100,
+      "basis": "可食部100g",
+      "ironMgPer100g": 0.5,
+      "ironSourceText": "0.5",
+      "refusePercent": 30,
+      "notes": "別名：ブロイラー\n廃棄部位： 骨",
+      "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11286_7",
+      "sourceType": "mext_official_food_composition_table",
+      "sourceWorkbook": "mext_table_20260327.xlsx",
+      "sourceWorkbookUrl": "https://www.mext.go.jp/content/20260327-mxt_kagsei-mext-000029402_02.xlsx",
+      "sourceSheet": "表全体",
+      "sourceCells": {
+        "foodCode": "B1945",
+        "name": "D1945",
+        "refuse": "E1945",
+        "iron": "AC1945",
+        "notes": "BJ1945"
+      },
+      "excelStoredIronText": "0.5",
+      "fooddbHtmlSha256": "e69614ee05270ff1a0989162137775df2620138fc739905770abb0dd86c507cc",
+      "verifiedAgainstFooddb": true,
+      "ironValueStatus": "numeric"
+    }
+  },
+  "recipes": {
+    "bbq-ribs": {
+      "title": "スペアリブのたれは、ここで塗る",
+      "meatLabel": "豚スペアリブ",
+      "foodCode": "11129",
+      "servings": [
+        2,
+        3
+      ],
+      "weight": {
+        "grams": 500,
+        "basis": "gross",
+        "refusePercent": 35,
+        "refuseSourceType": "hospital-recipe-reference",
+        "sourceUrl": "https://maruko-hp.jp/wp-content/uploads/2025/04/vol117_379_hp.pdf",
+        "note": "骨込み500gから35%を差し引き、肉325gとして計算します。35%は丸子中央病院の公開レシピを参考にした条件で、文部科学省のスペアリブの廃棄率ではありません。"
+      },
+      "mapping": {
+        "kind": "proxy-cut",
+        "label": "大型種豚ばら・脂身つき・生（スペアリブの肉部分の参考）",
+        "note": "スペアリブの専用項目がないため、骨を除いた肉部分に、大型種豚ばら・脂身つき・生の値を使っています。"
+      },
+      "assumptions": [
+        "骨を含む割合は肉の切り方で変わります。ここでは公開レシピの35%を参考条件にしています。",
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。",
+        "2人で分ける場合と、3人で分ける場合を別々に計算します。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚ばら・脂身つき・生（食品番号11129）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11129_7",
+          "kind": "mext-food-composition"
+        },
+        {
+          "label": "丸子中央病院・スペアリブの廃棄率35%を用いたレシピ",
+          "url": "https://maruko-hp.jp/wp-content/uploads/2025/04/vol117_379_hp.pdf",
+          "kind": "hospital-recipe-reference"
+        }
+      ]
+    },
+    "stew": {
+      "title": "牛すねを、スプーンでほどけるシチューに",
+      "meatLabel": "牛すね肉",
+      "foodCode": "11062",
+      "servings": [
+        2,
+        3
+      ],
+      "weight": {
+        "grams": 400,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの400gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "proxy-cut",
+        "label": "輸入牛かた・赤肉・生（牛すねの代わりに使う参考部位）",
+        "note": "成分表に牛すねの独立項目がないため、輸入牛かたの赤肉を参考に計算しています。牛すねそのものの成分値ではありません。"
+      },
+      "assumptions": [
+        "牛すねの重量はレシピ通り。鉄の成分値には別の部位を使っています。",
+        "牛肉は成分表の「輸入牛肉」の分類を使った計算です。実際の肉の産地を確認したものではありません。",
+        "2人で分ける場合と、3人で分ける場合を別々に計算します。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・輸入牛かた・赤肉・生（食品番号11062）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11062_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "crispy-chicken": {
+      "title": "鶏ももの皮を、パリッと焼く",
+      "meatLabel": "皮付き鶏もも肉",
+      "foodCode": "11221",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 250,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの250gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "若どりもも・皮つき・生",
+        "note": "レシピの部位に合わせ、成分表の「若どりもも・皮つき・生」を使います。"
+      },
+      "assumptions": [],
+      "references": [
+        {
+          "label": "文部科学省・若どりもも・皮つき・生（食品番号11221）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11221_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "ginger-pork": {
+      "title": "豚こまを香ばしい生姜焼きに",
+      "meatLabel": "豚こま肉",
+      "foodCode": "11115",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 200,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの200gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "unspecified-cut-reference",
+        "label": "大型種豚かた・脂身つき・生",
+        "note": "材料の部位が決まっていないため、「大型種豚かた・脂身つき・生」を計算用の参考にしています。"
+      },
+      "assumptions": [
+        "使う肉の部位や脂身の量によって、実際の鉄量は変わります。",
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚かた・脂身つき・生（食品番号11115）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11115_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "pork-cutlet": {
+      "title": "豚ロースのとんかつを切ってみる",
+      "meatLabel": "豚ロース肉",
+      "foodCode": "11123",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 200,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの200gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "大型種豚ロース・脂身つき・生",
+        "note": "レシピの部位に合わせ、成分表の「大型種豚ロース・脂身つき・生」を使います。"
+      },
+      "assumptions": [
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚ロース・脂身つき・生（食品番号11123）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11123_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "miso-soup": {
+      "title": "豚こまが少し残ったら、ふたり分の豚汁に",
+      "meatLabel": "豚こま肉",
+      "foodCode": "11115",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 80,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの80gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "unspecified-cut-reference",
+        "label": "大型種豚かた・脂身つき・生",
+        "note": "材料の部位が決まっていないため、「大型種豚かた・脂身つき・生」を計算用の参考にしています。"
+      },
+      "assumptions": [
+        "使う肉の部位や脂身の量によって、実際の鉄量は変わります。",
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚かた・脂身つき・生（食品番号11115）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11115_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-01": {
+      "title": "砂肝のにんにく焼き",
+      "meatLabel": "砂肝",
+      "foodCode": "11233",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 200,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "下処理で取り除く部分を除いた、加熱前の砂肝200gを計算条件にしています。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "にわとりすなぎも・副品目・生",
+        "note": "レシピの部位に合わせ、成分表の「にわとりすなぎも・副品目・生」を使います。"
+      },
+      "assumptions": [
+        "下処理後の重さを200gとする計算上の条件です。銀皮を取り除く量は実測していません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・にわとりすなぎも・副品目・生（食品番号11233）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11233_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-02": {
+      "title": "手羽先の塩焼き",
+      "meatLabel": "鶏手羽先",
+      "foodCode": "11285",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 300,
+        "basis": "gross",
+        "refusePercent": 40,
+        "refuseSourceType": "mext-official-refuse-rate",
+        "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11285_7",
+        "note": "6本の重さを約300g（骨込み）として計算します。重量はキッコーマンの公開レシピの参考例です。骨は成分表の廃棄率40%で差し引きます。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "若どり手羽さき・皮つき・生",
+        "note": "レシピの部位に合わせ、成分表の「若どり手羽さき・皮つき・生」を使います。"
+      },
+      "assumptions": [
+        "6本で約300gは計算用の参考重量です。本数が同じでも実際の重さは変わります。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・若どり手羽さき・皮つき・生（食品番号11285）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11285_7",
+          "kind": "mext-food-composition"
+        },
+        {
+          "label": "キッコーマン・6本約300gの参考例",
+          "url": "https://www.kikkoman.co.jp/homecook/search/recipe/00060092/",
+          "kind": "manufacturer-recipe-reference"
+        }
+      ]
+    },
+    "plate-03": {
+      "title": "鶏もものたれ焼き串",
+      "meatLabel": "鶏もも肉",
+      "foodCode": "11221",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 250,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの250gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "若どりもも・皮つき・生",
+        "note": "レシピの部位に合わせ、成分表の「若どりもも・皮つき・生」を使います。"
+      },
+      "assumptions": [
+        "材料欄のとおり、皮付きの肉で計算しています。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・若どりもも・皮つき・生（食品番号11221）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11221_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-04": {
+      "title": "鶏レバーのしょうが煮",
+      "meatLabel": "鶏レバー",
+      "foodCode": "11232",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 200,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "血の塊などを取り除いた後の、加熱前の鶏レバー200gを計算条件にしています。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "にわとり肝臓・副品目・生",
+        "note": "レシピの部位に合わせ、成分表の「にわとり肝臓・副品目・生」を使います。"
+      },
+      "assumptions": [
+        "下処理後の重さを200gとする計算上の条件です。取り除く量は実測していません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・にわとり肝臓・副品目・生（食品番号11232）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11232_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-05": {
+      "title": "砂肝の塩串",
+      "meatLabel": "砂肝",
+      "foodCode": "11233",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 200,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "下処理で取り除く部分を除いた、加熱前の砂肝200gを計算条件にしています。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "にわとりすなぎも・副品目・生",
+        "note": "レシピの部位に合わせ、成分表の「にわとりすなぎも・副品目・生」を使います。"
+      },
+      "assumptions": [
+        "下処理後の重さを200gとする計算上の条件です。銀皮を取り除く量は実測していません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・にわとりすなぎも・副品目・生（食品番号11233）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11233_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-06": {
+      "title": "手羽のねぎスープ",
+      "meatLabel": "鶏手羽元",
+      "foodCode": "11286",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 240,
+        "basis": "gross",
+        "refusePercent": 30,
+        "refuseSourceType": "mext-official-refuse-rate",
+        "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11286_7",
+        "note": "4本の重さを約240g（骨込み）として計算します。重量は森永製菓の公開レシピの参考例です。骨は成分表の廃棄率30%で差し引きます。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "若どり手羽もと・皮つき・生",
+        "note": "レシピの部位に合わせ、成分表の「若どり手羽もと・皮つき・生」を使います。"
+      },
+      "assumptions": [
+        "4本で約240gは計算用の参考重量です。本数が同じでも実際の重さは変わります。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・若どり手羽もと・皮つき・生（食品番号11286）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11286_7",
+          "kind": "mext-food-composition"
+        },
+        {
+          "label": "森永製菓・4本約240gの参考例",
+          "url": "https://www.morinaga.co.jp/recipe/detail/1132",
+          "kind": "manufacturer-recipe-reference"
+        }
+      ]
+    },
+    "plate-07": {
+      "title": "手羽先のしょうゆ照り焼き",
+      "meatLabel": "鶏手羽先",
+      "foodCode": "11285",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 300,
+        "basis": "gross",
+        "refusePercent": 40,
+        "refuseSourceType": "mext-official-refuse-rate",
+        "sourceUrl": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11285_7",
+        "note": "6本の重さを約300g（骨込み）として計算します。重量はキッコーマンの公開レシピの参考例です。骨は成分表の廃棄率40%で差し引きます。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "若どり手羽さき・皮つき・生",
+        "note": "レシピの部位に合わせ、成分表の「若どり手羽さき・皮つき・生」を使います。"
+      },
+      "assumptions": [
+        "6本で約300gは計算用の参考重量です。本数が同じでも実際の重さは変わります。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・若どり手羽さき・皮つき・生（食品番号11285）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11285_7",
+          "kind": "mext-food-composition"
+        },
+        {
+          "label": "キッコーマン・6本約300gの参考例",
+          "url": "https://www.kikkoman.co.jp/homecook/search/recipe/00060092/",
+          "kind": "manufacturer-recipe-reference"
+        }
+      ]
+    },
+    "plate-08": {
+      "title": "しっとり酒蒸し鶏",
+      "meatLabel": "鶏むね肉",
+      "foodCode": "11219",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 250,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの250gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "若どりむね・皮つき・生",
+        "note": "レシピの部位に合わせ、成分表の「若どりむね・皮つき・生」を使います。"
+      },
+      "assumptions": [
+        "材料欄のとおり、皮付きの肉で計算しています。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・若どりむね・皮つき・生（食品番号11219）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11219_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-09": {
+      "title": "蒸し鶏ときゅうりのごま酢和え",
+      "meatLabel": "鶏ささみ",
+      "foodCode": "11227",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 150,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "ささみ150gは、すじを除いた加熱前の重さとして計算します。成分表の廃棄率5%は、ここからもう一度差し引きません。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "若どりささみ・生",
+        "note": "レシピの部位に合わせ、成分表の「若どりささみ・生」を使います。"
+      },
+      "assumptions": [
+        "3本150gを、すじを取り除いた肉150gとする計算上の条件です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・若どりささみ・生（食品番号11227）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11227_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-10": {
+      "title": "鶏のから揚げ、レモン添え",
+      "meatLabel": "鶏もも肉",
+      "foodCode": "11221",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 250,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの250gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "若どりもも・皮つき・生",
+        "note": "レシピの部位に合わせ、成分表の「若どりもも・皮つき・生」を使います。"
+      },
+      "assumptions": [
+        "材料欄のとおり、皮付きの肉で計算しています。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・若どりもも・皮つき・生（食品番号11221）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11221_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-11": {
+      "title": "豚ばらと大根のだし煮",
+      "meatLabel": "豚ばら肉",
+      "foodCode": "11129",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 150,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの150gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "大型種豚ばら・脂身つき・生",
+        "note": "レシピの部位に合わせ、成分表の「大型種豚ばら・脂身つき・生」を使います。"
+      },
+      "assumptions": [
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚ばら・脂身つき・生（食品番号11129）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11129_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-12": {
+      "title": "豚の角煮、からし添え",
+      "meatLabel": "豚ばら肉",
+      "foodCode": "11129",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 350,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの350gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "大型種豚ばら・脂身つき・生",
+        "note": "レシピの部位に合わせ、成分表の「大型種豚ばら・脂身つき・生」を使います。"
+      },
+      "assumptions": [
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚ばら・脂身つき・生（食品番号11129）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11129_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-13": {
+      "title": "厚切りポークのバター焼き",
+      "meatLabel": "豚ロース肉",
+      "foodCode": "11123",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 240,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの240gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "大型種豚ロース・脂身つき・生",
+        "note": "レシピの部位に合わせ、成分表の「大型種豚ロース・脂身つき・生」を使います。"
+      },
+      "assumptions": [
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚ロース・脂身つき・生（食品番号11123）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11123_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-14": {
+      "title": "千切りキャベツとロースかつ",
+      "meatLabel": "豚ロース肉",
+      "foodCode": "11123",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 200,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの200gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "大型種豚ロース・脂身つき・生",
+        "note": "レシピの部位に合わせ、成分表の「大型種豚ロース・脂身つき・生」を使います。"
+      },
+      "assumptions": [
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚ロース・脂身つき・生（食品番号11123）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11123_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-15": {
+      "title": "豚肩ロースのみそ焼き",
+      "meatLabel": "豚肩ロース肉",
+      "foodCode": "11119",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 220,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの220gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "大型種豚かたロース・脂身つき・生",
+        "note": "レシピの部位に合わせ、成分表の「大型種豚かたロース・脂身つき・生」を使います。"
+      },
+      "assumptions": [
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚かたロース・脂身つき・生（食品番号11119）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11119_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-16": {
+      "title": "豚肉のおろしだれ焼き",
+      "meatLabel": "豚ロース肉",
+      "foodCode": "11123",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 200,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの200gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "大型種豚ロース・脂身つき・生",
+        "note": "レシピの部位に合わせ、成分表の「大型種豚ロース・脂身つき・生」を使います。"
+      },
+      "assumptions": [
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚ロース・脂身つき・生（食品番号11123）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11123_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-17": {
+      "title": "豚のしょうが焼きと千切りキャベツ",
+      "meatLabel": "豚ロース肉",
+      "foodCode": "11123",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 200,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの200gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "大型種豚ロース・脂身つき・生",
+        "note": "レシピの部位に合わせ、成分表の「大型種豚ロース・脂身つき・生」を使います。"
+      },
+      "assumptions": [
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚ロース・脂身つき・生（食品番号11123）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11123_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-18": {
+      "title": "オーブンで焼くローストビーフ",
+      "meatLabel": "牛もも肉",
+      "foodCode": "11075",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 300,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの300gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "輸入牛もも・脂身つき・生",
+        "note": "レシピの部位に合わせ、成分表の「輸入牛もも・脂身つき・生」を使います。"
+      },
+      "assumptions": [
+        "牛肉は成分表の「輸入牛肉」の分類を使った計算です。実際の肉の産地を確認したものではありません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・輸入牛もも・脂身つき・生（食品番号11075）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11075_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-19": {
+      "title": "牛ももステーキのからし添え",
+      "meatLabel": "牛もも肉",
+      "foodCode": "11075",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 240,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの240gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "輸入牛もも・脂身つき・生",
+        "note": "レシピの部位に合わせ、成分表の「輸入牛もも・脂身つき・生」を使います。"
+      },
+      "assumptions": [
+        "牛肉は成分表の「輸入牛肉」の分類を使った計算です。実際の肉の産地を確認したものではありません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・輸入牛もも・脂身つき・生（食品番号11075）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11075_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-20": {
+      "title": "牛肉の薄切りレモン焼き",
+      "meatLabel": "牛もも肉",
+      "foodCode": "11075",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 200,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの200gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "輸入牛もも・脂身つき・生",
+        "note": "レシピの部位に合わせ、成分表の「輸入牛もも・脂身つき・生」を使います。"
+      },
+      "assumptions": [
+        "牛肉は成分表の「輸入牛肉」の分類を使った計算です。実際の肉の産地を確認したものではありません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・輸入牛もも・脂身つき・生（食品番号11075）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11075_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-21": {
+      "title": "牛肉のしょうがしぐれ煮",
+      "meatLabel": "牛切り落とし肉",
+      "foodCode": "11060",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 200,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの200gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "unspecified-cut-reference",
+        "label": "輸入牛かた・脂身つき・生",
+        "note": "材料の部位が決まっていないため、「輸入牛かた・脂身つき・生」を計算用の参考にしています。"
+      },
+      "assumptions": [
+        "使う肉の部位や脂身の量によって、実際の鉄量は変わります。",
+        "牛肉は成分表の「輸入牛肉」の分類を使った計算です。実際の肉の産地を確認したものではありません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・輸入牛かた・脂身つき・生（食品番号11060）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11060_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-22": {
+      "title": "牛肉のねぎ塩炒め",
+      "meatLabel": "牛薄切り肉",
+      "foodCode": "11060",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 200,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの200gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "unspecified-cut-reference",
+        "label": "輸入牛かた・脂身つき・生",
+        "note": "材料の部位が決まっていないため、「輸入牛かた・脂身つき・生」を計算用の参考にしています。"
+      },
+      "assumptions": [
+        "使う肉の部位や脂身の量によって、実際の鉄量は変わります。",
+        "牛肉は成分表の「輸入牛肉」の分類を使った計算です。実際の肉の産地を確認したものではありません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・輸入牛かた・脂身つき・生（食品番号11060）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11060_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-23": {
+      "title": "豚肉とキャベツのみそ炒め",
+      "meatLabel": "豚こま肉",
+      "foodCode": "11115",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 180,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの180gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "unspecified-cut-reference",
+        "label": "大型種豚かた・脂身つき・生",
+        "note": "材料の部位が決まっていないため、「大型種豚かた・脂身つき・生」を計算用の参考にしています。"
+      },
+      "assumptions": [
+        "使う肉の部位や脂身の量によって、実際の鉄量は変わります。",
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚かた・脂身つき・生（食品番号11115）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11115_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-24": {
+      "title": "豚ヒレのソテー、しょうゆソース",
+      "meatLabel": "豚ヒレ肉",
+      "foodCode": "11140",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 250,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの250gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "大型種豚ヒレ・赤肉・生",
+        "note": "レシピの部位に合わせ、成分表の「大型種豚ヒレ・赤肉・生」を使います。"
+      },
+      "assumptions": [
+        "豚肉は成分表の「大型種肉」の分類を使った計算です。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・大型種豚ヒレ・赤肉・生（食品番号11140）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11140_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-25": {
+      "title": "ひと口牛カツ",
+      "meatLabel": "牛もも肉",
+      "foodCode": "11075",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 200,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの200gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "matching-cut",
+        "label": "輸入牛もも・脂身つき・生",
+        "note": "レシピの部位に合わせ、成分表の「輸入牛もも・脂身つき・生」を使います。"
+      },
+      "assumptions": [
+        "牛肉は成分表の「輸入牛肉」の分類を使った計算です。実際の肉の産地を確認したものではありません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・輸入牛もも・脂身つき・生（食品番号11075）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11075_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-26": {
+      "title": "厚切り牛の黒こしょう焼き",
+      "meatLabel": "牛ステーキ肉",
+      "foodCode": "11071",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 300,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの300gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "unspecified-cut-reference",
+        "label": "輸入牛サーロイン・脂身つき・生",
+        "note": "材料の部位が決まっていないため、「輸入牛サーロイン・脂身つき・生」を計算用の参考にしています。"
+      },
+      "assumptions": [
+        "使う肉の部位や脂身の量によって、実際の鉄量は変わります。",
+        "牛肉は成分表の「輸入牛肉」の分類を使った計算です。実際の肉の産地を確認したものではありません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・輸入牛サーロイン・脂身つき・生（食品番号11071）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11071_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-27": {
+      "title": "牛肉と焼き豆腐のすき煮",
+      "meatLabel": "牛薄切り肉",
+      "foodCode": "11060",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 180,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの180gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "unspecified-cut-reference",
+        "label": "輸入牛かた・脂身つき・生",
+        "note": "材料の部位が決まっていないため、「輸入牛かた・脂身つき・生」を計算用の参考にしています。"
+      },
+      "assumptions": [
+        "使う肉の部位や脂身の量によって、実際の鉄量は変わります。",
+        "牛肉は成分表の「輸入牛肉」の分類を使った計算です。実際の肉の産地を確認したものではありません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・輸入牛かた・脂身つき・生（食品番号11060）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11060_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-28": {
+      "title": "にんにくチップのステーキ",
+      "meatLabel": "牛ステーキ肉",
+      "foodCode": "11071",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 260,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの260gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "unspecified-cut-reference",
+        "label": "輸入牛サーロイン・脂身つき・生",
+        "note": "材料の部位が決まっていないため、「輸入牛サーロイン・脂身つき・生」を計算用の参考にしています。"
+      },
+      "assumptions": [
+        "使う肉の部位や脂身の量によって、実際の鉄量は変わります。",
+        "牛肉は成分表の「輸入牛肉」の分類を使った計算です。実際の肉の産地を確認したものではありません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・輸入牛サーロイン・脂身つき・生（食品番号11071）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11071_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-29": {
+      "title": "牛薄切り肉の肉じゃが",
+      "meatLabel": "牛薄切り肉",
+      "foodCode": "11060",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 150,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの150gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "unspecified-cut-reference",
+        "label": "輸入牛かた・脂身つき・生",
+        "note": "材料の部位が決まっていないため、「輸入牛かた・脂身つき・生」を計算用の参考にしています。"
+      },
+      "assumptions": [
+        "使う肉の部位や脂身の量によって、実際の鉄量は変わります。",
+        "牛肉は成分表の「輸入牛肉」の分類を使った計算です。実際の肉の産地を確認したものではありません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・輸入牛かた・脂身つき・生（食品番号11060）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11060_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    },
+    "plate-30": {
+      "title": "牛すね肉と根菜の和風煮込み",
+      "meatLabel": "牛すね肉",
+      "foodCode": "11062",
+      "servings": [
+        2
+      ],
+      "weight": {
+        "grams": 250,
+        "basis": "edible",
+        "refusePercent": 0,
+        "refuseSourceType": "not-applied-edible-weight",
+        "note": "レシピの250gを、加熱前の食べられる肉の重さとして計算します。"
+      },
+      "mapping": {
+        "kind": "proxy-cut",
+        "label": "輸入牛かた・赤肉・生（牛すねの代わりに使う参考部位）",
+        "note": "成分表に牛すねの独立項目がないため、輸入牛かたの赤肉を参考に計算しています。牛すねそのものの成分値ではありません。"
+      },
+      "assumptions": [
+        "牛すねの重量はレシピ通り。鉄の成分値には別の部位を使っています。",
+        "牛肉は成分表の「輸入牛肉」の分類を使った計算です。実際の肉の産地を確認したものではありません。"
+      ],
+      "references": [
+        {
+          "label": "文部科学省・輸入牛かた・赤肉・生（食品番号11062）",
+          "url": "https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11062_7",
+          "kind": "mext-food-composition"
+        }
+      ]
+    }
+  }
+}

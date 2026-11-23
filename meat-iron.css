@@ -1,0 +1,29 @@
+.meat-iron{margin-block:3rem 2rem;padding-block:1.5rem 0;border-top:2px solid var(--ink,#193c2b)}
+.meat-iron .meat-iron-kicker{font-size:.8em;letter-spacing:.12em;margin:0 0 .25rem;color:var(--muted,#526457)}
+.meat-iron h2{margin:.25rem 0 1rem;font-size:1.5em;line-height:1.8}
+.meat-iron .meat-iron-intro{margin:0 0 1.25rem}
+.meat-iron-values{display:flex;flex-wrap:wrap;gap:1.25rem 3rem;margin-block:1rem 1.5rem}
+.meat-iron-serving{flex:1 1 13rem;min-width:0}
+.meat-iron .meat-iron-serving-label{font-size:.9em;margin:0 0 .35rem}
+.meat-iron-value{display:block;font-family:Georgia,'Times New Roman',serif;font-size:2.6em;line-height:1.2;font-variant-numeric:tabular-nums;font-weight:400;color:var(--ink,#193c2b)}
+.meat-iron-approx,.meat-iron-unit{font-family:inherit;font-size:.43em;white-space:nowrap}
+.meat-iron .meat-iron-weight{margin:.5rem 0 0;font-size:.85em}
+.meat-iron .meat-iron-assumption{margin:0 0 .75rem;font-size:.95em;font-weight:600}
+.meat-iron .meat-iron-proxy{margin:0 0 .75rem;font-size:.9em}
+.meat-iron .meat-iron-scope{margin:0 0 1rem;font-size:.9em}
+.meat-iron-details{border:0;border-top:1px solid #c9cfc2;padding:0;background:transparent}
+.meat-iron-details>summary{padding:.8rem .2rem;min-height:44px;cursor:pointer;line-height:1.8}
+.meat-iron-details>summary:focus-visible{outline:3px solid #a65331;outline-offset:3px}
+.meat-iron-detail-body{padding:.25rem .2rem 1rem;font-size:.88em;overflow-wrap:anywhere}
+.meat-iron-detail-body dl{margin:1rem 0}
+.meat-iron-detail-body dl>div{margin-bottom:1rem}
+.meat-iron-detail-body dt{font-weight:600}
+.meat-iron-detail-body dd{margin:.25rem 0 0}
+.meat-iron-detail-body h3{font-size:1.05em;margin:1.5rem 0 .5rem}
+.meat-iron-detail-body ul{padding-left:1.3em}
+.meat-iron-detail-body li{margin-block:.6rem}
+.meat-iron-detail-body a{border:0;border-radius:0;background:none;text-decoration:underline;text-underline-offset:.2em;padding-block:.25em;box-decoration-break:clone}
+.meat-iron-detail-body a:focus-visible{outline:3px solid #a65331;outline-offset:3px}
+.meat-iron-formula{padding-block:.75rem;border-block:1px solid #c9cfc2;overflow-wrap:anywhere}
+@media(max-width:480px){.meat-iron{margin-top:2rem}.meat-iron-values{gap:1.5rem}.meat-iron-serving{flex-basis:100%}.meat-iron h2{font-size:1.35em}}
+@media print{.meat-iron{break-inside:avoid}.meat-iron-details{display:block}}
