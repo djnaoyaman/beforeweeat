@@ -202,7 +202,7 @@ top=top
  .replace('href="loin.html">ロースを図鑑で読む','href="pig-cuts.html" id="animal-guide">ぶたの部位を見る')
  .replace('</button> <a href="pig-cuts.html" id="animal-guide">ぶたの部位を見る</a>','</button> <a href="pig-cuts.html" id="animal-guide">ぶたの部位を見る</a><a href="pig.html" id="animal-life">ぶたのくらし</a>')
  .replace('私は、お肉を食べます。<br>だからこそ、どうぶつが生きている間の<br><ruby>苦<rt>くる</rt></ruby>しみを、ひとつでも減らしたい。','私はお肉が好きです。おいしく食べながら、食卓に届く前のどうぶつのくらしも知っていたい。生きている間に減らせる<ruby>苦<rt>くる</rt></ruby>しみがあるなら、そのことも考えたいと思います。')
- .replace('そして、食卓に届いたお肉は、<br>その部位に合った、とびきりおいしい食べ方で。','作りたい料理を探しても、どうぶつの絵をのぞいても。気になった方から読んでみてください。<a class="intro-essay" href="mina.html">MINAの手紙を読む</a>')
+ .replace('そして、食卓に届いたお肉は、<br>その部位に合った、とびきりおいしい食べ方で。',typeset('食を通じて、<動物福祉:どうぶつふくし>（アニマルウェルフェア）への<理解:りかい>と行動を広げる。日々の買い物や食事の<選択:せんたく>につながるきっかけを届けます。')+'<a class="intro-essay" href="mina.html">MINAの手紙を読む</a>')
  .replace('アニマルウェルフェアって？<span>＋</span></button>','アニマルウェルフェアって？<span>＋</span></button><a class="outline field-link" href="field-cases.html">畜産の現場で報告された事例</a>')
  .replace('<footer><a href="#top">Before We Eat</a>','<footer><a class="footer-brand" href="#top"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a>')
  .replace('</body>','<script src="animal-view.js" defer></script></body>');
