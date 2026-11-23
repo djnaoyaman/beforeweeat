@@ -21,7 +21,7 @@ import {learningMarkup, hasLearningSheet} from './learning.mjs';
 const project = new URL('.', import.meta.url);
 const dist = new URL('dist/', project);
 fs.mkdirSync(dist,{recursive:true});
-for (const name of ['mina-logo.svg','pork-round-cross-section.jpg','learning.css','reading-routes.css','chapter-directories.css','recipe-finder.css','recipe-finder.js','meat-iron.css','meat-iron-data.json','reading.css','editorial-context.css','directory-animals.css','representative-content.css','priority-editorial.css','reading.js','featured-chapters.css','chapter-search.js','field-finder.js','chapter-cuts.js','front-links.css','pig.jpg','rib.jpg','og.jpg','icon.svg','brand.svg','logo.webp','favicon.png','apple-touch-icon.png','icon-192.png','icon-512.png','icon-maskable.png','.nojekyll']){
+for (const name of ['ga4-events.js','mina-logo.svg','pork-round-cross-section.jpg','learning.css','reading-routes.css','chapter-directories.css','recipe-finder.css','recipe-finder.js','meat-iron.css','meat-iron-data.json','reading.css','editorial-context.css','directory-animals.css','representative-content.css','priority-editorial.css','reading.js','featured-chapters.css','chapter-search.js','field-finder.js','chapter-cuts.js','front-links.css','pig.jpg','rib.jpg','og.jpg','icon.svg','brand.svg','logo.webp','favicon.png','apple-touch-icon.png','icon-192.png','icon-512.png','icon-maskable.png','.nojekyll']){
  const asset=new URL(name,project);
  if(fs.existsSync(asset))fs.copyFileSync(asset,new URL(name,dist));
 }
@@ -75,7 +75,26 @@ function typeset(text){
   return manual ? ruby(manual[1],manual[2]) : escape(part).replace(known,word=>ruby(word,readings[word]));
  }).join('');
 }
-const write=(file,text)=>fs.writeFileSync(new URL(file,dist),text);
+function withAnalytics(file, text) {
+ if (!file.endsWith('.html') || file === 'top.html') return text;
+ const recovery = file === '404.html';
+ let additions = '';
+ // Preserve existing tags and reading events when templates already contain them.
+ if (!/<script\b[^>]*\bsrc=["']https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-HBPDX2M5HR(?:&[^"']*)?["']/i.test(text)) {
+  additions += '<script async' + (recovery ? ' referrerpolicy="no-referrer"' : '') + ' src="https://www.googletagmanager.com/gtag/js?id=G-HBPDX2M5HR"></script>\n';
+ }
+ if (!/\bgtag\(\s*["']config["']\s*,\s*["']G-HBPDX2M5HR["']/.test(text)) {
+  const options = recovery ? ",{page_location:'" + base + "404.html',page_referrer:''}" : '';
+  additions += "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-HBPDX2M5HR'" + options + ");</script>\n";
+ }
+ if (!recovery && !/<script\b[^>]*\bsrc=["'][^"']*\/?ga4-events\.js(?:\?[^"']*)?["']/i.test(text)) {
+  additions += '<script defer src="/beforeweeat/ga4-events.js"></script>\n';
+ }
+ if (!additions) return text;
+ if (!/<\/head>/i.test(text)) throw new Error('Missing analytics insertion point: ' + file);
+ return text.replace(/<\/head>/i, additions + '</head>');
+}
+const write=(file,text)=>fs.writeFileSync(new URL(file,dist),withAnalytics(file,text));
 const pageLink=(slug,label)=>'<a href="'+slug+'.html">'+typeset(label||bySlug.get(slug).title)+'</a>';
 const description='食べる前に、一つ、知る。動物のくらし、肉の部位と栄養、いちばんおいしい食べ方。先生や家族と使える食育教材も。';
 function meta(title,desc,path,image='og.jpg',article=false){
@@ -226,6 +245,6 @@ for(const r of rows.filter(r=>articleChecks[r.slug])){
 }
 write('field-cases-manuscript.md','# Before We Eat　畜産の現場で報告された事例\n\n元の番号順に79項目、続いて関連する個別記事8本を収録。\n\n'+caseManuscript.join('\n\n')+'\n');
 write('site.webmanifest',JSON.stringify({name:'Before We Eat',short_name:'Before We Eat',description,lang:'ja',start_url:'./',scope:'./',display:'browser',background_color:'#f7f4e9',theme_color:'#1b3027',icons:[{src:'icon.svg?v=3',sizes:'any',type:'image/svg+xml'},{src:'icon-192.png?v=3',sizes:'192x192',type:'image/png'},{src:'icon-512.png?v=3',sizes:'512x512',type:'image/png'},{src:'icon-maskable.png?v=3',sizes:'512x512',type:'image/png',purpose:'maskable'}]}));
-write('404.html','<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>ページが見つかりません｜Before We Eat</title><link rel="stylesheet" href="'+base+'reading.css?v=4"><main><h1>ページが見つかりませんでした。</h1><p><a href="'+base+'start.html">すべての目次を開く</a></p></main></html>');
+write('404.html','<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>ページが見つかりません｜Before We Eat</title><link rel="stylesheet" href="'+base+'reading.css?v=4"></head><body><main><h1>ページが見つかりませんでした。</h1><p><a href="'+base+'start.html">すべての目次を開く</a></p></main></body></html>');
 console.log('Built '+urls.length+' editorial pages.');
 
