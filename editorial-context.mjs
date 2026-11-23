@@ -35,6 +35,7 @@ const sourceMap = [
 
 // The publishing agent keeps only completed entries before releasing this page.
 export const editorialUpdates = [
+  {date: '2026-11-23', title: '36品に、お肉の鉄の目安を追加', body: '36品のレシピに、材料のお肉の量をもとにした1人分の鉄の目安を加えました。火を通す前のお肉だけを計算した値です。計算に使った部位・重さ・人数・出典も確かめられます。', links: [['crispy-chicken', '鶏もも肉の皮をパリッと焼く'], ['pork-cutlet', 'とんかつを作る'], ['miso-soup', '豚汁を作る']]},
   {date: '2026-11-23', title: '料理を、作れる記事へ', body: '生姜焼き・とんかつ・豚汁に、材料、分量、道具、作り方、食べる前の観察の問いをそろえました。', links: [['cooking', '料理を選ぶ']]},
   {date: '2026-11-23', title: '本文にあることばを探しやすく', body: '「ネック」「せせり」などの部位名や、料理の作り方にあることばでも記事を探せるようにしました。', links: [['start', 'ことばで探す']]},
   {date: '2026-11-23', title: '部位と体の場所をつなぐ', body: '部位を選びながら、動物の体のどこかを見比べる図鑑を整えました。', links: [['cuts', '部位図鑑を見る']]},

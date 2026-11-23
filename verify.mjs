@@ -8,6 +8,7 @@ import {publicationManifest, publicationRows, recipeSlugs, siteBase} from './pub
 import {plateRecipes} from './plate-recipes.mjs';
 import {fieldGroups} from './field-archive.mjs';
 import {recipes, species} from './edition.mjs';
+import {meatIronData, validateMeatIronData, calculateMeatIron} from './meat-iron.mjs';
 
 // Dependency-free static publication gate. Live UI checks are recorded separately.
 const project = path.dirname(fileURLToPath(import.meta.url));
@@ -143,6 +144,10 @@ for (const [query, url] of [['ネック', 'beef-cuts.html'], ['せせり', 'chic
 
 check(plateRecipes.length === 30, 'Keep all 30 published plate recipes');
 check(recipeSlugs.length === 36 && new Set(recipeSlugs).size === 36, 'Expected 36 stable recipe URLs');
+const ironRecipeSlugs = Object.keys(meatIronData.recipes || {});
+check(ironRecipeSlugs.length === recipeSlugs.length && recipeSlugs.every(slug => ironRecipeSlugs.includes(slug)),
+  'Raw-meat iron data must cover exactly the 36 published recipes');
+for (const error of validateMeatIronData(meatIronData)) check(false, 'Iron data: ' + error);
 for (let number = 1; number <= 30; number++) check(plateRecipes.some(recipe => recipe.slug === 'plate-' + String(number).padStart(2, '0')), 'Missing stable plate URL ' + number);
 for (const slug of recipeSlugs) {
   const recipe = plateRecipes.find(row => row.slug === slug) || recipes[slug];
@@ -154,6 +159,47 @@ for (const slug of recipeSlugs) {
   check(headings.some(heading => heading.startsWith('材料')) && headings.includes('作り方'), slug + ': rendered materials/steps missing');
   check(doc.tags.some(tag => tag.name === 'img' && tag.ancestors.some(parent => hasClass(parent, 'food-plate'))), slug + ': recipe photograph missing');
   check(docs.get('cooking.html').tags.some(tag => tag.name === 'a' && tag.attrs.href === slug + '.html'), slug + ': cooking gallery link missing');
+
+  // Check the rendered contract against its declared data. Numerical/source
+  // validation is also performed independently from the MEXT workbook.
+  const iron = meatIronData.recipes[slug];
+  check(Boolean(iron), slug + ': raw-meat iron data missing');
+  if (!iron) continue;
+  const sections = doc.tags.filter(tag => tag.name === 'section' && Object.hasOwn(tag.attrs, 'data-meat-iron'));
+  check(sections.length === 1, slug + ': expected exactly one iron section');
+  if (sections.length !== 1) continue;
+  const section = sections[0], calculated = calculateMeatIron(slug);
+  const members = doc.tags.filter(tag => tag.ancestors.includes(section));
+  check(section.attrs['data-meat-iron'] === slug && section.attrs['data-iron-scope'] === 'raw-meat-only',
+    slug + ': iron scope or recipe identifier mismatch');
+  check(section.attrs['data-food-code'] === iron.foodCode &&
+    Object.hasOwn(section.attrs, 'data-edible-grams') &&
+    Number(section.attrs['data-edible-grams']) === calculated.edibleGrams,
+  slug + ': iron food code or edible weight mismatch');
+  const servingBlocks = members.filter(tag => hasClass(tag, 'meat-iron-serving'));
+  check(servingBlocks.length === iron.servings.length, slug + ': iron serving choices missing or duplicated');
+  const visibleAmounts = [...doc.html.matchAll(/<strong\b(?=[^>]*\bclass="[^"]*\bmeat-iron-value\b)[^>]*>([\s\S]*?)<\/strong>/g)]
+    .map(match => text(match[1]).replace(/\s+/g, ''));
+  check(visibleAmounts.length === calculated.portions.length, slug + ': visible iron amount missing');
+  for (const [index, portion] of calculated.portions.entries()) {
+    const blocks = servingBlocks.filter(tag => tag.attrs['data-servings'] === String(portion.servings));
+    check(blocks.length === 1, slug + ': iron denominator missing or duplicated: ' + portion.servings);
+    if (blocks.length !== 1) continue;
+    const values = members.filter(tag => hasClass(tag, 'meat-iron-value') && tag.ancestors.includes(blocks[0]));
+    const below = portion.ironMg > 0 && portion.displayMg === '0.0';
+    const expected = below ? 'less-than-0.1' : portion.displayMg;
+    check(values.length === 1 && values[0].attrs['data-iron-mg'] === expected,
+      slug + ': iron amount differs from declared calculation for ' + portion.servings + ' servings');
+    check(visibleAmounts[index]?.includes(below ? '0.1mg未満' : portion.displayMg + 'mg'),
+      slug + ': visible iron text differs from amount');
+  }
+  check(members.some(tag => hasClass(tag, 'meat-iron-assumption') &&
+    !tag.ancestors.some(parent => parent.name === 'details')), slug + ': calculation assumption must stay visible');
+  check(members.some(tag => hasClass(tag, 'meat-iron-scope')), slug + ': visible raw-meat scope missing');
+  check(members.some(tag => tag.name === 'details' && hasClass(tag, 'meat-iron-details')),
+    slug + ': iron calculation details missing');
+  check(members.some(tag => tag.name === 'a' && tag.attrs.href === meatIronData.foods[iron.foodCode].sourceUrl &&
+    tag.ancestors.some(parent => hasClass(parent, 'meat-iron-details'))), slug + ': official iron source link missing');
 }
 
 const archive = docs.get('field-cases.html');
@@ -181,7 +227,8 @@ const hash = file => crypto.createHash('sha256').update(fs.readFileSync(path.joi
 const result = {
   status: errors.length ? 'failed' : 'passed', kind: 'static-publication-check',
   pages: publicationManifest.length, checkedLinks, searchRecords: catalog.length,
-  recipes: recipeSlugs.length, fieldRecords: fieldRecords.length, individualPhotoWarnings: sensitive.length,
+  recipes: recipeSlugs.length, ironRecipes: ironRecipeSlugs.length,
+  fieldRecords: fieldRecords.length, individualPhotoWarnings: sensitive.length,
   topSha256: hash('index.html'), sitemapSha256: hash('sitemap.xml'),
   liveUiVerified: false, errors
 };

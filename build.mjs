@@ -7,6 +7,7 @@ import {cookingSafety, cookingSafetySources, cookingSafetyNext, cookingSafetySty
 import {plateRecipes} from './plate-recipes.mjs';
 import {publicationRows as rows} from './publication.mjs';
 import fs from 'node:fs';
+import {meatIronMarkup} from './meat-iron.mjs';
 import {animalsDirectory, chapterHeader, contentsPage} from './featured-directory.mjs';
 import {representativeLoin, representativeNext} from './representative-content.mjs';
 import {cookingContents, cutsContents, kitchenAssets} from './chapter-features.mjs';
@@ -17,7 +18,7 @@ import {learningMarkup, hasLearningSheet} from './learning.mjs';
 const project = new URL('.', import.meta.url);
 const dist = new URL('dist/', project);
 fs.mkdirSync(dist,{recursive:true});
-for (const name of ['reading.css','editorial-context.css','directory-animals.css','representative-content.css','priority-editorial.css','reading.js','featured-chapters.css','chapter-search.js','field-finder.js','chapter-cuts.js','front-links.css','pig.jpg','rib.jpg','og.jpg','icon.svg','brand.svg','logo.webp','favicon.png','apple-touch-icon.png','icon-192.png','icon-512.png','icon-maskable.png','.nojekyll']){
+for (const name of ['meat-iron.css','meat-iron-data.json','reading.css','editorial-context.css','directory-animals.css','representative-content.css','priority-editorial.css','reading.js','featured-chapters.css','chapter-search.js','field-finder.js','chapter-cuts.js','front-links.css','pig.jpg','rib.jpg','og.jpg','icon.svg','brand.svg','logo.webp','favicon.png','apple-touch-icon.png','icon-192.png','icon-512.png','icon-maskable.png','.nojekyll']){
  const asset=new URL(name,project);
  if(fs.existsSync(asset))fs.copyFileSync(asset,new URL(name,dist));
 }
@@ -126,6 +127,8 @@ for(const r of rows){
  const bodyHtml=priority?priority.body:welfare?welfareGuide(r.slug,{typeset}):safety?cookingSafety(r.slug,{typeset}):r.ingredients
   ? '<figure class="food-plate"><img src="'+r.art+'" alt="'+escape(r.title)+'"></figure><h2>材料（2人分）</h2><ul>'+r.ingredients.split('、').map(item=>'<li>'+typeset(item)+'</li>').join('')+'</ul><h2>作り方</h2><ol>'+r.steps.map(step=>'<li>'+typeset(step)+'</li>').join('')+'</ol><p>'+typeset('肉の火の通りは中心温度計で確かめます。最も厚いところの中心が75℃に達してから、1分以上加熱してください。')+' '+pageLink('heat','温度計で確かめるときは')+'</p>'
   : r.body.split('\n').map(section=>'<p>'+typeset(section)+'</p>').join('');
+ const ironHtml=meatIronMarkup({slug:r.slug,typeset});
+ const ironStyles=ironHtml ? '<link rel="stylesheet" href="meat-iron.css?v=1">' : '';
  const readerEdition=priority||welfare ? '' : r.slug==='animals' ? editorialContextMarkup({r,typeset,pageLink})+animalsDirectory({typeset}) :
    editorialContextMarkup({r,typeset,pageLink})+editionMarkup({r,typeset,pageLink,hasAsset})+extra(r)+directory(r);
  const foodNext=priorityFoodNext({r,typeset,pageLink});
@@ -149,7 +152,7 @@ for(const r of rows){
    +chapterHeader(pageLink)+'<main id="main" class="contents"><article class="chapter-page">'+featuredBody(r)+refsHtml+'</article>'+readerOptions+'</main>'+footer+'</body></html>');
   continue;
  }
- write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,r.ingredients ? r.title+'の材料と作り方。2人分。' : metadataLead,page,r.art || (r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg'),true)+'<link rel="stylesheet" href="reading.css?v=4"><link rel="stylesheet" href="editorial-context.css">'+extraStyles+'<script src="reading.js'+(r.slug==='field-cases'?'?v=2':'')+'" defer></script></head><body'+(hasLearningSheet(r.slug)?' class="worksheet-page"':'')+'><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1>'+(priority?'<p class="lead">'+priority.lead+'</p>':welfare?welfareGuideLead(r.slug,{typeset}):r.lead?'<p class="lead">'+typeset(r.lead)+'</p>':'')+feature(r)+bodyHtml+priorityFoodMarkup({r,typeset,pageLink})+readerEdition+refsHtml+(check?factCheck(check,typeset):'')+'</article>'+readerAside+'</main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
+ write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,r.ingredients ? r.title+'の材料と作り方。2人分。' : metadataLead,page,r.art || (r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg'),true)+'<link rel="stylesheet" href="reading.css?v=4"><link rel="stylesheet" href="editorial-context.css">'+extraStyles+ironStyles+'<script src="reading.js'+(r.slug==='field-cases'?'?v=2':'')+'" defer></script></head><body'+(hasLearningSheet(r.slug)?' class="worksheet-page"':'')+'><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1>'+(priority?'<p class="lead">'+priority.lead+'</p>':welfare?welfareGuideLead(r.slug,{typeset}):r.lead?'<p class="lead">'+typeset(r.lead)+'</p>':'')+feature(r)+bodyHtml+priorityFoodMarkup({r,typeset,pageLink})+readerEdition+ironHtml+refsHtml+(check?factCheck(check,typeset):'')+'</article>'+readerAside+'</main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
 }
 let top=fs.readFileSync(new URL('top.template',project),'utf8').replace(/<meta name="description"[^>]*>/gi,'');
 top=top.replace('</head>',meta('Before We Eat｜ちゃんと「いただきます」。',description,'')+'<meta name="referrer" content="strict-origin-when-cross-origin"><link rel="stylesheet" href="front-links.css"></head>')
