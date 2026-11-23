@@ -1,21 +1,9 @@
 import { plateRecipes } from './plate-recipes.mjs';
 import { recipes, species } from './edition.mjs';
 import { atlasForAnimal, cutUrl, cutReadings, cutLabel } from './cut-atlas.mjs';
+import { directoryCopy } from './directory-copy.mjs';
+import { cutReadingDirectory } from './chapter-directories.mjs';
 
-const cookingMethods = {
-  'bbq-ribs': '炭火で焼く',
-  stew: '鍋で煮込む',
-  'crispy-chicken': 'フライパンで焼く'
-};
-
-const dishIntroductions = {
-  'bbq-ribs': '骨つきの肉を炭火で。たれをぬるのは仕上げです。',
-  stew: '牛すね肉を、にんじんや玉ねぎと、ゆっくり。',
-  'crispy-chicken': '皮を下にして焼き、鶏もも肉に香ばしい焼き目を。',
-  'ginger-pork': '豚こまを重ねずに広げ、しょうがだれをからめます。',
-  'pork-cutlet': 'ころもの内側で、赤身と脂身の食感が変わります。',
-  'miso-soup': '豚こまと根菜。だしのきいた汁も、一皿のうち。'
-};
 const basicIntroductions = {
   grain: '肉の筋の向きが見えると、包丁を入れる向きが分かります。',
   heat: '厚いところの中心をはかり、火が通ったか確かめます。',
@@ -30,29 +18,94 @@ const kitchenPhotos = {
   heat: ['火の通り', '肉の中心に温度計を差し込んだところ'],
   storage: ['保存', '袋と容器に入れて冷蔵した肉']
 };
-const photoGroups = new Map();
-for (const recipe of plateRecipes) {
-  if (!photoGroups.has(recipe.method)) photoGroups.set(recipe.method, []);
-  photoGroups.get(recipe.method).push(recipe);
-}
 export const kitchenAssets = [...Object.keys(kitchenPhotos).map(slug => 'kitchen-' + slug + '.webp'),
   ...plateRecipes.map(recipe => recipe.art)];
 
-const galleryHeading = '写真から選ぶ、' + plateRecipes.length + '皿のレシピ';
+const animalLabels = { cow: '牛', pig: 'ぶた', hen: 'にわとり' };
+const methodLabels = { roast: '<焼:や>く', simmer: '<煮:に>る', fry: '<揚:あ>げる', stir: '<炒:いた>める', steam: '<蒸:む>す', mix: '<和:あ>える' };
+const plainLabel = value => value.replace(/<([^:]+):[^>]+>/g, '$1');
 
-function additionalDishes(typeset) {
-  return '<section class="plate-gallery" id="food-photos"><h2>' + galleryHeading + '</h2>' +
-    Array.from(photoGroups, ([group, recipes]) => '<h3>' + group + '</h3><div class="plate-grid">' +
-      recipes.map(({slug, art, title, lead}) => {
-        return '<figure><a href="' + slug + '.html"><img loading="lazy" width="640" height="360" src="' +
-          art + '" alt=""><strong>' + typeset(title) + '</strong><span class="dish-preview">' +
-          typeset(lead.split('。')[0] + '。') + '</span></a></figure>';
-      }).join('') + '</div>').join('') + '</section>';
+// Classify by the published ingredients and steps. A dish may use two methods.
+// The fixed slugs continue to identify the same photographs and recipe pages.
+export const recipeFilterCatalog = [
+  ['stew', 'cow', ['simmer'], '牛すね'],
+  ['bbq-ribs', 'pig', ['roast'], 'スペアリブ'],
+  ['crispy-chicken', 'hen', ['roast'], '鶏もも'],
+  ['ginger-pork', 'pig', ['stir'], '豚こま'],
+  ['pork-cutlet', 'pig', ['fry'], '豚ロース'],
+  ['miso-soup', 'pig', ['simmer'], '豚こま'],
+  ['plate-01', 'hen', ['roast'], '<砂肝:すなぎも>'],
+  ['plate-02', 'hen', ['roast'], '<手羽先:てばさき>'],
+  ['plate-03', 'hen', ['roast'], '鶏もも'],
+  ['plate-04', 'hen', ['simmer'], '鶏レバー'],
+  ['plate-05', 'hen', ['roast'], '<砂肝:すなぎも>'],
+  ['plate-06', 'hen', ['simmer'], '<手羽元:てばもと>'],
+  ['plate-07', 'hen', ['roast'], '<手羽先:てばさき>'],
+  ['plate-08', 'hen', ['steam'], '鶏むね'],
+  ['plate-09', 'hen', ['steam', 'mix'], '鶏ささみ'],
+  ['plate-10', 'hen', ['fry'], '鶏もも'],
+  ['plate-11', 'pig', ['simmer'], '豚ばら'],
+  ['plate-12', 'pig', ['simmer'], '豚ばら'],
+  ['plate-13', 'pig', ['roast'], '豚ロース'],
+  ['plate-14', 'pig', ['fry'], '豚ロース'],
+  ['plate-15', 'pig', ['roast'], '豚肩ロース'],
+  ['plate-16', 'pig', ['roast'], '豚ロース'],
+  ['plate-17', 'pig', ['roast'], '豚ロース'],
+  ['plate-18', 'cow', ['roast'], '牛もも'],
+  ['plate-19', 'cow', ['roast'], '牛もも'],
+  ['plate-20', 'cow', ['roast'], '牛もも'],
+  ['plate-21', 'cow', ['simmer'], '牛切り落とし'],
+  ['plate-22', 'cow', ['stir'], '牛薄切り肉'],
+  ['plate-23', 'pig', ['stir'], '豚こま'],
+  ['plate-24', 'pig', ['roast'], '豚ヒレ'],
+  ['plate-25', 'cow', ['fry'], '牛もも'],
+  ['plate-26', 'cow', ['roast'], '牛ステーキ肉'],
+  ['plate-27', 'cow', ['simmer'], '牛薄切り肉'],
+  ['plate-28', 'cow', ['roast'], '牛ステーキ肉'],
+  ['plate-29', 'cow', ['simmer'], '牛薄切り肉'],
+  ['plate-30', 'cow', ['simmer'], '牛すね']
+].map(([slug, animal, methods, meat]) => ({ slug, animal, methods, meat }));
+
+function filterChoices(kind, legend, choices, typeset) {
+  return '<fieldset><legend>' + typeset(legend) + '</legend><div class="recipe-filter-options">' +
+    [['all', 'すべて'], ...Object.entries(choices)].map(([value, label]) => '<button type="button" data-recipe-filter="' + kind +
+      '" data-filter-value="' + value + '" data-filter-label="' + plainLabel(label) + '" aria-pressed="' + (value === 'all') +
+      '" aria-controls="recipe-results"><span class="recipe-filter-check" aria-hidden="true">✓</span>' + typeset(label) + '</button>').join('') +
+    '</div></fieldset>';
 }
 
-function articleList(title, slugs, { pageLink, typeset }) {
-  const links = slugs.map(slug => '<li>' + pageLink(slug) + '</li>').join('');
-  return '<section class="subindex"><h2>' + typeset(title) + '</h2><ul>' + links + '</ul></section>';
+function recipeFinder(context) {
+  const { rows, typeset, hasAsset } = context;
+  const bySlug = new Map(rows.map(row => [row.slug, row]));
+  const plates = new Map(plateRecipes.map(recipe => [recipe.slug, recipe]));
+  const expected = [...Object.keys(recipes), ...plates.keys()];
+  const slugs = new Set(recipeFilterCatalog.map(item => item.slug));
+  if (slugs.size !== expected.length || expected.some(slug => !slugs.has(slug))) throw new Error('Recipe finder must cover every published recipe exactly once');
+  const cards = recipeFilterCatalog.map(({ slug, animal, methods, meat }, index) => {
+    const row = bySlug.get(slug);
+    if (!row || !directoryCopy[slug] || !animalLabels[animal] || methods.some(method => !methodLabels[method])) {
+      throw new Error('Incomplete recipe finder entry: ' + slug);
+    }
+    const art = plates.get(slug)?.art || recipes[slug]?.art || 'kitchen-' + slug + '.webp';
+    if (!hasAsset(art)) throw new Error('Missing recipe finder photograph: ' + art);
+    const original = art.startsWith('runway-');
+    return '<li class="recipe-choice' + (index === 0 ? ' recipe-choice--opening' : '') + '" data-recipe-card data-recipe-slug="' + slug +
+      '" data-recipe-animal="' + animal + '" data-recipe-methods="' + methods.join(' ') + '"><a href="' + slug + '.html">' +
+      '<img src="' + art + '" width="' + (original ? 1080 : 640) + '" height="' + (original ? 810 : 360) +
+      '" alt=""' + (index ? ' loading="lazy"' : '') + '><div class="recipe-choice-copy"><p class="recipe-choice-meta">' +
+      typeset(meat.replaceAll('豚', '<豚:ぶた>') + ' ／ ' + methods.map(method => methodLabels[method]).join('・')) + '</p><h3>' + typeset(row.title) +
+      '</h3><p>' + typeset(directoryCopy[slug]) + '</p></div></a></li>';
+  }).join('');
+  return '<section class="recipe-finder" id="food-photos" data-recipe-finder aria-labelledby="recipe-finder-heading"><h2 id="recipe-finder-heading">' +
+    typeset('写真から選ぶ、' + recipeFilterCatalog.length + '品のレシピ') + '</h2><p>' +
+    typeset('お肉の種類と作り方を組み合わせて、食べたい一皿を探せます。') + '</p><p class="recipe-image-note">' +
+    typeset('料理の画像は、できあがりの参考として作ったイメージです。') + '</p><div class="recipe-filters" data-recipe-controls hidden>' +
+    filterChoices('animal', '動物から選ぶ', animalLabels, typeset) + filterChoices('method', '作り方から選ぶ', methodLabels, typeset) +
+    '<div class="recipe-filter-reset"><button type="button" data-recipe-clear>' + typeset('選び直す（すべて表示）') + '</button></div></div>' +
+    '<p class="recipe-result-count" data-recipe-status role="status" aria-live="polite" aria-atomic="true">' + recipeFilterCatalog.length +
+    '品のレシピがあります。</p><noscript><p>' + typeset('この下に、すべての料理を並べています。写真と名前から選んでください。') + '</p></noscript>' +
+    '<p class="recipe-empty" data-recipe-empty hidden>' + typeset('この組み合わせの料理は、まだありません。お肉か作り方を「すべて」にするか、「選び直す」でほかの料理を見られます。') +
+    '</p><ul class="recipe-grid" id="recipe-results">' + cards + '</ul></section>';
 }
 
 export function cookingContents(context) {
@@ -60,22 +113,19 @@ export function cookingContents(context) {
   const articles = rows.filter(row => row.group === 4 && row.slug !== 'cooking');
   const titles = new Map(articles.map(row => [row.slug, row.title]));
   function thumbnail(slug) {
-    const recipe = recipes[slug];
-    const method = cookingMethods[slug] || kitchenPhotos[slug][0];
-    const art = recipe?.art || 'kitchen-' + slug + '.webp';
-    const alt = recipe?.alt || kitchenPhotos[slug][1];
+    const [method, alt] = kitchenPhotos[slug];
+    const art = 'kitchen-' + slug + '.webp';
     if (!hasAsset(art)) throw new Error('Missing cooking thumbnail: ' + art);
     return '<a class="dish" href="' + slug + '.html"><img src="' + art + '" alt="' + alt + '"' +
-      (slug === 'bbq-ribs' ? '' : ' loading="lazy"') + '><span class="dishtext"><small>' +
+      ' loading="lazy" width="640" height="360"><span class="dishtext"><small>' +
       typeset(method) + '</small><strong>' + typeset(titles.get(slug)) + '</strong><span class="dish-preview">' +
-      typeset(dishIntroductions[slug] || basicIntroductions[slug]) + '</span></span></a>';
+      typeset(basicIntroductions[slug]) + '</span></span></a>';
   }
   const basics = ['grain', 'heat', 'storage'];
-  const dishes = [...Object.keys(cookingMethods), 'ginger-pork', 'pork-cutlet', 'miso-soup'];
   return '<p class="kitchen-intro">' + typeset('今日のお肉は、どう食べよう。焼き目が香ばしい一皿、ころもがさくっとする一皿、汁ごと味わう一皿。使いたいお肉や味から、作りたい料理を選べます。') +
-    '</p><p><a href="#food-photos">' + galleryHeading + 'へ</a></p><div class="dish-grid">' + dishes.map(thumbnail).join('') + '</div>' +
-    '<section class="subindex"><h2>台所の基本</h2><div class="dish-grid">' + basics.map(thumbnail).join('') + '</div></section>' +
-    additionalDishes(typeset) + '<section class="subindex kitchen-next" aria-labelledby="kitchen-next"><h2 id="kitchen-next">料理のあと、もう少し</h2><ul><li>' +
+    '</p><p class="kitchen-jumps"><a href="#food-photos">' + typeset('36品から料理を選ぶ') + '</a>　<a href="#kitchen-basics">' + typeset('台所の基本を読む') + '</a></p>' +
+    recipeFinder(context) + '<section class="subindex" id="kitchen-basics"><h2>台所の基本</h2><div class="dish-grid">' + basics.map(thumbnail).join('') + '</div></section>' +
+    '<section class="subindex kitchen-next" aria-labelledby="kitchen-next"><h2 id="kitchen-next">料理のあと、もう少し</h2><ul><li>' +
     context.pageLink('beef-shank', '煮こんだ牛すね肉は、牛のどこ？') + '<p>' +
     typeset('よく動くあしの場所を見て、長く煮ると食感が変わる理由をたどれます。') + '</p></li><li>' +
     context.pageLink('ribs', '骨つき肉は、どこの骨？') + '<p>' +
@@ -136,13 +186,11 @@ function specimen(key, animal, { typeset, pageLink }) {
 }
 
 export function cutsContents(context) {
-  const { rows, pageLink, typeset } = context;
+  const { pageLink, typeset } = context;
   const animals = Object.entries(species);
   const buttons = animals.map(([key, animal]) => '<button type="button" data-focus="' + key +
     '" aria-controls="plate-' + key + '" aria-pressed="' + (key === 'cow') + '">' +
     typeset(animal.name) + '</button>');
-  const guides = new Set(animals.map(([, animal]) => animal.guide));
-  const articles = rows.filter(row => row.group === 3 && row.slug !== 'cuts' && !guides.has(row.slug));
   const fallback = animals.map(([, animal]) => pageLink(animal.guide, animal.name + 'の部位')).join('　');
   return '<p class="atlas-intro">動物と部位を選ぶと、絵の目印が変わります。いつも食べるお肉は、どこにあるでしょう。</p>' +
     '<div class="species" role="group" aria-label="図鑑で見る動物を選ぶ" hidden>' + buttons.join('') +
@@ -153,6 +201,5 @@ export function cutsContents(context) {
       return [key, atlas.parts.map((part, index) => ({ id: part.id, name: animal.cuts[index][0], reading: cutReadings[animal.cuts[index][0]] || '', note: part.note, inner: Boolean(part.inner) }))];
     }))).replaceAll('<', '\\u003c') + '</script><p id="atlas-status" class="atlas-status" role="status"></p>' +
     '<p class="atlas-question">場所がちがうと、動き方もちがう。肉のかたさや、おいしい食べ方には、どんなつながりがあるでしょう。</p>' +
-    articleList('部位を詳しく読む・栄養を比べる', articles.map(row => row.slug), context) +
-    articleList('部位に合う料理', ['stew', 'crispy-chicken'], context);
+    cutReadingDirectory(context);
 }

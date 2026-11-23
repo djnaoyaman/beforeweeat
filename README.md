@@ -13,7 +13,9 @@ node build.mjs
 node verify.mjs
 ```
 
-生成先は `dist/` です。公開対象の一覧は `publication.mjs` の原稿データから導きます。現在はトップ1ページと記事・目次86ページ、計87 URLです。404ページは別に生成します。
+`verify.mjs` はPDFのページ数・本文・リンクも検査します。初回は `python -m pip install -r worksheet-requirements.txt` で既存のPDF依存関係を用意してください。
+
+生成先は `dist/` です。公開対象の一覧は `publication.mjs` の原稿データから導きます。現在はトップ1ページと記事・目次86ページ、計87 URLです。404ページと旧URL `top.html` の転送ページは別に生成します。
 
 `verify.mjs` は公開一覧、サイトマップ、メタデータ、内部リンク、別ページを含むアンカー、36皿の材料・工程・画像、30皿の固定URL、79件の記録、写真表示前の構造と3件の個別注意、検索の回帰例を確認します。成功時は `status: passed` を出力します。これは静的検査の結果で、実機や本番画面の確認とは分けて記録します。
 
@@ -35,7 +37,7 @@ node verify.mjs
 
 配信対象は生成物です。原稿・検査スクリプト・編集メモを公開ページとして案内しません。配信方法を変える場合も、既存の記事URLを保ちます。
 
-公開URLは https://djnaoyaman.github.io/beforeweeat/ です。検査範囲と過去の公開記録は `LAUNCH.md` を参照してください。
+公開URLは https://djnaoyaman.github.io/beforeweeat/ です。公開前に生成物を検査し、検査済みの生成物をリポジトリルートに反映します。作業の継続記録や公開の検査記録は、公開リポジトリの外で管理します。
 
 
 ## 印刷用PDFの更新

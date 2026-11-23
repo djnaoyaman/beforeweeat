@@ -32,3 +32,6 @@
 .changes-list time{font-size:.85em;color:#963f25}
 @media(max-width:480px){.product-route{grid-template-columns:1fr}.documented-case,.context-question{padding:.8rem}.delivery-path>li{grid-template-columns:1.7rem minmax(0,1fr);gap:.6rem}.path-number{width:1.7rem;height:1.7rem}.source-map th,.source-map td{padding:.65em .35em}}
 @media print{.delivery-path>li,.product-route li,.documented-case,.changes-list>li{break-inside:avoid}.source-map tr{break-inside:avoid}.editorial-context .context-question{display:block!important;background:white;break-inside:avoid}}
+
+/* Public research, shared facts with a page-specific reading purpose. */
+.study-observations{margin:1.3rem 0}.study-observations>div{padding:1rem 0;border-top:1px solid #c9c9b8}.study-observations dt{font-weight:700}.study-observations dd{margin:0}.study-observations p{margin:.35em 0}.study-limit{font-size:.92em}.study-process{padding-left:1.5em}.study-process h3{margin-bottom:.2em}.study-process p{margin-top:0}.study-optional{margin:1.5em 0}.study-optional summary{min-height:44px;display:list-item;cursor:pointer;padding:.5em 0}.study-optional summary:focus-visible{outline:2px solid currentColor;outline-offset:4px}
