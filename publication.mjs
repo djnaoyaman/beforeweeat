@@ -30,3 +30,6 @@ export const publicationManifest = [
 // These published URLs are stable even when the gallery order changes.
 export const mainRecipeSlugs = ['bbq-ribs', 'stew', 'crispy-chicken', 'ginger-pork', 'pork-cutlet', 'miso-soup'];
 export const recipeSlugs = [...mainRecipeSlugs, ...plateRecipes.map(recipe => recipe.slug)];
+
+// Kept separately from the 87 reading pages; existing bookmarks still reach home.
+export const legacyRedirectFiles = ['top.html'];

@@ -1,6 +1,8 @@
+import {kanagawaSource} from './kanagawa-study.mjs';
 import {fieldArchive, fieldArticlePhoto} from './field-archive.mjs';
 import {atlasForAnimal, cutUrl, cutLabel} from './cut-atlas.mjs';
 import {representativeGinger} from './representative-content.mjs';
+import {porkCutletRecipe} from './pork-cutlet-recipe.mjs';
 
 export const species = {
  cow:{name:'牛',reading:'うし',art:'cow-art.webp',guide:'beef-cuts',cuts:[['ネック','首','細かいすじが多い','煮込み・ひき肉'],['かた','肩から前脚にかけて','赤身が多く、部位内でかたさに差がある','煮込み・薄切り'],['かたロース','肩の背中側','赤身と脂の両方がある','すき焼き・焼き物'],['リブロース','背中の中央寄り','脂のうまみが出やすい','厚切りステーキ・ロースト'],['サーロイン','腰に近い背中','きめが細かく、脂の層がつくことがある','ステーキ'],['ヒレ','背骨の内側','やわらかい赤身','ステーキ・カツ'],['ばら','胸から腹','脂と赤身が重なる','焼肉・煮込み'],['もも','後ろ脚の内側など','赤身の味を楽しめる','薄切り・ロースト','beef-round'],['そともも','後ろ脚の外側','しっかりした肉質','薄切り・煮込み'],['らんぷ','腰からお尻','やわらかさと赤身の味がある','ステーキ・ロースト'],['すね','前脚・後ろ脚の下の方','すじが多く、煮込むとほどける','シチュー','beef-shank'],['タン','舌','先端と根元で食感が異なる','薄切り焼き・煮込み']]},
@@ -34,17 +36,12 @@ export const recipes={
   ]
  },
  'pork-cutlet':{
-  art:'kitchen-pork-cutlet.webp',alt:'切り分けた豚ロースのとんかつ',servings:2,
-  items:'豚ロースとんかつ用 2枚（各100g、厚さ約1cm）、塩 2つまみ、こしょう 少々、小麦粉 大さじ2、卵 1個、パン粉 1カップ、揚げ油 適量、キャベツ 100g、とんかつソース 好みの量。',
-  time:'約30分。揚げ時間は肉の厚さや油の量で変わります。',
-  tools:'揚げ物に使える鍋、油用温度計、食品用の中心温度計、バット3枚、網、包丁、まな板、生肉用と盛りつけ用の箸。油の量は鍋の取扱説明に従います。',
-  steps:[
-   'キャベツを細く切り、皿に用意する。肉の赤身と脂身の境に包丁の先で数か所切り込みを入れる。厚みをそろえ、両面に塩とこしょうを振る。',
-   '小麦粉、溶いた卵、パン粉をそれぞれバットに入れる。肉に小麦粉を薄くつけ、卵、パン粉の順にまとわせる。パン粉を手のひらで軽く押さえる。',
-   '大人が鍋の油を170℃に温める。肉を静かに入れ、途中で一度返して両面を揚げる。約5〜6分から様子を見て、衣が先に濃く色づくときは火を弱める。',
-   '一枚ずつ、厚い部分の中心を温度計で確かめる。中心部75℃で1分間以上の加熱を確認してから、網に取り、2分ほど油を切る。生肉に使った器具と分けた包丁・まな板で切り、キャベツとソースを添える。'
-  ],
-  observe:'大人が切るところを見てみよう。衣が割れる音、赤身の場所、脂身の場所。食べるときは、その三つから気づいたことを一つ話してみよう。'
+  art:'kitchen-pork-cutlet.webp',alt:'切り分けた豚ロースのとんかつ',servings:porkCutletRecipe.servings,
+  items:porkCutletRecipe.ingredients.join('、')+'。',
+  time:porkCutletRecipe.time,
+  tools:porkCutletRecipe.tools,
+  steps:porkCutletRecipe.detailedSteps,
+  observe:'大人が切るところを見てみよう。衣が割れる音、赤身の場所、脂身の場所。気になったことがあれば、食べながら話してもいいですね。味わうだけでもかまいません。'
  },
  'miso-soup':{
   art:'kitchen-miso-soup.webp',alt:'豚肉と根菜の入った豚汁',servings:2,
@@ -68,7 +65,7 @@ export const additionalSources={
  shimane:['島根県　農林水産委員会資料（PDF）','https://www.pref.shimane.lg.jp/industry/norin/info/shiryo_/nosuisyoko_r5.data/230629nourin_siryo.pdf'],
  bss:['山陰放送　大田市の乳牛への暴力事案の判決報道','https://newsdig.tbs.co.jp/articles/bss/737018?display=1'],
  govdevon:['英国環境庁・動植物衛生庁　デヴォンの調査と判決','https://www.gov.uk/government/news/devon-farmer-jointly-prosecuted-over-horror-movie-conditions'],
- kanagawa:['神奈川県畜産技術センター　巣箱・止まり木・砂浴び場で観察した鶏の行動','https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html'],
+ kanagawa:kanagawaSource,
  kokkai:['参議院農林水産委員会（2022年11月8日）発言134・136・138','https://kokkai.ndl.go.jp/simple/detail?minId=121015007X00320221108&spkNum=134'],
  devon:['Devon County Council　現場調査と裁判の発表','https://www.devon.gov.uk/news/honiton-farmer-prosecuted-for-pollution-and-animal-welfare-offences/'],
  cambridge:['Cambridgeshire County Council　牛・豚の飼養をめぐる判決','https://www.cambridgeshire.gov.uk/news/farmer-sentenced-following-animal-welfare-offences'],
@@ -110,8 +107,8 @@ export function editionMarkup({r,typeset,pageLink,hasAsset}){
    '<table class="nutrition"><caption>'+typeset('日本食品標準成分表（八訂）増補2023年。可食部100gあたり。')+'</caption><thead><tr><th scope="col">'+typeset('栄養の種類')+'</th><th scope="col">むね</th><th scope="col">もも</th></tr></thead><tbody>'+
    '<tr><th scope="row">たんぱく質</th><td>23.3g</td><td>19.0g</td></tr><tr><th scope="row">'+typeset('脂質')+'</th><td>1.9g</td><td>5.0g</td></tr><tr><th scope="row">鉄</th><td>0.3mg</td><td>0.6mg</td></tr></tbody></table>'+
    paragraph('一つの数字で、どちらがよいかは決まりません。作りたい料理や、ほかのおかずと合わせて選べます。')+
-   heading('食べる前に、一つ考えてみよう')+
-   paragraph('同じにわとりの体なのに、肉の味や食感がちがうのはなぜでしょう。体の場所や、動き方を手がかりに、自分の考えを話してみよう。')+
+   heading('違いが気になったら')+
+   paragraph('同じにわとりの体なのに、肉の味や食感がちがうのはなぜでしょう。体の場所や動き方を、味や食感と結びつけて読めます。話しても、心の中で考えても、そのままおいしく食べても。')+
    links([['plate-08','むねで作る酒蒸し'],['crispy-chicken','ももの皮をパリッと焼く']]);
  }
  if(['animals','cuts'].includes(slug)){
@@ -124,7 +121,7 @@ export function editionMarkup({r,typeset,pageLink,hasAsset}){
  if(slug==='case-shimane')return casePhoto+'<details class="evidence"><summary>当時の報道を読む（暴力の映像を含む場合があります）</summary><p><a href="https://newsdig.tbs.co.jp/articles/bss/737018">山陰放送の判決記事を開く</a></p></details>';
  if(slug==='case-keel')return casePhoto+'<p><a href="https://doi.org/10.1371/journal.pone.0256105.g001">研究の図1で、農場の鶏の群れごとの差を見る</a></p>';
  if(caseLabels[slug])return casePhoto;
- if(slug==='mina')return heading('食べることと、どうぶつのくらし')+paragraph('私はヴィーガンではありません。お肉を食べます。せっかく命をいただくのなら、食べられる量を買い、その部位に合う方法でおいしく料理し、感謝していただきたいと思っています。')+paragraph('同じくらい大事なのが、アニマルウェルフェアです。食卓に届くまでの間、その動物は水を飲み、体を動かし、安心して休めたか。なくせる痛みや苦しみ、無用な暴力を一つでも減らしたい。食べる自分にも、考え、知り、選べることがあると思います。')+paragraph('「いただきます」のあとに残るのは、感謝と、次に何を知りたいかという問いです。')+'<p class="folio-sign">MINA</p>';
+ if(slug==='mina')return heading('食べることと、どうぶつのくらし')+paragraph('私はヴィーガンではありません。お肉を食べます。せっかく命をいただくのなら、食べられる量を買い、その部位に合う方法でおいしく料理し、感謝していただきたいと思っています。')+paragraph('同じくらい大事なのが、アニマルウェルフェアです。食卓に届くまでの間、その動物は水を飲み、体を動かし、安心して休めたか。なくせる痛みや苦しみ、無用な暴力を一つでも減らしたい。食べる自分にも、考え、知り、選べることがあると思います。')+paragraph('私は、おいしかった一皿から、どうぶつや料理を作る人のことをもう少し知りたくなることがあります。読む方も、それぞれの楽しみ方で使っていただけたらうれしいです。')+'<p class="folio-sign">MINA</p>';
  if(slug==='nutrition')return '<table class="nutrition"><caption>生の可食部100gあたり</caption><thead><tr><th scope="col">肉の種類</th><th scope="col">たんぱく質</th><th scope="col">脂質</th><th scope="col">鉄</th></tr></thead><tbody><tr><th scope="row">輸入牛もも・赤肉</th><td>21.2g</td><td>4.3g</td><td>2.6mg</td></tr><tr><th scope="row">大型種豚もも・赤肉</th><td>22.1g</td><td>3.6g</td><td>0.9mg</td></tr><tr><th scope="row">若どりむね・皮なし</th><td>23.3g</td><td>1.9g</td><td>0.3mg</td></tr></tbody></table>';
  if(slug==='shopping')return heading('パックのここを見る')+'<ol><li>品名と部位。作りたい料理に合う厚みか、骨付きかを確認。</li><li>量と値段。骨付きは骨も含めた量。人数分の量を決める。</li><li>期限・保存方法・原産地。帰ったら表示に合わせて保管する。</li></ol>'+links([['storage','家での保存'],['heat','中心までの加熱']]);
  if(slug==='welfare')return heading('動物の様子から考える')+'<ul><li>水と食べ物は足りる？</li><li>乾いた場所で、体を動かしたり休んだりできる？</li><li>痛みや病気に気づき、手当てを受けられる？</li><li>ぶたが鼻で探るような、その動物らしい行動ができる？</li><li>こわさや強いストレスを減らす工夫はある？</li></ul>'+links([['cow','牛のくらし'],['pig','ぶたのくらし'],['hen','にわとりのくらし'],['field-cases','現場で何が起きたか']]);

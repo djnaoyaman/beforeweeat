@@ -38,11 +38,10 @@ https://djnaoyaman.github.io/beforeweeat/welfare.html
 ## 鶏は巣箱で卵を産み、止まり木に上って休んだ
 https://djnaoyaman.github.io/beforeweeat/hens.html
 
-鶏のケージに巣箱と止まり木を取り付けたら、巣箱で卵を産む姿が見られた。昼も夜も、鶏は止まり木を使って休んだ。神奈川県畜産技術センターが、設備を変えて観察した結果だ。
-砂浴び用には、初めに人工芝を敷いた。4週間のうちにふんが積もると、鶏はそこで砂浴びのような動きをしなくなった。
-日本では、どんな場所で卵が産まれているのか。農林水産省の令和6年度調査で飼い方を答えた408件のうち、304件はケージだけ、59件は平飼いだけ、45件はその両方だった。この数字は飼い方についての回答数で、ケージの中に巣箱や止まり木がいくつあるかまでは示していない。
+巣箱や止まり木を備えた住まいで、鶏はどう過ごしたのでしょう。神奈川県の研究から、見られた行動と、まだわからないことを読みます。
+研究で使われた設備と、日本全体の飼い方の調査は別の資料です。どちらも、何を調べた結果なのかを確かめながら読めます。
 農林水産省　令和6年度調査の採卵鶏の結果（PDF） https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/animal_welfare-116.pdf
-神奈川県畜産技術センター　巣箱・止まり木・砂浴び場で観察した鶏の行動 https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html
+神奈川県畜産技術センターの研究紹介 https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html
 
 ## 卵を産まない雄のひなは、生まれてすぐに殺される
 https://djnaoyaman.github.io/beforeweeat/chicks.html
@@ -174,8 +173,8 @@ https://djnaoyaman.github.io/beforeweeat/ginger-pork.html
 ## 豚ロースのとんかつを切ってみる
 https://djnaoyaman.github.io/beforeweeat/pork-cutlet.html
 
-衣が割れる音と、赤身と脂身の間の食感に注目してみよう。
-肉の厚みをそろえ、衣をつけて揚げます。中心まで安全に加熱できたかは温度計で確かめます。切る前に網などで油を切り、衣の裏に蒸気がこもりにくくします。
+衣をつけて揚げる準備から、切り口の見方まで。2人分のロースかつを詳しく作るページです。
+「千切りキャベツとロースかつ」と材料・肉の厚み・火の通し方は同じです。こちらでは、道具と各工程を詳しく確かめられます。衣が割れる音や、赤身と脂身の食感も、気になったら楽しめます。
 厚生労働省　家庭での食中毒予防 https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00008.html
 
 ## 包丁はどちらに入れる？
@@ -183,6 +182,7 @@ https://djnaoyaman.github.io/beforeweeat/grain.html
 
 肉に細い線が見えたら、包丁を入れる向きの手がかりになります。同じ肉でも、線にそって切るのと、またいで切るのでは、切り口が変わります。
 線にそって切ると長い線が残りやすく、線をまたぐと短く分かれます。絵で向きを見るだけでも、肉を切るときに役立ちます。
+日本ハム　お肉の繊維の方向とは https://www.nipponham.co.jp/recipes/meat/knowhow/fiber/03.html
 厚生労働省　家庭での食中毒予防 https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/shokuhin/syokuchu/01_00008.html
 
 ## 肉に火が通ったか確かめる
@@ -226,29 +226,29 @@ https://djnaoyaman.github.io/beforeweeat/people.html
 動物の行動を調べながら、住まいを改良する人たちがいます。神奈川県の公開資料から、その工夫をたどります。
 鶏が休める場所を、どう増やすか。神奈川県で実際に行われた研究を読んでみよう。設備を作る人と、動物の行動を調べる人の工夫を、公開資料から紹介します。
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
-神奈川県畜産技術センター　巣箱・止まり木・砂浴び場で観察した鶏の行動 https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html
+神奈川県畜産技術センターの研究紹介 https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html
 
 ## 休みやすい場所をどうつくる？
 https://djnaoyaman.github.io/beforeweeat/rest-questions.html
 
 止まり木で休む鶏を観察した研究から、道具を置いたあとの確かめ方を考えます。
 置いた道具を、動物は使っているでしょうか。神奈川県の研究では、材料を変えながら鶏の行動を調べています。わかったことと、これから確かめることを分けて読んでみよう。
-神奈川県畜産技術センター　巣箱・止まり木・砂浴び場で観察した鶏の行動 https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html
+神奈川県畜産技術センターの研究紹介 https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 
-## 食卓から、じぶんの問いを見つける
+## 一皿から、動物のことを少し知る
 https://djnaoyaman.github.io/beforeweeat/lessons.html
 
-先生や保護者と一緒に、今日の一皿からどうぶつについて考えよう。
-牛・ぶた・にわとりの教材から選べます。5分の会話、45分の授業、児童用A4シートで、観察したことと考えたことを分け、次の問いを見つけます。
+読む、作る、食べる。牛・ぶた・にわとりの短い読み方と、家や教室で使える教材を選べます。
+5分で読む、45分でゆっくり見る、使いたいシートを印刷する。どれでも、途中まででも使えます。会話や記入は、やってみたいときに。
 文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 
 ## とんかつを食べた日、三つの発見
 https://djnaoyaman.github.io/beforeweeat/lesson-pork.html
 
-ぶたの体のどこを食べたかを見つけ、資料を手がかりに、くらしを考えよう。
-5分版と45分版の進め方、三つの資料カード、先生用メモ、印刷用の児童シートがあります。見えたこと、考えたこと、次に聞きたいことを分けて書きます。
+とんかつの肉は、ぶたの体のどこにあるかな。料理と体の図から、くらしを少し見てみます。
+5分版と45分版、三つの資料カード、先生用メモ、印刷用シートがあります。図や資料を読むだけでも使えます。会話や記入は、やってみたいときに。
 文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 
@@ -266,11 +266,11 @@ https://djnaoyaman.github.io/beforeweeat/thanks.html
 家の人に「わからないことを一つ言ってみよう」と声をかけます。どう作ったか、どんな場所で育ったか、次の買い物で一緒に聞けることを決めます。
 
 
-## 一週間の食べきり観察
+## 食べる量のメモ、使いたい日だけ
 https://djnaoyaman.github.io/beforeweeat/food-diary.html
 
-一日一皿。盛った量と食べた量を、7日間メモしよう。
-記入例を見て、印刷できる7日シートかノートに書きます。食べきることを点数にせず、ちょうどよい盛り方と、次に買う量を家族で見つけます。
+量を知りたい日の一皿を、使いたい日だけ。1日分から使えるメモです。
+盛った量と食べた量を見たいときに、印刷シートかノートを使えます。書かない日や、残したものがあってもかまいません。体調やおなかのすき具合に合う盛り方、次に買う量を考える手がかりです。
 消費者庁　家庭での食品ロス対策 https://www.no-foodloss.caa.go.jp/eating-home.html
 
 ## ことばと元の資料を引く
@@ -417,7 +417,7 @@ https://djnaoyaman.github.io/beforeweeat/storage.html
 https://djnaoyaman.github.io/beforeweeat/lesson-beef.html
 
 シチューに入っていたすね肉は、牛の体のどこにあるかな。
-5分版と45分版で体の場所を探し、立つ・歩く・休むための場所を考えます。資料カードを手がかりに、観察したことと考えたことを分け、次の問いをつくります。
+5分版と45分版で体の場所を探し、立つ・歩く・休むための場所を見ます。図や資料を読むだけでも使えます。会話や記入は、やってみたいときに。
 文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 
@@ -425,7 +425,7 @@ https://djnaoyaman.github.io/beforeweeat/lesson-beef.html
 https://djnaoyaman.github.io/beforeweeat/lesson-chicken.html
 
 から揚げや焼き物に使うもも肉は、にわとりの体のどこにあるかな。
-5分版と45分版で体の場所を探し、歩く・羽を広げる・水を飲むための場所を考えます。資料カードを手がかりに、観察したことと考えたことを分け、次の問いをつくります。
+5分版と45分版で体の場所を探し、歩く・羽を広げる・水を飲むための場所を見ます。図や資料を読むだけでも使えます。会話や記入は、やってみたいときに。
 文部科学省　食に関する指導の手引 https://www.mext.go.jp/a_menu/sports/syokuiku/1292952.htm
 農林水産省　アニマルウェルフェアについて https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html
 
@@ -562,11 +562,11 @@ https://djnaoyaman.github.io/beforeweeat/plate-13.html
 ## 千切りキャベツとロースかつ
 https://djnaoyaman.github.io/beforeweeat/plate-14.html
 
-豚ロースに小麦粉、卵、パン粉の順で衣をつけます。揚げたら網で油を切り、細く切ったキャベツと盛りつけます。
-豚ロース2枚（各100g）、キャベツ2枚、塩少々、小麦粉大さじ2、溶き卵1個分、パン粉1カップ、揚げ油適量
-キャベツを千切りにして皿へ。豚肉は脂身との境に切り込みを入れ、塩を振る。
-肉に小麦粉、溶き卵、パン粉の順で衣をつけ、手のひらで軽く押さえる。
-170℃の油で途中で返しながら中まで揚げる。網で油を切ってから切り分け、キャベツに添える。
+2人分のロースかつを、3つの手順で作ります。「豚ロースのとんかつを切ってみる」と同じ材料・厚み・火の通し方を、短くまとめたページです。道具や各工程を詳しく知りたいときは、下の紹介から読めます。
+豚ロースとんかつ用 2枚（各100g・厚さ約1cm）、塩 2つまみ、こしょう 少々、小麦粉 大さじ2、卵 1個、パン粉 1カップ、揚げ油 適量、キャベツ 100g、とんかつソース 好みの量
+大人と一緒にキャベツを細く切る。肉の赤身と脂身の境に切り込みを入れ、厚さ約1cmにそろえて塩とこしょうを振る。
+肉に小麦粉、溶いた卵、パン粉の順で衣をつけ、手のひらで軽く押さえる。油の量は鍋の取扱説明に従い、油用と食品用の温度計を用意する。
+大人が170℃の油で途中で返しながら揚げる。一枚ずつ厚い部分を温度計ではかり、中心部75℃で1分間以上の加熱を確認する。網で2分ほど油を切り、生肉に使った器具と分けて切り分け、キャベツとソースを添える。
 日本フードサービス協会　衛生管理計画作成の手引き・資料編13頁（厚生労働省掲載PDF） https://www.mhlw.go.jp/content/11130500/000496685.pdf
 
 ## 豚肩ロースのみそ焼き

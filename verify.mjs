@@ -3,14 +3,19 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
+import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {publicationManifest, publicationRows, recipeSlugs, siteBase} from './publication.mjs';
+import {publicationManifest, publicationRows, recipeSlugs, siteBase, legacyRedirectFiles} from './publication.mjs';
 import {plateRecipes} from './plate-recipes.mjs';
 import {fieldGroups} from './field-archive.mjs';
 import {recipes, species} from './edition.mjs';
 import {meatIronData, validateMeatIronData, calculateMeatIron} from './meat-iron.mjs';
+import {readingRoutes} from './reading-routes.mjs';
+import {lessonUnits, worksheetFiles, worksheetVersion} from './learning.mjs';
+import {kanagawaStudy, henHousingSurvey} from './kanagawa-study.mjs';
 
-// Dependency-free static publication gate. Live UI checks are recorded separately.
+// Static publication gate. PDF inspection uses the pypdf dependency already
+// listed for worksheet generation; live UI checks are recorded separately.
 const project = path.dirname(fileURLToPath(import.meta.url));
 const folder = path.resolve(process.argv[2] || path.join(project, 'dist'));
 assert.ok(fs.existsSync(folder), 'Build first with node build.mjs');
@@ -34,14 +39,17 @@ function inspectHtml(html) {
     const name = match[2].toLowerCase();
     if (match[1]) {
       const index = stack.findLastIndex(tag => tag.name === name);
-      if (index >= 0) stack.length = index;
+      if (index >= 0) {
+        stack[index].end = match.index;
+        stack.length = index;
+      }
       continue;
     }
     const attrs = {};
     for (const attr of match[3].matchAll(/([^\s=/'"<>]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+)))?/g)) {
       attrs[attr[1].toLowerCase()] = decode(attr[2] ?? attr[3] ?? attr[4] ?? '');
     }
-    const tag = {name, attrs, ancestors: [...stack]};
+    const tag = {name, attrs, ancestors: [...stack], contentStart: match.index + match[0].length};
     if (attrs.id) {
       check(!ids.has(attrs.id), 'Duplicate id: ' + attrs.id);
       ids.add(attrs.id);
@@ -49,14 +57,22 @@ function inspectHtml(html) {
     tags.push(tag);
     if (!voids.has(name) && !match[3].endsWith('/')) stack.push(tag);
   }
-  return {html, tags, ids};
+  return {html, markup, tags, ids};
 }
+
+const membersOf = (doc, tag) => tag ? doc.tags.filter(child => child.ancestors.includes(tag)) : [];
+const tagText = (doc, tag) => tag ? text(doc.markup.slice(tag.contentStart, tag.end ?? tag.contentStart)) : '';
+const compactText = value => value.replace(/\s+/g, '');
+const hidden = tag => [tag, ...tag.ancestors].some(parent => Object.hasOwn(parent.attrs, 'hidden') || parent.attrs['aria-hidden'] === 'true');
 
 const files = fs.readdirSync(folder);
 const expectedFiles = publicationManifest.map(page => page.file);
-const actualPages = files.filter(file => file.endsWith('.html') && file !== '404.html');
-check(new Set(actualPages).size === expectedFiles.length && expectedFiles.every(file => actualPages.includes(file)),
-  'Generated HTML must exactly match the publication manifest (no missing or stale pages)');
+check(expectedFiles.length === 87, 'Keep the 87 established canonical pages');
+check(legacyRedirectFiles.length === 1 && legacyRedirectFiles[0] === 'top.html', 'Declare the existing top.html redirect explicitly');
+const allowedHtml = [...expectedFiles, '404.html', ...legacyRedirectFiles];
+const actualPages = files.filter(file => file.endsWith('.html'));
+check(new Set(allowedHtml).size === allowedHtml.length && actualPages.length === allowedHtml.length && allowedHtml.every(file => actualPages.includes(file)),
+  'Generated HTML must contain exactly 87 canonical pages, 404.html and the declared legacy redirect (no missing or stale pages)');
 const docs = new Map(files.filter(file => file.endsWith('.html')).map(file =>
   [file, inspectHtml(fs.readFileSync(path.join(folder, file), 'utf8'))]
 ));
@@ -64,6 +80,20 @@ const sitemap = fs.readFileSync(path.join(folder, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => decode(match[1]));
 check(sitemapUrls.length === publicationManifest.length && new Set(sitemapUrls).size === sitemapUrls.length &&
   publicationManifest.every(page => sitemapUrls.includes(page.url)), 'Sitemap and publication manifest differ');
+for (const file of legacyRedirectFiles) {
+  const doc = docs.get(file);
+  check(Boolean(doc), file + ': legacy redirect missing');
+  if (!doc) continue;
+  check(doc.tags.some(tag => tag.name === 'meta' && tag.attrs.name === 'robots' && /(?:^|,)\s*noindex\b/.test(tag.attrs.content || '')), file + ': redirect must be noindex');
+  check(doc.tags.some(tag => tag.name === 'link' && tag.attrs.rel === 'canonical' && tag.attrs.href === siteBase), file + ': canonical must point to the home page');
+  const refresh = doc.tags.find(tag => tag.name === 'meta' && tag.attrs['http-equiv']?.toLowerCase() === 'refresh');
+  const destination = refresh?.attrs.content?.match(/^\s*0\s*;\s*url\s*=\s*(.+)$/i)?.[1];
+  let target = '';
+  try { if (destination) target = new URL(destination, siteBase + file).href; } catch {}
+  check(target === siteBase, file + ': refresh must point directly to the home page');
+  check(doc.tags.some(tag => tag.name === 'a' && tag.attrs.href && new URL(tag.attrs.href, siteBase + file).href === siteBase), file + ': visible home link missing');
+  check(!sitemapUrls.includes(siteBase + file), file + ': redirect must not become a canonical sitemap entry');
+}
 
 let checkedLinks = 0;
 function checkLocalReference(from, value) {
@@ -223,10 +253,271 @@ for (const animal of Object.values(species)) {
   check(guide && guide.tags.filter(tag => tag.name === 'dt').length === animal.cuts.length, animal.guide + ': cut guide is incomplete');
 }
 
+// The short paths remain optional and navigable from every stop, even on a
+// direct visit. These checks inspect the published pages, not the renderer.
+const lessonsDoc = docs.get('lessons.html');
+check(readingRoutes.length === 3 && ['cow','pig','hen'].every(id => readingRoutes.some(route => route.id === id)),
+  'Provide one short reading path for each of cow, pig and hen');
+const routeStops = readingRoutes.flatMap(route => route.steps.map(step => step.slug));
+check(routeStops.length === 9 && new Set(routeStops).size === 9, 'The three reading paths must retain their nine distinct article stops');
+if (lessonsDoc) {
+  const overview = lessonsDoc.tags.find(tag => tag.attrs.id === 'short-routes');
+  const overviewMembers = membersOf(lessonsDoc, overview);
+  check(Boolean(overview) && !hidden(overview), 'lessons: short paths must be visible without JavaScript');
+  check(/全部を回らなくても|一つだけ|好きなところ/.test(compactText(tagText(lessonsDoc, overview))),
+    'lessons: make the optional use of short paths explicit');
+  for (const route of readingRoutes) {
+    const card = overviewMembers.find(tag => tag.attrs.id === 'route-' + route.id);
+    check(Boolean(card), 'lessons: missing ' + route.id + ' reading path');
+    const descendants = membersOf(lessonsDoc, card);
+    check(route.steps.length === 3 && recipeSlugs.includes(route.steps[0]?.slug), route.id + ': reading path must start with a published recipe');
+    check(descendants.some(tag => tag.name === 'img' && tag.attrs.width && tag.attrs.height), route.id + ': recipe image and reserved dimensions missing');
+    for (const step of route.steps) check(descendants.some(tag => tag.name === 'a' && tag.attrs.href === step.slug + '.html'), route.id + ': missing link to ' + step.slug);
+  }
+}
+for (const route of readingRoutes) {
+  for (const step of route.steps) {
+    const doc = docs.get(step.slug + '.html');
+    if (!doc) continue;
+    const contexts = doc.tags.filter(tag => tag.attrs['data-reading-route'] === route.id);
+    check(contexts.length === 1, step.slug + ': expected one contextual reading path');
+    if (contexts.length !== 1) continue;
+    const context = contexts[0], descendants = membersOf(doc, context);
+    check(!hidden(context) && /ここ(?:まで|で).*?(?:おしまい|終え)/.test(compactText(tagText(doc, context))),
+      step.slug + ': readers must be able to finish at this stop');
+    check(descendants.filter(tag => tag.attrs['aria-current'] === 'page').length === 1, step.slug + ': reading path current location missing');
+    for (const other of route.steps.filter(item => item.slug !== step.slug)) {
+      check(descendants.some(tag => tag.name === 'a' && tag.attrs.href === other.slug + '.html' && !hidden(tag)),
+        step.slug + ': missing optional route link to ' + other.slug);
+    }
+    check(!descendants.some(tag => ['form','input','textarea'].includes(tag.name)), step.slug + ': reading path must not require a submitted answer');
+  }
+}
+
+const obligatoryLessonPhrases = /確かめられる問いを一つつくる|調べられる問いになったか|シート3に問いを書き|問いを決める/;
+check(Object.keys(lessonUnits).length === 3, 'Keep the three animal lesson units');
+for (const slug of Object.keys(lessonUnits)) {
+  const doc = docs.get(slug + '.html');
+  if (!doc) continue;
+  check(!obligatoryLessonPhrases.test(compactText(text(doc.html))), slug + ': a superseded compulsory question objective has returned');
+  for (const id of ['five-min','forty-five','materials','teacher-notes','worksheet']) check(doc.ids.has(id), slug + ': missing lesson format or material ' + id);
+  const notes = doc.tags.find(tag => tag.attrs.id === 'teacher-notes');
+  const noteText = compactText(tagText(doc, notes));
+  check(/質問/.test(noteText) && /報告/.test(noteText) && /達成条件にしません|任意/.test(noteText), slug + ': optional questions/reports must be explicit in teacher guidance');
+  const sheet = doc.tags.find(tag => tag.attrs.id === 'worksheet');
+  check(/読むだけでも/.test(compactText(tagText(doc, sheet))) && /書きたいところだけ|好きな欄/.test(compactText(tagText(doc, sheet))), slug + ': worksheet use must remain optional');
+}
+const diaryDoc = docs.get('food-diary.html');
+if (diaryDoc) {
+  const diary = compactText(text(diaryDoc.html));
+  check(/使いたい日だけ/.test(diary) && /1日分(?:だけ)?でも/.test(diary), 'food-diary: one-day and optional-day use must remain possible');
+  check(!/7日を見返して、家族と話そう|毎日一皿だけ選び、7日間/.test(diary), 'food-diary: an old compulsory daily/reporting instruction has returned');
+}
+
+// Inspect the actual PDFs. Existence, a %PDF signature and an HTML download
+// link alone do not prove that paper readers can return to the right lesson.
+check(Object.keys(worksheetFiles).length === 4 && new Set(Object.values(worksheetFiles)).size === 4, 'Keep the four stable worksheet PDF URLs');
+const pdfRequests = Object.entries(worksheetFiles).map(([slug, file]) => ({slug, file, url: siteBase + slug + '.html'}));
+for (const {slug, file} of pdfRequests) {
+  const doc = docs.get(slug + '.html');
+  check(fs.existsSync(path.join(folder, file)), file + ': published worksheet missing');
+  check(doc?.tags.some(tag => tag.name === 'a' && tag.attrs.href === file), slug + ': PDF link missing');
+}
+let checkedPdfs = 0;
+const pdfScript = String.raw`
+import json, re, sys
+from pathlib import Path
+from pypdf import PdfReader
+folder, version, requests = Path(sys.argv[1]), sys.argv[2], json.loads(sys.argv[3])
+results = []
+for item in requests:
+    errors = []
+    try:
+        reader = PdfReader(folder / item['file'])
+        if len(reader.pages) != 1:
+            errors.append('expected one page')
+        page = reader.pages[0]
+        if abs(float(page.mediabox.width)-595.276)>.1 or abs(float(page.mediabox.height)-841.89)>.1:
+            errors.append('expected A4 portrait')
+        text = re.sub(r'\s+', '', ''.join(p.extract_text() or '' for p in reader.pages))
+        for label, required in [('site','BeforeWeEat'), ('author','MINA'), ('version',version), ('return URL',item['url']), ('optional reading','読むだけでも')]:
+            if required not in text:
+                errors.append('missing '+label)
+        links = []
+        for annotation in page.get('/Annots', []):
+            action = annotation.get_object().get('/A')
+            if action:
+                links.append(action.get_object().get('/URI'))
+        if item['url'] not in links:
+            errors.append('missing clickable lesson return link')
+    except Exception as exc:
+        errors.append(str(exc))
+    results.append({'file':item['file'], 'errors':errors})
+print(json.dumps(results,ensure_ascii=False))
+`;
+const pdfCheck = spawnSync(process.env.CODEX_PRIMARY_RUNTIME_PYTHON || 'python3', ['-c', pdfScript, folder, worksheetVersion, JSON.stringify(pdfRequests)], {encoding:'utf8', maxBuffer:1024*1024});
+if (pdfCheck.error || pdfCheck.status !== 0) {
+  check(false, 'PDF inspection could not run; install worksheet-requirements.txt for Python. ' + (pdfCheck.error?.message || pdfCheck.stderr?.trim() || 'unknown failure'));
+} else {
+  try {
+    const reports = JSON.parse(pdfCheck.stdout);
+    check(reports.length === 4, 'PDF inspection must return all four handouts');
+    for (const report of reports) {
+      for (const error of report.errors) check(false, report.file + ': ' + error);
+      if (!report.errors.length) checkedPdfs++;
+    }
+  } catch { check(false, 'PDF inspection returned invalid results'); }
+}
+
+// The full recipe set is server-rendered; filtering adds convenience without
+// withholding recipes from readers who have JavaScript disabled.
+const cookingDoc = docs.get('cooking.html');
+const finder = cookingDoc?.tags.find(tag => Object.hasOwn(tag.attrs, 'data-recipe-finder'));
+const finderMembers = cookingDoc ? membersOf(cookingDoc, finder) : [];
+const recipeCards = finderMembers.filter(tag => Object.hasOwn(tag.attrs, 'data-recipe-card'));
+const cardSlugs = recipeCards.map(tag => tag.attrs['data-recipe-slug']);
+check(Boolean(finder) && recipeCards.length === 36 && new Set(cardSlugs).size === 36 && recipeSlugs.every(slug => cardSlugs.includes(slug)),
+  'cooking: render all 36 recipe cards exactly once before JavaScript');
+const validAnimals = ['cow','pig','hen'], validMethods = ['roast','simmer','fry','stir','steam','mix'];
+for (const card of recipeCards) {
+  const slug = card.attrs['data-recipe-slug'], descendants = membersOf(cookingDoc, card);
+  check(!hidden(card) && !card.ancestors.some(tag => tag.name === 'template'), slug + ': recipe must be available in the static gallery');
+  const animal = card.attrs['data-recipe-animal'], methods = (card.attrs['data-recipe-methods'] || '').split(/\s+/).filter(Boolean);
+  check(validAnimals.includes(animal) && methods.length > 0 && new Set(methods).size === methods.length && methods.every(method => validMethods.includes(method)), slug + ': invalid animal/method filter metadata');
+  const recipe = plateRecipes.find(item => item.slug === slug) || recipes[slug];
+  const firstIngredient = (recipe?.ingredients || recipe?.items || '').split('、')[0];
+  const expectedAnimal = /牛/.test(firstIngredient) ? 'cow' : /豚|ぶた/.test(firstIngredient) ? 'pig' : /鶏|砂肝|ささみ/.test(firstIngredient) ? 'hen' : '';
+  check(expectedAnimal && animal === expectedAnimal, slug + ': animal filter conflicts with the meat ingredient');
+  check(descendants.some(tag => tag.name === 'a' && tag.attrs.href === slug + '.html') && descendants.some(tag => tag.name === 'img'), slug + ': static recipe photograph or link missing');
+  check(descendants.some(tag => tag.name === 'h3') && descendants.filter(tag => tag.name === 'p').some(tag => tagText(cookingDoc, tag).length >= 15), slug + ': recipe introduction missing');
+}
+for (const animal of validAnimals) check(recipeCards.some(card => card.attrs['data-recipe-animal'] === animal), 'cooking: animal missing from recipes: ' + animal);
+const filterButtons = finderMembers.filter(tag => tag.name === 'button' && tag.attrs['data-recipe-filter']);
+for (const [kind, values] of [['animal',validAnimals], ['method',validMethods]]) {
+  const buttons = filterButtons.filter(tag => tag.attrs['data-recipe-filter'] === kind);
+  check(buttons.length === values.length + 1 && ['all',...values].every(value => buttons.some(tag => tag.attrs['data-filter-value'] === value)), 'cooking: incomplete ' + kind + ' filter options');
+  check(buttons.filter(tag => tag.attrs['aria-pressed'] === 'true').length === 1 && buttons.some(tag => tag.attrs['data-filter-value'] === 'all' && tag.attrs['aria-pressed'] === 'true'), 'cooking: initial ' + kind + ' selection must be all');
+  check(buttons.every(tag => tag.attrs['aria-controls'] === 'recipe-results'), 'cooking: filters must identify their result region');
+}
+check(finderMembers.some(tag => Object.hasOwn(tag.attrs,'data-recipe-status') && tag.attrs.role === 'status' && tag.attrs['aria-live'] === 'polite'), 'cooking: accessible result count missing');
+check(cookingDoc?.tags.some(tag => tag.name === 'script' && /^recipe-finder\.js(?:\?|$)/.test(tag.attrs.src || '') && Object.hasOwn(tag.attrs,'defer')), 'cooking: recipe filter script must be loaded with defer');
+
+// Exercise representative combinations against the shipped script and actual
+// rendered metadata. This catches an OR/AND regression, an empty result trap,
+// and a broken reset without claiming a browser or touch-device test.
+let filterScenarioChecks = 0;
+try {
+  function element(attrs={}) {
+    const attributes={...attrs}, listeners={};
+    return {dataset:Object.fromEntries(Object.entries(attrs).filter(([name])=>name.startsWith('data-')).map(([name,value])=>[name.slice(5).replace(/-([a-z])/g,(_,c)=>c.toUpperCase()),value])), hidden:Object.hasOwn(attrs,'hidden'), textContent:'',
+      setAttribute:(name,value)=>{attributes[name]=String(value);}, getAttribute:name=>attributes[name],
+      addEventListener:(type,callback)=>{listeners[type]=callback;}, click:()=>listeners.click?.()};
+  }
+  const cards=recipeCards.map(tag=>element(tag.attrs)), buttons=filterButtons.map(tag=>element(tag.attrs));
+  const controls=element({hidden:''}), status=element(), empty=element({hidden:''}), clear=element();
+  const stubFinder={querySelector:selector=>({'[data-recipe-controls]':controls,'[data-recipe-status]':status,'[data-recipe-empty]':empty,'[data-recipe-clear]':clear}[selector] || null),querySelectorAll:selector=>selector==='[data-recipe-card]'?cards:selector==='[data-recipe-filter]'?buttons:[]};
+  vm.runInNewContext(fs.readFileSync(path.join(folder,'recipe-finder.js'),'utf8'), {document:{querySelectorAll:selector=>selector==='[data-recipe-finder]'?[stubFinder]:[]}}, {timeout:1000});
+  const visible=()=>cards.filter(card=>!card.hidden).map(card=>card.dataset.recipeSlug).sort();
+  const choose=(kind,value)=>{const button=buttons.find(button=>button.dataset.recipeFilter===kind&&button.dataset.filterValue===value);if(!button)throw new Error('Missing '+kind+' '+value);button.click();};
+  const scenario=(condition,message)=>{filterScenarioChecks++;check(condition,'Recipe filter behavior: '+message);};
+  scenario(!controls.hidden&&visible().length===36,'setup must show controls and retain all recipes');
+  choose('animal','hen');choose('method','steam');
+  scenario(JSON.stringify(visible())===JSON.stringify(['plate-08','plate-09']),'hen + steam should show the two steamed chicken dishes');
+  choose('animal','pig');choose('method','fry');
+  scenario(JSON.stringify(visible())===JSON.stringify(['plate-14','pork-cutlet']),'pig + fry should show both pork cutlets');
+  choose('animal','cow');choose('method','steam');
+  scenario(visible().length===0&&!empty.hidden&&/0品/.test(status.textContent),'an empty combination must explain that no dishes match');
+  clear.click();
+  const selected=buttons.filter(button=>button.getAttribute('aria-pressed')==='true');
+  scenario(visible().length===36&&empty.hidden&&selected.length===2&&selected.every(button=>button.dataset.filterValue==='all'),'reset must restore every recipe and both all selections');
+} catch (error) { check(false,'Recipe filter behavior could not be checked: '+error.message); }
+
+// Chapter introductions keep every article reachable with a reason to read it.
+for (const slug of ['shopping','people','sources','cuts']) {
+  const doc=docs.get(slug+'.html');
+  if(!doc)continue;
+  const cards=doc.tags.filter(tag=>Object.hasOwn(tag.attrs,'data-directory-slug'));
+  check(cards.length>0,slug+': editorial chapter previews missing');
+  const descriptions=[];
+  for(const card of cards){
+    const target=card.attrs['data-directory-slug'], descendants=membersOf(doc,card);
+    check(descendants.some(tag=>tag.name==='a'&&tag.attrs.href===target+'.html'),slug+': preview link does not match '+target);
+    check(descendants.some(tag=>tag.name==='img'||tag.name==='svg')&&descendants.some(tag=>tag.name==='h3'),slug+': preview needs an illustration and heading for '+target);
+    const copy=descendants.find(tag=>hasClass(tag,'chapter-story-copy'));
+    const paragraphs=membersOf(doc,copy).filter(tag=>tag.name==='p'&&!hasClass(tag,'chapter-story-kicker'));
+    const introduction=compactText(paragraphs.map(tag=>tagText(doc,tag)).join(''));
+    check(introduction.length>=15,slug+': missing individual introduction for '+target);
+    descriptions.push(introduction);
+  }
+  check(new Set(descriptions).size===descriptions.length,slug+': chapter previews repeat the same introduction');
+  check(doc.tags.some(tag=>hasClass(tag,'chapter-directory-intro')&&tagText(doc,tag).length>=15),slug+': chapter-specific opening missing');
+  check(!doc.tags.some(tag=>hasClass(tag,'story-list')),slug+': old text-only chapter listing has returned');
+  if(slug!=='cuts'){
+    const row=publicationRows.find(row=>row.slug===slug);
+    const expected=publicationRows.filter(item=>item.group===row.group&&item.slug!==slug).map(item=>item.slug);
+    check(expected.every(target=>cards.some(card=>card.attrs['data-directory-slug']===target)),slug+': chapter article was lost during directory redesign');
+  } else {
+    const group=publicationRows.find(row=>row.slug==='cuts').group;
+    const guides=new Set(Object.values(species).map(animal=>animal.guide));
+    const expected=publicationRows.filter(row=>row.group===group&&row.slug!=='cuts'&&!guides.has(row.slug));
+    check(expected.every(row=>cards.some(card=>card.attrs['data-directory-slug']===row.slug)), 'cuts: a part or nutrition article was lost from the reading directory');
+  }
+}
+if(lessonsDoc){
+  const row=publicationRows.find(row=>row.slug==='lessons');
+  for(const item of publicationRows.filter(item=>item.group===row.group&&item.slug!=='lessons')){
+    const link=lessonsDoc.tags.find(tag=>tag.name==='a'&&tag.attrs.href===item.slug+'.html'&&tag.ancestors.some(parent=>hasClass(parent,'lesson-editorial-list')||hasClass(parent,'learning-family')));
+    check(Boolean(link),'lessons: contextual introduction missing for '+item.slug);
+    if(link){
+      const container=link.ancestors.findLast(tag=>['div','section'].includes(tag.name));
+      check(membersOf(lessonsDoc,container).some(tag=>tag.name==='p'&&tagText(lessonsDoc,tag).length>=15),'lessons: reading reason missing for '+item.slug);
+    }
+  }
+  check(!lessonsDoc.tags.some(tag=>hasClass(tag,'story-list')),'lessons: redundant text-only chapter listing has returned');
+}
+
+// Shared research has three distinct editorial roles. The national survey is
+// separate and must retain the recorded 408-response denominator, not birds.
+const studyRoles=['hens','people','rest-questions'];
+const studyBodies=[];
+for(const slug of studyRoles){
+  const doc=docs.get(slug+'.html');
+  if(!doc)continue;
+  const studies=doc.tags.filter(tag=>tag.attrs['data-study']===kanagawaStudy.id);
+  check(studies.length===1&&studies[0]?.attrs['data-study-role']===slug,slug+': expected one study section for its reading role');
+  if(studies.length!==1)continue;
+  const study=studies[0], descendants=membersOf(doc,study), body=compactText(tagText(doc,study));
+  studyBodies.push(body);
+  check(descendants.some(tag=>tag.name==='a'&&tag.attrs.href===kanagawaStudy.sourceUrl),slug+': shared study source missing');
+  check(body.includes(kanagawaStudy.sourceUpdated.replaceAll('-','.'))&&body.includes('このサイトによる取材ではありません'),slug+': source date/type must remain clear');
+  if(slug==='hens')check(descendants.filter(tag=>tag.attrs['data-study-observation']).length===3,slug+': three observations missing');
+  if(slug==='people')check(descendants.some(tag=>hasClass(tag,'study-process')),slug+': research and improvement process missing');
+  if(slug==='rest-questions')check(descendants.some(tag=>tag.name==='details'&&hasClass(tag,'study-optional'))&&body.includes('研究者が実施した手順ではありません'),slug+': optional editorial observation guidance must be distinguished from research');
+}
+check(studyBodies.length===3&&new Set(studyBodies).size===3,'The three study articles must retain distinct reading roles');
+check(henHousingSurvey.total===408&&JSON.stringify(henHousingSurvey.categories.map(([,n])=>n))==='[304,59,45]', 'National housing survey denominator/categories changed without review');
+const hensDoc=docs.get('hens.html'), survey=hensDoc?.tags.find(tag=>hasClass(tag,'housing-survey'));
+check(Boolean(survey)&&!survey.ancestors.some(tag=>tag.attrs['data-study']), 'hens: national survey must be separate from the local experiment');
+if(survey){
+  const descendants=membersOf(hensDoc,survey), dots=descendants.filter(tag=>tag.name==='i');
+  check(dots.length===408&&[304,59,45].every((expected,index)=>dots.filter(tag=>hasClass(tag,'n'+(index+1))).length===expected),'hens: 408-dot survey graphic must keep 304/59/45 categories');
+  const body=compactText(tagText(hensDoc,survey));
+  check(body.includes('鶏の羽数の割合ではありません')&&descendants.some(tag=>tag.name==='a'&&tag.attrs.href===henHousingSurvey.sourceUrl),'hens: survey meaning or independent source missing');
+}
+
+const publishedIronFile=path.join(folder,'meat-iron-data.json');
+check(fs.existsSync(publishedIronFile),'Published iron data file missing');
+if(fs.existsSync(publishedIronFile)){
+  try{check(JSON.stringify(JSON.parse(fs.readFileSync(publishedIronFile,'utf8')))===JSON.stringify(meatIronData),'Published iron source data differs from the calculation data');}
+  catch{check(false,'Published iron data is not valid JSON');}
+}
+
 const hash = file => crypto.createHash('sha256').update(fs.readFileSync(path.join(folder, file))).digest('hex');
 const result = {
   status: errors.length ? 'failed' : 'passed', kind: 'static-publication-check',
-  pages: publicationManifest.length, checkedLinks, searchRecords: catalog.length,
+  pages: publicationManifest.length, legacyRedirects: legacyRedirectFiles.length, checkedLinks, searchRecords: catalog.length,
+  shortReadingRoutes: readingRoutes.length, readingRouteStops: routeStops.length, worksheetsVerified: checkedPdfs,
+  recipeCards: recipeCards.length, filterScenarioChecks, sharedStudyRoles: studyBodies.length,
   recipes: recipeSlugs.length, ironRecipes: ironRecipeSlugs.length,
   fieldRecords: fieldRecords.length, individualPhotoWarnings: sensitive.length,
   topSha256: hash('index.html'), sitemapSha256: hash('sitemap.xml'),

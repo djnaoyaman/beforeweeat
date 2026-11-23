@@ -1,0 +1,68 @@
+.chapter-editorial {
+  --directory-ink: #1b3027;
+  --directory-paper: #f7f4e9;
+  --directory-accent: #963f25;
+  --directory-rule: #9a9c8d;
+  margin-block: 2.25rem 1.4rem;
+}
+.chapter-editorial > h2 { margin-block: 0 .5rem; }
+.chapter-directory-intro { max-inline-size: 39em; }
+.chapter-directory-note, .chapter-directory-source { font-size: .875em; line-height: 1.8; }
+.chapter-directory-source time { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.chapter-editorial .chapter-stories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.35rem 1.5rem;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.chapter-story { min-inline-size: 0; border-block-start: 1px solid var(--directory-rule); }
+.chapter-story > a {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-block-size: 44px;
+  border: 0;
+  padding-block: .65rem;
+  text-decoration: none;
+}
+.chapter-story > a:focus-visible { outline: 3px solid var(--directory-accent); outline-offset: 5px; }
+.chapter-story-art { min-inline-size: 0; color: var(--directory-ink); }
+.chapter-story-art :is(img, svg) { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 600 / 340; object-fit: cover; }
+.chapter-story-art .chapter-cut-drawing { object-fit: contain; block-size: 10.5rem; }
+.chapter-cut-drawing image { opacity: .93; }
+.chapter-cut-point circle { fill: #f7f4e9a8; stroke: var(--directory-accent); stroke-width: 3; vector-effect: non-scaling-stroke; }
+.chapter-cut-point.is-inner > circle:first-child { stroke-dasharray: 4 3; }
+.chapter-cut-point .chapter-cut-core { fill: var(--directory-accent); stroke: var(--directory-paper); stroke-width: 1.5; }
+.chapter-drawing text { fill: currentColor; font: 25px "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif; }
+.chapter-art-caption { display: block; margin-block: .35rem .75rem; color: #505a4e; font-size: .875rem; line-height: 1.6; }
+.chapter-story .chapter-story-kicker { margin-block: 0 .3rem; color: var(--directory-accent); font-size: .875rem; font-weight: 650; }
+.chapter-story h3 {
+  margin: 0 0 .45rem;
+  font-size: 1.1em;
+  line-height: 1.7;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .2em;
+}
+.chapter-story p { margin-block: .35rem 0; font-size: 1rem; line-height: 1.8; overflow-wrap: anywhere; }
+.chapter-story > a:is(:hover, :focus-visible) h3 { text-decoration-thickness: 2px; }
+.chapter-story > a:is(:hover, :focus-visible) .chapter-story-copy { color: var(--directory-ink); }
+.chapter-editorial .chapter-stories--cuts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.chapter-stories--cuts .chapter-story:last-child { grid-column: 1 / -1; }
+.chapter-stories--cuts .chapter-story:last-child > a { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); align-items: center; gap: 1.5rem; }
+.chapter-editorial .chapter-stories--meals { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 720px) {
+  .chapter-editorial .chapter-stories--cuts, .chapter-editorial .chapter-stories--meals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .chapter-editorial .chapter-stories { grid-template-columns: minmax(0, 1fr); gap: .85rem; }
+  .chapter-story > a, .chapter-stories--cuts .chapter-story:last-child > a { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .chapter-story-art :is(img, svg) { max-block-size: 12rem; }
+  .chapter-story-art .chapter-cut-drawing { block-size: 10rem; }
+  .chapter-story h3 { font-size: 1.1em; }
+}
+@media print {
+  .chapter-story { break-inside: avoid; }
+  .chapter-story-art :is(img, svg) { max-block-size: 8rem; }
+}

@@ -140,7 +140,7 @@ export function factCheck(check,typeset){
  const quote = '<p>「'+typeset(check.strongest)+'」</p>';
  const locator = '<p>'+escape(check.locator)+'　'+link(['原資料を開く',check.sourceUrl])+'</p>';
  const notes = check.notes ? '<p>'+typeset(check.notes)+'</p>' : '';
- return '<details class="references field-check"><summary>編集者向けの事実確認メモ</summary>'+quote+locator+notes+'</details>';
+ return '<details class="references field-check"><summary>この記述を原資料で確かめる</summary>'+quote+locator+notes+'</details>';
 }
 function photo(key,typeset){
  const item = originals[key];

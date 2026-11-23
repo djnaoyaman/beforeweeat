@@ -1,10 +1,13 @@
+import {kanagawaStudy, kanagawaSource, kanagawaStudyMarkup, henHousingSurveyMarkup} from './kanagawa-study.mjs';
 const sources = {
+  iron: ['文部科学省の食品成分表・版と訂正', 'https://www.mext.go.jp/a_menu/syokuhinseibun/mext_00001.html'],
+  ironData: ['36品の計算に使った食品番号と条件', 'meat-iron-data.json'],
   journey: ['農林水産省のお仕事紹介', 'https://www.maff.go.jp/j/kids/about/page7.html'],
   meat: ['食肉処理施設の役割（資料の3〜4ページ）', 'https://www.maff.go.jp/j/council/seisaku/tikusan/attach/pdf/bukai602-10.pdf#page=3'],
   chicken: ['農林水産省の鶏肉の流通図', 'https://www.maff.go.jp/j/chikusan/sinko/lin/l_katiku/attach/pdf/r6_niwatori-25.pdf'],
   milk: ['農畜産業振興機構の牛乳の解説', 'https://www.alic.go.jp/koho/kikaku03_001435.html'],
   eggs: ['農林水産省の卵の出荷の解説', 'https://www.maff.go.jp/j/pr/aff/2404/spe1_03.html'],
-  kanagawa: ['神奈川県の研究報告', 'https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html'],
+  kanagawa: kanagawaSource,
   beef: ['輸入牛もも・赤肉・生', 'https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11077_7&MODE=0'],
   pork: ['ぶたもも・赤肉・生', 'https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11134_7'],
   poultry: ['若どりむね・皮なし・生', 'https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11220_7'],
@@ -27,14 +30,18 @@ const sourceMap = [
   {claim: '動物が育ち、お肉になって食卓へ届く道', pages: [['animals', '動物から食卓まで']], refs: ['journey', 'meat', 'chicken'], note: '資料にある流れを、五つの場面にまとめています。お肉の種類や届け方によって、間に入る仕事は変わります。'},
   {claim: '牛乳は、しぼった乳を冷やして工場へ運ぶ', pages: [['cow', '牛肉と牛乳の道']], refs: ['milk'], note: '「牛乳が消費者に届くまで」の1〜3を参照。2023年4月5日更新。'},
   {claim: '卵は、集めたあとに検査や包装をして出荷する', pages: [['hen', 'お肉と卵の道']], refs: ['eggs'], note: '「産まれたたまごを出荷するまで」の各工程を参照。'},
-  {claim: '設備を変えたあとも、鶏の行動を確かめる', pages: [['people', '工夫をした人たち'], ['rest-questions', '休む場所を確かめる']], refs: ['kanagawa'], note: '「研究の内容」と「今後の展開」を参照。2026年7月10日更新。このサイトによる取材ではなく、公開された研究の紹介です。'},
+  {claim: '設備を変えたあとも、鶏の行動を確かめる', pages: [['hens', '研究で見られたこと'], ['people', '工夫をした人たち'], ['rest-questions', '休む場所を確かめる']], refs: ['kanagawa'], note: '「研究の内容」と「今後の展開」を参照。元のページの更新日 ' + kanagawaStudy.sourceUpdated + '。このサイトによる取材ではなく、公開された研究の紹介です。'},
   {claim: '栄養表で比べている三つの食品', pages: [['nutrition', '栄養を比べる']], refs: ['beef', 'pork', 'poultry'], note: '文部科学省の各食品のページに対応します。同じ100gでも、部位、皮の有無、生か調理後かをそろえて読みます。'},
+  {claim: '36品の、お肉の量から求めた鉄の目安', pages: [['crispy-chicken', '肉の重さと人数を読む'], ['miso-soup', '少量の肉を使う例']], refs: ['iron', 'ironData'], note: '料理全体の値ではなく、加熱前のお肉の可食部をもとにした目安です。加熱による変化、野菜、たれなどは計算に含めません。各レシピの詳細から、食品番号・部位・重さ・人数・成分表の版をたどれます。'},
   {claim: '肉の中心の温度を確かめる', pages: [['heat', '火の通りを確かめる']], refs: ['heating'], note: '「ポイント4 調理」の加熱条件を参照。料理の時間だけで火の通りを決めず、温度計で確かめます。'},
-  {claim: '食べることから、自分の問いを見つける', pages: [['lessons', '先生・保護者の方へ']], refs: ['learning'], note: '食育の考え方を参照しています。このサイトの観察シートや問いは、編者が作ったものです。'}
+  {claim: '一皿から、動物や食べ物を知る', pages: [['lessons', '先生・保護者の方へ']], refs: ['learning'], note: '食育の考え方を参照しています。このサイトの教材やシートは編者が作ったものです。会話や記入は、使いたいときに選べます。'}
 ];
 
 // The publishing agent keeps only completed entries before releasing this page.
 export const editorialUpdates = [
+  {date: '2026-11-23', title: '好きな一皿から、短く読む・教材を使う', body: '牛・ぶた・にわとりの三つの短い読み方を加えました。読む、作る、食べるだけでも使え、会話や記入は選べます。教材本文と4種類のPDFをそろえ、印刷用シートに元のページと版の日付を載せました。トップの編者表記にはMINAの既存ロゴを使っています。', links: [['lessons', '三つの読み方と教材'], ['food-diary', '使いたい日の量をメモする']]},
+  {date: '2026-11-23', title: '36品の料理と、章ごとの記事を選びやすく', body: '料理を動物と作り方で絞り込めるようにしました。買い物、現場の工夫、部位、出典の入口には、図や短い紹介を添えています。同じ神奈川県の研究を扱う三つの記事は、結果・改善の工程・観察の見方に分けました。似た二つのとんかつ記事は、材料と加熱条件をそろえ、詳しい版と短い版に分けています。', links: [['cooking', '36品から料理を選ぶ'], ['people', '現場で試した工夫を読む']]},
+  {date: '2026-11-23', title: '図解と、その記事に合う次の読みものを整理', body: '動物の休む場所、肉の切り口、加熱や保存、卵の表示などを、比較の図や手順で読めるようにしました。目次は写真や図を使った紹介へ、記事の終わりは内容に合う理由付きの紹介へ改めました。実際の調理・試食を行っていないことも編集方針に記しています。', links: [['start', 'すべての目次'], ['editorial', '出典と試作について読む']]},
   {date: '2026-11-23', title: '36品に、お肉の鉄の目安を追加', body: '36品のレシピに、材料のお肉の量をもとにした1人分の鉄の目安を加えました。火を通す前のお肉だけを計算した値です。計算に使った部位・重さ・人数・出典も確かめられます。', links: [['crispy-chicken', '鶏もも肉の皮をパリッと焼く'], ['pork-cutlet', 'とんかつを作る'], ['miso-soup', '豚汁を作る']]},
   {date: '2026-11-23', title: '料理を、作れる記事へ', body: '生姜焼き・とんかつ・豚汁に、材料、分量、道具、作り方、食べる前の観察の問いをそろえました。', links: [['cooking', '料理を選ぶ']]},
   {date: '2026-11-23', title: '本文にあることばを探しやすく', body: '「ネック」「せせり」などの部位名や、料理の作り方にあることばでも記事を探せるようにしました。', links: [['start', 'ことばで探す']]},
@@ -51,7 +58,7 @@ export function editorialContextMarkup({r, typeset, pageLink}) {
   const paragraph = value => '<p>' + typeset(value) + '</p>';
   const sourceLink = key => '<a href="' + escapeAttribute(sources[key][1]) + '">' + typeset(sources[key][0]) + '</a>';
   const sourceNote = (keys, note = '') => '<p class="context-sources">' + keys.map(sourceLink).join(' ／ ') + (note ? '<br>' + typeset(note) : '') + '</p>';
-  const question = value => '<aside class="context-question"><h3>ここから、あなたの問い</h3>' + paragraph(value) + '</aside>';
+  const question = value => '<aside class="context-question"><h3>もう少し考えてみたいときに</h3>' + paragraph(value) + '</aside>';
   const simpleRoute = steps => '<ol class="product-route">' + steps.map(step => '<li>' + typeset(step) + '</li>').join('') + '</ol>';
   let content = '';
 
@@ -93,29 +100,8 @@ export function editorialContextMarkup({r, typeset, pageLink}) {
       + question('卵のパックにあることばから、産んだにわとりのくらしまでわかるかな。書いていないことは、だれに聞けるだろう。');
   }
 
-  if (r.slug === 'people') {
-    content = '<section class="documented-case">' + heading('休む場所を、行動から考えた人たち')
-      + '<p class="context-label">' + typeset('神奈川県の公開資料から') + '</p>'
-      + paragraph('神奈川県畜産技術センターは、国内のメーカーと鶏の住まいを改良しました。主任研究員の引地宏二さんが紹介する研究です。')
-      + paragraph('巣箱や止まり木などを備えた設備で飼い、鶏がどう使うかを調べました。昼も夜も、休むときに止まり木を使うようすが確認されました。')
-      + paragraph('一方、砂浴びをする場所や、卵の汚れ・割れを減らす工夫には課題が残っています。費用や、何軒の農場で使われているかは、この資料では確認できません。')
-      + sourceNote(['kanagawa'], '2026年7月10日更新。このサイトによる取材ではなく、公開された研究の紹介です。') + '</section>'
-      + question('もし研究をした人に一つ聞けるなら、何を聞くだろう。「道具を置いたか」に加えて、「動物がどう使ったか」を聞いてみよう。')
-      + '<div class="context-links">' + pageLink('rest-questions', '試したあと、何を見た？') + pageLink('hens', '鶏の記録を詳しく読む') + '</div>';
-  }
-
-  if (r.slug === 'rest-questions') {
-    content = '<section class="documented-case">' + heading('置いたあと、使っているかを確かめる')
-      + '<p class="context-label">' + typeset('同じ神奈川県の研究から') + '</p>'
-      + paragraph('砂浴びのために人工芝を置くと、4週間でふんがたまり、砂浴びのような行動が見られなくなりました。そこで床をポリエチレン製のネットに変更しました。')
-      + paragraph('ネットへの変更で砂浴びが十分にできるようになった、とまでは報告されていません。さらに改良することが研究の課題です。')
-      + sourceNote(['kanagawa'], '「研究の内容」と「今後の展開」を参照。') + '</section>'
-      + '<section>' + heading('次に見たいことを、三つ考える')
-      + paragraph('ここからは、このサイトが提案する観察の問いです。研究で確認された結果とは分けて考えます。')
-      + '<ol class="observation-questions"><li>' + typeset('朝・昼・夜で、休む場所は変わるかな。') + '</li><li>'
-      + typeset('掃除をしてから、何日たつと床が汚れるかな。') + '</li><li>'
-      + typeset('その場所を使っていない鶏はいるかな。何を確かめれば理由に近づけるかな。') + '</li></ol>'
-      + paragraph('一度見たようすを、いつでも同じだと決めず、時間を変えて記録してみよう。') + '</section>';
+  if (['hens', 'people', 'rest-questions'].includes(r.slug)) {
+    content = kanagawaStudyMarkup({slug:r.slug, typeset}) + (r.slug === 'hens' ? henHousingSurveyMarkup({typeset}) : '');
   }
 
   if (r.slug === 'sources') {

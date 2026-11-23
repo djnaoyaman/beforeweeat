@@ -13,7 +13,7 @@
 - [国会会議録・参議院農林水産委員会（2022年11月8日）](https://kokkai.ndl.go.jp/simple/dispPDF?minId=121015007X00320221108)
 - [農水省・雄ひなの殺処分回避と卵内雌雄判別](https://www.maff.go.jp/j/chikusan/sinko/lin/l_katiku/attach/pdf/r6_niwatori-15.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「卵をとるために育てる鶏では、雄のひよこは卵からかえってすぐに殺されてきた。」
 
@@ -33,7 +33,7 @@
 - [農研機構・鶏と豚の飼養管理手引き](https://www.naro.go.jp/project/results/5th_laboratory/nilgs/2024/24_002.html)
 - [農林水産省「アニマルウェルフェアに関する新たな国の指針について ～採卵鶏～」](https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/230726-31.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「従来型のケージでは、鶏が卵を産むときに入れる巣箱も、足で握って休める止まり木もない。」
 
@@ -52,7 +52,7 @@
 - [日本養鶏協会・2025年10月調査（2026年3月公表）](https://jpa.or.jp/wp-content/uploads/2026/03/%E6%97%A5%E9%B6%8F%E5%8D%94%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9-2026%E5%B9%B43%E6%9C%88%E5%8F%B7.pdf)
 - [農林水産省「採卵鶏の飼養管理に関する技術的な指針」](https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/230726-34.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「2025年10月の日本養鶏協会の調査では、餌を止めて鶏の羽の生え替わりを促す方法が、2,805万3千羽で使われていた。」
 
@@ -71,7 +71,7 @@
 - [畜産技術協会・採卵鶏の飼養実態調査](https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_lay_h26.pdf)
 - [農林水産省「採卵鶏の飼養管理に関する技術的な指針」](https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/230726-34.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「2014年度の調査で、採卵鶏の農場206戸が、ひなを迎えたときにはすでにくちばしの一部が取り除かれていたと答えた。」
 
@@ -89,7 +89,7 @@
 
 - [鹿児島大学・国内複数農場の調査](https://ir.kagoshima-u.ac.jp/record/4903/files/Diss_HASHIMOTO_Shinichiro_2012.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「足の裏にある肉厚の部分を越え、その周りにまで皮膚炎が広がっていた肉用鶏が1,812羽いた。」
 
@@ -109,7 +109,7 @@
 - [農研機構・鶏と豚の飼養管理手引き](https://www.naro.go.jp/project/results/5th_laboratory/nilgs/2024/24_002.html)
 - [McGloneほか「The physical size of gestating sows」（2004年）](https://www.depts.ttu.edu/animalwelfare/research/sowhousing/documents/Thephysicalsize.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「妊娠中の母豚を一頭ずつ入れる細長い枠では、立ったり横になったりはできても、体ごと後ろを向く幅がない。」
 
@@ -128,7 +128,7 @@ McGloneほか「The physical size of gestating sows」Introduction 第1段落、
 - [畜産技術協会・豚の飼養実態調査](https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_pig_h26.pdf)
 - [EFSA・豚の飼養に関する科学的評価](https://www.efsa.europa.eu/en/plain-language-summary/welfare-pigs-farm)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「国内の農場107戸が「生後1日以内」、133戸が「生後1日〜2日以内」と答えた。」
 
@@ -146,7 +146,7 @@ McGloneほか「The physical size of gestating sows」Introduction 第1段落、
 
 - [畜産技術協会・豚の飼養実態調査](https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_pig_h26.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「子豚の歯を切ると答えた272戸のうち、141戸は生後1日以内に切っていた。」
 
@@ -166,7 +166,7 @@ McGloneほか「The physical size of gestating sows」Introduction 第1段落、
 - [アニマルライツセンター・日本養豚協会調査の時系列整理](https://www.hopeforanimals.org/pig/pigfarms-survey/)
 - [日本養豚協会・過去の設問と回答](https://jppa.biz/zius/wp-content/uploads/2019/10/20170622_01.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「雄の子豚の去勢で麻酔を使うか尋ねたところ、答えた734の経営体のうち714が、麻酔を使わないと答えた。」
 
@@ -184,7 +184,7 @@ McGloneほか「The physical size of gestating sows」Introduction 第1段落、
 
 - [農水省・令和6年度調査（乳用牛）](https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/animal_welfare-113.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「236件の回答のうち65件が「あてはまらない」、61件が「あまりあてはまらない」を選んだ。」
 
@@ -203,7 +203,7 @@ McGloneほか「The physical size of gestating sows」Introduction 第1段落、
 - [獣医学会発表・国内の肉用牛の症例報告](https://www.jstage.jst.go.jp/article/jvma1951/46/8/46_8_653/_pdf/-char/ja)
 - [日本獣医師会雑誌・1988年の症例報告](https://www.jstage.jst.go.jp/article/jvma1951/41/2/41_2_108/_article/-char/en)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「1991年の夏、ある肥育農家で黒毛和牛4頭の脚がむくみ、うち3頭は立てなくなった。」
 
@@ -222,7 +222,7 @@ McGloneほか「The physical size of gestating sows」Introduction 第1段落、
 - [島根県・委員会資料](https://www.pref.shimane.lg.jp/industry/norin/info/shiryo_/nosuisyoko_r5.data/230629nourin_siryo.pdf)
 - [山陰放送・松江地裁判決の報道](https://newsdig.tbs.co.jp/articles/bss/737018)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「島根県大田市の農場で、従業員が乳牛2頭の鼻や首のあたりを足で蹴った。」
 
@@ -241,7 +241,7 @@ McGloneほか「The physical size of gestating sows」Introduction 第1段落、
 - [英国獣医師会・生産の過程で生じる雄の扱い](https://www.bva.co.uk/take-action/our-policies/surplus-male-production-animals/)
 - [ニュージーランド酪農家262戸の調査](https://www.nzsap.org/system/files/proceedings/fate-calves-born-new-zealand-dairy-farms-and-dairy-farmer-attitudes-towards-producing-dairy-beef.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「肉用に育てても費用に見合わないとされ、生まれて間もなく殺される子牛がいる。」
 
@@ -260,7 +260,7 @@ McGloneほか「The physical size of gestating sows」Introduction 第1段落、
 - [英国獣医師会・生産の過程で生じる雄の扱い](https://www.bva.co.uk/take-action/our-policies/surplus-male-production-animals/)
 - [英国の農場訪問を含む調査報告](https://www.nuffieldscholar.org/sites/default/files/reports/2009_UK_Kate-Little_Meat-Goats-Sustainable-Livestock-Farming.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「英国の乳用ヤギ農家を訪ねたケイト・リトルは、大きな農場では雄の子が生まれたときに殺されていると記した。」
 
@@ -282,7 +282,7 @@ Kate Little（2010）「Meat goats: sustainable livestock farming」冊子p.37�
 - [フランス上院報告](https://www.senat.fr/rap/l20-581/l20-5811.pdf)
 - [フランス家きん業界・2024年活動報告](https://www.aviculteurs-france.fr/sites/default/files/upload/documents/rapport-d-activite-2024_2.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「フランスでは、繁殖用や食肉用に引き取られる雌のひなもいたが、雌だと分かった時点で殺されるひなもいた。」
 
@@ -300,7 +300,7 @@ Kate Little（2010）「Meat goats: sustainable livestock farming」冊子p.37�
 
 - [Rochlitz & Broom・フォアグラ生産の福祉評価](https://www.cambridge.org/core/journals/animal-welfare/article/abs/welfare-of-ducks-during-foie-gras-production/084F38628B497EAFD274B611BD1237D3)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「研究者がまとめた資料では、この給餌期間に死んだアヒルは全体の2〜6％だった。」
 
@@ -319,7 +319,7 @@ Rochlitz・Broom（2017）135ページ、要旨の冒頭から食道炎を挙げ
 - [Rochlitz & Broom・フォアグラ生産の福祉評価](https://www.cambridge.org/core/journals/animal-welfare/article/abs/welfare-of-ducks-during-foie-gras-production/084F38628B497EAFD274B611BD1237D3)
 - [EFSA・アヒル、ガチョウ、ウズラの飼養調査・評価](https://pmc.ncbi.nlm.nih.gov/articles/PMC10186070/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「給水器の先から水を飲めても、それだけでは頭ごと水につけられない。」
 
@@ -337,7 +337,7 @@ EFSA（2023）3.4.1.2.1節の給水設備、3.6.5.1節「Open water provision」
 
 - [EFSA・アヒル、ガチョウ、ウズラの飼養調査・評価](https://pmc.ncbi.nlm.nih.gov/articles/PMC10186070/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「敷き材のない網の床では、こぼれた餌の粒もすぐに網目から落ちる。」
 
@@ -356,7 +356,7 @@ EFSA（2023）3.5.8.4節、Laying quail and breeders で始まる段落。採卵
 - [EFSA・七面鳥の飼養に関する科学的評価](https://www.efsa.europa.eu/en/infographics/efsas-scientific-opinion-welfare-turkeys-farm)
 - [EFSA加盟国ネットワークへの実施調査](https://doi.org/10.2903/sp.efsa.2024.EN-9138)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「生後1日の七面鳥のひなに、前を向いた3本の指先で爪が伸びる部分を焼く処置が行われていた。」
 
@@ -375,7 +375,7 @@ EFSA技術報告 EN-9138（2024）11ページ、3.2節の第1・第2段落。 [�
 - [EFSA・七面鳥の飼養に関する科学的評価](https://www.efsa.europa.eu/en/infographics/efsas-scientific-opinion-welfare-turkeys-farm)
 - [EFSA加盟国ネットワークへの実施調査](https://doi.org/10.2903/sp.efsa.2024.EN-9138)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「うち1か国では、生後1日のひなにこの処置をしていた。」
 
@@ -394,7 +394,7 @@ EFSA技術報告 EN-9138（2024）11〜12ページ、3.3節「De-snooding」。 
 - [EFSA・ブロイラーと種鶏の飼養に関する科学的評価](https://www.efsa.europa.eu/en/plain-language-summary/welfare-broilers-farm)
 - [英国の商業鶏群・51,000羽の歩行調査](https://pmc.ncbi.nlm.nih.gov/articles/2212134/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「群れの大きさを考慮して集計すると、ほとんど歩けないほど脚に問題のある鶏は3.3％にのぼった。」
 
@@ -413,7 +413,7 @@ Knowlesほか（2008）要旨と表1。歩行の評価4は3.1％、評価5は0.2
 - [EFSA・ブロイラーと種鶏の飼養に関する科学的評価](https://www.efsa.europa.eu/en/plain-language-summary/welfare-broilers-farm)
 - [EFSA・肉用鶏と親鶏の科学的評価（全文）](https://pmc.ncbi.nlm.nih.gov/articles/PMC9941850/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「給餌制限を受けた親鶏には、餌のなくなった容器を繰り返しつつく行動が報告されている。」
 
@@ -431,7 +431,7 @@ EFSA（2023）3.7.2.3節の冒頭。週4日の例は3.7.2.1節「Description of 
 
 - [Thøfnerほか・デンマークの採卵鶏40群の調査](https://pmc.ncbi.nlm.nih.gov/articles/PMC8362975/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「雌4,756羽のうち、胸の中央を走る「竜骨」が折れていたのは4,098羽だった。」
 
@@ -450,7 +450,7 @@ Thøfnerほか（2021）表7「Total」行・脚注1。1羽に複数の骨折が
 - [EFSA・豚の飼養に関する科学的評価](https://www.efsa.europa.eu/en/plain-language-summary/welfare-pigs-farm)
 - [EFSA・豚の飼養に関する科学的評価（全文）](https://efsa.onlinelibrary.wiley.com/doi/full/10.2903/j.efsa.2022.7421)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「従来型の柵では、母豚は立って前後に少し足を動かせても、くるりと向きを変えられない。」
 
@@ -469,7 +469,7 @@ EFSA（2022）5.1.1節「Restriction of movement」冒頭2段落と、出産前�
 - [EFSA・子牛の飼養に関する科学的評価](https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/)
 - [Weary・Chua・生後6時間、1日、4日で母子を分けた研究](https://pubmed.ncbi.nlm.nih.gov/10906402/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「母牛と長く過ごしてから離された子牛ほど、別れたあとは囲いの中をよく動き、囲いの外に頭を出している時間が長かった。」
 
@@ -488,7 +488,7 @@ Weary・Chua（2000）要旨、親子の組数と撮影時間を示す段落、�
 - [EFSA・子牛の飼養に関する科学的評価](https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/)
 - [Duve・Jensen・子牛を1頭ずつ飼う場合と2頭一緒に飼う場合の行動比較](https://pubmed.ncbi.nlm.nih.gov/22901479/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「生後2日の観察で、相手のにおいをかいだり、なめたりしたのは、一緒の囲いでは観察対象の6頭すべて、別々の囲いでは6頭のうち2頭だった。」
 
@@ -506,7 +506,7 @@ Duve・Jensen（2012）要旨の生後2日目の結果、および「Materials a
 
 - [EFSA・子牛の飼養に関する科学的評価](https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「欧州の白い子牛肉の生産では、その色を出すために、育ち盛りの子牛に与える鉄分を意図して少なくする。」
 
@@ -524,7 +524,7 @@ EFSA（2023）要約「Iron」第1段落、3.1.2節「Introduction to veal syste
 
 - [EFSA・子牛の飼養に関する科学的評価](https://pmc.ncbi.nlm.nih.gov/articles/PMC10050971/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「同じ月齢で、繊維の量を制限せずに育てたときの約3分の1だった。」
 
@@ -543,7 +543,7 @@ EFSA（2023）3.16.4.4節「Conclusions on fibre amounts」冒頭の二つの結
 - [EFSA・食肉用ウサギの飼養方式の比較](https://pubmed.ncbi.nlm.nih.gov/32626497/)
 - [EFSA・食肉用ウサギの飼い方の評価（全文・表22）](https://pmc.ncbi.nlm.nih.gov/articles/PMC7008839/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「幅25.4センチ、奥行き44センチ、高さ28センチ。」
 
@@ -563,7 +563,7 @@ EFSA（2020）、表7の「Bicellular cages for growing rabbits」行（幅・�
 
 - [豪州羊産業・生産者調査（2024年）](https://www.sheepsustainabilityframework.com.au/globalassets/sheep-sustainability/media/240731-ssf-2024-annual-report---web.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「幼虫が羊の体に寄生するのを防ぐため、オーストラリアには、専用のはさみで尻や尾の皮膚を一部切り取る飼育法がある。」
 
@@ -582,7 +582,7 @@ EFSA（2020）、表7の「Bicellular cages for growing rabbits」行（幅・�
 - [豪州の生体輸出に関する独立監察報告](https://www.igawlae.gov.au/sites/default/files/2020-12/implementation-of-moss-review-recommendations.pdf)
 - [豪州農業省・勧告への対応状況](https://www.agriculture.gov.au/agriculture-land/animal-welfare/livestock-exports/igawlae)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「クウェート、カタール、アラブ首長国連邦へ向かう23日間に、船の上で2,400頭を超える羊が暑さのために死んだ。」
 
@@ -604,7 +604,7 @@ EFSA（2020）、表7の「Bicellular cages for growing rabbits」行（幅・�
 - [Marcatoほか・輸送中と到着後の子牛の行動](https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2020.576469/full)
 - [EFSA・牛の輸送に関する評価（全文）](https://www.efsa.europa.eu/sites/default/files/2022-09/EFS2_7442_Rev6.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「車内のカメラで見ると、子牛は立っている時間より、横になっている時間のほうが長かった。」
 
@@ -627,7 +627,7 @@ Marcatoほか（2020）「Discussion」の「Behavior of calves is influenced by
 - [Verhoevenほか・豚の行動と脳波の実験](https://pubmed.ncbi.nlm.nih.gov/27243026/)
 - [英国食品基準庁・2024年処理場調査（改訂版）](https://assets.publishing.service.gov.uk/media/67c5cf0e750837d7604dbdbf/25-02-14_Slaughter_Sector_Survey_2024__REVISED_.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「どちらの群でも、後ずさりしようとしたり、口を開けてあえいだりする動きは、脳波から意識を失ったと判断される前に見られた。」
 
@@ -649,7 +649,7 @@ Verhoevenほか（2016）、要旨の「During exposure to the gas」で始ま�
 - [EFSA・家きんのと畜時の評価（図7）](https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2019.5849)
 - [英国食品基準庁・2024年処理場調査（改訂版）](https://assets.publishing.service.gov.uk/media/67c5cf0e750837d7604dbdbf/25-02-14_Slaughter_Sector_Survey_2024__REVISED_.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「鶏は意識を保ったまま、脚を挟まれ、頭を下にして運ばれる。」
 
@@ -671,7 +671,7 @@ EFSA（2019）の図7直前の段落、および3.6.2.3「Shackling」の定義�
 - [英国食品基準庁・2024年処理場調査（改訂版）](https://assets.publishing.service.gov.uk/media/67c5cf0e750837d7604dbdbf/25-02-14_Slaughter_Sector_Survey_2024__REVISED_.pdf)
 - [EFSA・羊とヤギのと畜時の評価](https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2021.6882)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「そのうち28.8％は、気絶させずに首を切る方法で処理された。」
 
@@ -693,7 +693,7 @@ EFSA（2019）の図7直前の段落、および3.6.2.3「Shackling」の定義�
 - [APによる従業員の刑事手続の報道](https://www.cbsnews.com/news/slaughterhouse-animal-abuser-gets-6-mos/)
 - [米連邦下院公聴会・処理場で撮影した調査員の記録](https://www.govinfo.gov/content/pkg/CHRG-110hhrg50332/pdf/CHRG-110hhrg50332.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「牛が処理用の囲いに入って作業員が手を離すと、牛はその場で崩れ落ちた。」
 
@@ -713,7 +713,7 @@ EFSA（2019）の図7直前の段落、および3.6.2.3「Shackling」の定義�
 
 - [NZ第一次産業省・子牛への不適切な取り扱いに関する控訴審](https://www.mpi.govt.nz/news/media-releases/mpi-wins-appeal-over-bobby-calf-sentence-home-detention-replaced-with-imprisonment)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「門の下を引きずられた子牛もいた。」
 
@@ -733,7 +733,7 @@ EFSA（2019）の図7直前の段落、および3.6.2.3「Shackling」の定義�
 
 - [NZ第一次産業省・衰弱した子牛の放置](https://www.mpi.govt.nz/news/media-releases/canterbury-farmer-sentenced-for-reckless-ill-treatment-of-a-calf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「体はひどくやせ、あちこちに傷があり、口の中には数百匹のウジがいた。」
 
@@ -754,7 +754,7 @@ EFSA（2019）の図7直前の段落、および3.6.2.3「Shackling」の定義�
 - [畜産技術協会・乳用牛の飼養実態調査](https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_cow_h26.pdf)
 - [畜産技術協会・肉用牛の飼養実態調査](https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_beef_h26.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「2014年度の国内調査で、この処置をしている酪農家437戸のうち、372戸が麻酔を使っていないと答えた。」
 
@@ -775,7 +775,7 @@ EFSA（2019）の図7直前の段落、および3.6.2.3「Shackling」の定義�
 - [畜産技術協会・乳用牛の飼養実態調査](https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_cow_h26.pdf)
 - [Eicherほか・尾を切った牛と切っていない牛の観察](https://pubmed.ncbi.nlm.nih.gov/11518306/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「尾を切った牛のほうが、後ろ脚に止まっていたハエの数は多かった。」
 
@@ -796,7 +796,7 @@ Eicherほか（2001）、要旨の「Flies were counted」で始まる箇所と�
 - [畜産技術協会・肉用牛の飼養実態調査](https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_beef_h26.pdf)
 - [畜産技術協会・令和6年度報告（40ページに農林水産省指針を収録）](https://jlta.jp/test/wp-content/uploads/2025/04/R6_cattlecastration_AWreport_2025.04.09.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「日本の2014年度調査では、肉用牛を飼う758戸のうち577戸が、初めての装着を自分の農場で行うと答えた。」
 
@@ -817,7 +817,7 @@ Eicherほか（2001）、要旨の「Flies were counted」で始まる箇所と�
 - [畜産技術協会・肉用牛の飼養実態調査](https://jlta.jp/test/wp-content/uploads/2023/12/factual_investigation_beef_h26.pdf)
 - [畜産技術協会・肉用牛の去勢に関する調査報告](https://jlta.jp/test/wp-content/uploads/2025/04/R6_cattlecastration_AWreport_2025.04.09.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「2014年度に去勢を自分の農場で行うと答えた657戸のうち、463戸が主な方法に外科手術を挙げた。」
 
@@ -837,7 +837,7 @@ Eicherほか（2001）、要旨の「Flies were counted」で始まる箇所と�
 
 - [日本獣医師会雑誌・乳牛の関節周囲の病変の調査](https://www.jstage.jst.go.jp/article/jvma1951/43/12/43_12_874/_pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「膿がたまり、その袋が破れた牛もいた。」
 
@@ -855,7 +855,7 @@ Eicherほか（2001）、要旨の「Flies were counted」で始まる箇所と�
 
 - [農林水産省・食鳥処理場での滞留に関する資料](https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/animal_welfare-142.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「厚生労働省が食鳥処理業者に尋ねたところ、遠方の農場で集めた鶏は、その日のうちに処理できないという回答があった。」
 
@@ -875,7 +875,7 @@ Eicherほか（2001）、要旨の「Flies were counted」で始まる箇所と�
 
 - [茨城県食肉衛生検査所・平成26年度事業概要](https://www.pref.ibaraki.jp/hokenfukushi/seiei/eisei/documents/h26jigyougaiyou_1.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「茨城県のある食鳥処理場では、翌日に処理する鶏を荷受け台に置いたまま、一晩を越すことが多かった。」
 
@@ -895,7 +895,7 @@ Eicherほか（2001）、要旨の「Flies were counted」で始まる箇所と�
 
 - [農林水産省・家畜の暑熱被害の集計](https://www.maff.go.jp/j/chikusan/kikaku/lin/l_tiku_manage/attach/pdf/index-204.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「2025年の7月から10月、日本の家畜共済で、熱射病か日射病による被害が乳用牛844頭、肉用牛356頭に記録された。」
 
@@ -915,7 +915,7 @@ Eicherほか（2001）、要旨の「Flies were counted」で始まる箇所と�
 
 - [Indian Journal of Dairy Science・都市酪農場の水牛の調査](https://epubs.icar.org.in/index.php/IJDS/article/view/36036)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「水牛の子が生まれたあと、母親の体から胎盤が出るまで、初めての乳を与えずに待つ農場があった。」
 
@@ -935,7 +935,7 @@ Kumarほか（2013年）「Buffalo calves health and management practices in urb
 
 - [ニュージーランド第一次産業省・乳用牛の分娩誘起に関する報告](https://www.mpi.govt.nz/dmsdocument/30005/direct)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「第一次産業省が公表した報告書には、予定日を早めた結果、子牛が死んで生まれたり、生まれても弱っていたりした研究の記録がある。」
 
@@ -955,7 +955,7 @@ Kumarほか（2013年）「Buffalo calves health and management practices in urb
 
 - [ゲント大学・ベルジアン・ブルーの診療研究](https://biblio.ugent.be/publication/01J57XJH7MXB5YYX28W7HJT6JZ)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「以前にも帝王切開を受けた母牛562頭のうち、35.4％は、次の手術のときに体内の組織どうしがくっついていた。」
 
@@ -976,7 +976,7 @@ Meestersほか、2018年世界牛病学会の講演要旨集176ページ「Resul
 - [Journal of Dairy Science・米国酪農場の調査](https://pubmed.ncbi.nlm.nih.gov/28041728/)
 - [Journal of Dairy Science・歩行評価の対象数と結果（全文）](https://www.journalofdairyscience.org/article/S0022-0302%2816%2930905-5/fulltext)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「歩き方を観察できたのは184戸の2万2,042頭だった。」
 
@@ -996,7 +996,7 @@ Adamsほか（2017年）「Associations between housing and management practices
 
 - [ニュージーランド第一次産業省・水浸しの放牧地をめぐる処分](https://www.mpi.govt.nz/news/media-releases/southland-livestock-grazing-company-fined-48750-over-hundreds-of-cattle-grazing-in-mud)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「作業員が2人で牛を泥の深い放牧地から移すと、会社は元の放牧地へ戻すように指示した。」
 
@@ -1017,7 +1017,7 @@ Adamsほか（2017年）「Associations between housing and management practices
 - [EFSA・豚の飼養に関する科学的評価](https://pubmed.ncbi.nlm.nih.gov/36034323/)
 - [EFSA・妊娠中の母豚の空腹を評価した節（全文）](https://efsa.onlinelibrary.wiley.com/doi/10.2903/j.efsa.2022.7421)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「必要な栄養はとれても、かさの少ない餌はすぐに食べ終わる。」
 
@@ -1037,7 +1037,7 @@ EFSA（2022年）「Welfare of pigs on farm」4.1.5「Prolonged hunger」の冒�
 
 - [死亡した子豚106頭の剖検研究（全文）](https://pmc.ncbi.nlm.nih.gov/articles/PMC9658477/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「どの子豚の胃にも乳がなかった。」
 
@@ -1058,7 +1058,7 @@ EFSA（2022年）「Welfare of pigs on farm」4.1.5「Prolonged hunger」の冒�
 - [デンマークの母豚522頭の出荷前診察（論文抄録）](https://pubmed.ncbi.nlm.nih.gov/32704712/)
 - [Fogsgaardほか・出荷当日の診察記録（全文、表3）](https://pmc.ncbi.nlm.nih.gov/articles/PMC7200563/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「食肉処理場へ出荷する日、肩の床ずれの直径が5センチを超えていたため、運べなかった母豚が1頭いた。」
 
@@ -1078,7 +1078,7 @@ Fogsgaardほか（2018年）表3および表注c、d。表注dに、肩の床ず
 
 - [Romanoほか・3か国の豚の尾の画像調査](https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1751411/full)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「ほかの豚に尾をかじられてできたと判定した傷や傷跡が、803頭に残っていた。」
 
@@ -1099,7 +1099,7 @@ Romanoほか（2026年）2.1〜2.3の対象・撮影法・判定法、3.2「Tail
 - [米国20施設の出荷輸送調査（論文抄録）](https://pubmed.ncbi.nlm.nih.gov/32705038/)
 - [米国20施設の出荷輸送調査・論文全文](https://pmc.ncbi.nlm.nih.gov/articles/PMC7209761/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「けがで歩けず、到着時に安楽死の処置を受けた豚も、荷台を降りたあとに死んだ豚もいた。」
 
@@ -1119,7 +1119,7 @@ Ritterほか「Materials and Methods」の「Study Design and Data Collection」
 
 - [EFSA・ブロイラーの飼養に関する科学的評価](https://pmc.ncbi.nlm.nih.gov/articles/PMC9941850/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「欧州食品安全機関は、ふ化場での待機や作業、輸送を合わせ、飲まず食わずの時間が生まれてから72時間に及ぶ場合もあると記す。」
 
@@ -1139,7 +1139,7 @@ EFSA（2023）3.3.1節。冒頭のふ化の時間差、および「With the trad
 
 - [フランスの養鶏場における羽や皮膚の調査（論文抄録）](https://pubmed.ncbi.nlm.nih.gov/31267768/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「強い羽つつきがあったと推定された群れの割合は、設備を備えたケージで飼う79群では32.9％、放し飼いの80群では23.8％だった。」
 
@@ -1159,7 +1159,7 @@ Cotonほか（2019）著者抄録の第3項（羽・皮膚の観察、対象）�
 
 - [Australian Eggs・採卵鶏の密集による死亡の研究報告](https://www.australianeggs.org.au/assets/research/documents/Final-Research-Report-for-Causes-of-smothering-in-free-range_Part-1-1HS901UM.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「そのうち4万4,239羽の死因が、鶏の密集による窒息と記録された。」
 
@@ -1180,7 +1180,7 @@ Australian Eggs・メルボルン大学、最終報告書（2024）。Executive 
 - [Scientific Works. Series C. Veterinary Medicine・繁殖農場の調査](https://veterinarymedicinejournal.usamv.ro/index.php/scientific-papers/past-issues?id=1768)
 - [Lupu・Militaru（2022）研究論文全文](https://veterinarymedicinejournal.usamv.ro/pdf/2022/issue_1/Art5.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「雄鶏が、身をかがめていない雌の頭から首の皮をくちばしでつかみ、背に乗った。」
 
@@ -1200,7 +1200,7 @@ Lupu・Militaru（2022）pp.40–41「Observing the behavior of birds」、p.37�
 
 - [British Poultry Science・出荷段階ごとの骨折の調査](https://pubmed.ncbi.nlm.nih.gov/2819499/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「英国で1989年に発表された調査では、その装置に届いた時点で、生きていた鶏を調べると29％に骨折があった。」
 
@@ -1220,7 +1220,7 @@ Gregory・Wilkins（1989）著者抄録の第1項（3,115羽分、2処理場）�
 
 - [EFSA・アヒル、ガチョウ、ウズラの飼養に関する評価](https://pmc.ncbi.nlm.nih.gov/articles/PMC10186070/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「欧州食品安全機関が紹介した繁殖方法では、精液を採るために、雄を1羽ずつ金網のケージに入れて約6か月飼う。」
 
@@ -1242,7 +1242,7 @@ EFSA（2023）3.4.2.1.2節「Individual cages」。囲いの寸法と隣接鳥�
 - [EFSA・飼養評価の図解](https://www.efsa.europa.eu/en/infographics/efsas-scientific-opinion-welfare-turkeys-farm)
 - [Bakst・Cecil（1983）採精の前後に調べた七面鳥の組織](https://doi.org/10.3382/ps.0620683)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「精液を採る前とあとで体を調べると、採ったあとには、調べた雄すべてで、精液やふんの出口にあたる「総排出腔」の組織に出血が見つかった。」
 
@@ -1262,7 +1262,7 @@ Bakst・Cecil（1983）p.683抄録冒頭の観察結果。雌を扱う頻度と�
 
 - [Animals・ウサギの足裏の病変に関する農場調査](https://mdpi-res.com/d_attachment/animals/animals-03-00318/article_deploy/animals-03-00318.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「母ウサギに足裏の傷が見つかった割合は、足を休める板がある場合は平均4.9％、板がない場合は13.7％だった。」
 
@@ -1283,7 +1283,7 @@ Rosell・de la Fuente（2013）p.323「Evolution of Morbidity」表3と直後の
 - [EFSA・ウサギの飼養に関する科学的評価](https://pubmed.ncbi.nlm.nih.gov/32626497/)
 - [Dalmauほか（2015）若いウサギの給餌量と行動を比べた研究](https://pubmed.ncbi.nlm.nih.gov/26087156/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「餌を減らした囲いでは、餌や水を取り合い、仲間をかんだり、押しのけたり、上に飛び乗ったりする行動が増えた。」
 
@@ -1303,7 +1303,7 @@ Dalmauほか（2015）p.1172抄録の給餌条件と、行動・体重を比較�
 
 - [Animals・子ヤギの除角芽処置に関する農場調査](https://www.mdpi.com/2076-2615/11/7/2007)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「このとき痛みを抑える薬を使うか、という問いに答えた21戸のうち、使うと答えたのは6戸だった。」
 
@@ -1323,7 +1323,7 @@ Hempsteadほか（2021）表7「Disbudding practices」、考察中の「The ove
 
 - [Australian Sheep Sustainability Framework・2024年指標報告](https://www.sheepsustainabilityframework.com.au/globalassets/sheep-sustainability/media/240731-ssf-2024-indicator-summary---web.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「メリノ種の子羊では、報告書が「適切な痛みの管理」をしたと数えた生産者の割合は、熱した刃で尾を切る場合で78.8％、輪を使う場合で24.2％だった。」
 
@@ -1343,7 +1343,7 @@ Sheep Sustainability Framework「Indicator Summary 2024」p.3の指標1.1.2c（�
 
 - [カナダ食品検査庁・馬の航空輸送の監督記録](https://inspection.canada.ca/en/animal-health/terrestrial-animals/humane-transport/horses/regulatory-oversight)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「日本の空港で馬を降ろし終えるまでに、1頭の死亡と8頭の重傷が報告された。」
 
@@ -1363,7 +1363,7 @@ Sheep Sustainability Framework「Indicator Summary 2024」p.3の指標1.1.2c（�
 
 - [Menchettiほか・カタールのラクダ市場調査](https://pubblicazioni.unicam.it/retrieve/177e16ce-1d3c-4343-bc98-47ee1b84986d/Menchetti2021_Article_NewAnimal-basedMeasuresToAsses.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「けがが見つかった割合は、脚を縛られたラクダでは37.0％、縛られていないラクダでは18.1％だった。」
 
@@ -1384,7 +1384,7 @@ Menchettiほか（2021）本文8ページ、図2の後の段落「Camels with in
 - [欧州議会・家畜輸送に関する調査報告](https://www.europarl.europa.eu/RegData/etudes/STUD/2021/690876/IPOL_STU%282021%29690876_EN.pdf)
 - [ルーマニア当局・ミディア港での救助とその後（国際獣疫事務局掲載）](https://rr-europe.woah.org/app/uploads/2023/06/15_ncpt3_emergency_romania_a_ciurea.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「生きて船から救い出されたのは252頭だった。」
 
@@ -1405,7 +1405,7 @@ Menchettiほか（2021）本文8ページ、図2の後の段落「Camels with in
 - [スウェーデン農業科学大学・牛の気絶処置の観察研究](https://research.slu.se/en/publications/assessment-of-stun-quality-at-commercial-slaughter-in-cattle-shot/)
 - [Atkinsonほか（2013）牛998頭の結果・表2、3](https://doi.org/10.7120/09627286.22.4.473)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「研究者が体の反応を見て、最初の処置で十分に気絶していないと判定したのは125頭だった。」
 
@@ -1426,7 +1426,7 @@ Atkinsonほか（2013）476ページの表2と「Stun quality」第1、2段落�
 - [英国最高裁判所・判決要旨](https://www.supremecourt.uk/cases/docs/uksc-2018-0231-press-summary.pdf)
 - [英国最高裁・判決要旨（現在の配布先）](https://supremecourt.uk/uploads/uksc_2018_0231_press_summary_262977df17.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「同じ処理場で9月12日、さらに10月5日にも、それぞれ1羽が生きたまま湯の槽に入った。」
 
@@ -1448,7 +1448,7 @@ Atkinsonほか（2013）476ページの表2と「Stun quality」第1、2段落�
 - [Wardほか・スコットランドの31農場の調査（学会要旨1094ページ）](https://www.theipvs.com/wp-content/uploads/2019/07/IPVS-2010-Final-Proceedings.pdf#page=1106)
 - [欧州食品安全機関・と畜時の妊娠調査を国・動物別にまとめた表1（全文）](https://research-information.bris.ac.uk/files/114924945/Pregnant_Animals_More_et_al_2017_EFSA_Journal.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「処理後に142頭分の生殖器を調べると、19頭は妊娠していた。」
 
@@ -1468,7 +1468,7 @@ Wardほか（2010）第21回国際豚病学会要旨集、冊子1094ページ（
 
 - [ABC News・毛刈り作業をめぐる法廷報道](https://www.abc.net.au/news/rural/2017-03-01/sheep-shearers-plead-guilty-animal-cruelty-western-victoria/8314678)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「目や鼻、口から血を流し、よろめきながら立ち去る羊が何頭も映っていたと、法廷を取材したABCは伝えている。」
 
@@ -1488,7 +1488,7 @@ ABC Rural（2017年3月1日）冒頭の「A packed court room…」「Many of th
 
 - [EFSA・ガチョウからの羽毛採取に関する評価](https://www.efsa.europa.eu/en/press/news/ahaw101125)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「まだ抜ける時期にない羽を引き抜くと、痛みが生じ、羽の根元から血が出る。」
 
@@ -1509,7 +1509,7 @@ EFSA（2010年11月25日）本文の「In the opinion…」の段落と、末尾
 - [鳥取県議会・南部町の豚舎火災に関する記録](https://www.pref.tottori.lg.jp/item/1424444.htm)
 - [鳥取県議会・火災被害と生き残った子豚の移送（2025年11月21日）](https://www.pref.tottori.lg.jp/item/1418831.htm)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「約4,000頭の豚が焼け死に、生き残った子豚およそ200頭は別の農場に移された。」
 
@@ -1531,7 +1531,7 @@ EFSA（2010年11月25日）本文の「In the opinion…」の段落と、末尾
 - [鹿児島大学・被災した養鶏場での聞き取り（157ページ）](https://bousai.kagoshima-u.ac.jp/wpo/wp-content/uploads/2024/03/2010_gouu.pdf)
 - [農林水産省・2010年奄美地方の大雨の被害](https://www.maff.go.jp/j/saigai/ooame/101022-2.html)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「数時間後、豪雨に満ち潮が重なり、水かさは2〜3メートルに達した。」
 
@@ -1551,7 +1551,7 @@ EFSA（2010年11月25日）本文の「In the opinion…」の段落と、末尾
 
 - [農林水産省・2022～23年シーズンの鳥インフルエンザ集計](https://www.maff.go.jp/j/council/seisaku/eisei/bukai_65/attach/pdf/bukai_65-20.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「2022年から翌年にかけてのシーズン、日本では約1,771万羽が殺処分の対象になった。」
 
@@ -1572,7 +1572,7 @@ EFSA（2010年11月25日）本文の「In the opinion…」の段落と、末尾
 - [米国ミネソタ州議会・処理場休止に伴う対応資料](https://www.house.mn.gov/comm/docs/fDLjOyu0tU6uEi-GvEKiHA.pdf)
 - [ミネソタ州農務局・処理場休止に伴う農家の対応と殺処分頭数の推計](https://www.leg.mn.gov/docs/2021/mandated/210264.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「州農務局の推計では、出荷が滞ったこの時期、州内で40万頭を超える豚が殺処分された。」
 
@@ -1586,18 +1586,16 @@ EFSA（2010年11月25日）本文の「In the opinion…」の段落と、末尾
 
 ### 掲載本文
 
-鶏のケージに巣箱と止まり木を取り付けたら、巣箱で卵を産む姿が見られた。昼も夜も、鶏は止まり木を使って休んだ。神奈川県畜産技術センターが、設備を変えて観察した結果だ。
+巣箱や止まり木を備えた住まいで、鶏はどう過ごしたのでしょう。神奈川県の研究から、見られた行動と、まだわからないことを読みます。
 
-砂浴び用には、初めに人工芝を敷いた。4週間のうちにふんが積もると、鶏はそこで砂浴びのような動きをしなくなった。
-
-日本では、どんな場所で卵が産まれているのか。農林水産省の令和6年度調査で飼い方を答えた408件のうち、304件はケージだけ、59件は平飼いだけ、45件はその両方だった。この数字は飼い方についての回答数で、ケージの中に巣箱や止まり木がいくつあるかまでは示していない。
+研究で使われた設備と、日本全体の飼い方の調査は別の資料です。どちらも、何を調べた結果なのかを確かめながら読めます。
 
 ### 出典
 
 - [農林水産省　令和6年度調査の採卵鶏の結果（PDF）](https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/animal_welfare-116.pdf)
-- [神奈川県畜産技術センター　巣箱・止まり木・砂浴び場で観察した鶏の行動](https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html)
+- [神奈川県畜産技術センターの研究紹介](https://www.pref.kanagawa.jp/docs/a2d/cnt/sciencelab/202402tikusangijutu.html)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「4週間のうちにふんが積もると、鶏はそこで砂浴びのような動きをしなくなった。」
 
@@ -1620,7 +1618,7 @@ EFSA（2010年11月25日）本文の「In the opinion…」の段落と、末尾
 - [参議院農林水産委員会（2022年11月8日）発言134・136・138](https://kokkai.ndl.go.jp/simple/detail?minId=121015007X00320221108&spkNum=134)
 - [農林水産省　鶏をめぐる情勢の補足説明資料（PDF）](https://www.maff.go.jp/j/chikusan/sinko/lin/l_katiku/attach/pdf/r6_niwatori-15.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「卵をとるために育てる鶏では、同じように卵からかえっても、雄のひなは生まれてすぐに殺される。」
 
@@ -1643,7 +1641,7 @@ EFSA（2010年11月25日）本文の「In the opinion…」の段落と、末尾
 - [島根県　農林水産委員会資料（PDF）](https://www.pref.shimane.lg.jp/industry/norin/info/shiryo_/nosuisyoko_r5.data/230629nourin_siryo.pdf)
 - [山陰放送　大田市の乳牛への暴力事案の判決報道](https://newsdig.tbs.co.jp/articles/bss/737018?display=1)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「島根県大田市の農場で、従業員が2頭の牛の鼻や首のあたりを足で蹴った。」
 
@@ -1666,7 +1664,7 @@ EFSA（2010年11月25日）本文の「In the opinion…」の段落と、末尾
 - [英国環境庁・動植物衛生庁　デヴォンの調査と判決](https://www.gov.uk/government/news/devon-farmer-jointly-prosecuted-over-horror-movie-conditions)
 - [Devon County Council　現場調査と裁判の発表](https://www.devon.gov.uk/news/honiton-farmer-prosecuted-for-pollution-and-animal-welfare-offences/)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「母牛を亡くした子牛が、糞尿と生活ごみの中に横たわっていた。」
 
@@ -1686,7 +1684,7 @@ EFSA（2010年11月25日）本文の「In the opinion…」の段落と、末尾
 
 - [Cambridgeshire County Council　牛・豚の飼養をめぐる判決](https://www.cambridgeshire.gov.uk/news/farmer-sentenced-following-animal-welfare-offences)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「病気やけがをした家畜に、横になって休むための敷き材が十分に用意されていなかった。」
 
@@ -1708,7 +1706,7 @@ EFSA（2010年11月25日）本文の「In the opinion…」の段落と、末尾
 
 - [茨城県　食肉衛生検査所事業概要（平成26年度）](https://www.pref.ibaraki.jp/hokenfukushi/seiei/eisei/documents/h26jigyougaiyou_1.pdf)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「茨城県内のある処理場では、翌日に処理する鶏を荷受け台に置いたまま、一晩待たせることが多かった。」
 
@@ -1730,7 +1728,7 @@ EFSA（2010年11月25日）本文の「In the opinion…」の段落と、末尾
 
 - [Damaziak ほか（2024）Agriculture 14, 1091　図2](https://doi.org/10.3390/agriculture14071091)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「最も傷の深い鶏では、床に触れる指の腹にも小さな傷があった。」
 
@@ -1752,7 +1750,7 @@ Damaziakほか（2024）方法2.3節と図2のS3。方法2.2節に各回の開�
 
 - [Thøfner ほか（2021）PLOS ONE　デンマークの採卵鶏の胸骨調査](https://doi.org/10.1371/journal.pone.0256105)
 
-### 編集者向けの事実確認メモ
+### この記述を原資料で確かめる
 
 「卵を産む期間の終わりに雌鶏4,756羽を解剖すると、4,098羽で胸の骨が折れていた。」
 

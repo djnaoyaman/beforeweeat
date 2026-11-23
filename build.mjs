@@ -1,3 +1,5 @@
+import {chapterDirectory} from './chapter-directories.mjs';
+import {readingRouteContextMarkup} from './reading-routes.mjs';
 import {remainingOnward} from './remaining-onward.mjs';
 import {plateRelated} from './recipe-reading-routes.mjs';
 import {hasWelfareGuide,welfareGuideLead,welfareGuide,welfareGuideSources,welfareGuideNext,welfareGuideStyle} from './welfare-guides.mjs';
@@ -18,7 +20,7 @@ import {learningMarkup, hasLearningSheet} from './learning.mjs';
 const project = new URL('.', import.meta.url);
 const dist = new URL('dist/', project);
 fs.mkdirSync(dist,{recursive:true});
-for (const name of ['meat-iron.css','meat-iron-data.json','reading.css','editorial-context.css','directory-animals.css','representative-content.css','priority-editorial.css','reading.js','featured-chapters.css','chapter-search.js','field-finder.js','chapter-cuts.js','front-links.css','pig.jpg','rib.jpg','og.jpg','icon.svg','brand.svg','logo.webp','favicon.png','apple-touch-icon.png','icon-192.png','icon-512.png','icon-maskable.png','.nojekyll']){
+for (const name of ['mina-logo.svg','learning.css','reading-routes.css','chapter-directories.css','recipe-finder.css','recipe-finder.js','meat-iron.css','meat-iron-data.json','reading.css','editorial-context.css','directory-animals.css','representative-content.css','priority-editorial.css','reading.js','featured-chapters.css','chapter-search.js','field-finder.js','chapter-cuts.js','front-links.css','pig.jpg','rib.jpg','og.jpg','icon.svg','brand.svg','logo.webp','favicon.png','apple-touch-icon.png','icon-192.png','icon-512.png','icon-maskable.png','.nojekyll']){
  const asset=new URL(name,project);
  if(fs.existsSync(asset))fs.copyFileSync(asset,new URL(name,dist));
 }
@@ -46,6 +48,7 @@ meatheat:['日本フードサービス協会　衛生管理計画作成の手引
 maff:['農林水産省　アニマルウェルフェアについて','https://www.maff.go.jp/j/chikusan/sinko/animal_welfare.html'],
 survey:['農林水産省　令和6年度調査の採卵鶏の結果（PDF）','https://www.maff.go.jp/j/chikusan/sinko/attach/pdf/animal_welfare-116.pdf'],
 chick:['農林水産省　鶏をめぐる情勢の補足説明資料（PDF）','https://www.maff.go.jp/j/chikusan/sinko/lin/l_katiku/attach/pdf/r6_niwatori-15.pdf'],
+meatfiber:['日本ハム　お肉の繊維の方向とは','https://www.nipponham.co.jp/recipes/meat/knowhow/fiber/03.html'],
 mext:['文部科学省　食品成分データベース','https://fooddb.mext.go.jp/'],
 pork:['文部科学省　ぶた・もも・赤肉・生','https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11134_7'],
 beef:['文部科学省　輸入牛肉・もも・赤肉・生','https://fooddb.mext.go.jp/details/details.pl?ITEM_NO=11_11077_7&MODE=0'],
@@ -81,13 +84,13 @@ function meta(title,desc,path,image='og.jpg',article=false){
 }
 const menu = '<nav aria-label="サイト案内">'+pageLink('animals','動物のくらし')+pageLink('cuts')+pageLink('cooking')+pageLink('field-cases','現場の事例')+pageLink('shopping')+pageLink('lessons','先生・保護者の方へ')+'</nav>';
 function feature(row){
- if(row.slug==='hens') return '<figure class="survey"><strong>408件の回答</strong><div aria-hidden="true">'+Array.from({length:408},(_,i)=>'<i class="n'+(i<304?1:i<363?2:3)+'"></i>').join('')+'</div><figcaption>ケージのみ304件 ／ 平飼いのみ59件 ／ 両方45件</figcaption></figure>';
  if(row.slug==='loin') return representativeLoin({typeset});
  return '';
 }
 const groupLanding={2:'animals',3:'cuts',4:'cooking',5:'shopping',6:'people',7:'lessons',8:'sources'};
 function directory(row){
- if(groupLanding[row.group]!==row.slug)return '';
+ if(['shopping','people','sources'].includes(row.slug))return chapterDirectory({r:row,rows,typeset,pageLink,hasAsset});
+ if(row.slug==='lessons'||groupLanding[row.group]!==row.slug)return '';
  const links=rows.filter(r=>r.group===row.group&&r!==row).map(r=>'<li>'+pageLink(r.slug)+'</li>').join('');
  return '<section><h2>この章で読む</h2><ul class="story-list">'+links+'</ul></section>';
 }
@@ -139,20 +142,25 @@ for(const r of rows){
  });
  const contextualAside = customNext ? '<aside class="representative-next" aria-labelledby="onward-reading"><h2 id="onward-reading">この続きが気になったら</h2><ul>'+customNext.join('')+'</ul></aside>' : null;
  const articleAside=priority?.related ?? representativeNext({r,typeset,pageLink}) ?? foodNext ?? recipeNext ?? contextualAside ?? '<aside aria-label="次に読む"><h2>次は、どれを読む？</h2><ul class="story-list">'+r.links.map(slug=>'<li>'+pageLink(slug)+'</li>').join('')+'</ul></aside>';
- const readerAside=r.slug==='animals' ? '' : welfare ? '<aside aria-label="次に読む"><h2>この続きが気になったら</h2>'+welfareGuideNext(r.slug,{typeset,pageLink})+'</aside>' : safety ? '<aside aria-label="次に読む"><h2>この続きが気になったら</h2>'+cookingSafetyNext(r.slug,{typeset,pageLink})+'</aside>' : articleAside;
+ const routeAside=readingRouteContextMarkup({slug:r.slug,typeset});
+ const readerAside=routeAside || (r.slug==='animals' ? '' : welfare ? '<aside aria-label="次に読む"><h2>この続きが気になったら</h2>'+welfareGuideNext(r.slug,{typeset,pageLink})+'</aside>' : safety ? '<aside aria-label="次に読む"><h2>この続きが気になったら</h2>'+cookingSafetyNext(r.slug,{typeset,pageLink})+'</aside>' : articleAside);
  const extraStyles=r.slug==='animals' ? '<link rel="stylesheet" href="directory-animals.css?v=1">' :
    (['loin','ginger-pork'].includes(r.slug)||foodNext||recipeNext||contextualAside) ? '<link rel="stylesheet" href="representative-content.css?v=1">' : priority ? '<link rel="stylesheet" href="priority-editorial.css?v=1">' : welfare ? welfareGuideStyle : safety ? cookingSafetyStyle : '';
+ const learningStyles=['lessons','lesson-beef','lesson-pork','lesson-chicken','food-diary','shopping','buy-bone'].includes(r.slug)?'<link rel="stylesheet" href="learning.css?v=1">':'';
+ const routeStyles=(routeAside||r.slug==='lessons')?'<link rel="stylesheet" href="reading-routes.css?v=1">':'';
+ const directoryStyles=['shopping','people','sources','cuts'].includes(r.slug)?'<link rel="stylesheet" href="chapter-directories.css?v=1">':'';
  const refsHtml=priority?'':welfare?welfareGuideSources(r.slug,{typeset}):safety?cookingSafetySources(r.slug,{typeset}):refs.length?'<details class="references"><summary>'+sourceLabel+'</summary><ul>'+refs.map(([label,url])=>'<li><a href="'+escape(url)+'">'+escape(label)+'</a></li>').join('')+'</ul></details>':'';
  if(Object.hasOwn(featuredLabels,r.slug)){
-  const scripts={start:['chapter-search.js'], 'field-cases':['chapter-search.js','field-finder.js'], cuts:['chapter-cuts.js'], cooking:[]};
+  const scripts={start:['chapter-search.js'], 'field-cases':['chapter-search.js','field-finder.js'], cuts:['chapter-cuts.js'], cooking:['recipe-finder.js']};
   const headAssets=chapterFonts+'<link rel="stylesheet" href="reading.css?v=4"><link rel="stylesheet" href="featured-chapters.css'+(r.slug==='start'?'?v=renewal1':'')+'">'+(r.slug==='field-cases'?'<link rel="stylesheet" href="representative-content.css?v=1">':'')+'<script src="reading.js?v=2" defer></script>'
+   +directoryStyles+(r.slug==='cooking'?'<link rel="stylesheet" href="recipe-finder.css?v=1">':'')
    +scripts[r.slug].map(src=>'<script src="'+src+(r.slug==='start'||(r.slug==='field-cases'&&src==='field-finder.js')?'?v=renewal1':'')+'" defer></script>').join('');
   write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'
    +meta(title,plain(r.lead),page,'og.jpg',true)+headAssets+'</head><body class="featured-chapter"><a class="skip" href="#main">本文へ</a>'
    +chapterHeader(pageLink)+'<main id="main" class="contents"><article class="chapter-page">'+featuredBody(r)+refsHtml+'</article>'+readerOptions+'</main>'+footer+'</body></html>');
   continue;
  }
- write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,r.ingredients ? r.title+'の材料と作り方。2人分。' : metadataLead,page,r.art || (r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg'),true)+'<link rel="stylesheet" href="reading.css?v=4"><link rel="stylesheet" href="editorial-context.css">'+extraStyles+ironStyles+'<script src="reading.js'+(r.slug==='field-cases'?'?v=2':'')+'" defer></script></head><body'+(hasLearningSheet(r.slug)?' class="worksheet-page"':'')+'><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1>'+(priority?'<p class="lead">'+priority.lead+'</p>':welfare?welfareGuideLead(r.slug,{typeset}):r.lead?'<p class="lead">'+typeset(r.lead)+'</p>':'')+feature(r)+bodyHtml+priorityFoodMarkup({r,typeset,pageLink})+readerEdition+ironHtml+refsHtml+(check?factCheck(check,typeset):'')+'</article>'+readerAside+'</main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
+ write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,r.ingredients ? r.title+'の材料と作り方。2人分。' : metadataLead,page,r.art || (r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg'),true)+'<link rel="stylesheet" href="reading.css?v=4"><link rel="stylesheet" href="editorial-context.css">'+extraStyles+ironStyles+learningStyles+routeStyles+directoryStyles+'<script src="reading.js'+(r.slug==='field-cases'?'?v=2':'')+'" defer></script></head><body'+(hasLearningSheet(r.slug)?' class="worksheet-page"':'')+'><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1>'+(priority?'<p class="lead">'+priority.lead+'</p>':welfare?welfareGuideLead(r.slug,{typeset}):r.lead?'<p class="lead">'+typeset(r.lead)+'</p>':'')+feature(r)+bodyHtml+priorityFoodMarkup({r,typeset,pageLink})+readerEdition+ironHtml+refsHtml+(check?factCheck(check,typeset):'')+'</article>'+readerAside+'</main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
 }
 let top=fs.readFileSync(new URL('top.template',project),'utf8').replace(/<meta name="description"[^>]*>/gi,'');
 top=top.replace('</head>',meta('Before We Eat｜ちゃんと「いただきます」。',description,'')+'<meta name="referrer" content="strict-origin-when-cross-origin"><link rel="stylesheet" href="front-links.css"></head>')
@@ -178,6 +186,7 @@ top=top
  .replace('<footer><a href="#top">Before We Eat</a>','<footer><a class="footer-brand" href="#top"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a>')
  .replace('</body>','<script src="animal-view.js" defer></script></body>');
 write('index.html',top);
+write('top.html','<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0;url=./"><link rel="canonical" href="'+base+'"><title>Before We Eat トップへ</title></head><body><p><a href="./">Before We Eat のトップページへ</a></p></body></html>\n');
 // Every published article except the catalog itself must have a directory link and search entry.
 const catalog = fs.readFileSync(new URL('start.html', dist), 'utf8');
 const catalogLinks = new Set([...catalog.matchAll(/href="([^"]+)"/g)].map(match => match[1]));
@@ -197,7 +206,7 @@ const caseManuscript = [];
 function addCase(heading,body,refs,check){
  const citations=refs.map(([label,url])=>'- ['+label+']('+url+')').join('\n');
  caseManuscript.push('## '+heading+'\n\n### 掲載本文\n\n'+body.trim().replace(/\n+/g,'\n\n')+'\n\n### 出典\n\n'+citations
-  +'\n\n### 編集者向けの事実確認メモ\n\n「'+check.strongest+'」\n\n'+check.locator+' [原資料を開く]('+check.sourceUrl+')'
+  +'\n\n### この記述を原資料で確かめる\n\n「'+check.strongest+'」\n\n'+check.locator+' [原資料を開く]('+check.sourceUrl+')'
   +(check.notes?'\n\n'+check.notes:''));
 }
 for(const group of fieldGroups){
