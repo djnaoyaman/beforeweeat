@@ -20,6 +20,7 @@
 .reading-route a,.reading-route-context a{border:0;border-radius:0;background:none;text-decoration:underline;text-underline-offset:.23em}
 .reading-route a:focus-visible,.reading-route-context a:focus-visible{outline:3px solid #963f25;outline-offset:4px}
 .reading-route-copy .reading-route-stop,.reading-route-stop{font-size:.8em;line-height:1.9;color:#425246}
+.reading-route-stop a{display:inline-block;max-width:100%;min-height:44px;padding-block:.25em;margin-top:.2rem}
 .reading-route-context{margin-block:2.5rem;border-top:2px solid #1b3027;padding-top:1.2rem}
 .reading-route-context h2{margin:.3rem 0 .7rem;font-size:1.35em}
 .reading-route-context>p:not(.reading-route-eyebrow){font-size:.9em}
