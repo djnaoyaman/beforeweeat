@@ -516,3 +516,10 @@
 .plate-grid a:not(:hover) { text-decoration: none; }
 .plate-grid a strong { text-decoration: underline; text-underline-offset: .18em; }
 .plate-grid a:focus-visible strong,.plate-grid a:hover strong { text-decoration-thickness: 2px; }
+
+/* The fiction feature shares the directory's paper, ink and reading rhythm. */
+.journal-novel{display:grid;grid-template-columns:150px 1fr;gap:30px;padding:28px;margin:26px 0 38px;border:1px solid var(--line,#1b302740);background:#ebece2;align-items:center}
+.journal-novel-cover{display:block;max-width:150px}.journal-novel-cover img{display:block;width:100%;height:auto}
+.journal-novel h2{font:500 34px/1.5 var(--serif,'Noto Serif JP',serif);letter-spacing:.18em;margin:6px 0}.journal-novel p{margin:0}.journal-novel-label,.journal-novel-author{font-size:14px;letter-spacing:.1em}.journal-novel-quote{font:18px/1.9 var(--serif,'Noto Serif JP',serif);padding:16px 0}.journal-novel-link{display:inline-block;color:#a34429;border-bottom:1px solid #a34429;padding:8px 0;font-size:15px}
+@media(max-width:600px){.journal-novel{grid-template-columns:100px 1fr;gap:18px;padding:20px 16px}.journal-novel h2{font-size:27px}.journal-novel-quote{font-size:16px;padding:12px 0}.journal-novel-label,.journal-novel-author{font-size:13px}}
+@media(max-width:360px){.journal-novel{grid-template-columns:84px 1fr;gap:14px}.journal-novel h2{font-size:25px}}

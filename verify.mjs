@@ -6,6 +6,7 @@ import crypto from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {publicationManifest, publicationRows, recipeSlugs, siteBase, legacyRedirectFiles} from './publication.mjs';
+import {novelManifest, novelScenes} from './novel.mjs';
 import {plateRecipes} from './plate-recipes.mjs';
 import {fieldGroups} from './field-archive.mjs';
 import {recipes, species} from './edition.mjs';
@@ -65,21 +66,22 @@ const tagText = (doc, tag) => tag ? text(doc.markup.slice(tag.contentStart, tag.
 const compactText = value => value.replace(/\s+/g, '');
 const hidden = tag => [tag, ...tag.ancestors].some(parent => Object.hasOwn(parent.attrs, 'hidden') || parent.attrs['aria-hidden'] === 'true');
 
-const files = fs.readdirSync(folder);
+const files = fs.readdirSync(folder, {recursive: true}).filter(file => fs.statSync(path.join(folder, file)).isFile());
+const completeManifest = [...publicationManifest, ...novelManifest];
 const expectedFiles = publicationManifest.map(page => page.file);
 check(expectedFiles.length === 87, 'Keep the 87 established canonical pages');
 check(legacyRedirectFiles.length === 1 && legacyRedirectFiles[0] === 'top.html', 'Declare the existing top.html redirect explicitly');
-const allowedHtml = [...expectedFiles, '404.html', ...legacyRedirectFiles];
+const allowedHtml = [...expectedFiles, ...novelManifest.map(page => page.file), '404.html', ...legacyRedirectFiles];
 const actualPages = files.filter(file => file.endsWith('.html'));
 check(new Set(allowedHtml).size === allowedHtml.length && actualPages.length === allowedHtml.length && allowedHtml.every(file => actualPages.includes(file)),
-  'Generated HTML must contain exactly 87 canonical pages, 404.html and the declared legacy redirect (no missing or stale pages)');
+  'Generated HTML must contain the 87 established pages, the complete novel, 404.html and the declared legacy redirect');
 const docs = new Map(files.filter(file => file.endsWith('.html')).map(file =>
   [file, inspectHtml(fs.readFileSync(path.join(folder, file), 'utf8'))]
 ));
 const sitemap = fs.readFileSync(path.join(folder, 'sitemap.xml'), 'utf8');
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => decode(match[1]));
-check(sitemapUrls.length === publicationManifest.length && new Set(sitemapUrls).size === sitemapUrls.length &&
-  publicationManifest.every(page => sitemapUrls.includes(page.url)), 'Sitemap and publication manifest differ');
+check(sitemapUrls.length === completeManifest.length && new Set(sitemapUrls).size === sitemapUrls.length &&
+  completeManifest.every(page => sitemapUrls.includes(page.url)), 'Sitemap and publication manifest differ');
 for (const file of legacyRedirectFiles) {
   const doc = docs.get(file);
   check(Boolean(doc), file + ': legacy redirect missing');
@@ -122,7 +124,7 @@ function checkLocalReference(from, value) {
 }
 
 const titles = new Set();
-for (const page of publicationManifest) {
+for (const page of completeManifest) {
   const doc = docs.get(page.file);
   if (!doc) continue;
   const title = text(doc.html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] || '');
@@ -145,6 +147,30 @@ for (const [file, doc] of docs) {
     if (tag.name === 'img') check(Object.hasOwn(tag.attrs, 'alt'), file + ': image lacks alt');
   }
 }
+check(novelScenes.length === 22 && new Set(novelScenes.map(scene => scene.chapter_number)).size === 8,
+  'The complete novel must retain eight chapters and 22 scenes');
+check(novelManifest.length === novelScenes.length + 1, 'Novel manifest must include the cover and every scene');
+check(novelScenes.reduce((total, scene) => total + scene.paragraphs.join('').replace(/\s/g, '').length, 0) === 31449,
+  'Novel text differs from the approved 31,449-character manuscript');
+for (const [index, scene] of novelScenes.entries()) {
+  const file = 'ninzuubun/' + scene.id + '.html';
+  const doc = docs.get(file);
+  if (!doc) { check(false, file + ': novel scene missing'); continue; }
+  const prose = doc.tags.find(tag => tag.attrs.id === 'prose');
+  check(Boolean(prose), file + ': static novel body missing');
+  if (prose) {
+    const body = membersOf(doc, prose).filter(tag => tag.name === 'p').map(tag => tagText(doc, tag)).join('');
+    check(compactText(body) === compactText(scene.paragraphs.join('')), file + ': manuscript changed or incomplete');
+  }
+  check(doc.tags.some(tag => tag.name === 'meta' && tag.attrs.name === 'author' && tag.attrs.content === '犬山静'),
+    file + ': byline mismatch');
+  const next = novelScenes[index + 1];
+  if (next) check(doc.tags.some(tag => tag.name === 'a' && tag.attrs.href === next.id + '.html'),
+    file + ': missing next scene in manuscript order');
+}
+check(docs.get('index.html').tags.some(tag => tag.name === 'a' && tag.attrs.href === 'ninzuubun/'),
+  'Home page must lead to the novel feature');
+check(docs.get('ninzuubun/index.html')?.ids.has('preface'), 'Novel preface missing');
 for (const file of files.filter(file => file.endsWith('.css'))) {
   for (const match of fs.readFileSync(path.join(folder, file), 'utf8').matchAll(/url\(\s*["']?([^\s"')]+)/g)) checkLocalReference(file, match[1]);
 }
@@ -157,7 +183,9 @@ try { catalog = JSON.parse(catalogDoc.html.match(/<script id="catalog-data" type
 catch { check(false, 'Missing or invalid search catalog'); }
 const catalogUrls = new Set(catalog.map(item => item.url));
 const fieldRecords = fieldGroups.flatMap(group => group.entries);
-check(catalog.length === publicationRows.length - 1 + fieldRecords.length && catalogUrls.size === catalog.length, 'Search catalog is incomplete or duplicated');
+check(catalog.length === publicationRows.length - 1 + fieldRecords.length + 1 && catalogUrls.size === catalog.length, 'Search catalog is incomplete or duplicated');
+check(catalogUrls.has('ninzuubun/'), 'Novel feature missing from search');
+check(catalogDoc.tags.some(tag => tag.name === 'a' && tag.attrs.href === 'ninzuubun/'), 'Novel feature missing from directory');
 for (const {slug} of publicationRows.filter(row => row.slug !== 'start')) {
   const url = slug + '.html';
   check(catalogUrls.has(url), 'Article missing from search: ' + url);
@@ -515,7 +543,7 @@ if(fs.existsSync(publishedIronFile)){
 const hash = file => crypto.createHash('sha256').update(fs.readFileSync(path.join(folder, file))).digest('hex');
 const result = {
   status: errors.length ? 'failed' : 'passed', kind: 'static-publication-check',
-  pages: publicationManifest.length, legacyRedirects: legacyRedirectFiles.length, checkedLinks, searchRecords: catalog.length,
+  pages: completeManifest.length, establishedPages: publicationManifest.length, novelScenes: novelScenes.length, legacyRedirects: legacyRedirectFiles.length, checkedLinks, searchRecords: catalog.length,
   shortReadingRoutes: readingRoutes.length, readingRouteStops: routeStops.length, worksheetsVerified: checkedPdfs,
   recipeCards: recipeCards.length, filterScenarioChecks, sharedStudyRoles: studyBodies.length,
   recipes: recipeSlugs.length, ironRecipes: ironRecipeSlugs.length,

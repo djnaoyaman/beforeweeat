@@ -1,4 +1,5 @@
 import {chapterDirectory} from './chapter-directories.mjs';
+import {renderNovel, novelManifest, novelBanner, novelBannerStyle} from './novel.mjs';
 import {readingRouteContextMarkup} from './reading-routes.mjs';
 import {remainingOnward} from './remaining-onward.mjs';
 import {plateRelated} from './recipe-reading-routes.mjs';
@@ -162,6 +163,7 @@ for(const r of rows){
  }
  write(page,'<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>'+escape(title)+'</title>'+meta(title,r.ingredients ? r.title+'の材料と作り方。2人分。' : metadataLead,page,r.art || (r.slug==='bbq-ribs'&&hasAsset('runway-rib.webp')?'runway-rib.webp':'og.jpg'),true)+'<link rel="stylesheet" href="reading.css?v=4"><link rel="stylesheet" href="editorial-context.css">'+extraStyles+ironStyles+learningStyles+routeStyles+directoryStyles+'<script src="reading.js'+(r.slug==='field-cases'?'?v=2':'')+'" defer></script></head><body'+(hasLearningSheet(r.slug)?' class="worksheet-page"':'')+'><a class="skip" href="#main">本文へ</a><header class="site-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a><a href="start.html">すべての目次</a></header>'+menu+'<main id="main"><div class="reader-options" aria-label="読み方"><button type="button" data-ruby aria-pressed="true">ふりがな</button><button type="button" data-size aria-pressed="false">大きな文字</button></div><article><div class="rubric">'+typeset(caseLabels[r.slug]||names[r.group])+'</div><h1>'+typeset(r.title)+'</h1>'+(priority?'<p class="lead">'+priority.lead+'</p>':welfare?welfareGuideLead(r.slug,{typeset}):r.lead?'<p class="lead">'+typeset(r.lead)+'</p>':'')+feature(r)+bodyHtml+priorityFoodMarkup({r,typeset,pageLink})+readerEdition+ironHtml+refsHtml+(check?factCheck(check,typeset):'')+'</article>'+readerAside+'</main><footer><a href="start.html">すべての目次</a><a href="mina.html">編者 MINA</a><a href="corrections.html">更新・訂正</a></footer></body></html>');
 }
+renderNovel({dist,write});
 let top=fs.readFileSync(new URL('top.template',project),'utf8').replace(/<meta name="description"[^>]*>/gi,'');
 top=top.replace('</head>',meta('Before We Eat｜ちゃんと「いただきます」。',description,'')+'<meta name="referrer" content="strict-origin-when-cross-origin"><link rel="stylesheet" href="front-links.css"></head>')
 .replace('トップページ・HTMLサンプル','編者 MINA')
@@ -185,6 +187,10 @@ top=top
  .replace('アニマルウェルフェアって？<span>＋</span></button>','アニマルウェルフェアって？<span>＋</span></button><a class="outline field-link" href="field-cases.html">畜産の現場で報告された事例</a>')
  .replace('<footer><a href="#top">Before We Eat</a>','<footer><a class="footer-brand" href="#top"><img src="logo.webp" alt="Before We Eat" width="2172" height="724"></a>')
  .replace('</body>','<script src="animal-view.js" defer></script></body>');
+top=top
+ .replace('</head>','<style>'+novelBannerStyle+'</style></head>')
+ .replace('<section class="first-routes"',novelBanner()+'<section class="first-routes"')
+ .replace('動きをひかえめにする</button>','動きをひかえめにする</button><a href="ninzuubun/">特集小説「人数分」</a>');
 write('index.html',top);
 write('top.html','<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0;url=./"><link rel="canonical" href="'+base+'"><title>Before We Eat トップへ</title></head><body><p><a href="./">Before We Eat のトップページへ</a></p></body></html>\n');
 // Every published article except the catalog itself must have a directory link and search entry.
@@ -197,7 +203,7 @@ for (const {slug} of rows) {
  const url = slug + '.html';
  if (!catalogLinks.has(url) || !searchableUrls.has(url)) throw new Error('Article missing from catalog: ' + url);
 }
-const urls=['',...rows.map(r=>r.slug+'.html')];
+const urls=['',...rows.map(r=>r.slug+'.html'),...novelManifest.map(page=>page.url.slice(base.length))];
 write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls.map(p=>'<url><loc>'+base+p+'</loc></url>').join('')+'</urlset>');
 write('robots.txt','User-agent: *\nAllow: /\nSitemap: '+base+'sitemap.xml\n');
 write('llms.txt','# Before We Eat\n\n> 肉をおいしく食べることから、動物のくらしを考える食育サイト。\n\n'+['animals','cuts','cooking','shopping','lessons','sources'].map(slug=>'- ['+plain(bySlug.get(slug).title)+']('+base+slug+'.html)').join('\n')+'\n');

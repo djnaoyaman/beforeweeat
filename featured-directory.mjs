@@ -10,7 +10,7 @@ const headerLinks = [
 export function chapterHeader(pageLink) {
   return '<header class="feature-head"><a class="brand" href="./"><img src="logo.webp" alt="Before We Eat トップ" width="2172" height="724"></a>'
     + '<details class="feature-menu"><summary aria-label="サイトメニュー">MENU<span class="hamburger" aria-hidden="true"></span></summary>'
-    + '<nav class="feature-nav" aria-label="サイト案内">' + headerLinks.map(([slug,label]) => pageLink(slug,label)).join('') + '</nav></details>'
+    + '<nav class="feature-nav" aria-label="サイト案内">' + headerLinks.map(([slug,label]) => pageLink(slug,label)).join('') + '<a href="ninzuubun/">特集小説「人数分」</a></nav></details>'
     + '<a class="about-link" href="mina.html">このサイトについて<span aria-hidden="true">＋</span></a></header>';
 }
 
@@ -86,7 +86,7 @@ export function contentsPage({rows, names, groups, typeset, plain, hasAsset}) {
   const bySlug = new Map(articles.map(row => [row.slug,row]));
   const searchItems = createSearchCatalog({rows, names, groups, plain}).map(item => {
     const row = bySlug.get(item.url.replace(/\.html$/,''));
-    const teaser = row ? directoryCopy[row.slug] : records.find(r => item.url === 'field-cases.html#record-'+r.number)?.summary.split('\n')[0];
+    const teaser = row ? directoryCopy[row.slug] : records.find(r => item.url === 'field-cases.html#record-'+r.number)?.summary.split('\n')[0] ?? item.teaser;
     const art = row ? recipeArt(row, hasAsset) : null;
     return {...item, teaser, ...(art ? {art} : {})};
   });
@@ -122,7 +122,7 @@ export function contentsPage({rows, names, groups, typeset, plain, hasAsset}) {
   return '<div class="directory-journal"><div class="searchline"><h1>すべての目次</h1><input hidden type="search" id="catalog-query" aria-label="記事と現場の記録を検索" placeholder="ことばで探す"></div>'
     + '<p class="journal-deck">'+typeset('食べたい一皿、動物のくらし、体の場所。気になったところから。')+'</p>'
     + '<p id="count" role="status"></p><div class="search-results" hidden><ul class="story-list"></ul></div>'
-    + '<div id="directory">' + hero
+    + '<div id="directory"><section class="journal-novel" aria-labelledby="novel-feature-title"><a class="journal-novel-cover" href="ninzuubun/"><img src="novel-assets/cover.webp" alt="小説『人数分』犬山静の表紙。さまざまな器が並ぶ食卓へ料理をよそう手。" width="1024" height="1536" loading="lazy"></a><div><p class="journal-novel-label">特集小説</p><h2 id="novel-feature-title">人数分</h2><p class="journal-novel-author">犬山静</p><p class="journal-novel-quote">「食べないで帰る子がいても、いいんですね」</p><a class="journal-novel-link" href="ninzuubun/">物語を読む</a></div></section>' + hero
     + '<section class="chapter-browser" id="catalog"><h2>'+typeset('すべての記事を、章から読む')+'</h2>' + chapters + '</section></div>'
     + '<script id="catalog-data" type="application/json">' + encodeCatalog(searchItems) + '</script></div>';
 }

@@ -1,4 +1,5 @@
 import {readingRouteSearchText} from './reading-routes.mjs';
+import {novelCatalogItem} from './novel.mjs';
 import {welfareGuideSearchText} from './welfare-guides.mjs';
 import {priorityFoodMarkup} from './priority-food.mjs';
 import {priorityEditorialSearchText} from './priority-editorial-pages.mjs';
@@ -47,6 +48,7 @@ export function articleSearchText(row, {plain, titles}) {
 export function createSearchCatalog({rows, names, groups, plain}) {
   const titles = new Map(rows.map(row => [row.slug, row.title]));
   return [
+    {...novelCatalogItem},
     ...rows.filter(row => row.slug !== 'start').map(row => ({
       title: plain(row.title), label: names[row.group], url: row.slug + '.html',
       text: articleSearchText(row, {plain, titles})

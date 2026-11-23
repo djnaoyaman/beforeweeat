@@ -15,7 +15,7 @@ node verify.mjs
 
 `verify.mjs` はPDFのページ数・本文・リンクも検査します。初回は `python -m pip install -r worksheet-requirements.txt` で既存のPDF依存関係を用意してください。
 
-生成先は `dist/` です。公開対象の一覧は `publication.mjs` の原稿データから導きます。現在はトップ1ページと記事・目次86ページ、計87 URLです。404ページと旧URL `top.html` の転送ページは別に生成します。
+生成先は `dist/` です。公開対象の一覧は `publication.mjs` と `novel.mjs` の原稿データから導きます。既存のトップ1ページと記事・目次86ページに、小説特集の入口1ページと本文22ページを加えた計110 URLです。404ページと旧URL `top.html` の転送ページは別に生成します。
 
 `verify.mjs` は公開一覧、サイトマップ、メタデータ、内部リンク、別ページを含むアンカー、36皿の材料・工程・画像、30皿の固定URL、79件の記録、写真表示前の構造と3件の個別注意、検索の回帰例を確認します。成功時は `status: passed` を出力します。これは静的検査の結果で、実機や本番画面の確認とは分けて記録します。
 
@@ -25,7 +25,8 @@ node verify.mjs
 - `edition.mjs` は動物・部位・主要料理などの編集データです。
 - `plate-recipes.mjs` は追加30皿です。`plate-01` から `plate-30` のURLを並び順で変えません。
 - `field-records.json` は79件の現場記録です。`record-1` から `record-79` のアンカーを維持します。
-- `search-catalog.mjs` は本文、材料、手順、道具、観察の問い、部位説明などを検索へ反映します。目次は85ページと79記録を検索できます。
+- `search-catalog.mjs` は本文、材料、手順、道具、観察の問い、部位説明などを検索へ反映します。目次は85ページと79記録、小説特集1件を検索できます。
+- `novel-data.json` は小説『人数分』全8章を22場面に分けた本文です。`novel-preface.txt` に前口上、`novel.mjs` に作品入口と読書ページの生成処理、`novel-reader.css` と `novel-reader.js` に読書画面の表示と操作を置きます。挿絵と表紙は `novel-assets/` にあります。作品名義は犬山静です。
 - `learning.mjs` は5分・45分の教材、児童用シート、7日記録、買い物の計算例です。
 - `cut-atlas.mjs` は30部位の目印と、共有URLに使う固定IDです。精密な解剖図や切り分け線ではありません。
 - `editorial-context.mjs` は食卓までの道、公開研究の紹介、説明と資料の対応、更新履歴です。
