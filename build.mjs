@@ -147,7 +147,7 @@ for(const r of rows){
  const extraStyles=r.slug==='animals' ? '<link rel="stylesheet" href="directory-animals.css?v=1">' :
    (['loin','ginger-pork'].includes(r.slug)||foodNext||recipeNext||contextualAside) ? '<link rel="stylesheet" href="representative-content.css?v=1">' : priority ? '<link rel="stylesheet" href="priority-editorial.css?v=1">' : welfare ? welfareGuideStyle : safety ? cookingSafetyStyle : '';
  const learningStyles=['lessons','lesson-beef','lesson-pork','lesson-chicken','food-diary','shopping','buy-bone'].includes(r.slug)?'<link rel="stylesheet" href="learning.css?v=1">':'';
- const routeStyles=(routeAside||r.slug==='lessons')?'<link rel="stylesheet" href="reading-routes.css?v=1">':'';
+ const routeStyles=(routeAside||r.slug==='lessons')?'<link rel="stylesheet" href="reading-routes.css?v=2">':'';
  const directoryStyles=['shopping','people','sources','cuts'].includes(r.slug)?'<link rel="stylesheet" href="chapter-directories.css?v=1">':'';
  const refsHtml=priority?'':welfare?welfareGuideSources(r.slug,{typeset}):safety?cookingSafetySources(r.slug,{typeset}):refs.length?'<details class="references"><summary>'+sourceLabel+'</summary><ul>'+refs.map(([label,url])=>'<li><a href="'+escape(url)+'">'+escape(label)+'</a></li>').join('')+'</ul></details>':'';
  if(Object.hasOwn(featuredLabels,r.slug)){
