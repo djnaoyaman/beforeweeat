@@ -2,7 +2,9 @@
   'use strict';
 
   const analytics = window.gtag;
-  if (typeof analytics !== 'function') return;
+  if (typeof analytics !== 'function' || window.__bweEventsBound) return;
+  window.__bweEventsBound = true;
+  const measurementId = 'G-HBPDX2M5HR';
 
   const path = location.pathname.replace(/^\/beforeweeat\/?/, '');
   const slug = path.replace(/\/index\.html$/, '').replace(/\.html$/, '') || 'home';
@@ -32,38 +34,53 @@
   });
 
   function send(name, parameters = {}) {
-    analytics('event', name, {
-      content_group: contentGroup,
-      bwe_animal: animal,
-      bwe_page_path: location.pathname,
-      ...parameters
-    });
+    if (location.hostname !== 'djnaoyaman.github.io' || window['ga-disable-' + measurementId]) return;
+    try {
+      analytics('event', name, {
+        content_group: contentGroup,
+        bwe_animal: animal,
+        bwe_page_path: location.pathname,
+        ...parameters,
+        send_to: measurementId,
+        page_location: location.origin + location.pathname,
+        page_referrer: document.referrer.split(/[?#]/)[0],
+        transport_type: 'beacon'
+      });
+    } catch (_) { /* Measurement must not interrupt reading or interaction. */ }
   }
 
   function observeOnce(element, seconds, callback, threshold = 0.5) {
     if (!element || !('IntersectionObserver' in window)) return;
     let timer;
     let done = false;
-    const observer = new IntersectionObserver(entries => {
-      const visible = entries.some(entry => entry.isIntersecting && entry.intersectionRatio >= threshold);
-      if (visible && document.visibilityState === 'visible') {
-        if (!timer && !done) timer = window.setTimeout(() => {
+    let inView = false;
+    function stopTimer() {
+      if (timer !== undefined) window.clearTimeout(timer);
+      timer = undefined;
+    }
+    function sync() {
+      if (done) return;
+      if (!inView || document.visibilityState !== 'visible') {
+        stopTimer();
+      } else if (timer === undefined) {
+        timer = window.setTimeout(() => {
+          timer = undefined;
+          if (done || !inView || document.visibilityState !== 'visible') return;
           done = true;
-          callback();
           observer.disconnect();
+          document.removeEventListener('visibilitychange', sync);
+          callback();
         }, seconds * 1000);
-      } else if (timer) {
-        clearTimeout(timer);
-        timer = undefined;
       }
+    }
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.target === element) inView = entry.isIntersecting && entry.intersectionRatio >= threshold;
+      });
+      sync();
     }, { threshold: [threshold] });
     observer.observe(element);
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState !== 'visible' && timer) {
-        clearTimeout(timer);
-        timer = undefined;
-      }
-    }, { once: true });
+    document.addEventListener('visibilitychange', sync);
   }
 
   if (novel) {
@@ -96,28 +113,47 @@
 
   if (['recipe', 'cut', 'animal_life', 'field_case', 'lesson', 'article'].includes(contentGroup)) {
     const main = document.querySelector('main');
-    const firstParagraph = main && [...main.querySelectorAll('p')].find(paragraph =>
+    const firstParagraph = main && (main.querySelector('[data-bwe-core]') || [...main.querySelectorAll('p')].find(paragraph =>
       paragraph.textContent.trim().length > 40 && !paragraph.closest('nav, footer, aside, dialog')
-    );
+    ));
     observeOnce(firstParagraph, 5, () => send('bwe_core_view', { bwe_block: 'main' }), 0.5);
   }
 
+  // Impressions are separate from the GA4-derived novel landing view.
+  observeOnce(document.querySelector('#novel.novel-banner'), 1, () => send('bwe_novel_promo_view', {
+    bwe_work_id: 'ninzuubun', bwe_placement: 'homepage'
+  }), 0.5);
+
+  document.addEventListener('bwe:detail-opened', event => {
+    const detail = event.detail?.id;
+    if (['welfare', 'space', 'rest', 'care', 'cooking'].includes(detail)) {
+      send('bwe_detail_view', { bwe_detail_id: detail });
+    }
+  });
+  document.addEventListener('bwe:animal-revealed', event => {
+    const detail = event.detail || {};
+    if (!['pig', 'cow', 'hen'].includes(detail.animal)) return;
+    send('bwe_animal_reveal', {
+      bwe_animal: detail.animal,
+      bwe_interaction: ['keyboard', 'pointer'].includes(detail.interaction) ? detail.interaction : 'control'
+    });
+  });
+
   document.addEventListener('click', event => {
-    const printButton = event.target.closest('[data-print]');
+    if (event.defaultPrevented) return;
+    const printButton = event.target.closest?.('[data-print]');
     if (printButton) send('bwe_print_request', { bwe_page_path: location.pathname });
-    const link = event.target.closest('a[href]');
+    const link = event.target.closest?.('a[href]');
     if (link) {
       const target = new URL(link.href, location.href);
-      if (target.origin === location.origin && target.pathname.startsWith('/beforeweeat/') && target.pathname !== location.pathname) {
+      if (!link.hasAttribute('download') && target.origin === location.origin && /^\/beforeweeat\/(?:[a-z0-9_-]+\/)*(?:[a-z0-9_-]+\.html)?$/.test(target.pathname) && target.pathname !== location.pathname) {
         send('select_content', {
-          content_type: 'article',
+          content_type: target.pathname.includes('/ninzuubun/') ? 'novel' : 'article',
           content_id: target.pathname.replace('/beforeweeat/', '').replace(/\/$/, '') || 'home',
-          bwe_placement: link.closest('nav') ? 'navigation' : link.closest('main') ? 'article' : 'site'
+          bwe_placement: link.closest('#novel') ? 'novel_promo' : link.closest('nav') ? 'navigation' : link.closest('main') ? 'article' : 'site'
         });
       }
     }
-    const reveal = event.target.closest('#observe button, #observe [role="button"]');
-    if (reveal) send('bwe_animal_reveal', { bwe_interaction: event.detail === 0 ? 'keyboard' : 'pointer' });
   });
 
   document.addEventListener('toggle', event => {
@@ -133,10 +169,10 @@
       clearTimeout(timer);
       timer = window.setTimeout(() => {
         const resultCount = document.querySelector('#count, #field-count')?.textContent.trim() || '';
-        const bucket = /0件|見つかりません/.test(resultCount) ? 'zero'
-          : /1件/.test(resultCount) ? 'one'
-          : /[2-9]\d*件/.test(resultCount) ? 'two_to_ten'
-          : resultCount ? 'eleven_plus' : 'zero';
+        const countMatch = resultCount.match(/(\d[\d,]*)\s*件/);
+        const count = countMatch ? Number(countMatch[1].replace(/,/g, '')) : 0;
+        const bucket = count === 0 ? 'zero' : count === 1 ? 'one'
+          : count <= 10 ? 'two_to_ten' : 'eleven_plus';
         send('bwe_search_results', {
           bwe_search_location: input.id === 'field-query' ? 'field_cases' : 'catalog',
           bwe_result_count: bucket
