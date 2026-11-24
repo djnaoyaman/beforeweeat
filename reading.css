@@ -246,3 +246,36 @@ article p {
 
 /* Shared site copyright notice. */
 footer .site-copyright{flex-basis:100%;margin:.6rem 0 0;font-size:.875rem;line-height:1.8}
+
+
+/* Editorial reading system · 2026-11-24
+   Scope: article, reference and teaching pages. Keep print worksheets intact. */
+@media screen{
+ :root{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;font-size:clamp(17px,1.22vw,19px);line-height:1.95;font-feature-settings:"palt" 1;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+ main{width:min(calc(100% - 2.4rem),43rem);padding-block:clamp(1.5rem,3.5vw,3rem) 4rem}
+ article{line-break:strict;overflow-wrap:break-word}
+ article p{max-width:39em;line-height:1.98;letter-spacing:.01em;margin-block:.75em 1.15em}
+ article :is(h1,h2,h3),aside :is(h2,h3){font-family:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;font-feature-settings:"palt" 1;font-weight:500;line-break:strict;word-break:normal;text-wrap:pretty;letter-spacing:-.025em}
+ article h1{font-size:clamp(2rem,4.4vw,3rem);line-height:1.45;letter-spacing:-.04em;margin-block:.2em .65em}
+ article h2{font-size:clamp(1.4rem,2.4vw,1.8rem);line-height:1.55;margin-block:1.8em .65em}
+ article h3{font-size:clamp(1.13rem,1.8vw,1.35rem);line-height:1.6;margin-block:1.45em .55em}
+ article .lead{font-size:clamp(1.05rem,1.7vw,1.22rem);font-weight:500;line-height:1.85;max-width:31em;letter-spacing:0}
+ .rubric,.reader-options,.site-head,nav,footer{line-height:1.65}
+ .rubric{letter-spacing:.045em}
+ :is(article,aside) :is(figcaption,small){line-height:1.75}
+ :is(article,aside) rt{font-size:.55em;line-height:1.1;font-feature-settings:normal}
+ .entries a,.story-list a{line-height:1.65}
+ .references{font-size:.88em;line-height:1.85}
+ .large-text article p{line-height:1.88}
+}
+@media screen and (max-width:35em){
+ :root:not(.large-text) :is(article,aside){font-size:1rem;line-height:1.9}
+ :root:not(.large-text) article h1{font-size:clamp(1.8rem,7.7vw,2.25rem);line-height:1.48}
+ :root:not(.large-text) :is(article,aside) h2{font-size:1.38rem;line-height:1.55}
+ :root:not(.large-text) article h3{font-size:1.15rem}
+ :root:not(.large-text) article .lead{font-size:1.08rem;line-height:1.85}
+ main{width:min(calc(100% - 2rem),43rem);padding-block:1.5rem 3rem}
+ article p{line-height:1.95}
+ .reader-options{gap:.4rem}
+ .site-head,nav,footer{line-height:1.7}
+}
