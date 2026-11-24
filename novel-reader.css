@@ -184,3 +184,27 @@
 /* Keep the novelist and site editor credits, followed by the site notice. */
 .n-site-footer{flex-wrap:wrap;row-gap:.5rem}
 .n-site-footer .site-copyright{flex-basis:100%;margin:0;font-size:.875rem;line-height:1.8}
+
+
+/* Novel editorial typography · 2026-11-24
+   Maintain the book's own layout and adjustable reading type. */
+@media screen{
+ .novel-page{font-feature-settings:"palt" 1;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+ .n-prose{line-break:strict;overflow-wrap:break-word;letter-spacing:.015em;line-height:2.05}
+ .n-prose p{max-width:36em}
+ .n-scene-heading :is(h1,h2),.n-chapter-row h1,.n-preface h2,.n-book-contents>h2{font-feature-settings:"palt" 1;line-break:strict;word-break:normal;text-wrap:pretty}
+ .n-chapter-row h1{line-height:1.5}
+ .n-intro-description{line-height:1.95}
+ .n-opening-quote{line-height:1.85}
+ .n-preface .n-prose{line-height:2.08}
+ .n-scene-meta,.n-section-label,.n-author,.n-book-length{line-height:1.7}
+ .n-next>strong{line-height:1.55}
+ .n-toc-chapter h3{line-height:1.55}
+}
+@media screen and (max-width:760px){
+ .n-prose{line-height:2;letter-spacing:.015em}
+ .n-preface .n-prose{line-height:2.05}
+ .n-chapter-row h1{font-size:clamp(1.4rem,5.9vw,1.65rem);line-height:1.5}
+ .n-opening-quote{line-height:1.8}
+ .n-intro-description{font-size:1rem;line-height:1.9}
+}
